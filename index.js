@@ -1,5 +1,5 @@
 'use strict';
-var valid = require('validator');
+const valid = require('validator');
 let option = {
   logTime: true
 };
@@ -13,7 +13,6 @@ function GetWeekIndex(dateobj) {
   var d = Math.floor((dateobj.valueOf() - firstDay.valueOf()) / 86400000);
   return Math.floor(d / 7) + 1;
 }
-
 function GetFirstWeekBegDay(year) {
   var tempdate = new Date(year, 0, 1);
   var temp = tempdate.getDay();
@@ -24,7 +23,6 @@ function GetFirstWeekBegDay(year) {
   tempdate = tempdate.setDate(tempdate.getDate() + (8 - temp));
   return new Date(tempdate);
 }
-
 function ext(a, b) {
   if (!b || !a) {
     return null;
@@ -61,8 +59,8 @@ Date.prototype.date8 = function(s) {
 };
 /* 得到日期年月日等加数字后的日期 */
 Date.prototype.dateAdd = function(interval, number) {
-  var d = this;
-  var k = {
+  let d = this;
+  let k = {
     'y': 'FullYear',
     'q': 'Month',
     'm': 'Month',
@@ -73,7 +71,7 @@ Date.prototype.dateAdd = function(interval, number) {
     's': 'Seconds',
     'ms': 'MilliSeconds'
   };
-  var n = {
+  let n = {
     'q': 3,
     'w': 7
   };
@@ -83,8 +81,7 @@ Date.prototype.dateAdd = function(interval, number) {
 Array.prototype.copy = function() {
   return [].concat(this);
 };
-
-var _s = {
+let _s = {
   fillStr: function(str, len) { //填入什么字符多少位,中文算2个字符
     let l = (this + '').len();
     return this + ((len - l) > 0 ? str.times(len - l) : '');
@@ -203,7 +200,7 @@ Buffer.prototype.contact = function(b) {
   utf8 有bom头
   EF BB BF [239 187 191]
   */
-  var buf = new Buffer(this.length + b.length);
+  let buf = new Buffer(this.length + b.length);
   this.copy(buf, 0, 0, this.length);
   b.copy(buf, this.length, 0, b.length);
   return buf;
