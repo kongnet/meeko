@@ -459,6 +459,13 @@ describe(`checkParam的单元测试`, function() {
 		};
 		assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg);
 	});
+	it(`default`, function*() {
+		let a = {
+			id: 1,
+			d2: 1
+		};
+		assert.strictEqual(500, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg);
+	});
 });
 describe(`uuid的单元测试`, function() {
 	it(`有len`, function*() {
