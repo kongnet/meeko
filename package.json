@@ -1,0 +1,55 @@
+{
+  "name": "meeko",
+  "version": "1.0.0",
+  "description": "meeko自用函数",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha -- -r co-mocha --timeout 100000 --recursive tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kongnet/meeko.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "validator": "*"
+  },
+  "eslintConfig": {
+    "plugins": [
+      "html"
+    ],
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+    },
+    "globals": {
+      "angular": true
+    },
+    "rules": {
+      "no-unused-vars": 1,
+      "camelcase": 0,
+      "curly": 2,
+      "brace-style": [
+        2,
+        "1tbs"
+      ],
+      "quotes": [
+        1,
+        "single"
+      ],
+      "semi": [
+        1,
+        "always"
+      ],
+      "space-infix-ops": 1,
+      "no-console": 1,
+      "complexity": [
+        1,
+        8
+      ]
+    },
+    "extends": "eslint:recommended"
+  }
+}
