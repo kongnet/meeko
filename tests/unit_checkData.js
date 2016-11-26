@@ -3,7 +3,6 @@
 'use strict';
 var $ = require('../index');
 let assert = require(`assert`);
-//let req = require(`co-request`);
 
 var b = {
 	id: {

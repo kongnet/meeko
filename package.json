@@ -4,20 +4,23 @@
   "description": "meeko自用函数",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r co-mocha --timeout 100000 --recursive tests/"
+    "test": "mocha -r co-mocha --reporter spec --timeout 100000 --recursive tests/",
+    "coveralls": "istanbul cover _mocha -- -r co-mocha --reporter lcovonly --timeout 100000 --recursive tests/ && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/kongnet/meeko.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Kongnet <9601698@qq.com>",
+  "license": "MIT",
   "dependencies": {
     "validator": "*"
   },
   "devDependencies": {
     "mocha": "*",
-    "co-mocha": "*"
+    "co-mocha": "*",
+    "istanbul": "*",
+    "coveralls": "*"
   },
   "eslintConfig": {
     "plugins": [
@@ -26,7 +29,8 @@
     "env": {
       "browser": true,
       "node": true,
-      "es6": true
+      "es6": true,
+      "mocha": true
     },
     "globals": {
       "angular": true
