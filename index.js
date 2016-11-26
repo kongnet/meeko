@@ -26,15 +26,13 @@ function getWeekIndex(dateobj) {
 }
 
 function ext(a, b) {
-  if (!b || !a) {
-    return null;
-  } else {
+  if (a && b) {
     for (let c in b) {
       b.hasOwnProperty(c) && (a[c] = b[c]);
     }
+    return a;
   }
-
-  return a;
+  return null;
 }
 Date.prototype.getWeek = function() {
   return getWeekIndex(this);
