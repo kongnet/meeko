@@ -303,7 +303,7 @@ tools.uuid = function(len, radix) { //返回多位随机字符
     for (i = 0; i < 36; i++) {
       if (!uuid[i]) {
         r = 0 | Math.random() * 16;
-        uuid[i] = chars[(i == 19) ? (r & 0x3) | 0x8 : r];
+        uuid[i] = chars[(i === 19) ? (r & 0x3) | 0x8 : r];
       }
     }
   }
@@ -445,8 +445,8 @@ tools.checkParam = function(a, b) { //检查两个对象是否符合参数要求
 };
 
 let utf8 = {
-  'encode' (s) {
-    var r = "";
+  encode (s) {
+    var r = '';
     var len = s.length;
     var fromCode = String.fromCharCode;
     for (var n = 0; n < len; n++) {
@@ -464,7 +464,7 @@ let utf8 = {
     }
     return r;
   },
-  'decode' (s) {
+  decode (s) {
     var r = "";
     var i = 0;
     var c1 = 0;
@@ -492,7 +492,7 @@ let utf8 = {
 };
 tools.utf8 = utf8;
 let lzw = {
-  'compress' (str) {
+  compress (str) {
     var fromCode = String.fromCharCode;
     var rStr = '';
     rStr = utf8.encode(str);
@@ -512,7 +512,7 @@ let lzw = {
     var r = '';
     for (i = 0; i <= size; i++) {
       current = splitted[i] + '';
-      xstr = (buffer.length == 0) ? String(current.charCodeAt(0)) : (buffer.join('-') + '-' + String(current.charCodeAt(0)));
+      xstr = (buffer.length === 0) ? String(current.charCodeAt(0)) : (buffer.join('-') + '-' + String(current.charCodeAt(0)));
       if (dict[xstr] !== undefined) {
         buffer.push(current.charCodeAt(0));
       } else {
@@ -525,7 +525,7 @@ let lzw = {
     }
     return r;
   },
-  'uncompress' (str) {
+  uncompress (str) {
     var i;
     var chars = 256;
     var dict = [];
@@ -554,7 +554,7 @@ let lzw = {
           buffer = current;
         } else {
           chain = dict[code];
-          if (chain == null) {
+          if (chain === null) {
             chain = buffer + buffer.slice(0, 1);
           }
           r += chain;
