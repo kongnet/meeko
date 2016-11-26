@@ -4,7 +4,7 @@
   "description": "meeko自用函数",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover ./node_modules/mocha/bin/_mocha -- -r co-mocha --timeout 100000 --recursive tests/"
+    "test": "mocha -r co-mocha --timeout 100000 --recursive tests/"
   },
   "repository": {
     "type": "git",
