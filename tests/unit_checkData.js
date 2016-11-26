@@ -479,9 +479,11 @@ describe(`uuid的单元测试`, function() {
 describe(`Date原型扩展的单元测试`, function() {
 	var d1 = new Date('2015-12-29 01:11:01');
 	var d2 = new Date('2016-01-02 20:09:31');
+	var d3 = new Date('2018-01-01 20:09:31');
 	it(`getWeek`, function*() {
 		assert.strictEqual(52, d1.getWeek());
 		assert.strictEqual(52, d2.getWeek());
+		assert.strictEqual(1, d3.getWeek());
 	});
 	it(`date2Str`, function*() {
 		assert.strictEqual('2015-12-29 01:11:01', d1.date2Str());
