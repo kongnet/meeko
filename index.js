@@ -27,7 +27,7 @@ function ext(a, b) {
   if (!b || !a) {
     return null;
   }
-  for (var c in b) {
+  for (let c in b) {
     b.hasOwnProperty(c) && (a[c] = b[c]);
   }
   return a;
@@ -237,8 +237,8 @@ let c = {
 exports.c = c;
 
 
-var getStackTrace = function() {
-  var obj = {};
+let getStackTrace = function() {
+  let obj = {};
   Error.captureStackTrace(obj, getStackTrace);
   return obj.stack;
 };
@@ -246,7 +246,7 @@ var getStackTrace = function() {
 let re = /\\(.+)\.js:(\d+:\d+)/g;
 let log = function(...args) {
   getStackTrace().split('\n')[2].match(re);
-  let s = ' [' + c.lgreen + RegExp.$1.split('\\').pop() + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']';
+  let s = c.none + ' [' + c.lgreen + RegExp.$1.split('\\').pop() + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']';
   let str = '';
   for (let i = 0; i < args.length; i++) {
     if (typeof args[i] === 'object') {
@@ -260,7 +260,7 @@ let log = function(...args) {
 };
 let err = function(...args) {
   getStackTrace().split('\n')[2].match(re);
-  let s = ' [' + c.lred + RegExp.$1.split('\\').pop() + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']';
+  let s = c.none + ' [' + c.lred + RegExp.$1.split('\\').pop() + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']';
   let str = '';
   for (let i = 0; i < args.length; i++) {
     if (typeof args[i] === 'object') {
@@ -276,13 +276,13 @@ exports.log = log;
 exports.err = err;
 
 //tools库扩展
-exports.tools = {};
-exports.tools.copy = function(o) { //复制对象
+let tools = {};
+tools.copy = function(o) { //复制对象
   return JSON.parse(JSON.stringify(o));
 };
-exports.tools.uuid = function(len, radix) { //返回多位随机字符
-  var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
-  var uuid = [],
+tools.uuid = function(len, radix) { //返回多位随机字符
+  let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+  let uuid = [],
     i;
   radix = radix || chars.length;
   if (len) {
@@ -292,7 +292,7 @@ exports.tools.uuid = function(len, radix) { //返回多位随机字符
     }
   } else {
     // rfc4122, version 4 form
-    var r;
+    let r;
     // rfc4122 requires these characters
     uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
     uuid[14] = '4';
@@ -307,15 +307,15 @@ exports.tools.uuid = function(len, radix) { //返回多位随机字符
   }
   return uuid.join('');
 };
-exports.tools.wait = function(t) { //promise停止n秒
+tools.wait = function(t) { //promise停止n秒
   return function(cb) {
     setTimeout(cb, t);
   };
 };
-exports.tools.rnd = function(a, b) { //返回a,b之间的整数
+tools.rnd = function(a, b) { //返回a,b之间的整数
   return Math.round(Math.random() * (b - a)) + a;
 };
-exports.tools.timeAgo = function(t1, t2) { //两个时间差 中文显示函数
+tools.timeAgo = function(t1, t2) { //两个时间差 中文显示函数
   t1 = new Date(t1), t2 = new Date(t2);
   let r = '',
     n = 0;
@@ -355,7 +355,7 @@ console.log($.tools.timeAgo('2016-1-1','2016-1-1 1:13:01'));
 console.log($.tools.timeAgo('2016-1-1','2016-1-1 0:13:01'));
 console.log($.tools.timeAgo('2016-1-1','2016-1-1 0:0:50'));*/
 
-exports.tools.checkParam = function(a, b) { //检查两个对象是否符合参数要求
+tools.checkParam = function(a, b) { //检查两个对象是否符合参数要求
   // NOTICE : 0的问题
   var c = {};
   var _n;
@@ -496,7 +496,7 @@ let utf8 = {
     return r;
   }
 };
-exports.tools.utf8 = utf8;
+tools.utf8 = utf8;
 let lzw = {
   'compress': function(str) {
     var fromCode = String.fromCharCode;
@@ -574,4 +574,6 @@ let lzw = {
     return r;
   }
 };
-exports.tools.lzw = lzw;
+tools.lzw = lzw;
+
+exports.tools = tools;
