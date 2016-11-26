@@ -28,7 +28,9 @@ function getWeekIndex(dateobj) {
 function ext(a, b) {
   if (a && b) {
     for (let c in b) {
-      b.hasOwnProperty(c) && (a[c] = b[c]);
+      if (b.hasOwnProperty(c)) {
+        a[c] = b[c];
+      }
     }
     return a;
   }
