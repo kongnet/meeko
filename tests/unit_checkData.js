@@ -90,7 +90,7 @@ describe(`checkParam的单元测试`, function() {
 		};
 		assert.strictEqual(400, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg);
 	});
-	it(`string`, function*() {
+	it(`string`, function() {
 		let a = {
 			id: 1,
 			name: 1
@@ -146,7 +146,7 @@ describe(`checkParam的单元测试`, function() {
 		};
 		assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg);
 	});
-	it(`bool`, function*() {
+	it(`bool`, function() {
 		let a = {
 			id: 1,
 			code: 1
@@ -225,7 +225,7 @@ describe(`checkParam的单元测试`, function() {
 		};
 		assert.strictEqual(400, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg);
 	});
-	it(`positive`, function*() {
+	it(`positive`, function() {
 		let a = {
 			id: 1,
 			rights: 1
@@ -281,7 +281,7 @@ describe(`checkParam的单元测试`, function() {
 		};
 		assert.strictEqual(400, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg);
 	});
-	it(`negative`, function*() {
+	it(`negative`, function() {
 		let a = {
 			id: 1,
 			description: 1
@@ -337,7 +337,7 @@ describe(`checkParam的单元测试`, function() {
 		};
 		assert.strictEqual(400, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg);
 	});
-	it(`number`, function*() {
+	it(`number`, function() {
 		let a = {
 			id: 1,
 			type: 1
@@ -393,7 +393,7 @@ describe(`checkParam的单元测试`, function() {
 		};
 		assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg);
 	});
-	it(`datetime`, function*() {
+	it(`datetime`, function() {
 		let a = {
 			id: 1,
 			datetime: 1
@@ -459,7 +459,7 @@ describe(`checkParam的单元测试`, function() {
 		};
 		assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg);
 	});
-	it(`default`, function*() {
+	it(`default`, function() {
 		let a = {
 			id: 1,
 			d2: 1
@@ -468,10 +468,10 @@ describe(`checkParam的单元测试`, function() {
 	});
 });
 describe(`uuid的单元测试`, function() {
-	it(`有len`, function*() {
+	it(`有len`, function() {
 		assert.notStrictEqual('nUazy3Dk3u', $.tools.uuid(10, 64), 'nUazy3Dk3u');
 	});
-	it(`无len`, function*() {
+	it(`无len`, function() {
 		assert.notStrictEqual('2EC9D207-DCA5-4D96-A397-F1371D053AEB', $.tools.uuid(), '2EC9D207-DCA5-4D96-A397-F1371D053AEB');
 		assert.notStrictEqual('2EC9D207-DCA5-4D96-A397-F1371D053AEB', $.tools.uuid(null, 64), '2EC9D207-DCA5-4D96-A397-F1371D053AEB');
 	});
@@ -480,64 +480,64 @@ describe(`Date原型扩展的单元测试`, function() {
 	var d1 = new Date('2015-12-29 01:11:01');
 	var d2 = new Date('2016-01-02 20:09:31');
 	var d3 = new Date('2018-01-01 20:09:31');
-	it(`getWeek`, function*() {
+	it(`getWeek`, function() {
 		assert.strictEqual(52, d1.getWeek());
 		assert.strictEqual(52, d2.getWeek());
 		assert.strictEqual(1, d3.getWeek());
 	});
-	it(`date2Str`, function*() {
+	it(`date2Str`, function() {
 		assert.strictEqual('2015-12-29 01:11:01', d1.date2Str());
 		assert.strictEqual('2016-01-02 20:09:31', d2.date2Str());
 	});
-	it(`date8`, function*() {
+	it(`date8`, function() {
 		assert.strictEqual('20151229', d1.date8());
 		assert.strictEqual('20160102', d2.date8());
 	});
-	it(`dateAdd年`, function*() {
+	it(`dateAdd年`, function() {
 		assert.strictEqual('2016-12-29 01:11:01', d1.dateAdd('y', 1).date2Str());
 		assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('y', -1).date2Str());
 	});
-	it(`dateAdd季度`, function*() {
+	it(`dateAdd季度`, function() {
 		assert.strictEqual('2016-03-29 01:11:01', d1.dateAdd('q', 1).date2Str());
 		assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('q', -1).date2Str());
 	});
-	it(`dateAdd月`, function*() {
+	it(`dateAdd月`, function() {
 		assert.strictEqual('2016-01-29 01:11:01', d1.dateAdd('m', 1).date2Str());
 		assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('m', -1).date2Str());
 	});
-	it(`dateAdd周`, function*() {
+	it(`dateAdd周`, function() {
 		assert.strictEqual('2016-01-05 01:11:01', d1.dateAdd('w', 1).date2Str());
 		assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('w', -1).date2Str());
 	});
-	it(`dateAdd日`, function*() {
+	it(`dateAdd日`, function() {
 		assert.strictEqual('2015-12-30 01:11:01', d1.dateAdd('d', 1).date2Str());
 		assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('d', -1).date2Str());
 	});
-	it(`dateAdd时`, function*() {
+	it(`dateAdd时`, function() {
 		assert.strictEqual('2015-12-29 02:11:01', d1.dateAdd('h', 1).date2Str());
 		assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('h', -1).date2Str());
 	});
-	it(`dateAdd分`, function*() {
+	it(`dateAdd分`, function() {
 		assert.strictEqual('2015-12-29 01:12:01', d1.dateAdd('n', 1).date2Str());
 		assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('n', -1).date2Str());
 	});
-	it(`dateAdd秒`, function*() {
+	it(`dateAdd秒`, function() {
 		assert.strictEqual('2015-12-29 01:11:02', d1.dateAdd('s', 1).date2Str());
 		assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('s', -1).date2Str());
 	});
 
-	it(`dateDiff`, function*() {
+	it(`dateDiff`, function() {
 		//assert.strictEqual(0,d1.dateDiff('y',d2));
 
 	});
 });
 describe(`String原型扩展的单元测试`, function() {
-	it(`fillStr`, function*() {
+	it(`fillStr`, function() {
 		assert.strictEqual('abaaaa', 'ab'.fillStr('a', 6));
 		assert.strictEqual('ab    ', 'ab'.fillStr(' ', 6));
 
 	});
-	it(`toMoney`, function*() {
+	it(`toMoney`, function() {
 		assert.strictEqual('-9,812,345,678.45678901', '-9812345678.45678901'.toMoney());
 		assert.strictEqual('9,812,345,678.45678901', '9812345678.45678901'.toMoney());
 		assert.strictEqual('-9,812,345,678.45', '-9812345678.45678901'.toMoney(2));
@@ -546,74 +546,74 @@ describe(`String原型扩展的单元测试`, function() {
 		assert.strictEqual('-0.45', '-.45678901'.toMoney(2));
 		assert.strictEqual(2, 'abc'.toMoney(2));
 	});
-	it(`replaceAll`, function*() {
+	it(`replaceAll`, function() {
 		assert.strictEqual('aaaxxxccc', 'aaabbbccc'.replaceAll('b', 'x'));
 	});
-	it(`times`, function*() {
+	it(`times`, function() {
 		assert.strictEqual('xxx', 'x'.times(3));
 		assert.strictEqual('', 'x'.times(0));
 	});
-	it(`trim`, function*() {
+	it(`trim`, function() {
 		assert.strictEqual('xxx', ' xxx   '.trim());
 	});
-	it(`toLow`, function*() {
+	it(`toLow`, function() {
 		assert.strictEqual('abc1', 'ABC1'.toLow());
 	});
-	it(`toUp`, function*() {
+	it(`toUp`, function() {
 		assert.strictEqual('ABC1', 'abc1'.toUp());
 	});
-	it(`format`, function*() {
+	it(`format`, function() {
 		assert.strictEqual('abcdefg1', 'a{0}c{1}e{2}g{3}'.format('b', 'd', 'f', 1));
 	});
-	it(`len`, function*() {
+	it(`len`, function() {
 		assert.strictEqual(5, '我们a'.len());
 	});
-	it(`toInt`, function*() {
+	it(`toInt`, function() {
 		assert.strictEqual(12, '12.3'.toInt());
 	});
-	it(`esHtml`, function*() {
+	it(`esHtml`, function() {
 		assert.strictEqual('&amp;&lt;&gt;', '&<>'.esHtml());
 	});
-	it(`toHtml`, function*() {
+	it(`toHtml`, function() {
 		assert.strictEqual('&<>', '&amp;&lt;&gt;'.toHtml());
 	});
-	it(`reHtml`, function*() {
+	it(`reHtml`, function() {
 		assert.strictEqual('xxyy', '<div><a>xx</a><div><div>yy</div>'.reHtml());
 	});
-	it(`camelize`, function*() {
+	it(`camelize`, function() {
 		assert.strictEqual('aBC', 'a-b-c'.camelize());
 	});
-	it(`ac`, function*() {
+	it(`ac`, function() {
 		assert.strictEqual('ab c', 'ab'.ac('c'));
 	});
-	it(`dc`, function*() {
+	it(`dc`, function() {
 		assert.strictEqual('ab', 'ab c'.dc('c'));
 	});
-	it(`tc`, function*() {
+	it(`tc`, function() {
 		assert.strictEqual('ab c', 'ab'.tc('c'));
 		assert.strictEqual('ab', 'ab c'.tc('c'));
 	});
 });
 describe(`Number原型扩展的单元测试`, function() {
-	it(`round`, function*() {
+	it(`round`, function() {
 		assert.strictEqual(1.123457, 1.123456789.round(6));
 		assert.strictEqual(1, 1.123456789.round(0));
 	});
 });
 describe(`Array原型扩展的单元测试`, function() {
-	it(`copy`, function*() {
+	it(`copy`, function() {
 		assert.strictEqual([1].copy()[0], 1);
 	});
 });
 describe(`Buffer原型扩展的单元测试`, function() {
-	it(`contact`, function*() {
+	it(`contact`, function() {
 		let buf = new Buffer([1, 2]);
 		let buf1 = buf.contact(new Buffer([3, 4]));
 		assert.strictEqual(3, buf1[2]);
 	});
 });
 describe(`随机数的单元测试`, function() {
-	it(`random`, function*() {
+	it(`random`, function() {
 		assert.strictEqual($.tools.rnd(1, 1), 1);
 		assert.strictEqual($.tools.rnd(100, 100), 100);
 		assert.strictEqual($.tools.rnd(-100, -100), -100);
@@ -622,7 +622,7 @@ describe(`随机数的单元测试`, function() {
 	});
 });
 describe(`utf8 & lzw测试`, function() {
-	it(`utf8&lzw`, function*() {
+	it(`utf8&lzw`, function() {
 		assert.strictEqual($.tools.utf8.encode('你好abc'), 'ä½ å¥½abc');
 		assert.strictEqual($.tools.utf8.decode('ä½ å¥½abc'), '你好abc');
 		assert.strictEqual($.tools.lzw.compress($.tools.utf8.encode('你好abc')), 'Ã¤Â½Â Ã¥Âć½abc');
@@ -631,7 +631,7 @@ describe(`utf8 & lzw测试`, function() {
 	});
 });
 describe(`深copy测试`, function() {
-	it(`deep copy`, function*() {
+	it(`deep copy`, function() {
 		assert.strictEqual($.tools.copy('1'), '1');
 		assert.strictEqual($.tools.copy(1), 1);
 		assert.strictEqual($.tools.copy('{'), '{');
@@ -650,7 +650,7 @@ describe(`深copy测试`, function() {
 	});
 });
 describe(`timeAgo测试`, function() {
-	it(`timeAgo测试`, function*() {
+	it(`timeAgo测试`, function() {
 		assert.strictEqual($.tools.timeAgo('2016-1-1', '2017-2-1'), '1年前');
 		assert.strictEqual($.tools.timeAgo('2016-1-1', '2016-3-1'), '2个月前');
 		assert.strictEqual($.tools.timeAgo('2016-1-1', '2016-1-16'), '15天前');
@@ -661,10 +661,10 @@ describe(`timeAgo测试`, function() {
 	});
 });
 describe(`其他函数的单元测试`, function() {
-	it(`ext`, function*() {
+	it(`ext`, function() {
 		assert.strictEqual(null, $.ext('', ''));
 	});
-	it(`log`, function*() {
+	it(`log`, function() {
 		assert.strictEqual(1, $.log(1, 2));
 		assert.strictEqual(1, $.log({}, 2));
 		assert.strictEqual(1, $.err(1, 2));

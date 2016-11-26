@@ -5,7 +5,7 @@ let option = {
 };
 exports.option = option;
 //日期原型扩展
-function GetFirstWeekBegDay(year) {
+function getFirstWeekBegDay(year) {
   var tempdate = new Date(year, 0, 1);
   var temp = tempdate.getDay();
   if (temp === 1) {
@@ -15,10 +15,11 @@ function GetFirstWeekBegDay(year) {
   tempdate = tempdate.setDate(tempdate.getDate() + (8 - temp));
   return new Date(tempdate);
 }
-function GetWeekIndex(dateobj) {
-  var firstDay = GetFirstWeekBegDay(dateobj.getFullYear());
+
+function getWeekIndex(dateobj) {
+  var firstDay = getFirstWeekBegDay(dateobj.getFullYear());
   if (dateobj < firstDay) {
-    firstDay = GetFirstWeekBegDay(dateobj.getFullYear() - 1);
+    firstDay = getFirstWeekBegDay(dateobj.getFullYear() - 1);
   }
   var d = Math.floor((dateobj.valueOf() - firstDay.valueOf()) / 86400000);
   return Math.floor(d / 7) + 1;
@@ -34,7 +35,7 @@ function ext(a, b) {
   return a;
 }
 Date.prototype.getWeek = function() {
-  return GetWeekIndex(this);
+  return getWeekIndex(this);
 };
 Date.prototype.date2Str = function() {
   let y = this.getFullYear();
@@ -83,11 +84,11 @@ Array.prototype.copy = function() {
   return [].concat(this);
 };
 let _s = {
-  fillStr: function(str, len) { //填入什么字符多少位,中文算2个字符
+  fillStr(str, len) { //填入什么字符多少位,中文算2个字符
     let l = (this + '').len();
     return this + ((len - l) > 0 ? str.times(len - l) : '');
   },
-  toMoney: function(p) { //p精度  
+  toMoney(p) { //p精度  
     var num = this + '';
     num = num.replace(new RegExp(',', 'g'), '');
     // 正负号处理   
@@ -119,25 +120,25 @@ let _s = {
       return p;
     }
   },
-  toLow: function() {
+  toLow() {
     return this.toLowerCase();
   },
-  toUp: function() {
+  toUp() {
     return this.toUpperCase();
   },
-  esHtml: function() {
+  esHtml() {
     return this.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   },
-  toHtml: function() {
+  toHtml() {
     return this.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
   },
-  reHtml: function() {
+  reHtml() {
     return this.replace(/<\/?[^>]+>/gi, '');
   },
-  times: function(n) {
+  times(n) {
     return n > 0 ? new Array(n + 1).join(this) : '';
   },
-  format: function() {
+  format() {
     var s = this,
       a = [];
     for (var i = 0, l = arguments.length; i < l; i++) {
@@ -147,29 +148,29 @@ let _s = {
       return a[i] || '{' + i + '}';
     });
   },
-  len: function() {
+  len() {
     return this.replace(/[^\x00-\xff]/g, '**').length;
   },
-  toInt: function() {
+  toInt() {
     return parseInt(this);
   },
-  replaceAll: function(s1, s2) {
+  replaceAll(s1, s2) {
     var a = this.split(s1);
     return a.join(s2);
   },
-  trim: function() {
+  trim() {
     return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
   },
-  camelize: function() {
+  camelize() {
     return this.replace(/(-[a-z])/g, function(s) {
       return s.substring(1).toUpperCase();
     });
   },
-  ec: function(s) {
+  ec(s) {
     s = s.trim();
     return (new RegExp('(^' + s + '\\s)|(\\s' + s + '$)|(\\s' + s + '\\s)|(^' + s + '$)', 'g')).test(this);
   },
-  tc: function(s) {
+  tc(s) {
     s = s.trim();
     if (this.ec(s)) {
       return this.dc(s);
@@ -177,14 +178,14 @@ let _s = {
       return this.ac(s);
     }
   },
-  dc: function(s) {
+  dc(s) {
     if (this.ec(s)) {
       return this.trim().split(s).join('').replace(/\s{2,}/g, ' ').trim();
     } else {
       return this;
     }
   },
-  ac: function(s) {
+  ac(s) {
     return this.trim().dc(s) + ' ' + s;
   }
 };
@@ -214,7 +215,7 @@ let c = {
   http://stanislavs.org/helppc/ansi_codes.html
   */
   cls: '\x1b[0;0;H\x1b[0J',
-  xy: function(x, y) {
+  xy(x, y) {
     return `\x1b[${y};${x};H`;
   },
   none: '\x1b[m',
@@ -444,7 +445,7 @@ tools.checkParam = function(a, b) { //检查两个对象是否符合参数要求
 };
 
 let utf8 = {
-  'encode': function(s) {
+  'encode' (s) {
     var r = "";
     var len = s.length;
     var fromCode = String.fromCharCode;
@@ -463,7 +464,7 @@ let utf8 = {
     }
     return r;
   },
-  'decode': function(s) {
+  'decode' (s) {
     var r = "";
     var i = 0;
     var c1 = 0;
@@ -491,7 +492,7 @@ let utf8 = {
 };
 tools.utf8 = utf8;
 let lzw = {
-  'compress': function(str) {
+  'compress' (str) {
     var fromCode = String.fromCharCode;
     var rStr = '';
     rStr = utf8.encode(str);
@@ -524,7 +525,7 @@ let lzw = {
     }
     return r;
   },
-  'uncompress': function(str) {
+  'uncompress' (str) {
     var i;
     var chars = 256;
     var dict = [];
