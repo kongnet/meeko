@@ -368,15 +368,17 @@ tools.checkParam = function(a, b) { //检查两个对象是否符合参数要求
     }
     switch (b[i].type.toLow()) {
       case 'int':
-        _n = a[i] === 0 ? 0 : (a[i] || b[i].def);
-        if (!valid.isInt(_n + '')) {
-          return {
-            code: 400,
-            msg: i + '类型错误,应为整型'
-          };
+        {
+          _n = a[i] === 0 ? 0 : (a[i] || b[i].def);
+          if (!valid.isInt(_n + '')) {
+            return {
+              code: 400,
+              msg: i + '类型错误,应为整型'
+            };
+          }
+          c[i] = _n;
+          break;
         }
-        c[i] = _n;
-        break;
       case 'positive':
         _n = a[i] === 0 ? 0 : (a[i] || b[i].def);
         if (!valid.isInt(_n + '') || _n <= 0) {
@@ -467,7 +469,7 @@ let utf8 = {
     return r;
   },
   decode (s) {
-    var r = "";
+    var r = '';
     var i = 0;
     var c1 = 0;
     var c2 = 0;
