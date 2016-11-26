@@ -347,14 +347,6 @@ tools.timeAgo = function(t1, t2) { //两个时间差 中文显示函数
   });
   return r;
 };
-//测试
-/*console.log($.tools.timeAgo('2016-1-1','2017-2-1'));
-console.log($.tools.timeAgo('2016-1-1','2016-3-1'));
-console.log($.tools.timeAgo('2016-1-1','2016-1-16'));
-console.log($.tools.timeAgo('2016-1-1','2016-1-1 1:13:01'));
-console.log($.tools.timeAgo('2016-1-1','2016-1-1 0:13:01'));
-console.log($.tools.timeAgo('2016-1-1','2016-1-1 0:0:50'));*/
-
 tools.checkParam = function(a, b) { //检查两个对象是否符合参数要求
   // NOTICE : 0的问题
   var c = {};
