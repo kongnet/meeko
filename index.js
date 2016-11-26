@@ -5,6 +5,16 @@ let option = {
 };
 exports.option = option;
 //日期原型扩展
+function GetFirstWeekBegDay(year) {
+  var tempdate = new Date(year, 0, 1);
+  var temp = tempdate.getDay();
+  if (temp === 1) {
+    return tempdate;
+  }
+  temp = temp === 0 ? 7 : temp;
+  tempdate = tempdate.setDate(tempdate.getDate() + (8 - temp));
+  return new Date(tempdate);
+}
 function GetWeekIndex(dateobj) {
   var firstDay = GetFirstWeekBegDay(dateobj.getFullYear());
   if (dateobj < firstDay) {
@@ -13,16 +23,7 @@ function GetWeekIndex(dateobj) {
   var d = Math.floor((dateobj.valueOf() - firstDay.valueOf()) / 86400000);
   return Math.floor(d / 7) + 1;
 }
-function GetFirstWeekBegDay(year) {
-  var tempdate = new Date(year, 0, 1);
-  var temp = tempdate.getDay();
-  if (temp === 1) {
-    return tempdate;
-  }
-  temp = temp == 0 ? 7 : temp;
-  tempdate = tempdate.setDate(tempdate.getDate() + (8 - temp));
-  return new Date(tempdate);
-}
+
 function ext(a, b) {
   if (!b || !a) {
     return null;
