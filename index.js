@@ -28,10 +28,12 @@ function getWeekIndex(dateobj) {
 function ext(a, b) {
   if (!b || !a) {
     return null;
+  } else {
+    for (let c in b) {
+      b.hasOwnProperty(c) && (a[c] = b[c]);
+    }
   }
-  for (let c in b) {
-    b.hasOwnProperty(c) && (a[c] = b[c]);
-  }
+
   return a;
 }
 Date.prototype.getWeek = function() {
