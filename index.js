@@ -36,16 +36,16 @@ Date.prototype.getWeek = function() {
   return GetWeekIndex(this);
 };
 Date.prototype.date2Str = function() {
-  var y = this.getFullYear();
-  var mon = (this.getMonth() + 1);
+  let y = this.getFullYear();
+  let mon = (this.getMonth() + 1);
   mon = mon < 10 ? ('0' + mon) : mon;
-  var date = this.getDate();
+  let date = this.getDate();
   date = date < 10 ? ('0' + date) : date;
-  var hour = this.getHours();
+  let hour = this.getHours();
   hour = hour < 10 ? ('0' + hour) : hour;
-  var min = this.getMinutes();
+  let min = this.getMinutes();
   min = min < 10 ? ('0' + min) : min;
-  var sec = this.getSeconds();
+  let sec = this.getSeconds();
   sec = sec < 10 ? ('0' + sec) : sec;
   return (y + '-' + mon + '-' + date + ' ' + hour + ':' + min + ':' + sec);
 };
