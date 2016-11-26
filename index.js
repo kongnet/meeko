@@ -29,7 +29,7 @@ function ext(a, b) {
   if (!b || !a) {
     return null;
   }
-  for (let c in b) {
+  for (c in b) {
     b.hasOwnProperty(c) && (a[c] = b[c]);
   }
   return a;
