@@ -1,5 +1,4 @@
 'use strict';
-const valid = require('validator');
 let option = {
   logTime: true
 };
@@ -279,7 +278,62 @@ let err = function(...args) {
 exports.log = log;
 exports.err = err;
 
-//tools库扩展
+let gettype = Object.prototype.toString;
+let typeTools = {
+  isObj: function(o) {
+    return gettype.call(o) === '[object Object]';
+  },
+  isString: function(o) {
+    return gettype.call(o) === '[object String]';
+  },
+  isNumber: function(o) {
+    return gettype.call(o) === '[object Number]';
+  },
+  isArray: function(o) {
+    return gettype.call(o) === '[object Array]';
+  },
+  isNULL: function(o) {
+    return gettype.call(o) === '[object Null]';
+  },
+  isUndefined: function(o) {
+    return gettype.call(o) === '[object Undefined]';
+  },
+  isRegExp: function(o) {
+    return gettype.call(o) === '[object RegExp]';
+  },
+  isBoolean: function(o) {
+    return gettype.call(o) === '[object Boolean]';
+  },
+  isDocument: function(o) {
+    return gettype.call(o) === '[object Document]' || '[object HTMLDocument]';
+  },
+  isPInt: function(str) {
+    var g = /^[1-9]*[1-9][0-9]*$/;
+    return g.test(str);
+  },
+  isNInt: function(str) {
+    var g = /^-[1-9]*[1-9][0-9]*$/;
+    return g.test(str);
+  },
+  isInt: function(str) {
+    var g = /^-?\d+$/;
+    return g.test(str);
+  },
+  isDecimal: function(str) {
+    return !isNaN(str);
+  },
+  isBool: function(str) {
+    let b = ['0', '1', 'true', 'false'].indexOf((str + '').toLow()) >= 0;
+    return this.isBoolean(str) || b;
+  },
+  isDate: function(o) {
+    let s = o + '';
+    let b = s.indexOf('-') > 0 || s.indexOf('/') > 0;
+    return b && !isNaN(Date.parse(o));
+  }
+};
+console.log(typeTools.isDecimal('2016/1'))
+  //tools库扩展
 let tools = {};
 tools.copy = function(o) { //复制对象
   return JSON.parse(JSON.stringify(o));
@@ -351,6 +405,7 @@ tools.timeAgo = function(t1, t2) { //两个时间差 中文显示函数
   });
   return r;
 };
+
 tools.checkParam = function(a, b) { //检查两个对象是否符合参数要求
   // NOTICE : 0的问题
   var c = {};
@@ -370,7 +425,7 @@ tools.checkParam = function(a, b) { //检查两个对象是否符合参数要求
       case 'int':
         {
           _n = a[i] === 0 ? 0 : (a[i] || b[i].def);
-          if (!valid.isInt(_n + '')) {
+          if (!typeTools.isInt(_n + '')) {
             return {
               code: 400,
               msg: i + '类型错误,应为整型'
@@ -381,7 +436,7 @@ tools.checkParam = function(a, b) { //检查两个对象是否符合参数要求
         }
       case 'positive':
         _n = a[i] === 0 ? 0 : (a[i] || b[i].def);
-        if (!valid.isInt(_n + '') || _n <= 0) {
+        if (!typeTools.isInt(_n + '') || _n <= 0) {
           return {
             code: 400,
             msg: i + '类型错误,应为正数'
@@ -391,7 +446,7 @@ tools.checkParam = function(a, b) { //检查两个对象是否符合参数要求
         break;
       case 'negative':
         _n = a[i] === 0 ? 0 : (a[i] || b[i].def);
-        if (!valid.isInt(_n + '') || _n >= 0) {
+        if (!typeTools.isInt(_n + '') || _n >= 0) {
           return {
             code: 400,
             msg: i + '类型错误,应为负数'
@@ -406,7 +461,7 @@ tools.checkParam = function(a, b) { //检查两个对象是否符合参数要求
       case 'datetime':
         // TODO : ie 需要补一个 toISOString 函数
         _n = (a[i] || b[i].def);
-        if (!valid.isISO8601(_n + '')) {
+        if (!typeTools.isDate(_n + '')) {
           return {
             code: 400,
             msg: i + '类型错误,应为日期型'
@@ -416,7 +471,7 @@ tools.checkParam = function(a, b) { //检查两个对象是否符合参数要求
         break;
       case 'bool':
         _n = a[i];
-        if (!valid.isBoolean(_n + '')) {
+        if (!typeTools.isBool(_n + '')) {
           return {
             code: 400,
             msg: i + '类型错误，,应为布尔型'
@@ -426,7 +481,7 @@ tools.checkParam = function(a, b) { //检查两个对象是否符合参数要求
         break;
       case 'number':
         _n = a[i] === 0 ? 0 : (a[i] || b[i].def);
-        if (!valid.isDecimal(_n + '')) {
+        if (!typeTools.isDecimal(_n + '')) {
           return {
             code: 400,
             msg: i + '类型错误,应为数值型'
@@ -449,7 +504,7 @@ tools.checkParam = function(a, b) { //检查两个对象是否符合参数要求
 };
 
 let utf8 = {
-  encode (s) {
+  encode(s) {
     var r = '';
     var len = s.length;
     var fromCode = String.fromCharCode;
@@ -468,7 +523,7 @@ let utf8 = {
     }
     return r;
   },
-  decode (s) {
+  decode(s) {
     var r = '';
     var i = 0;
     var c1 = 0;
@@ -496,7 +551,7 @@ let utf8 = {
 };
 tools.utf8 = utf8;
 let lzw = {
-  compress (str) {
+  compress(str) {
     var fromCode = String.fromCharCode;
     var rStr = '';
     rStr = utf8.encode(str);
@@ -529,7 +584,7 @@ let lzw = {
     }
     return r;
   },
-  uncompress (str) {
+  uncompress(str) {
     var i;
     var chars = 256;
     var dict = [];

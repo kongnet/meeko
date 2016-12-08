@@ -452,7 +452,7 @@ describe(`checkParam的单元测试`, function() {
 			id: 1,
 			datetime: '1999-06-06 12:0:0'
 		};
-		assert.strictEqual(400, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg);
+		assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg);
 		a = {
 			id: 1,
 			datetime: '2016-01-05T11:22:20.527Z'
