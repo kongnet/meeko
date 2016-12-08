@@ -3,7 +3,6 @@
 'use strict';
 var $ = require('../index');
 let assert = require(`assert`);
-
 var b = {
 	id: {
 		desc: 'id',
