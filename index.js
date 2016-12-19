@@ -34,6 +34,7 @@ function ext(a, b) {
   }
   return null;
 }
+
 Date.prototype.getWeek = function() {
   return getWeekIndex(this);
 };

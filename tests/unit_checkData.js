@@ -663,6 +663,18 @@ describe('其他函数的单元测试', function() {
 	it('ext', function() {
 		assert.strictEqual(null, $.ext('', ''));
 	});
+	it('tools.ifObjEmpty', function() {
+		assert.strictEqual(false, $.tools.ifObjEmpty({
+			x: 1,
+			y: 2
+		}, ['x']));
+		assert.strictEqual(true, $.tools.ifObjEmpty({
+			x: 1
+		}, ['x']));
+	});
+		it('tools.jsonPack', function() {
+		assert.deepEqual([['abc','bac','cba'],[1,2,3],[11,22,33],[111,222,333]],$.tools.jsonPack([{bac:2,abc:1,cba:3},{cba:33,bac:22,abc:11},{bac:222,cba:333,abc:111}], 1));
+	});
 	it('log', function() {
 		assert.strictEqual(1, $.log(1, 2));
 		assert.strictEqual(1, $.log({}, 2));
@@ -676,48 +688,48 @@ describe('判断类型函数单元测试', function() {
 		assert.strictEqual($.tools.isObj(''), false);
 	});
 	it('isString', function() {
-		assert.strictEqual($.tools.isString(''),true);
-		assert.strictEqual($.tools.isString({}),false);
+		assert.strictEqual($.tools.isString(''), true);
+		assert.strictEqual($.tools.isString({}), false);
 	});
 	it('isNumber', function() {
-		assert.strictEqual($.tools.isNumber(1),true);
-		assert.strictEqual($.tools.isNumber({}),false);
+		assert.strictEqual($.tools.isNumber(1), true);
+		assert.strictEqual($.tools.isNumber({}), false);
 	});
 	it('isArray', function() {
-		assert.strictEqual($.tools.isArray([]),true);
-		assert.strictEqual($.tools.isArray({}),false);
+		assert.strictEqual($.tools.isArray([]), true);
+		assert.strictEqual($.tools.isArray({}), false);
 	});
 	it('isNULL', function() {
-		assert.strictEqual($.tools.isNULL(null),true);
-		assert.strictEqual($.tools.isNULL({}),false);
+		assert.strictEqual($.tools.isNULL(null), true);
+		assert.strictEqual($.tools.isNULL({}), false);
 	});
 	it('isUndefined', function() {
 		let a;
-		assert.strictEqual($.tools.isUndefined(a),true);
-		assert.strictEqual($.tools.isUndefined({}),false);
+		assert.strictEqual($.tools.isUndefined(a), true);
+		assert.strictEqual($.tools.isUndefined({}), false);
 	});
 	it('isRegExp', function() {
-		assert.strictEqual($.tools.isRegExp(/1+/g),true);
-		assert.strictEqual($.tools.isRegExp({}),false);
+		assert.strictEqual($.tools.isRegExp(/1+/g), true);
+		assert.strictEqual($.tools.isRegExp({}), false);
 	});
 	it('isBoolean', function() {
-		assert.strictEqual($.tools.isBoolean(true),true);
-		assert.strictEqual($.tools.isBoolean({}),false);
+		assert.strictEqual($.tools.isBoolean(true), true);
+		assert.strictEqual($.tools.isBoolean({}), false);
 	});
 	it('isPInt', function() {
-		assert.strictEqual($.tools.isPInt(1),true);
-		assert.strictEqual($.tools.isPInt('3'),true);
-		assert.strictEqual($.tools.isPInt(1.1),false);
+		assert.strictEqual($.tools.isPInt(1), true);
+		assert.strictEqual($.tools.isPInt('3'), true);
+		assert.strictEqual($.tools.isPInt(1.1), false);
 	});
 	it('isNInt', function() {
-		assert.strictEqual($.tools.isNInt(-1),true);
-		assert.strictEqual($.tools.isNInt('-1'),true);
-		assert.strictEqual($.tools.isNInt(-1.1),false);
+		assert.strictEqual($.tools.isNInt(-1), true);
+		assert.strictEqual($.tools.isNInt('-1'), true);
+		assert.strictEqual($.tools.isNInt(-1.1), false);
 	});
 	it('isInt', function() {
-		assert.strictEqual($.tools.isInt(3),true);
-		assert.strictEqual($.tools.isInt('-3'),true);
-		assert.strictEqual($.tools.isInt('-2.3'),false);
+		assert.strictEqual($.tools.isInt(3), true);
+		assert.strictEqual($.tools.isInt('-3'), true);
+		assert.strictEqual($.tools.isInt('-2.3'), false);
 	});
 	it('isDecimal', function() {
 		assert.strictEqual($.tools.isDecimal(1.22), true);
@@ -727,22 +739,24 @@ describe('判断类型函数单元测试', function() {
 		assert.strictEqual($.tools.isDecimal('--12.2'), false);
 	});
 	it('isBool', function() {
-		assert.strictEqual($.tools.isBool('True'),true);
-		assert.strictEqual($.tools.isBool('-2'),false);
+		assert.strictEqual($.tools.isBool('True'), true);
+		assert.strictEqual($.tools.isBool('-2'), false);
 	});
 	it('isDate', function() {
-		assert.strictEqual($.tools.isDate('2016-1-1'),true);
-		assert.strictEqual($.tools.isDate('1'),false);
+		assert.strictEqual($.tools.isDate('2016-1-1'), true);
+		assert.strictEqual($.tools.isDate('1'), false);
 	});
 });
 
 
-$.log($.fake.randData(['3','1','u'],3))
-$.log($.fake.randData(null,3))
+
+
+$.log($.fake.randData(['3', '1', 'u'], 3))
+$.log($.fake.randData(null, 3))
 $.log($.fake.randNum(3))
 $.log($.fake.randStr(3))
-$.log($.fake.randTime('2016-1-1','2016-2-2'))
-$.log($.fake.randName('2016-1-1','2016-2-2'))
+$.log($.fake.randTime('2016-1-1', '2016-2-2'))
+$.log($.fake.randName('2016-1-1', '2016-2-2'))
 $.log($.fake.randColor())
 $.log($.fake.randColor('rgba'))
 $.log($.fake.smallAndNum(3))
