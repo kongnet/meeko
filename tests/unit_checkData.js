@@ -751,16 +751,17 @@ describe('判断类型函数单元测试', function() {
 
 
 
-$.log($.fake.randData(['3', '1', 'u'], 3))
-$.log($.fake.randData(null, 3))
-$.log($.fake.randNum(3))
-$.log($.fake.randStr(3))
-$.log($.fake.randTime('2016-1-1', '2016-2-2'))
-$.log($.fake.randName('2016-1-1', '2016-2-2'))
-$.log($.fake.randColor())
-$.log($.fake.randColor('rgba'))
-$.log($.fake.smallAndNum(3))
-$.log($.fake.randUrl(4))
-$.log($.fake.randIp())
-$.log($.fake.phoneNum())
-$.log($.fake.idCard())
+$.log($.fake.randData(['3', '1', 'u'], 3));
+$.log($.fake.randData(null, 3));
+$.log($.fake.randNum(3));
+$.log($.fake.randStr(3));
+$.log($.fake.randTime('2016-1-1', '2016-2-2'));
+$.log($.fake.randName('2016-1-1', '2016-2-2'));
+$.log($.fake.randColor());
+$.log($.fake.randColor('rgba'));
+$.log($.fake.smallAndNum(3));
+$.log($.fake.randUrl(4));
+$.log($.fake.randIp());
+$.log($.fake.phoneNum());
+$.log($.fake.idCard());
+$.log($.fake.price(9,6));
