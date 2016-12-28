@@ -1,28 +1,11 @@
 'use strict';
+const _s = require('./lib/string');
+ext(String.prototype, _s);
+const _d = require('./lib/date');
+ext(Date.prototype, _d);
 let option = {
   logTime: true
 };
-//日期原型扩展
-function getFirstWeekBegDay(year) {
-  var tempdate = new Date(year, 0, 1);
-  var temp = tempdate.getDay();
-  if (temp === 1) {
-    return tempdate;
-  }
-  temp = temp === 0 ? 7 : temp;
-  tempdate = tempdate.setDate(tempdate.getDate() + (8 - temp));
-  return new Date(tempdate);
-}
-
-function getWeekIndex(dateobj) {
-  var firstDay = getFirstWeekBegDay(dateobj.getFullYear());
-  if (dateobj < firstDay) {
-    firstDay = getFirstWeekBegDay(dateobj.getFullYear() - 1);
-  }
-  var d = Math.floor((dateobj.valueOf() - firstDay.valueOf()) / 86400000);
-  return Math.floor(d / 7) + 1;
-}
-
 function ext(a, b) {
   if (a && b) {
     for (let c in b) {
@@ -35,162 +18,9 @@ function ext(a, b) {
   return null;
 }
 
-Date.prototype.getWeek = function() {
-  return getWeekIndex(this);
-};
-Date.prototype.date2Str = function() {
-  let y = this.getFullYear();
-  let mon = (this.getMonth() + 1);
-  mon = mon < 10 ? ('0' + mon) : mon;
-  let date = this.getDate();
-  date = date < 10 ? ('0' + date) : date;
-  let hour = this.getHours();
-  hour = hour < 10 ? ('0' + hour) : hour;
-  let min = this.getMinutes();
-  min = min < 10 ? ('0' + min) : min;
-  let sec = this.getSeconds();
-  sec = sec < 10 ? ('0' + sec) : sec;
-  return (y + '-' + mon + '-' + date + ' ' + hour + ':' + min + ':' + sec);
-};
-Date.prototype.date8 = function(s) {
-  let m = this.getMonth() + 1,
-    d = this.getDate();
-  m = m <= 9 ? ('0' + m) : m;
-  d = d <= 9 ? ('0' + d) : d;
-  s = s || '';
-  return [this.getFullYear(), m, d].join(s);
-};
-/* 得到日期年月日等加数字后的日期 */
-Date.prototype.dateAdd = function(interval, number) {
-  let d = this;
-  let k = {
-    'y': 'FullYear',
-    'q': 'Month',
-    'm': 'Month',
-    'w': 'Date',
-    'd': 'Date',
-    'h': 'Hours',
-    'n': 'Minutes',
-    's': 'Seconds',
-    'ms': 'MilliSeconds'
-  };
-  let n = {
-    'q': 3,
-    'w': 7
-  };
-  eval('d.set' + k[interval] + '(d.get' + k[interval] + '()+' + ((n[interval] || 1) * number) + ')');
-  return d;
-};
 Array.prototype.copy = function() {
   return [].concat(this);
 };
-let _s = {
-  fillStr(str, len) { //填入什么字符多少位,中文算2个字符
-    let l = (this + '').len();
-    return this + ((len - l) > 0 ? str.times(len - l) : '');
-  },
-  toMoney(p) { //p精度  
-    var num = this + '';
-    num = num.replace(new RegExp(',', 'g'), '');
-    // 正负号处理   
-    var symble = '';
-    if (/^([-+]).*$/.test(num)) {
-      symble = num.replace(/^([-+]).*$/, '$1');
-      num = num.replace(/^([-+])(.*)$/, '$2');
-    }
-    if (/^[-.0-9]+(\.[0-9]+)?$/.test(num)) {
-      num = num.replace(new RegExp('^[0]+', 'g'), '');
-      if (/^\./.test(num)) {
-        num = '0' + num;
-      }
-      var decimal = num.replace(/^[0-9]+(\.[0-9]+)?$/, '$1');
-      var integer = num.replace(/^([0-9]+)(\.[0-9]+)?$/, '$1');
-      var re = /(\d+)(\d{3})/;
-      while (re.test(integer)) {
-        integer = integer.replace(re, '$1,$2');
-      }
-      if (+p) {
-        decimal = decimal.substr(0, (+p + 1));
-      }
-      if (p === 0) {
-        decimal = '';
-      }
-      return symble + integer + decimal;
-
-    } else {
-      return p;
-    }
-  },
-  toLow() {
-    return this.toLowerCase();
-  },
-  toUp() {
-    return this.toUpperCase();
-  },
-  esHtml() {
-    return this.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  },
-  toHtml() {
-    return this.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
-  },
-  reHtml() {
-    return this.replace(/<\/?[^>]+>/gi, '');
-  },
-  times(n) {
-    return n > 0 ? new Array(n + 1).join(this) : '';
-  },
-  format() {
-    var s = this,
-      a = [];
-    for (var i = 0, l = arguments.length; i < l; i++) {
-      a.push(arguments[i]);
-    }
-    return s.replace(/\{(\d+)\}/g, function(m, i) {
-      return a[i] || '{' + i + '}';
-    });
-  },
-  len() {
-    return this.replace(/[^\x00-\xff]/g, '**').length;
-  },
-  toInt() {
-    return parseInt(this);
-  },
-  replaceAll(s1, s2) {
-    var a = this.split(s1);
-    return a.join(s2);
-  },
-  trim() {
-    return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-  },
-  camelize() {
-    return this.replace(/(-[a-z])/g, function(s) {
-      return s.substring(1).toUpperCase();
-    });
-  },
-  ec(s) {
-    s = s.trim();
-    return (new RegExp('(^' + s + '\\s)|(\\s' + s + '$)|(\\s' + s + '\\s)|(^' + s + '$)', 'g')).test(this);
-  },
-  tc(s) {
-    s = s.trim();
-    if (this.ec(s)) {
-      return this.dc(s);
-    } else {
-      return this.ac(s);
-    }
-  },
-  dc(s) {
-    if (this.ec(s)) {
-      return this.trim().split(s).join('').replace(/\s{2,}/g, ' ').trim();
-    } else {
-      return this;
-    }
-  },
-  ac(s) {
-    return this.trim().dc(s) + ' ' + s;
-  }
-};
-ext(String.prototype, _s);
 
 Number.prototype.round = function(p) {
   p = Math.pow(10, p || 0);
