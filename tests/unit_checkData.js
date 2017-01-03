@@ -682,6 +682,11 @@ describe('其他函数的单元测试', function() {
 		assert.strictEqual(1, $.err({}, 2));
 	});
 });
+describe('模板引擎单元测试', function() {
+	it('tpl', function() {
+		assert.strictEqual('<div></div>', $.tpl('<{{d.tag}}></{{d.tag}}>').render({tag:'div'}));
+	});
+});
 describe('判断类型函数单元测试', function() {
 	it('isObj', function() {
 		assert.strictEqual($.tools.isObj({}), true);
