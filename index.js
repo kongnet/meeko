@@ -101,8 +101,10 @@ let err = function(...args) {
 };
 
 
-let tools = require('./lib/tools');
-let fake = require('./lib/fake');
+const tools = require('./lib/tools');
+const fake = require('./lib/fake');
+const tpl = require('./lib/tpl');
+
 module.exports = {
   option,
   c,
@@ -110,5 +112,6 @@ module.exports = {
   log,
   err,
   tools,
-  fake
+  fake,
+  tpl
 };
