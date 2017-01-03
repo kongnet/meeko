@@ -684,6 +684,7 @@ describe('其他函数的单元测试', function() {
 });
 describe('模板引擎单元测试', function() {
 	it('tpl', function() {
+		$.tpl.config({open:'{{',close:'}}'});
 		assert.strictEqual('<div></div>', $.tpl('<{{d.tag}}></{{d.tag}}>').render({tag:'div'}));
 		assert.strictEqual(true, $.tpl('<{{# 1+1 }></{{d.tag}}>').render({tag:'div'}).indexOf('Laytpl Error')>=0);//模板结构不对
 	});
