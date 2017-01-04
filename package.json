@@ -47,7 +47,7 @@
         "single"
       ],
       "semi": [
-        1,
+        2,
         "always"
       ],
       "space-infix-ops": 1,

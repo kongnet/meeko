@@ -6,6 +6,7 @@ ext(Date.prototype, _d);
 let option = {
   logTime: true
 };
+
 function ext(a, b) {
   if (a && b) {
     for (let c in b) {
@@ -71,6 +72,7 @@ let getStackTrace = function() {
 };
 
 let re = /\\(.+)\.js:(\d+:\d+)/g;
+let trace = console;
 let log = function(...args) {
   getStackTrace().split('\n')[2].match(re);
   let s = c.none + ' [' + c.lgreen + RegExp.$1.split('\\').pop() + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']';
@@ -82,7 +84,7 @@ let log = function(...args) {
       str = str + args[i] + ' ';
     }
   }
-  console.log(str + (option.logTime ? s : ''));
+  trace.log(str + (option.logTime ? s : ''));
   return 1;
 };
 let err = function(...args) {
@@ -96,7 +98,7 @@ let err = function(...args) {
       str = str + args[i] + ' ';
     }
   }
-  console.log(str + (option.logTime ? s : ''));
+  trace.log(str + (option.logTime ? s : ''));
   return 1;
 };
 
