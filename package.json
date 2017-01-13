@@ -21,6 +21,9 @@
     "istanbul": "*",
     "coveralls": "*"
   },
+  "standard": {
+    "globals": ["$","define","db"]
+  },
   "eslintConfig": {
     "plugins": [
       "html"
@@ -47,7 +50,7 @@
         "single"
       ],
       "semi": [
-        2,
+        0,
         "always"
       ],
       "space-infix-ops": 1,
