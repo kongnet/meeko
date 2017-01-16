@@ -23,7 +23,10 @@
     "coveralls": "*"
   },
   "standard": {
-    "globals": ["$","define","db"]
+    "globals": ["$", "describe", "it", "define", "db"],
+    "ignore": [
+      "/lib/tpl.js"
+    ]
   },
   "eslintConfig": {
     "plugins": [

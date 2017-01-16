@@ -1,12 +1,4 @@
 'use strict'
-const _s = require('./lib/string')
-ext(String.prototype, _s)
-const _d = require('./lib/date')
-ext(Date.prototype, _d)
-let option = {
-  logTime: true
-}
-
 function ext (a, b) {
   if (a && b) {
     for (let c in b) {
@@ -18,17 +10,24 @@ function ext (a, b) {
   }
   return null
 }
+const _s = require('./lib/string')
+ext(String.prototype, _s)
+const _d = require('./lib/date')
+ext(Date.prototype, _d)
+let option = {
+  logTime: true
+}
 
-Array.prototype.copy = function () {
+Array.prototype.copy = function () {  //eslint-disable-line
   return [].concat(this)
 }
 
-Number.prototype.round = function (p) {
+Number.prototype.round = function (p) {  //eslint-disable-line
   p = Math.pow(10, p || 0)
   return Math.round(this * p) / p
 }
-Number.prototype.fillStr = String.prototype.fillStr
-Date.prototype.fillStr = String.prototype.fillStr
+Number.prototype.fillStr = String.prototype.fillStr  //eslint-disable-line
+Date.prototype.fillStr = String.prototype.fillStr  //eslint-disable-line
 Buffer.prototype.contact = function (b) {
   /*
   utf8 有bom头
