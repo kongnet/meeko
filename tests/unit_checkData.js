@@ -701,9 +701,9 @@ describe('判断类型函数单元测试', function () {
     assert.strictEqual($.tools.isArray([]), true)
     assert.strictEqual($.tools.isArray({}), false)
   })
-  it('isNULL', function () {
-    assert.strictEqual($.tools.isNULL(null), true)
-    assert.strictEqual($.tools.isNULL({}), false)
+  it('isNull', function () {
+    assert.strictEqual($.tools.isNull(null), true)
+    assert.strictEqual($.tools.isNull({}), false)
   })
   it('isUndefined', function () {
     let a
