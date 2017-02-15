@@ -6,3 +6,6 @@
 [![NPM](https://nodei.co/npm/meeko.png?downloads=true&stars=true)](https://nodei.co/npm/meeko/)
 
 [![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/kongnet/meeko)
+
+# String原型扩展
+* upperFirst() 将首字母变成大写,其他小写

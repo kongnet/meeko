@@ -528,6 +528,10 @@ describe('Date原型扩展的单元测试', function () {
   })
 })
 describe('String原型扩展的单元测试', function () {
+  it('upperFirst', function () {
+    assert.strictEqual('Ab', 'ab'.upperFirst())
+    assert.strictEqual('Ab', 'AB'.upperFirst())
+  })
   it('fillStr', function () {
     assert.strictEqual('abaaaa', 'ab'.fillStr('a', 6))
     assert.strictEqual('ab    ', 'ab'.fillStr(' ', 6))
