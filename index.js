@@ -38,7 +38,7 @@ Buffer.prototype.contact = function (b) {
   b.copy(buf, this.length, 0, b.length)
   return buf
 }
-let c = {
+const c = {
   /*
   http://stanislavs.org/helppc/ansi_codes.html
   */
@@ -64,15 +64,15 @@ let c = {
   lwhite: '\x1b[37m'
 }
 
-let getStackTrace = function () {
+const getStackTrace = function () {
   let obj = {}
   Error.captureStackTrace(obj, getStackTrace)
   return obj.stack
 }
 
-let re = /\\(.+)\.js:(\d+:\d+)/g
-let trace = console
-let log = function (...args) {
+const re = /\\(.+)\.js:(\d+:\d+)/g
+const trace = console
+const log = function (...args) {
   getStackTrace().split('\n')[2].match(re)
   let s = c.none + ' [' + c.lgreen + RegExp.$1.split('\\').pop() + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']'
   let str = ''
@@ -86,7 +86,7 @@ let log = function (...args) {
   trace.log(str + (option.logTime ? s : ''))
   return 1
 }
-let err = function (...args) {
+const err = function (...args) {
   getStackTrace().split('\n')[2].match(re)
   let s = c.none + ' [' + c.lred + RegExp.$1.split('\\').pop() + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']'
   let str = ''
@@ -100,7 +100,11 @@ let err = function (...args) {
   trace.log(str + (option.logTime ? s : ''))
   return 1
 }
-
+function compare (k, dir) {
+  return function (a, b) {
+    return (dir === 'desc') ? ~~(a[k] < b[k]) : ~~(a[k] > b[k])
+  }
+}
 const tools = require('./lib/tools')
 const fake = require('./lib/fake')
 const tpl = require('./lib/tpl')
@@ -113,5 +117,6 @@ module.exports = {
   err,
   tools,
   fake,
-  tpl
+  tpl,
+  compare
 }

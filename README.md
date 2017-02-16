@@ -7,5 +7,16 @@
 
 [![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/kongnet/meeko)
 
-# String原型扩展
+## 全局函数
+
+let $ = require('meeko')
+
+###$.compare
+
+```
+let cnDictObj = {items:[{'name':'a',lev:1},{name:'b',lev:2}]}
+$.log(cnDictObj.items.sort(compare('lev', 'desc'))) //默认升序
+```
+
+## String原型扩展
 * upperFirst() 将首字母变成大写,其他小写

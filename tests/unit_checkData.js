@@ -679,6 +679,11 @@ describe('其他函数的单元测试', function () {
     assert.strictEqual(1, $.err(1, 2))
     assert.strictEqual(1, $.err({}, 2))
   })
+  it('compare', function () {
+    let items = [{'name': 'a', lev: 1}, {name: 'b', lev: 2}]
+    assert.deepEqual(items.sort($.compare('lev', 'desc')), [{'name': 'b', lev: 2}, {name: 'a', lev: 1}])
+    assert.deepEqual(items.sort($.compare('lev')), [{'name': 'a', lev: 1}, {name: 'b', lev: 2}])
+  })
 })
 describe('模板引擎单元测试', function () {
   it('tpl', function () {
