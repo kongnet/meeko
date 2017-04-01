@@ -20,3 +20,9 @@ $.log(cnDictObj.items.sort(compare('lev', 'desc'))) //默认升序
 
 ## String原型扩展
 * upperFirst() 将首字母变成大写,其他小写
+
+## Notice
+$.tools.checkParam(obj)
+* obj 如果为日期格式,日期格式为UTC日期
+* 请在前端写入mysql之前 date.date2Str()一下
+* 否则需要主动调用mysql的转换utc时间的函数
