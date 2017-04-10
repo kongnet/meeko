@@ -167,7 +167,7 @@ describe('checkParam的单元测试', function () {
       id: 1,
       code: ''
     }
-    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
       id: 1,
       code: 'abc'
@@ -246,7 +246,7 @@ describe('checkParam的单元测试', function () {
       id: 1,
       rights: ''
     }
-    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
       id: 1,
       rights: 'abc'
@@ -302,7 +302,7 @@ describe('checkParam的单元测试', function () {
       id: 1,
       description: ''
     }
-    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
       id: 1,
       description: 'abc'
@@ -358,7 +358,7 @@ describe('checkParam的单元测试', function () {
       id: 1,
       type: ''
     }
-    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
       id: 1,
       type: 'abc'
@@ -414,7 +414,7 @@ describe('checkParam的单元测试', function () {
       id: 1,
       datetime: ''
     }
-    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
       id: 1,
       datetime: 'abc'
