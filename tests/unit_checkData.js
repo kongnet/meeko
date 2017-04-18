@@ -603,7 +603,11 @@ describe('Array原型扩展的单元测试', function () {
   it('copy', function () {
     assert.strictEqual([1].copy()[0], 1)
   })
+  it('unique', function () {
+    assert.strictEqual(JSON.stringify([undefined, null, 1, 1, '1', '1', null, undefined, NaN, NaN].unique()), JSON.stringify([undefined, null, 1, '1', NaN]))
+  })
 })
+
 describe('Buffer原型扩展的单元测试', function () {
   it('contact', function () {
     let buf = new Buffer([1, 2])

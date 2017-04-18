@@ -14,12 +14,10 @@ const _s = require('./lib/string')
 ext(String.prototype, _s)
 const _d = require('./lib/date')
 ext(Date.prototype, _d)
+const _a = require('./lib/array')
+ext(Array.prototype, _a)
 let option = {
   logTime: true
-}
-
-Array.prototype.copy = function () {  //eslint-disable-line
-  return [].concat(this)
 }
 
 Number.prototype.round = function (p) {  //eslint-disable-line
