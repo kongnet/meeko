@@ -1,6 +1,6 @@
 {
   "name": "meeko",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "description": "meeko自用函数",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "standard":"*",
+    "standard": "*",
     "mocha": "*",
     "co-mocha": "*",
     "istanbul": "*",
