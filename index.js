@@ -53,15 +53,27 @@ const c = {
   magenta: '\x1b[35m\x1b[1m',
   cyan: '\x1b[36m\x1b[1m',
   white: '\x1b[37m\x1b[1m',
-  lred: '\x1b[31m',
-  lgreen: '\x1b[32m',
-  lyellow: '\x1b[33m',
-  lblue: '\x1b[34m',
-  lmagenta: '\x1b[35m',
-  lcyan: '\x1b[36m',
-  lwhite: '\x1b[37m'
+  dimred: '\x1b[31m',
+  dimgreen: '\x1b[32m',
+  dimyellow: '\x1b[33m',
+  dimblue: '\x1b[34m',
+  dimmagenta: '\x1b[35m',
+  dimcyan: '\x1b[36m',
+  dimwhite: '\x1b[37m',
+  r (s) { return this.red + s + this.none },
+  g (s) { return this.green + s + this.none },
+  y (s) { return this.yellow + s + this.none },
+  b (s) { return this.blue + s + this.none },
+  m (s) { return this.magenta + s + this.none },
+  c (s) { return this.cyan + s + this.none },
+  w (s) { return this.white + s + this.none },
+  dimr (s) { return this.dimred + s + this.none },
+  dimg (s) { return this.dimgreen + s + this.none },
+  dimy (s) { return this.dimyellow + s + this.none },
+  dimb (s) { return this.dimblue + s + this.none },
+  dimm (s) { return this.dimmagenta + s + this.none },
+  dimc (s) { return this.dimcyan + s + this.none }
 }
-
 const getStackTrace = function () {
   let obj = {}
   Error.captureStackTrace(obj, getStackTrace)
@@ -72,7 +84,7 @@ const re = /\\(.+)\.js:(\d+:\d+)/g
 const trace = console
 const log = function (...args) {
   getStackTrace().split('\n')[2].match(re)
-  let s = c.none + ' [' + c.lgreen + RegExp.$1.split('\\').pop() + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']'
+  let s = c.none + ' [' + c.dimgreen + RegExp.$1.split('\\').pop() + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']'
   let str = ''
   for (let i = 0; i < args.length; i++) {
     if (typeof args[i] === 'object') {
@@ -86,7 +98,7 @@ const log = function (...args) {
 }
 const err = function (...args) {
   getStackTrace().split('\n')[2].match(re)
-  let s = c.none + ' [' + c.lred + RegExp.$1.split('\\').pop() + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']'
+  let s = c.none + ' [' + c.dimred + RegExp.$1.split('\\').pop() + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']'
   let str = ''
   for (let i = 0; i < args.length; i++) {
     if (typeof args[i] === 'object') {

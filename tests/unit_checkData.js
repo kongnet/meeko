@@ -7,9 +7,13 @@ var b = {
     req: 1,
     type: 'int'
   },
+  id1: {
+    desc: 'id1',
+    type: 'int',
+    def: 2
+  },
   name: {
-    desc: '节点名称',
-    type: 'string'
+    desc: '节点名称'
   },
   code: {
     desc: '节点编码',
@@ -678,6 +682,11 @@ describe('其他函数的单元测试', function () {
     assert.strictEqual(false, $.tools.ifObjEmpty({
       x: 1,
       y: 2
+    }))
+    assert.strictEqual(true, $.tools.ifObjEmpty({}))
+    assert.strictEqual(false, $.tools.ifObjEmpty({
+      x: 1,
+      y: 2
     }, ['x']))
     assert.strictEqual(true, $.tools.ifObjEmpty({
       x: 1
@@ -786,3 +795,16 @@ $.log($.fake.randIp())
 $.log($.fake.phoneNum())
 $.log($.fake.idCard())
 $.log($.fake.price(9, 6))
+$.log($.c.r('red'))
+$.log($.c.g('green'))
+$.log($.c.y('yellow'))
+$.log($.c.b('blue'))
+$.log($.c.m('magenta'))
+$.log($.c.c('cyan'))
+$.log($.c.w('white'))
+$.log($.c.dimr('dimred'))
+$.log($.c.dimg('dimgreen'))
+$.log($.c.dimy('dimyellow'))
+$.log($.c.dimb('dimblue'))
+$.log($.c.dimm('dimmagenta'))
+$.log($.c.dimc('dimcyan'))
