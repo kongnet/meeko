@@ -1,13 +1,13 @@
 {
   "name": "meeko",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "description": "meeko自用函数",
   "main": "index.js",
   "scripts": {
     "push": "npm version patch && npm publish . && git push",
     "snazzy": "snazzy *.js ./lib/**/*.js --verbose",
     "testlocal": "standard *.js && istanbul cover ./node_modules/mocha/bin/_mocha -- -r co-mocha --reporter spec --timeout 100000 --recursive tests/",
-    "test": "mocha -r co-mocha --reporter spec --timeout 100000 --recursive tests/",  
+    "test": "mocha -r co-mocha --reporter spec --timeout 100000 --recursive tests/",
     "coveralls": "istanbul cover _mocha -- -r co-mocha --reporter spec --timeout 100000 --recursive tests/ && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
   "repository": {
