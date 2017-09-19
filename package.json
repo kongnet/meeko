@@ -18,11 +18,11 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "standard": "*",
-    "mocha": "*",
-    "co-mocha": "*",
+    "co-mocha": "^1.2.0",
+    "coveralls": "*",
     "istanbul": "*",
-    "coveralls": "*"
+    "mocha": "^3.5.3",
+    "standard": "*"
   },
   "standard": {
     "globals": [

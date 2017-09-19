@@ -777,6 +777,8 @@ describe('判断类型函数单元测试', function () {
   })
   it('isDate', function () {
     assert.strictEqual($.tools.isDate('2016-1-1'), true)
+    assert.strictEqual($.tools.isDate('2016/1/1'), true)
+    assert.strictEqual($.tools.isDate('2016.1.1'), false)
     assert.strictEqual($.tools.isDate('1'), false)
   })
 })
