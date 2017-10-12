@@ -31,7 +31,7 @@ Buffer.prototype.contact = function (b) {
   utf8 有bom头
   EF BB BF [239 187 191]
   */
-  let buf = new Buffer(this.length + b.length)
+  let buf = Buffer.alloc(this.length + b.length)
   this.copy(buf, 0, 0, this.length)
   b.copy(buf, this.length, 0, b.length)
   return buf

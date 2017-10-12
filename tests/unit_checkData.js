@@ -614,8 +614,8 @@ describe('Array原型扩展的单元测试', function () {
 
 describe('Buffer原型扩展的单元测试', function () {
   it('contact', function () {
-    let buf = new Buffer([1, 2])
-    let buf1 = buf.contact(new Buffer([3, 4]))
+    let buf = Buffer.from([1, 2])
+    let buf1 = buf.contact(Buffer.from([3, 4]))
     assert.strictEqual(3, buf1[2])
   })
 })
