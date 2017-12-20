@@ -79,12 +79,12 @@ const getStackTrace = function () {
   Error.captureStackTrace(obj, getStackTrace)
   return obj.stack
 }
-
-const re = /\\(.+)\.js:(\d+:\d+)/g
+let os = process.platform
+const re = os.includes('win32') ? /\\(.+)\.js:(\d+:\d+)/g : /\/(.+)\.js:(\d+:\d+)/g
 const trace = console
 const log = function (...args) {
   getStackTrace().split('\n')[2].match(re)
-  let s = c.none + ' [' + c.dimgreen + RegExp.$1.split('\\').pop() + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']'
+  let s = c.none + ' [' + c.dimgreen + RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']'
   let str = ''
   for (let i = 0; i < args.length; i++) {
     if (typeof args[i] === 'object') {
@@ -98,7 +98,7 @@ const log = function (...args) {
 }
 const err = function (...args) {
   getStackTrace().split('\n')[2].match(re)
-  let s = c.none + ' [' + c.dimred + RegExp.$1.split('\\').pop() + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']'
+  let s = c.none + ' [' + c.dimred + RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']'
   let str = ''
   for (let i = 0; i < args.length; i++) {
     if (typeof args[i] === 'object') {
