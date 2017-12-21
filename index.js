@@ -118,8 +118,12 @@ function compare (k, dir) {
 const tools = require('./lib/tools')
 const fake = require('./lib/fake')
 const tpl = require('./lib/tpl')
-
+const json = {
+  parse: function (s) { return (Function('return ' + s))() },
+  stringify: JSON.stringify
+}
 module.exports = {
+  json,
   option,
   c,
   ext,
