@@ -115,6 +115,17 @@ function compare (k, dir) {
     return (dir === 'desc') ? ~~(a[k] < b[k]) : ~~(a[k] > b[k])
   }
 }
+const wait = function (t) {
+  return new Promise((resolve, reject) => {
+    try {
+      setTimeout(() => {
+        resolve()
+      }, t)
+    } catch (err) {
+      reject(err)
+    }
+  })
+}
 const tools = require('./lib/tools')
 const fake = require('./lib/fake')
 const tpl = require('./lib/tpl')
@@ -132,5 +143,6 @@ module.exports = {
   tools,
   fake,
   tpl,
-  compare
+  compare,
+  wait
 }
