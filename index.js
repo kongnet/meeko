@@ -117,23 +117,23 @@ function strColor (k, v) {
     return (`[function ${k}]`)
   }
   if (Object.prototype.toString.call(v) === '[object RegExp]') {
-    return ('#blue#' + v + '#none#')
+    return ('#cyan#' + v + '#none#')
   }
   return v
 }
 
 const dir = function (...args) {
   for (let i = 0; i < args.length; i++) {
-    let ss = JSON.stringify(args[i], strColor, 3)
-    ss = ss.replaceAll('"#blue#', c.blue)
+    let ss = JSON.stringify(args[i], strColor, 4)
+    ss = ss.replaceAll('"#cyan#', c.cyan)
       .replaceAll('#none#"', c.none)
       .replace(/"(.+)": /g, c.g('$1') + ': ')
       .replace(/(true)(,|'')\n/g, c.r('$1$2\n'))
       .replace(/(false)(,|'')\n/g, c.r('$1$2\n'))
       .replace(/"(.+)",\n/g, '"' + c.m('$1') + '",\n')
       .replace(/"(.+)"\n/g, '"' + c.m('$1') + '"\n')
-      .replace(/([0-9.]+),\n/g, c.c('$1') + ',\n')
-      .replace(/([0-9.]+)\n/g, c.c('$1') + '\n')
+      .replace(/([0-9.]+),\n/g, c.y('$1') + ',\n')
+      .replace(/([0-9.]+)\n/g, c.y('$1') + '\n')
       .replace(/,\n/g, c.y(',\n'))
       .replace(/("|{|}|[|])/g, c.y('$1'))
     trace.log(ss)

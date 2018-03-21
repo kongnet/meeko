@@ -828,4 +828,4 @@ $.log($.c.dimc('dimcyan'))
 $.log($.c.dimw('dimwhite'))
 let a = {o: {}, null: null, u: undefined, d: new Date(), a: 1.001, b: 'x', bool2: false, c: [0.991, 'y'], reg: /.+/g, fn: function () {}, bool1: true, x: 10.8}
 $.log($.json.parse('{a:1}'))
-$.dir(a)
+$.dir('$.dir(a)', a)
