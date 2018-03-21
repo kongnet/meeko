@@ -1,3 +1,5 @@
+/* global describe */
+/* global it */
 'use strict'
 var $ = require('../index')
 let assert = require('assert')
@@ -90,6 +92,16 @@ describe('checkParam的单元测试', function () {
       id: 1.9
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      id1: 0
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      id1: null
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
   })
   it('string', function () {
     let a = {
@@ -675,6 +687,9 @@ describe('timeAgo测试', function () {
   })
 })
 describe('其他函数的单元测试', function () {
+  it('wait', async function () {
+    assert.strictEqual(undefined, await $.wait(10))
+  })
   it('ext', function () {
     assert.strictEqual(null, $.ext('', ''))
   })
@@ -810,3 +825,7 @@ $.log($.c.dimy('dimyellow'))
 $.log($.c.dimb('dimblue'))
 $.log($.c.dimm('dimmagenta'))
 $.log($.c.dimc('dimcyan'))
+$.log($.c.dimw('dimwhite'))
+let a = {o: {}, null: null, u: undefined, d: new Date(), a: 1.001, b: 'x', bool2: false, c: [0.991, 'y'], reg: /.+/g, fn: function () {}, bool1: true, x: 10.8}
+$.log($.json.parse('{a:1}'))
+$.dir(a)

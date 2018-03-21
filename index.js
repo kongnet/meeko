@@ -72,7 +72,8 @@ const c = {
   dimy (s) { return this.dimyellow + s + this.none },
   dimb (s) { return this.dimblue + s + this.none },
   dimm (s) { return this.dimmagenta + s + this.none },
-  dimc (s) { return this.dimcyan + s + this.none }
+  dimc (s) { return this.dimcyan + s + this.none },
+  dimw (s) { return this.dimwhite + s + this.none }
 }
 const getStackTrace = function () {
   let obj = {}
@@ -110,6 +111,34 @@ const err = function (...args) {
   trace.log(str + (option.logTime ? s : ''))
   return 1
 }
+
+function strColor (k, v) {
+  if (typeof v === 'function') {
+    return (`[function ${k}]`)
+  }
+  if (Object.prototype.toString.call(v) === '[object RegExp]') {
+    return ('#blue#' + v + '#none#')
+  }
+  return v
+}
+
+const dir = function (...args) {
+  for (let i = 0; i < args.length; i++) {
+    let ss = JSON.stringify(args[i], strColor, 3)
+    ss = ss.replaceAll('"#blue#', c.blue)
+      .replaceAll('#none#"', c.none)
+      .replace(/"(.+)": /g, c.g('$1') + ': ')
+      .replace(/(true)(,|'')\n/g, c.r('$1$2\n'))
+      .replace(/(false)(,|'')\n/g, c.r('$1$2\n'))
+      .replace(/"(.+)",\n/g, '"' + c.m('$1') + '",\n')
+      .replace(/"(.+)"\n/g, '"' + c.m('$1') + '"\n')
+      .replace(/([0-9.]+),\n/g, c.c('$1') + ',\n')
+      .replace(/([0-9.]+)\n/g, c.c('$1') + '\n')
+      .replace(/,\n/g, c.y(',\n'))
+      .replace(/("|{|}|[|])/g, c.y('$1'))
+    trace.log(ss)
+  }
+}
 function compare (k, dir) {
   return function (a, b) {
     return (dir === 'desc') ? ~~(a[k] < b[k]) : ~~(a[k] > b[k])
@@ -140,6 +169,7 @@ module.exports = {
   ext,
   log,
   err,
+  dir,
   tools,
   fake,
   tpl,
