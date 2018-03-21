@@ -14,6 +14,7 @@ let $ = require('meeko')
 ## json color format
 * $.dir(object)
 * 内部10行代码实现 注意字符串下标数组无法显示
+
 ![JSON color format](https://github.com/kongnet/meeko/raw/master/screenShot/jsonFormat.png)
 
 ###$.compare
