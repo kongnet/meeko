@@ -26,6 +26,7 @@ $.log(cnDictObj.items.sort(compare('lev', 'desc'))) //默认升序
 
 ## String原型扩展
 * upperFirst() 将首字母变成大写,其他小写
+* String.render(o) 字符串模板渲染 
 
 ## Notice
 $.tools.checkParam(obj)

@@ -544,6 +544,9 @@ describe('Date原型扩展的单元测试', function () {
   })
 })
 describe('String原型扩展的单元测试', function () {
+  it('render', function () {
+    assert.strictEqual('<div></div>', '<{{d.tag}}></{{d.tag}}>'.render({tag: 'div'}))
+  })
   it('upperFirst', function () {
     assert.strictEqual('Ab', 'ab'.upperFirst())
     assert.strictEqual('Ab', 'AB'.upperFirst())
