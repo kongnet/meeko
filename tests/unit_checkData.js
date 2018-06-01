@@ -625,6 +625,20 @@ describe('Array原型扩展的单元测试', function () {
   it('unique', function () {
     assert.strictEqual(JSON.stringify([undefined, null, 1, 1, '1', '1', null, undefined, NaN, NaN].unique()), JSON.stringify([undefined, null, 1, '1', NaN]))
   })
+  it('mean', function () {
+    assert.strictEqual([1, 2, 3, 4, 5].mean(), 3)
+  })
+  it('median', function () {
+    assert.strictEqual([1, 2, 3, 4, 5, 6].median(), 3.5)
+    assert.strictEqual([1, 2, 3, 4, 5].median(), 3)
+    assert.strictEqual([].median(), 0)
+  })
+  it('variance', function () {
+    assert.strictEqual([1, 2, 3, 4, 5].variance(), 2)
+  })
+  it('stddev', function () {
+    assert.strictEqual([1, 2, 3, 4, 5].stddev(), 1.4142135623730951)
+  })
 })
 
 describe('Buffer原型扩展的单元测试', function () {
@@ -727,9 +741,12 @@ describe('其他函数的单元测试', function () {
 })
 describe('模板引擎单元测试', function () {
   it('tpl', function () {
+    $.tpl.config()
     $.tpl.config({open: '{{', close: '}}'})
+    assert.strictEqual('Laytpl Error：Template not found', $.tpl([]).render({tag: 'div'}))
     assert.strictEqual('<div></div>', $.tpl('<{{d.tag}}></{{d.tag}}>').render({tag: 'div'}))
     assert.strictEqual('<di&amp;v></di&v>', $.tpl('<{{=d.tag}}></{{d.tag}}>').render({tag: 'di&v'}))// =转义html标记
+    assert.strictEqual('<></>', $.tpl('<{{=d.tag}}></{{d.tag}}>').render({tag: ''}))// =转义html标记
     assert.strictEqual(true, $.tpl('<{{# 1+1 }></{{d.tag}}>').render({tag: 'div'}).indexOf('Laytpl Error') >= 0)// 模板结构不对
   })
 })
