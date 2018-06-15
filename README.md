@@ -10,6 +10,7 @@
 ## 全局函数
 
 let $ = require('meeko')
+##$.math.linearFitting(xArray,yArray) 线性拟合
 
 ## json color format
 * $.dir(object)

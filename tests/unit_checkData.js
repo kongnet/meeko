@@ -640,7 +640,25 @@ describe('Array原型扩展的单元测试', function () {
     assert.strictEqual([1, 2, 3, 4, 5].stddev(), 1.4142135623730951)
   })
 })
-
+describe('Math扩展函数的单元测试', function () {
+  it('mean', function () {
+    assert.strictEqual($.math.mean([1, 2, 3, 4, 5]), 3)
+  })
+  it('median', function () {
+    assert.strictEqual($.math.median([1, 2, 3, 4, 5, 6]), 3.5)
+    assert.strictEqual($.math.median([1, 2, 3, 4, 5]), 3)
+    assert.strictEqual($.math.median([]), 0)
+  })
+  it('variance', function () {
+    assert.strictEqual($.math.variance([1, 2, 3, 4, 5]), 2)
+  })
+  it('stddev', function () {
+    assert.strictEqual($.math.stddev([1, 2, 3, 4, 5]), 1.4142135623730951)
+  })
+  it('linearFitting', function () {
+    assert.strictEqual(JSON.stringify($.math.linearFitting([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 4, 3, 6, 9, 3, 5, 2, 5])), `{"slope":0.18333333333333332,"intercept":3.305555555555556,"r":0.04426829268292683}`)
+  })
+})
 describe('Buffer原型扩展的单元测试', function () {
   it('contact', function () {
     let buf = Buffer.from([1, 2])
@@ -817,7 +835,14 @@ describe('判断类型函数单元测试', function () {
     assert.strictEqual($.tools.isDate('1'), false)
   })
 })
-
+describe('判断手机运营商', function () {
+  it('whichNetwork', function () {
+    assert.strictEqual($.fake.whichNetwork('13052887711'), 1)
+    assert.strictEqual($.fake.whichNetwork('13852887711'), 0)
+    assert.strictEqual($.fake.whichNetwork('19952887711'), 2)
+    assert.strictEqual($.fake.whichNetwork('20052887711'), -1)
+  })
+})
 $.log($.fake.randData(['3', '1', 'u'], 3))
 $.log($.fake.randData(null, 3))
 $.log($.fake.randNum(3))

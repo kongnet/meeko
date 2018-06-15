@@ -155,6 +155,7 @@ const wait = function (t) {
     }
   })
 }
+const math = require('./lib/math')
 const tools = require('./lib/tools')
 const fake = require('./lib/fake')
 const tpl = require('./lib/tpl')
@@ -174,5 +175,6 @@ module.exports = {
   fake,
   tpl,
   compare,
-  wait
+  wait,
+  math
 }
