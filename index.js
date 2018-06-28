@@ -1,4 +1,5 @@
 'use strict'
+const Pack = require('./package.json')
 function ext (a, b) {
   if (a && b) {
     for (let c in b) {
@@ -163,6 +164,7 @@ const json = {
   parse: function (s) { return (Function('return ' + s))() },
   stringify: JSON.stringify
 }
+console.log(c.g('✔'), `Meeko (${c.y(Pack.version)})`)
 module.exports = {
   json,
   option,

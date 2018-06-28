@@ -641,6 +641,10 @@ describe('Array原型扩展的单元测试', function () {
   })
 })
 describe('Math扩展函数的单元测试', function () {
+  it('num2e', function () {
+    assert.strictEqual($.math.num2e(0.00000129466), '1.2947e-6')
+    assert.strictEqual($.math.num2e(0.00000129466, 1), '1.3e-6')
+  })
   it('mean', function () {
     assert.strictEqual($.math.mean([1, 2, 3, 4, 5]), 3)
   })
