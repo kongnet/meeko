@@ -773,7 +773,19 @@ describe('模板引擎单元测试', function () {
   })
 })
 describe('判断类型函数单元测试', function () {
+  it('getType', function () {
+    assert.strictEqual($.tools.getType({}), 'Object')
+    assert.strictEqual($.tools.getType(''), 'String')
+    assert.strictEqual($.tools.getType(/[a-z]/g), 'RegExp')
+    assert.strictEqual($.tools.getType(null), 'Null')
+    let x
+    assert.strictEqual($.tools.getType(x), 'Undefined')
+  })
   it('isObj', function () {
+    assert.strictEqual($.tools.isObj({}), true)
+    assert.strictEqual($.tools.isObj(''), false)
+  })
+  it('isObject', function () {
     assert.strictEqual($.tools.isObj({}), true)
     assert.strictEqual($.tools.isObj(''), false)
   })
@@ -836,6 +848,7 @@ describe('判断类型函数单元测试', function () {
     assert.strictEqual($.tools.isDate('2016-1-1'), true)
     assert.strictEqual($.tools.isDate('2016/1/1'), true)
     assert.strictEqual($.tools.isDate('2016.1.1'), false)
+    assert.strictEqual($.tools.isDate(new Date()), true)
     assert.strictEqual($.tools.isDate('1'), false)
   })
 })
