@@ -786,8 +786,8 @@ describe('判断类型函数单元测试', function () {
     assert.strictEqual($.tools.isObj(''), false)
   })
   it('isObject', function () {
-    assert.strictEqual($.tools.isObj({}), true)
-    assert.strictEqual($.tools.isObj(''), false)
+    assert.strictEqual($.tools.isObject({}), true)
+    assert.strictEqual($.tools.isObject(''), false)
   })
   it('isString', function () {
     assert.strictEqual($.tools.isString(''), true)
