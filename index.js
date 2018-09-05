@@ -147,13 +147,9 @@ function compare (k, dir) {
 }
 const wait = function (t) {
   return new Promise((resolve, reject) => {
-    try {
-      setTimeout(() => {
-        resolve()
-      }, t)
-    } catch (err) {
-      reject(err)
-    }
+    setTimeout(() => {
+      resolve()
+    }, t)
   })
 }
 const math = require('./lib/math')

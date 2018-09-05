@@ -708,6 +708,7 @@ describe('深copy测试', function () {
 })
 describe('timeAgo测试', function () {
   it('timeAgo测试', function () {
+    assert.strictEqual($.tools.timeAgo('2016-1-1', '2016-1-1'), '刚刚')
     assert.strictEqual($.tools.timeAgo('2016-1-1', '2017-2-1'), '1年前')
     assert.strictEqual($.tools.timeAgo('2016-1-1', '2016-3-1'), '2个月前')
     assert.strictEqual($.tools.timeAgo('2016-1-1', '2016-1-16'), '15天前')
