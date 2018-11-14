@@ -18,10 +18,10 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "co-mocha": "^1.2.0",
+    "co-mocha": "*",
     "coveralls": "*",
     "istanbul": "*",
-    "mocha": "^3.5.3",
+    "mocha": "*",
     "standard": "*"
   },
   "standard": {

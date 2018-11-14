@@ -142,7 +142,7 @@ const dir = function (...args) {
 }
 function compare (k, dir) {
   return function (a, b) {
-    return (dir === 'desc') ? ~~(a[k] < b[k]) : ~~(a[k] > b[k])
+    return (dir === 'desc') ? (b[k] - a[k]) : (a[k] - b[k]) // ~~(a[k] < b[k]) : ~~(a[k] > b[k])
   }
 }
 const wait = function (t) {

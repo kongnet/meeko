@@ -183,7 +183,7 @@ describe('checkParam的单元测试', function () {
       id: 1,
       code: ''
     }
-    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
       id: 1,
       code: 'abc'
@@ -262,7 +262,7 @@ describe('checkParam的单元测试', function () {
       id: 1,
       rights: ''
     }
-    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
       id: 1,
       rights: 'abc'
@@ -318,7 +318,7 @@ describe('checkParam的单元测试', function () {
       id: 1,
       description: ''
     }
-    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
       id: 1,
       description: 'abc'
@@ -374,7 +374,7 @@ describe('checkParam的单元测试', function () {
       id: 1,
       type: ''
     }
-    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
       id: 1,
       type: 'abc'
@@ -430,7 +430,7 @@ describe('checkParam的单元测试', function () {
       id: 1,
       datetime: ''
     }
-    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
       id: 1,
       datetime: 'abc'
@@ -545,7 +545,7 @@ describe('Date原型扩展的单元测试', function () {
 })
 describe('String原型扩展的单元测试', function () {
   it('render', function () {
-    assert.strictEqual('<div></div>', '<{{d.tag}}></{{d.tag}}>'.render({tag: 'div'}))
+    assert.strictEqual('<div></div>', '<{{d.tag}}></{{d.tag}}>'.render({ tag: 'div' }))
   })
   it('upperFirst', function () {
     assert.strictEqual('Ab', 'ab'.upperFirst())
@@ -748,7 +748,7 @@ describe('其他函数的单元测试', function () {
     }, ['x']))
   })
   it('tools.jsonPack', function () {
-    assert.deepEqual([['abc', 'bac', 'cba'], [1, 2, 3], [11, 22, 33], [111, 222, 333]], $.tools.jsonPack([{bac: 2, abc: 1, cba: 3}, {cba: 33, bac: 22, abc: 11}, {bac: 222, cba: 333, abc: 111}], 1))
+    assert.deepStrictEqual([['abc', 'bac', 'cba'], [1, 2, 3], [11, 22, 33], [111, 222, 333]], $.tools.jsonPack([{ bac: 2, abc: 1, cba: 3 }, { cba: 33, bac: 22, abc: 11 }, { bac: 222, cba: 333, abc: 111 }], 1))
   })
   it('log', function () {
     assert.strictEqual(1, $.log(1, 2))
@@ -757,20 +757,20 @@ describe('其他函数的单元测试', function () {
     assert.strictEqual(1, $.err({}, 2))
   })
   it('compare', function () {
-    let items = [{'name': 'a', lev: 1}, {name: 'b', lev: 2}]
-    assert.deepEqual(items.sort($.compare('lev', 'desc')), [{'name': 'b', lev: 2}, {name: 'a', lev: 1}])
-    assert.deepEqual(items.sort($.compare('lev')), [{'name': 'a', lev: 1}, {name: 'b', lev: 2}])
+    let items = [{ 'name': 'a', lev: 1 }, { name: 'b', lev: 2 }]
+    assert.deepStrictEqual(items.sort($.compare('lev', 'desc')), [{ 'name': 'b', lev: 2 }, { name: 'a', lev: 1 }])
+    assert.deepStrictEqual(items.sort($.compare('lev')), [{ 'name': 'a', lev: 1 }, { name: 'b', lev: 2 }])
   })
 })
 describe('模板引擎单元测试', function () {
   it('tpl', function () {
     $.tpl.config()
-    $.tpl.config({open: '{{', close: '}}'})
-    assert.strictEqual('Laytpl Error：Template not found', $.tpl([]).render({tag: 'div'}))
-    assert.strictEqual('<div></div>', $.tpl('<{{d.tag}}></{{d.tag}}>').render({tag: 'div'}))
-    assert.strictEqual('<di&amp;v></di&v>', $.tpl('<{{=d.tag}}></{{d.tag}}>').render({tag: 'di&v'}))// =转义html标记
-    assert.strictEqual('<></>', $.tpl('<{{=d.tag}}></{{d.tag}}>').render({tag: ''}))// =转义html标记
-    assert.strictEqual(true, $.tpl('<{{# 1+1 }></{{d.tag}}>').render({tag: 'div'}).indexOf('Laytpl Error') >= 0)// 模板结构不对
+    $.tpl.config({ open: '{{', close: '}}' })
+    assert.strictEqual('Laytpl Error：Template not found', $.tpl([]).render({ tag: 'div' }))
+    assert.strictEqual('<div></div>', $.tpl('<{{d.tag}}></{{d.tag}}>').render({ tag: 'div' }))
+    assert.strictEqual('<di&amp;v></di&v>', $.tpl('<{{=d.tag}}></{{d.tag}}>').render({ tag: 'di&v' }))// =转义html标记
+    assert.strictEqual('<></>', $.tpl('<{{=d.tag}}></{{d.tag}}>').render({ tag: '' }))// =转义html标记
+    assert.strictEqual(true, $.tpl('<{{# 1+1 }></{{d.tag}}>').render({ tag: 'div' }).indexOf('Laytpl Error') >= 0)// 模板结构不对
   })
 })
 describe('判断类型函数单元测试', function () {
@@ -889,6 +889,6 @@ $.log($.c.dimb('dimblue'))
 $.log($.c.dimm('dimmagenta'))
 $.log($.c.dimc('dimcyan'))
 $.log($.c.dimw('dimwhite'))
-let a = {o: {}, null: null, u: undefined, d: new Date(), a: 1.001, b: 'x', bool2: false, c: [0.991, 'y'], reg: /.+/g, fn: function () {}, bool1: true, x: 10.8}
+let a = { o: {}, null: null, u: undefined, d: new Date(), a: 1.001, b: 'x', bool2: false, c: [0.991, 'y'], reg: /.+/g, fn: function () {}, bool1: true, x: 10.8 }
 $.log($.json.parse('{a:1}'))
 $.dir('$.dir(a)', a)
