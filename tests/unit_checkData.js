@@ -17,6 +17,10 @@ var b = {
   name: {
     desc: '节点名称'
   },
+  url: {
+    desc: '必须是url',
+    reg: /^https?:\/\/[^/]+/
+  },
   code: {
     desc: '节点编码',
     type: 'bool'
@@ -40,6 +44,17 @@ var b = {
   d2: {
     desc: '节点类型',
     type: 'd2'
+  },
+  array1: {
+    desc: '数组类型',
+    type: 'array'
+  },
+  array2: {
+    desc: '数组类型',
+    type: 'array',
+    items: {
+      type: 'int'
+    }
   }
 }
 describe('checkParam的单元测试', function () {
@@ -158,6 +173,77 @@ describe('checkParam的单元测试', function () {
       name: 1.9
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+  })
+  it('string正则测试：url', function () {
+    let a = {
+      id: 1,
+      url: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code,  '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1,
+      url: undefined
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1,
+      url: null
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1,
+      url: ''
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1,
+      url: 'abc'
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1,
+      url: true
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1,
+      url: false
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1,
+      url: -1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1,
+      url: 0
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1,
+      url: 1.9
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1,
+      url: 'https://www.npmjs.com/package/meeko'
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1,
+      url: 'http://www.npmjs.com/package/meeko'
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1,
+      url: 'https://'
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
   })
   it('bool', function () {
     let a = {
@@ -469,6 +555,131 @@ describe('checkParam的单元测试', function () {
     a = {
       id: 1,
       datetime: '2016-01-05T11:22:20.527Z'
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+  })
+  it('array1', function () {
+    let a = {
+      id: 1,
+      array1: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array1: null
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array1: ''
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array1: 0
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array1: 1.9
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array1: '1999-06-06 12:0:0'
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array1: '2016-01-05T11:22:20.527Z'
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+  })
+  it('array1 正向测试', function () {
+    let a = {
+      id: 1,
+      array1: []
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code,  '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1,
+      array1: ['jjhh', '', '4r59ew5es4', '4445']
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code,  '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1,
+      array1: [123, 321, 55.2, 11]
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    a = {
+      id: 1,
+      array1: [123, 321, 55, 11]
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code,  '被测试数据：' + JSON.stringify(a))
+  })
+  it('array2', function () {
+    let a = {
+      id: 1,
+      array2: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array2: undefined
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array2: null
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array2: ''
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array2: 0
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array2: 1.9
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array2: '1999-06-06 12:0:0'
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array2: '2016-01-05T11:22:20.527Z'
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array2: []
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array2: ['jjhh', '', '4r59ew5es4', '4445']
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array2: [123, 321, 55.2, 11]
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1,
+      array2: [123, 321, 55, 11]
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
   })
