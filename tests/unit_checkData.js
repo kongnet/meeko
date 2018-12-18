@@ -1113,3 +1113,4 @@ let a = { o: {}, null: null, u: undefined, d: new Date(), a: 1.001, b: 'x', bool
 $.log($.json.parse('{a:1}'))
 $.dir('$.dir(a)', a)
 $.dir('$.now() +$.now()', $.now(), +$.now())
+$.dir($.now().format())
