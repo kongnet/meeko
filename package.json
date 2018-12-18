@@ -21,7 +21,7 @@
     "co-mocha": "*",
     "coveralls": "*",
     "istanbul": "*",
-    "mocha": "*",
+    "mocha": "^5.2.0",
     "standard": "*"
   },
   "standard": {

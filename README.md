@@ -34,3 +34,7 @@ $.tools.checkParam(obj)
 * obj 如果为日期格式,日期格式为UTC日期
 * 请在前端写入mysql之前 date.date2Str()一下
 * 否则需要主动调用mysql的转换utc时间的函数
+
+## 正则发生器
+r = '(你|我|他)'
+console.log($.reg.gen(r))
