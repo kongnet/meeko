@@ -1,3 +1,5 @@
+/* istanbul ignore next */
+
 'use strict'
 const Pack = require('./package.json')
 function ext (a, b) {
@@ -155,6 +157,7 @@ const wait = function (t) {
 const math = require('./lib/math')
 const tools = require('./lib/tools')
 const fake = require('./lib/fake')
+const reg = require('./lib/reg')
 const tpl = require('./lib/tpl')
 const json = {
   parse: function (s) { return (Function('return ' + s))() },
@@ -174,5 +177,6 @@ module.exports = {
   tpl,
   compare,
   wait,
-  math
+  math,
+  reg
 }
