@@ -163,8 +163,10 @@ const json = {
   parse: function (s) { return (Function('return ' + s))() },
   stringify: JSON.stringify
 }
+const now = () => new Date()
 console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${'\x1b[2;4;32m' + 'https://github.com/kongnet/meeko.git' + '\x1b[m'}`)
 module.exports = {
+  now,
   json,
   option,
   c,

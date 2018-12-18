@@ -179,7 +179,7 @@ describe('checkParam的单元测试', function () {
       id: 1,
       url: 1
     }
-    assert.strictEqual(401, $.tools.checkParam(a, b).code,  '被测试数据：' + JSON.stringify(a))
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
       id: 1
     }
@@ -600,12 +600,12 @@ describe('checkParam的单元测试', function () {
       id: 1,
       array1: []
     }
-    assert.strictEqual(200, $.tools.checkParam(a, b).code,  '被测试数据：' + JSON.stringify(a))
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
       id: 1,
       array1: ['jjhh', '', '4r59ew5es4', '4445']
     }
-    assert.strictEqual(200, $.tools.checkParam(a, b).code,  '被测试数据：' + JSON.stringify(a))
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
       id: 1,
       array1: [123, 321, 55.2, 11]
@@ -615,7 +615,7 @@ describe('checkParam的单元测试', function () {
       id: 1,
       array1: [123, 321, 55, 11]
     }
-    assert.strictEqual(200, $.tools.checkParam(a, b).code,  '被测试数据：' + JSON.stringify(a))
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
   })
   it('array2', function () {
     let a = {
@@ -708,6 +708,15 @@ describe('Date原型扩展的单元测试', function () {
     assert.strictEqual(52, d1.getWeek())
     assert.strictEqual(52, d2.getWeek())
     assert.strictEqual(1, d3.getWeek())
+  })
+  it('format', function () {
+    assert.strictEqual('2015-12-29 01:11:01', d1.format())
+    assert.strictEqual('2015/12/29', d1.format('yyyy/MM/dd'))
+    assert.strictEqual('2015/12/29/011101', d1.format('YYYY/MM/DD/HHmmss'))
+    assert.strictEqual('20151229011101', d1.format('YYYYMMDDHHmmss'))
+    assert.strictEqual('2015-12-29 01:11:01', d1.format('YYYY-MM-DD HH:mm:ss'))
+    assert.strictEqual('2015-12-29 01:11:01', d1.format('yyyy-MM-dd hh:mm:ss'))
+    assert.strictEqual('2015-12-29 01:11:01 52 4', d1.format('yyyy-MM-dd hh:mm:ss ww q'))
   })
   it('date2Str', function () {
     assert.strictEqual('2015-12-29 01:11:01', d1.date2Str())
@@ -1103,3 +1112,4 @@ $.log($.c.dimw('dimwhite'))
 let a = { o: {}, null: null, u: undefined, d: new Date(), a: 1.001, b: 'x', bool2: false, c: [0.991, 'y'], reg: /.+/g, fn: function () {}, bool1: true, x: 10.8 }
 $.log($.json.parse('{a:1}'))
 $.dir('$.dir(a)', a)
+$.dir('$.now() +$.now()', $.now(), +$.now())
