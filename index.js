@@ -159,6 +159,7 @@ const tools = require('./lib/tools')
 const fake = require('./lib/fake')
 const reg = require('./lib/reg')
 const tpl = require('./lib/tpl')
+const requireAll = require('./lib/requireDir')
 const json = {
   parse: function (s) { return (Function('return ' + s))() },
   stringify: JSON.stringify
@@ -180,5 +181,6 @@ module.exports = {
   compare,
   wait,
   math,
-  reg
+  reg,
+  requireAll
 }

@@ -42,3 +42,5 @@ console.log($.reg.gen(r))
 ## 日期格式化
 yyyy/YYYY mm/MM ww/WW dd/DD hh/HH mm ss SS q
 $.now().format()
+
+$.requireAll() //加载某个目录下的所有对象，默认 __dirname
