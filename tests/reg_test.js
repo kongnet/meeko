@@ -1,5 +1,6 @@
 'use strict'
 let $ = require('../index')
+let path = require('path')
 
 let r = 'a(?!p)(?=p)((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))'
 console.log($.reg.gen(r))
@@ -21,13 +22,27 @@ r = '(你|我|他)'
 r = '-[1-9][0-9]{2,10}'
 console.log($.reg.gen(r))
 try {
-  $.requireAll()
+  $.requireAll(__dirname)
 } catch (e) {
   console.log(e.toString())
 }
 try {
-  $.requireAll(__dirname, 'x')
+  $.requireAll(path.join(__dirname, 'x'))
 } catch (e) {
   console.log(e.toString())
 }
-$.requireAll()
+r = $.requireAll({
+  dirname: __dirname,
+  filter: /^r[a-z_\\.]+$/g
+})
+r = $.requireAll({
+  dirname: path.join(__dirname, '..', 'lib'),
+  filter: function (fileName) {
+    $.log(fileName)
+  },
+  map: function (name, path) {
+    return name.replace(/_([a-z])/g, function (m, c) {
+      return c.toUpperCase()
+    })
+  }
+})

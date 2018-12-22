@@ -17,6 +17,19 @@ var b = {
   name: {
     desc: '节点名称'
   },
+  name1: {
+    desc: '节点名称1',
+    req: 1,
+    type: 'string',
+    size: [1, 2]
+
+  },
+  n1: {
+    desc: '数值节点1',
+    req: 1,
+    type: 'number',
+    size: [-1, 1]
+  },
   url: {
     desc: '必须是url',
     reg: /^https?:\/\/[^/]+/
@@ -62,57 +75,85 @@ describe('checkParam的单元测试', function () {
   it('int', function * () {
     yield $.tools.wait(1)
     let a = {
+      name1: 'x',
+      n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
-    a = {}
+    a = {
+      name1: 'x'
+    }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: undefined
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: null
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: ''
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 'true'
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 'false'
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: true
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: false
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: -1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 0
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1.9
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       id1: 0
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       id1: null
     }
@@ -120,55 +161,77 @@ describe('checkParam的单元测试', function () {
   })
   it('string', function () {
     let a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       name: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       name: undefined
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       name: null
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       name: ''
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       name: 'abc'
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       name: true
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       name: false
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       name: -1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       name: 0
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       name: 1.9
     }
@@ -176,70 +239,98 @@ describe('checkParam的单元测试', function () {
   })
   it('string正则测试：url', function () {
     let a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       url: 1
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       url: undefined
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       url: null
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       url: ''
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       url: 'abc'
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       url: true
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       url: false
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       url: -1
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       url: 0
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       url: 1.9
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       url: 'https://www.npmjs.com/package/meeko'
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       url: 'http://www.npmjs.com/package/meeko'
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       url: 'https://'
     }
@@ -247,78 +338,108 @@ describe('checkParam的单元测试', function () {
   })
   it('bool', function () {
     let a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       code: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       code: undefined
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       code: null
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       code: ''
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       code: 'abc'
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       code: true
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       code: false
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
 
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       code: 'true'
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       code: 'false'
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
 
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       code: '0'
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       code: '1'
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
 
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       code: -1
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       code: 0
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       code: 1.9
     }
@@ -326,55 +447,77 @@ describe('checkParam的单元测试', function () {
   })
   it('positive', function () {
     let a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       rights: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       rights: undefined
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       rights: null
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       rights: ''
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       rights: 'abc'
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       rights: true
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       rights: false
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       rights: -1
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       rights: 0
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       rights: 1.9
     }
@@ -382,55 +525,77 @@ describe('checkParam的单元测试', function () {
   })
   it('negative', function () {
     let a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       description: 1
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       description: undefined
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       description: null
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       description: ''
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       description: 'abc'
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       description: true
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       description: false
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       description: -1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       description: 0
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       description: 1.9
     }
@@ -438,55 +603,77 @@ describe('checkParam的单元测试', function () {
   })
   it('number', function () {
     let a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       type: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       type: undefined
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       type: null
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       type: ''
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       type: 'abc'
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       type: true
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       type: false
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       type: -1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       type: 0
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       type: 1.9
     }
@@ -494,65 +681,91 @@ describe('checkParam的单元测试', function () {
   })
   it('datetime', function () {
     let a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       datetime: 1
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       datetime: undefined
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       datetime: null
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       datetime: ''
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       datetime: 'abc'
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       datetime: true
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       datetime: false
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       datetime: -1
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       datetime: 0
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       datetime: 1.9
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       datetime: '1999-06-06 12:0:0'
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       datetime: '2016-01-05T11:22:20.527Z'
     }
@@ -560,36 +773,50 @@ describe('checkParam的单元测试', function () {
   })
   it('array1', function () {
     let a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array1: 1
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array1: null
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array1: ''
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array1: 0
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array1: 1.9
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array1: '1999-06-06 12:0:0'
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array1: '2016-01-05T11:22:20.527Z'
     }
@@ -597,21 +824,29 @@ describe('checkParam的单元测试', function () {
   })
   it('array1 正向测试', function () {
     let a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array1: []
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array1: ['jjhh', '', '4r59ew5es4', '4445']
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array1: [123, 321, 55.2, 11]
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array1: [123, 321, 55, 11]
     }
@@ -619,72 +854,139 @@ describe('checkParam的单元测试', function () {
   })
   it('array2', function () {
     let a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array2: 1
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array2: undefined
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array2: null
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array2: ''
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array2: 0
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array2: 1.9
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array2: '1999-06-06 12:0:0'
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array2: '2016-01-05T11:22:20.527Z'
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array2: []
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array2: ['jjhh', '', '4r59ew5es4', '4445']
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array2: [123, 321, 55.2, 11]
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       array2: [123, 321, 55, 11]
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      id: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      name1: '',
+      id: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      name1: 'x',
+      id: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      name1: 'x',
+      n1: 0,
+      id: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      name1: 'x',
+      n1: -0.1,
+      id: 1
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      name1: 'x',
+      n1: -1.1,
+      id: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      name1: 'xcc',
+      n1: -0.1,
+      id: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
   })
+
   it('default', function () {
     let a = {
+      name1: 'x',
+      n1: 1,
       id: 1,
       d2: 1
     }
@@ -914,6 +1216,8 @@ describe('深copy测试', function () {
     assert.strictEqual($.tools.copy('{'), '{')
     assert.strictEqual($.tools.copy(11), 11)
     let a = {
+      name1: 'x',
+      n1: 1,
       a: 1,
       b: 2
     }
@@ -1109,7 +1413,21 @@ $.log($.c.dimb('dimblue'))
 $.log($.c.dimm('dimmagenta'))
 $.log($.c.dimc('dimcyan'))
 $.log($.c.dimw('dimwhite'))
-let a = { o: {}, null: null, u: undefined, d: new Date(), a: 1.001, b: 'x', bool2: false, c: [0.991, 'y'], reg: /.+/g, fn: function () {}, bool1: true, x: 10.8 }
+let a = {
+  name1: 'x',
+  n1: 1,
+  o: {},
+  null: null,
+  u: undefined,
+  d: new Date(),
+  a: 1.001,
+  b: 'x',
+  bool2: false,
+  c: [0.991, 'y'],
+  reg: /.+/g,
+  fn: function () {},
+  bool1: true,
+  x: 10.8 }
 $.log($.json.parse('{a:1}'))
 $.dir('$.dir(a)', a)
 $.dir('$.now() +$.now()', $.now(), +$.now())
