@@ -46,3 +46,50 @@ r = $.requireAll({
     })
   }
 })
+$.log($.fake.randData(['3', '1', 'u'], 3))
+$.log($.fake.randData(null, 3))
+$.log($.fake.randNum(3))
+$.log($.fake.randStr(3))
+$.log($.fake.randTime('2016-1-1', '2016-2-2'))
+$.log($.fake.randName('2016-1-1', '2016-2-2'))
+$.log($.fake.randColor())
+$.log($.fake.randColor('rgba'))
+$.log($.fake.smallAndNum(3))
+$.log($.fake.randUrl(4))
+$.log($.fake.randIp())
+$.log($.fake.phoneNum())
+$.log($.fake.idCard())
+$.log($.fake.price(9, 6))
+$.log($.c.r('red'))
+$.log($.c.g('green'))
+$.log($.c.y('yellow'))
+$.log($.c.b('blue'))
+$.log($.c.m('magenta'))
+$.log($.c.c('cyan'))
+$.log($.c.w('white'))
+$.log($.c.dimr('dimred'))
+$.log($.c.dimg('dimgreen'))
+$.log($.c.dimy('dimyellow'))
+$.log($.c.dimb('dimblue'))
+$.log($.c.dimm('dimmagenta'))
+$.log($.c.dimc('dimcyan'))
+$.log($.c.dimw('dimwhite'))
+let a = {
+  name1: 'x',
+  n1: 1,
+  o: {},
+  null: null,
+  u: undefined,
+  d: new Date(),
+  a: 1.001,
+  b: 'x',
+  bool2: false,
+  c: [0.991, 'y'],
+  reg: /.+/g,
+  fn: function () {},
+  bool1: true,
+  x: 10.8 }
+$.log($.json.parse('{a:1}'))
+$.dir('$.dir(a)', a)
+$.dir('$.now() +$.now()', $.now(), +$.now())
+$.dir($.now().format())
