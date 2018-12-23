@@ -24,6 +24,7 @@ describe('Date原型扩展的单元测试', function () {
   })
   it('format', function () {
     assert.strictEqual('2015-12-29 01:11:01', d1.format())
+    assert.strictEqual(+new Date('2015-12-29 01:11:01') / 1000 | 0, +d1.format('X'))
     assert.strictEqual('2015/12/29', d1.format('yyyy/MM/dd'))
     assert.strictEqual('2015/12/29/011101', d1.format('YYYY/MM/DD/HHmmss'))
     assert.strictEqual('20151229011101', d1.format('YYYYMMDDHHmmss'))
