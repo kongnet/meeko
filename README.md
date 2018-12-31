@@ -25,6 +25,12 @@ let cnDictObj = {items:[{'name':'a',lev:1},{name:'b',lev:2}]}
 $.log(cnDictObj.items.sort(compare('lev', 'desc'))) //默认升序
 ```
 
+## Array原型扩展
+* count() ['A', 'B', 'B', 'C', 'A', 'D'].count() => {"A":2,"B":2,"C":1,"D":1}
+* flatten() [1, [2, [3, [4, 5], 6], 7], 8].flatten() => [1,2,3,4,5,6,7,8]
+* orderBy() [{ name: 'A', age: 48 }, { name: 'B', age: 36 }, { name: 'C', age: 26 }].orderBy(['age'],['asc']) => [{"name":"C","age":26},{"name":"B","age":36},{"name":"A","age":48}] 默认升序
+
+
 ## String原型扩展
 * upperFirst() 将首字母变成大写,其他小写
 * String.render(o) 字符串模板渲染 
@@ -43,4 +49,9 @@ console.log($.reg.gen(r))
 yyyy/YYYY mm/MM ww/WW dd/DD hh/HH mm ss SS q
 $.now().format()
 
+##路径下所有js文件全加载
 $.requireAll() //加载某个目录下的所有对象，默认 __dirname
+
+##分布式雪花碎片算法 每秒可以产生超过200万 不重复id
+new $.Snowflake(workId, dataCenterId, sequence) // 工作进程id ，服务器id，开始序号
+

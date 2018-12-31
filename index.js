@@ -160,6 +160,8 @@ const fake = require('./lib/fake')
 const reg = require('./lib/reg')
 const tpl = require('./lib/tpl')
 const requireAll = require('./lib/requireDir')
+let Snowflake = require('./lib/Snowflake.js')
+
 const json = {
   parse: function (s) { return (Function('return ' + s))() },
   stringify: JSON.stringify
@@ -182,5 +184,6 @@ module.exports = {
   wait,
   math,
   reg,
-  requireAll
+  requireAll,
+  Snowflake
 }

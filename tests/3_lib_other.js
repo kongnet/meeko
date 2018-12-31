@@ -156,6 +156,17 @@ describe('Array原型扩展的单元测试', function () {
   it('copy', function () {
     assert.strictEqual([1].copy()[0], 1)
   })
+  it('count', function () {
+    assert.strictEqual(JSON.stringify(['A', 'B', 'B', 'C', 'A', 'D'].count()), '{"A":2,"B":2,"C":1,"D":1}')
+  })
+  it('flatten', function () {
+    assert.strictEqual([1, [2, [3, [4, 5], 6], 7], 8].flatten().join(''), '12345678')
+  })
+  it('orderBy', function () {
+    assert.strictEqual(JSON.stringify([{ name: 'A', age: 48 }, { name: 'B', age: 36 }, { name: 'C', age: 26 }].orderBy(['age'], ['asc', 'desc'])), '[{"name":"C","age":26},{"name":"B","age":36},{"name":"A","age":48}]')
+    assert.strictEqual(JSON.stringify([{ name: 'A', age: 48 }, { name: 'B', age: 36 }, { name: 'C', age: 26 }].orderBy(['age'])), '[{"name":"C","age":26},{"name":"B","age":36},{"name":"A","age":48}]')
+    assert.strictEqual(JSON.stringify([{ name: 'A', age: 48 }, { name: 'B', age: 36 }, { name: 'C', age: 26 }].orderBy(['name'])), '[{"name":"A","age":48},{"name":"B","age":36},{"name":"C","age":26}]')
+  })
   it('unique', function () {
     assert.strictEqual(JSON.stringify([undefined, null, 1, 1, '1', '1', null, undefined, NaN, NaN].unique()), JSON.stringify([undefined, null, 1, '1', NaN]))
   })
@@ -396,5 +407,18 @@ describe('判断手机运营商', function () {
     assert.strictEqual($.fake.whichNetwork('13852887711'), 0)
     assert.strictEqual($.fake.whichNetwork('19952887711'), 2)
     assert.strictEqual($.fake.whichNetwork('20052887711'), -1)
+  })
+})
+describe('Snowflake', function () {
+  it('Snowflake', function () {
+    let tempSnowflake = new $.Snowflake(1, 1, 0)
+    let tempIds = []
+    for (let i = 0; i < 100; i++) {
+      let tempId = tempSnowflake.nextId()
+      if (tempIds.indexOf(tempId) < 0) {
+        tempIds.push(tempId)
+      }
+    }
+    assert.strictEqual(tempIds.length, 100)
   })
 })
