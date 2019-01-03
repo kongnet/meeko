@@ -39,6 +39,9 @@ Buffer.prototype.contact = function (b) {
   b.copy(buf, this.length, 0, b.length)
   return buf
 }
+const cFn = function (fc, dimNum, bc, isUnderline) {
+  return `\x1b[0;${isUnderline ? '4;' : ''}${dimNum ? dimNum + ';' : ''}${bc ? bc + ';' : ''}${fc || ''}m`
+}
 const c = {
   /*
   http://stanislavs.org/helppc/ansi_codes.html
@@ -47,36 +50,36 @@ const c = {
   xy (x, y) {
     return `\x1b[${y};${x};H`
   },
-  none: '\x1b[m',
-  black: '\x1b[30m',
-  red: '\x1b[1;31m',
-  green: '\x1b[1;32m',
-  yellow: '\x1b[1;33m',
-  blue: '\x1b[1;34m',
-  magenta: '\x1b[1;35m',
-  cyan: '\x1b[1;36m',
-  white: '\x1b[1;37m',
-  dimred: '\x1b[2;31m',
-  dimgreen: '\x1b[2;32m',
-  dimyellow: '\x1b[2;33m',
-  dimblue: '\x1b[2;34m',
-  dimmagenta: '\x1b[2;35m',
-  dimcyan: '\x1b[2;36m',
-  dimwhite: '\x1b[2;37m',
-  r (s) { return this.red + s + '\x1b[m' },
-  g (s) { return this.green + s + '\x1b[m' },
-  y (s) { return this.yellow + s + '\x1b[m' },
-  b (s) { return this.blue + s + '\x1b[m' },
-  m (s) { return this.magenta + s + '\x1b[m' },
-  c (s) { return this.cyan + s + '\x1b[m' },
-  w (s) { return this.white + s + '\x1b[m' },
-  dimr (s) { return this.dimred + s + '\x1b[m' },
-  dimg (s) { return this.dimgreen + s + '\x1b[m' },
-  dimy (s) { return this.dimyellow + s + '\x1b[m' },
-  dimb (s) { return this.dimblue + s + '\x1b[m' },
-  dimm (s) { return this.dimmagenta + s + '\x1b[m' },
-  dimc (s) { return this.dimcyan + s + '\x1b[m' },
-  dimw (s) { return this.dimwhite + s + '\x1b[m' }
+  none: cFn(),
+  black: cFn(30, 1),
+  red: cFn(31, 1),
+  green: cFn(32, 1),
+  yellow: cFn(33, 1),
+  blue: cFn(34, 1),
+  magenta: cFn(35, 1),
+  cyan: cFn(36, 1),
+  white: cFn(37, 1),
+  dimred: cFn(31, 2),
+  dimgreen: cFn(32, 2),
+  dimyellow: cFn(33, 2),
+  dimblue: cFn(34, 2),
+  dimmagenta: cFn(35, 2),
+  dimcyan: cFn(36, 2),
+  dimwhite: cFn(37, 2),
+  r (s, bc, u) { return cFn(31, 1, bc, u) + s + cFn() },
+  g (s, bc, u) { return cFn(32, 1, bc, u) + s + cFn() },
+  y (s, bc, u) { return cFn(33, 1, bc, u) + s + cFn() },
+  b (s, bc, u) { return cFn(34, 1, bc, u) + s + cFn() },
+  m (s, bc, u) { return cFn(35, 1, bc, u) + s + cFn() },
+  c (s, bc, u) { return cFn(36, 1, bc, u) + s + cFn() },
+  w (s, bc, u) { return cFn(37, 1, bc, u) + s + cFn() },
+  dimr (s, bc, u) { return cFn(31, 2, bc, u) + s + cFn() },
+  dimg (s, bc, u) { return cFn(32, 2, bc, u) + s + cFn() },
+  dimy (s, bc, u) { return cFn(33, 2, bc, u) + s + cFn() },
+  dimb (s, bc, u) { return cFn(34, 2, bc, u) + s + cFn() },
+  dimm (s, bc, u) { return cFn(35, 2, bc, u) + s + cFn() },
+  dimc (s, bc, u) { return cFn(36, 2, bc, u) + s + cFn() },
+  dimw (s, bc, u) { return cFn(37, 2, bc, u) + s + cFn() }
 }
 const getStackTrace = function () {
   let obj = {}
@@ -163,11 +166,11 @@ const requireAll = require('./lib/requireDir')
 let Snowflake = require('./lib/Snowflake.js')
 
 const json = {
-  parse: function (s) { return (Function('return ' + s))() },
+  parse: function (s) { return (Function('return ' + s))() }, // 为了解决key没有双引号
   stringify: JSON.stringify
 }
 const now = () => new Date()
-console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${'\x1b[2;4;32m' + 'https://github.com/kongnet/meeko.git' + '\x1b[m'}`)
+console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${'\x1b[2;4;32m' + 'https://github.com/kongnet/meeko.git' + cFn()}`)
 module.exports = {
   now,
   json,
