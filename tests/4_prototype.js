@@ -208,8 +208,21 @@ describe('Math扩展函数的单元测试', function () {
   it('stddev', function () {
     assert.strictEqual($.math.stddev([1, 2, 3, 4, 5]), 1.4142135623730951)
   })
-  it('linearFitting', function () {
-    assert.strictEqual(JSON.stringify($.math.linearFitting([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 4, 3, 6, 9, 3, 5, 2, 5])), `{"slope":0.18333333333333332,"intercept":3.305555555555556,"r":0.04426829268292683}`)
+  let rst = $.math.linearFitting([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 4, 3, 6, 9, 3, 5, 2, 5])
+  it(`linearFitting ${rst.f}`, function () {
+    assert.strictEqual(JSON.stringify(rst), `{"a":0.18333333333333332,"b":3.305555555555556,"r":0.04426829268292683,"f":"y=0.1833*x+3.3056 R^2=0.0443"}`)
+  })
+  let rst1 = $.math.exponentFitting([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 4, 3, 6, 9, 3, 5, 2, 5])
+  it(`exponentFitting ${rst1.f}`, function () {
+    assert.strictEqual(JSON.stringify(rst1), `{"a":2.4241733882720133,"b":0.07811356958381002,"r":0.10831424034090119,"f":"y=2.4242*e^(0.0781*x) R^2=0.1083"}`)
+  })
+  let rst2 = $.math.lnFitting([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 4, 3, 6, 9, 3, 5, 2, 5])
+  it(`lnFitting ${rst2.f}`, function () {
+    assert.strictEqual(JSON.stringify(rst2), `{"a":1.224733441070464,"b":2.480130419814377,"r":0.1362718140723164,"f":"y=1.2247*ln(x)+2.4801 R^2=0.1363"}`)
+  })
+  let rst3 = $.math.powerFitting([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 4, 3, 6, 9, 3, 5, 2, 5])
+  it(`powerFitting ${rst3.f}`, function () {
+    assert.strictEqual(JSON.stringify(rst3), `{"a":1.8454140471460965,"b":0.46635474401809107,"r":0.26630441651302567,"f":"y=1.8454*x^0.4664 R^2=0.2663"}`)
   })
 })
 describe('Buffer原型扩展的单元测试', function () {
