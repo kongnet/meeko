@@ -224,6 +224,10 @@ describe('Math扩展函数的单元测试', function () {
   it(`powerFitting ${rst3.f}`, function () {
     assert.strictEqual(JSON.stringify(rst3), `{"a":1.8454140471460965,"b":0.46635474401809107,"r":0.26630441651302567,"f":"y=1.8454*x^0.4664 R^2=0.2663"}`)
   })
+  let rst4 = $.math.pearson([56, 97, 76, 59, 86, 62, 32, 69, 75, 79, 36, 70, 48, 57, 86, 88, 92, 85, 75, 48], [8, 45, 35, 12, 37, 24, 5, 21, 36, 32, 10, 27, 15, 19, 41, 50, 39, 42, 35, 17])
+  it(`pearson相关指数`, function () {
+    assert.strictEqual(rst4.toFixed(3), '0.931')
+  })
 })
 describe('Buffer原型扩展的单元测试', function () {
   it('contact', function () {
