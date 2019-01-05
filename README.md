@@ -7,12 +7,12 @@
 
 [![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/kongnet/meeko)
 
-## 开始你的征途
+## 开始你的征途 Start your way
 ``` js
 let $ = require('meeko')
 ```
-## 数学函数
-``` js
+
+## 数学函数 Math function
 * *intersect (a = [])* 交集
 ``` js
 [1,2,3].intersect([3,4,5]) => [3]
@@ -26,18 +26,13 @@ let $ = require('meeko')
 [1, 2, 3, 4].except([2, 3, 5]) => [1,4]
 [2, 3, 5].except([1, 2, 3, 4]) => [5]
 ```
-* *$.math.linearFitting (x = [],y = [])*    线性拟合
-* *$.math.linearFitting (x = [],y = [])*    线性拟合 y=a*x+b
-* *$.math.exponentFitting (x = [],y = [])*  指数拟合 y=a*e^(b*x)
-* *$.math.lnFitting (x = [],y = [])*        对数拟合 y=a*ln(x)+b
-* *$.math.powerFitting (x = [],y = [])*     幂函数拟合 y=a*x^b
-* *$.math.pearson (x = [],y = [])*          皮尔森相似度
-```
-## 颜色基本函数
-``` js
-$.log($.c.dimr('dimred', backGroundColor[41-47], isUnderline))
-```
-## json color format
+* *$.math.linearFitting (x = [],y = [])* --------线性拟合 y=a*x+b
+* *$.math.exponentFitting (x = [],y = [])* ---指数拟合 y=a*e^(b*x)
+* *$.math.lnFitting (x = [],y = [])* -------------对数拟合 y=a*ln(x)+b
+* *$.math.powerFitting (x = [],y = [])* -------幂函数拟合 y=a*x^b
+* *$.math.pearson (x = [],y = [])* -------------皮尔森相似度
+
+## JSON color format
 ``` js
 * $.dir(object)
 * 内部10行代码实现 注意字符串下标数组无法显示
@@ -45,12 +40,18 @@ $.log($.c.dimr('dimred', backGroundColor[41-47], isUnderline))
 
 ![JSON color format](https://github.com/kongnet/meeko/raw/master/screenShot/jsonFormat.png)
 
-## $.compare
+## 颜色基本函数 Color basic function
 ``` js
-let cnDictObj = {items:[{'name':'a',lev:1},{name:'b',lev:2}]}
-$.log(cnDictObj.items.sort(compare('lev', 'desc'))) //默认升序
+$.log($.c.dimr('dimred', backGroundColor[41-47], isUnderline))
 ```
-## Array原型扩展
+## 日期格式化 Date format
+``` js
+yyyy/YYYY mm/MM ww/WW dd/DD hh/HH mm ss SS(毫秒) q(季度) X(unix秒)
+$.now().format('X')
+```
+
+
+## 原型扩展 Array prototype
 * *remove (idx = 0, len = 1)*
 ``` js
 [1, 2, 3, 4, 5].remove(1,2) => [1,4,5]
@@ -69,45 +70,40 @@ $.log(cnDictObj.items.sort(compare('lev', 'desc'))) //默认升序
 .orderBy(['age'],['asc']) 
 => [{"name":"C","age":26},{"name":"B","age":36},{"name":"A","age":48}] 默认升序
 ```
-## String原型扩展
-* *upperFirst()* 将首字母变成大写,其他小写
-* *String.render(o)* 字符串模板渲染
-* *fillStr(str, len, pos = 1)* 填入什么字符多少位,中文算2个字符,pos 1右面填，-1左面填
+## 原型扩展 String prototype
+* *upperFirst()* ----------------将首字母变成大写,其他小写
+* *String.render(o)* ----------字符串模板渲染
+* *fillStr(str, len, pos = 1)* --填入什么字符多少位,中文算2个字符,pos 1右面填，-1左面填
 
-## Notice
+### Notice
 ``` js
 $.tools.checkParam(obj)
 * obj 如果为日期格式,日期格式为UTC日期
 * 请在前端写入mysql之前 date.date2Str()一下
 * 否则需要主动调用mysql的转换utc时间的函数
 ```
-## 正则发生器
+## 正则发生器 RegExp generator
 ``` js
 r = '(你|我|他)'
 console.log($.reg.gen(r))
 ```
-## 日期格式化
-``` js
-yyyy/YYYY mm/MM ww/WW dd/DD hh/HH mm ss SS(毫秒) q(季度) X(unix秒)
-$.now().format('X')
-```
 ## 路径下所有js文件全加载
 ``` js
-$.requireAll() //加载某个目录下的所有对象，默认 __dirname
+$.requireAll() // 加载某个目录下的所有对象，默认 __dirname
 ```
 ## 分布式雪花碎片算法 每秒可以产生超过200万 不重复id
 ``` js
 new $.Snowflake(workId, dataCenterId, sequence) // 工作进程id ，服务器id，开始序号
 ```
-## pipe 一个函数的输出是另一个函数的输入
+## 一个函数的输出是另一个函数的输入 pipe
 ``` js
- let r = $.pipe(x => x.toUpperCase(), // 单词变大写
-      a => a.split(''), // -----------------分成数组
-      a => a[3], // ------------------------取下标3
-      s => s.charCodeAt(0).toString(16), // 变为16进制
-      s => s.fillStr('0', 4, -1), // -------不足4位部分左边填0
-      s => `\\u${s}` // --------------------转成\uxxxx 形式
-    )('Test') // ----------------------- => \u0054
+ let r = $.pipe(x => x.toUpperCase(), ------单词变大写
+      a => a.split(''), --------------------分成数组
+      a => a[3], ---------------------------取下标3
+      s => s.charCodeAt(0).toString(16), ---变为16进制
+      s => s.fillStr('0', 4, -1), ----------不足4位部分左边填0
+      s => `\\u${s}` -----------------------转成\uxxxx 形式
+    )('Test') ------------------------------ => \u0054
 ```
 ```mermaid
 sequenceDiagram
