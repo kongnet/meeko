@@ -23,14 +23,6 @@ describe('随机数的单元测试', function () {
     assert.strictEqual($.tools.rnd(0, 0), 0)
   })
 })
-describe('utf8 & lzw测试', function () {
-  it('utf8&lzw', function () {
-    assert.strictEqual($.tools.utf8.encode('你好abc'), 'ä½ å¥½abc')
-    assert.strictEqual($.tools.utf8.decode('ä½ å¥½abc'), '你好abc')
-    assert.strictEqual($.tools.lzw.compress($.tools.utf8.encode('你好abc')), 'Ã¤Â½Â Ã¥Âć½abc')
-    assert.strictEqual($.tools.utf8.decode($.tools.lzw.uncompress('Ã¤Â½Â Ã¥Âć½abc')), '你好abc')
-  })
-})
 describe('深copy测试', function () {
   it('deep copy', function () {
     assert.strictEqual($.tools.copy('1'), '1')
@@ -106,6 +98,29 @@ describe('其他函数的单元测试', function () {
     let items = [{ 'name': 'a', lev: 1 }, { name: 'b', lev: 2 }]
     assert.deepStrictEqual(items.sort($.compare('lev', 'desc')), [{ 'name': 'b', lev: 2 }, { name: 'a', lev: 1 }])
     assert.deepStrictEqual(items.sort($.compare('lev')), [{ 'name': 'a', lev: 1 }, { name: 'b', lev: 2 }])
+  })
+  it('utf8&lzw', function () {
+    assert.strictEqual($.tools.utf8.encode('你好abc'), 'ä½ å¥½abc')
+    assert.strictEqual($.tools.utf8.decode('ä½ å¥½abc'), '你好abc')
+    assert.strictEqual($.tools.lzw.compress($.tools.utf8.encode('你好abc')), 'Ã¤Â½Â Ã¥Âć½abc')
+    assert.strictEqual($.tools.utf8.decode($.tools.lzw.uncompress('Ã¤Â½Â Ã¥Âć½abc')), '你好abc')
+  })
+  it('whichNetwork判断手机运营商', function () {
+    assert.strictEqual($.fake.whichNetwork('13052887711'), 1)
+    assert.strictEqual($.fake.whichNetwork('13852887711'), 0)
+    assert.strictEqual($.fake.whichNetwork('19952887711'), 2)
+    assert.strictEqual($.fake.whichNetwork('20052887711'), -1)
+  })
+  it('Snowflake', function () {
+    let tempSnowflake = new $.Snowflake(1, 1, 0)
+    let tempIds = []
+    for (let i = 0; i < 100; i++) {
+      let tempId = tempSnowflake.nextId()
+      if (tempIds.indexOf(tempId) < 0) {
+        tempIds.push(tempId)
+      }
+    }
+    assert.strictEqual(tempIds.length, 100)
   })
 })
 describe('模板引擎单元测试', function () {
@@ -205,24 +220,15 @@ describe('判断类型函数单元测试', function () {
     assert.strictEqual($.tools.isDate('1'), false)
   })
 })
-describe('判断手机运营商', function () {
-  it('whichNetwork', function () {
-    assert.strictEqual($.fake.whichNetwork('13052887711'), 1)
-    assert.strictEqual($.fake.whichNetwork('13852887711'), 0)
-    assert.strictEqual($.fake.whichNetwork('19952887711'), 2)
-    assert.strictEqual($.fake.whichNetwork('20052887711'), -1)
-  })
-})
-describe('Snowflake', function () {
-  it('Snowflake', function () {
-    let tempSnowflake = new $.Snowflake(1, 1, 0)
-    let tempIds = []
-    for (let i = 0; i < 100; i++) {
-      let tempId = tempSnowflake.nextId()
-      if (tempIds.indexOf(tempId) < 0) {
-        tempIds.push(tempId)
-      }
-    }
-    assert.strictEqual(tempIds.length, 100)
+describe('pipe', function () {
+  it('pipe', function () {
+    let r = $.pipe(x => x.toUpperCase(), // 单词变大写
+      a => a.split(''), // -----------------分成数组
+      a => a[3], // ------------------------取下标3
+      s => s.charCodeAt(0).toString(16), // 变为16进制
+      s => s.fillStr('0', 4, -1), // -------不足4位部分左边填0
+      s => `\\u${s}` // --------------------转成\uxxxx 形式
+    )('Test') // ----------------------- => \u0054
+    assert.strictEqual(`\\u0054`, r)
   })
 })
