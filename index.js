@@ -164,7 +164,7 @@ const reg = require('./lib/reg')
 const tpl = require('./lib/tpl')
 const requireAll = require('./lib/requireDir')
 let Snowflake = require('./lib/Snowflake.js')
-
+const pipe = (...funcs) => arg => funcs.reduce((p, fn) => fn(p), arg)
 const json = {
   parse: function (s) { return (Function('return ' + s))() }, // 为了解决key没有双引号
   stringify: JSON.stringify
@@ -172,21 +172,22 @@ const json = {
 const now = () => new Date()
 console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${'\x1b[2;4;32m' + 'https://github.com/kongnet/meeko.git' + cFn()}`)
 module.exports = {
-  now,
-  json,
-  option,
   c,
-  ext,
-  log,
-  err,
-  dir,
-  tools,
-  fake,
-  tpl,
   compare,
-  wait,
+  dir,
+  err,
+  ext,
+  fake,
+  json,
+  log,
   math,
+  now,
+  option,
+  pipe,
   reg,
   requireAll,
-  Snowflake
+  Snowflake,
+  tools,
+  tpl,
+  wait
 }

@@ -80,6 +80,10 @@ describe('String原型扩展的单元测试', function () {
   it('fillStr', function () {
     assert.strictEqual('abaaaa', 'ab'.fillStr('a', 6))
     assert.strictEqual('ab    ', 'ab'.fillStr(' ', 6))
+    assert.strictEqual('ababab', 'ababab'.fillStr(' ', 6))
+    assert.strictEqual('ababab', 'ababab'.fillStr(' ', 6, 1))
+    assert.strictEqual('ababab', 'ababab'.fillStr(' ', 6, -1))
+    assert.strictEqual('00000008', '8'.fillStr('0', 8, -1))
   })
   it('toMoney', function () {
     assert.strictEqual('-9,812,345,678.45678901', '-9812345678.45678901'.toMoney())

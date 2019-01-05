@@ -38,7 +38,7 @@ r = $.requireAll({
 r = $.requireAll({
   dirname: path.join(__dirname, '..', 'lib'),
   filter: function (fileName) {
-    $.log(fileName)
+    // $.log(fileName)
   },
   map: function (name, path) {
     return name.replace(/_([a-z])/g, function (m, c) {
@@ -51,7 +51,10 @@ $.log($.fake.randData(null, 3))
 $.log($.fake.randNum(3))
 $.log($.fake.randStr(3))
 $.log($.fake.randTime('2016-1-1', '2016-2-2'))
-$.log($.fake.randName('2016-1-1', '2016-2-2'))
+$.log($.fake.randName())
+for (let i = 0; i < 10; i++) {
+  $.log(`赵` + $.fake.randSecName())
+}
 $.log($.fake.randColor())
 $.log($.fake.randColor('rgba'))
 $.log($.fake.smallAndNum(3))
