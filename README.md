@@ -51,6 +51,19 @@ $.log(cnDictObj.items.sort(compare('lev', 'desc'))) //默认升序
 .orderBy(['age'],['asc']) 
 => [{"name":"C","age":26},{"name":"B","age":36},{"name":"A","age":48}] 默认升序
 ```
+* *intersect (a = [])* // 交集
+``` js
+[1,2,3].intersect([3,4,5]) => [3]
+```
+* *union (a = [])* // 并集
+``` js
+[1,2,3].union([3,4,5]) => [1,2,3,4,5]
+```
+* *except (a = [])* // AB差集 属于A不属于B BA差集 反之
+``` js
+[1, 2, 3, 4].except([2, 3, 5]) => [1,4]
+[2, 3, 5].except([1, 2, 3, 4]) => [5]
+```
 
 ## String原型扩展
 * *upperFirst()* 将首字母变成大写,其他小写
