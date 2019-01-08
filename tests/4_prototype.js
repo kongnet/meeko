@@ -228,52 +228,6 @@ describe('Array原型扩展的单元测试', function () {
     assert.strictEqual([1, 2, 3, 4, 5].stddev(), 1.4142135623730951)
   })
 })
-describe('Math扩展函数的单元测试', function () {
-  it('num2e', function () {
-    assert.strictEqual($.math.num2e(0.00000129466), '1.2947e-6')
-    assert.strictEqual($.math.num2e(0.00000129466, 1), '1.3e-6')
-  })
-  it('mean', function () {
-    assert.strictEqual($.math.mean([1, 2, 3, 4, 5]), 3)
-  })
-  it('min', function () {
-    assert.strictEqual($.math.min([1, 2, 3, 4, 5]), 1)
-  })
-  it('max', function () {
-    assert.strictEqual($.math.max([1, 2, 3, 4, 5]), 5)
-  })
-  it('median', function () {
-    assert.strictEqual($.math.median([1, 2, 3, 4, 5, 6]), 3.5)
-    assert.strictEqual($.math.median([1, 2, 3, 4, 5]), 3)
-    assert.strictEqual($.math.median([]), 0)
-  })
-  it('variance', function () {
-    assert.strictEqual($.math.variance([1, 2, 3, 4, 5]), 2)
-  })
-  it('stddev', function () {
-    assert.strictEqual($.math.stddev([1, 2, 3, 4, 5]), 1.4142135623730951)
-  })
-  let rst = $.math.linearFitting([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 4, 3, 6, 9, 3, 5, 2, 5])
-  it(`linearFitting ${rst.f}`, function () {
-    assert.strictEqual(JSON.stringify(rst), `{"a":0.18333333333333332,"b":3.305555555555556,"r":0.04426829268292683,"f":"y=0.1833*x+3.3056 R^2=0.0443"}`)
-  })
-  let rst1 = $.math.exponentFitting([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 4, 3, 6, 9, 3, 5, 2, 5])
-  it(`exponentFitting ${rst1.f}`, function () {
-    assert.strictEqual(JSON.stringify(rst1), `{"a":2.4241733882720133,"b":0.07811356958381002,"r":0.10831424034090119,"f":"y=2.4242*e^(0.0781*x) R^2=0.1083"}`)
-  })
-  let rst2 = $.math.lnFitting([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 4, 3, 6, 9, 3, 5, 2, 5])
-  it(`lnFitting ${rst2.f}`, function () {
-    assert.strictEqual(JSON.stringify(rst2), `{"a":1.224733441070464,"b":2.480130419814377,"r":0.1362718140723164,"f":"y=1.2247*ln(x)+2.4801 R^2=0.1363"}`)
-  })
-  let rst3 = $.math.powerFitting([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 4, 3, 6, 9, 3, 5, 2, 5])
-  it(`powerFitting ${rst3.f}`, function () {
-    assert.strictEqual(JSON.stringify(rst3), `{"a":1.8454140471460965,"b":0.46635474401809107,"r":0.26630441651302567,"f":"y=1.8454*x^0.4664 R^2=0.2663"}`)
-  })
-  let rst4 = $.math.pearson([56, 97, 76, 59, 86, 62, 32, 69, 75, 79, 36, 70, 48, 57, 86, 88, 92, 85, 75, 48], [8, 45, 35, 12, 37, 24, 5, 21, 36, 32, 10, 27, 15, 19, 41, 50, 39, 42, 35, 17])
-  it(`pearson相关指数`, function () {
-    assert.strictEqual(rst4.toFixed(3), '0.931')
-  })
-})
 describe('Buffer原型扩展的单元测试', function () {
   it('contact', function () {
     let buf = Buffer.from([1, 2])
