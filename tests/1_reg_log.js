@@ -11,7 +11,7 @@ r = '^-([1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*)$'
 console.log($.reg.gen(r))
 r = ''
 console.log($.reg.gen(r))
-r = '^\\0\\cXabc\\01\\xff\\o\\u0000.[\\b]\\b\\B\\d[0-9]\\D\\f\\n\\r\\s\\S\\t\\v\\w[a-zA-Z0-9]\\W[^a-zA-Z0-9]+\\o.*$'
+r = '^\\0\\cXabc\\01\\xff\\o\u0000.[\\b]\\b\\B\\d[0-9]\\D\\f\\n\\r\\s\\S\\t\\v\\w[a-zA-Z0-9]\\W[^a-zA-Z0-9]+\\o.*$'
 console.log($.reg.gen(r))
 r = '(http|https|ftp|ws|wss):\\/{2}[a-z]+\\.com'
 console.log($.reg.gen(r))
