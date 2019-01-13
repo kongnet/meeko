@@ -49,7 +49,44 @@ $.log($.c.dimr('dimred', backGroundColor[41-47], isUnderline))
 yyyy/YYYY mm/MM ww/WW dd/DD hh/HH mm ss SS(毫秒) q(季度) X(unix秒)
 $.now().format('X')
 ```
+## 基础数据类型判断函数 Data type check
+* *isObj===isObject* 只接受对象型
+* *isStringt* 只接字符型
+``` js
+其他对象会强制转化为String
+注意,不要设置默认值,不是字符串,有长度len判断时会有风险
+```
+* *isBoolean* 只接受布尔型
+* *isBool* 泛布尔型
+``` js
+[0, 1, true, false, '0', '1', 'true', 'false']都可以
+```
+* *isNumber* 只接受浮点型，也不接受{},[]等内部转换
+* *isBigInt* 只接受bigInt型
+* *isArray* 只接受数组t型
+* *isNull* 只接受null型
+* *isUndefined* 只接受undefined型
+* *isRegExp* 只接受正则型
 
+* *isDecimal* 泛浮点型
+``` js
+[null, undefined, 正则, 布尔值, {}, []]不可以
+可以化为数值的字符串 可以, 但类似 '1x' 不可以
+```
+* *isInt 整型 isPInt 正整型 isNInt负整型*
+``` js
+同isDecimal 原则
+```
+* *isDate*
+``` js
+可以化为日期的字符串，日期型都可以。日期型没意义因为初始化就确定时间了,日期字
+符型必须有 “/” 或者 “-”
+#now() 作为默认值代表 当前时间 
+```
+## checkParam
+``` js
+增加 enum类型，def不起作用 size设置不能为空,且为数组
+```
 
 ## 原型扩展 Array prototype
 * *remove (idx = 0, len = 1)*
