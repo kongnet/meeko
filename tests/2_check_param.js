@@ -59,6 +59,11 @@ var b = {
     desc: '节点类型',
     type: 'datetime'
   },
+  datetime1: {
+    desc: '节点类型',
+    type: 'datetime',
+    def: '#now()'
+  },
   d2: {
     desc: '节点类型',
     type: 'd2'
@@ -73,6 +78,16 @@ var b = {
     items: {
       type: 'int'
     }
+  },
+  enum: {
+    desc: '枚举类型',
+    type: 'enum',
+    req: 1,
+    size: [1, '2', 'pedding']
+  },
+  enum1: {
+    desc: '枚举类型',
+    type: 'enum'
   }
 }
 describe('checkParam的单元测试', function () {
@@ -80,82 +95,96 @@ describe('checkParam的单元测试', function () {
   it('int', function * () {
     yield $.tools.wait(1)
     let a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 2
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x'
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: undefined
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: null
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: ''
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 'true'
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 'false'
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: true
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: false
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: -1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 0
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1.9
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -163,6 +192,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -172,6 +202,7 @@ describe('checkParam的单元测试', function () {
   })
   it('string', function () {
     let a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -179,12 +210,14 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -192,6 +225,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -199,6 +233,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -206,6 +241,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -213,6 +249,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -220,6 +257,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -227,6 +265,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -234,6 +273,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -241,6 +281,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -250,6 +291,7 @@ describe('checkParam的单元测试', function () {
   })
   it('string正则测试：url', function () {
     let a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -257,12 +299,14 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -270,6 +314,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -277,6 +322,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -284,6 +330,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -291,6 +338,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -298,6 +346,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -305,6 +354,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -312,6 +362,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -319,6 +370,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -326,6 +378,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -333,6 +386,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -340,6 +394,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -349,6 +404,7 @@ describe('checkParam的单元测试', function () {
   })
   it('bool', function () {
     let a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -356,12 +412,14 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -369,6 +427,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -376,6 +435,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -383,6 +443,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -390,6 +451,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -397,6 +459,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -405,6 +468,7 @@ describe('checkParam的单元测试', function () {
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
 
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -412,6 +476,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -420,6 +485,7 @@ describe('checkParam的单元测试', function () {
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
 
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -427,6 +493,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -435,6 +502,7 @@ describe('checkParam的单元测试', function () {
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
 
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -442,6 +510,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -449,6 +518,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -458,6 +528,7 @@ describe('checkParam的单元测试', function () {
   })
   it('positive', function () {
     let a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -465,6 +536,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -472,12 +544,14 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -485,6 +559,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -492,6 +567,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -499,6 +575,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -506,6 +583,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -513,6 +591,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -520,6 +599,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -527,6 +607,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -534,6 +615,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -543,6 +625,7 @@ describe('checkParam的单元测试', function () {
   })
   it('negative', function () {
     let a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -550,6 +633,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -557,6 +641,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -564,12 +649,14 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -577,6 +664,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -584,6 +672,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -591,6 +680,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -598,6 +688,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -605,6 +696,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -612,6 +704,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -619,6 +712,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -626,6 +720,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -635,6 +730,7 @@ describe('checkParam的单元测试', function () {
   })
   it('number', function () {
     let a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -642,12 +738,14 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -655,6 +753,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -662,6 +761,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -669,6 +769,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -676,6 +777,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -683,6 +785,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -690,6 +793,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -697,6 +801,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -704,6 +809,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -713,6 +819,7 @@ describe('checkParam的单元测试', function () {
   })
   it('datetime', function () {
     let a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -720,12 +827,14 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -733,6 +842,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -740,6 +850,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -747,6 +858,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -754,6 +866,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -761,6 +874,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -768,6 +882,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -775,6 +890,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -782,6 +898,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -789,6 +906,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -796,6 +914,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -803,8 +922,114 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
   })
+  it('datetime1', function () {
+    let a = {
+      enum: 1,
+      name1: 'x',
+      n1: 1,
+      id: 1,
+      datetime1: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: 1,
+      name1: 'x',
+      n1: 1,
+      id: 1
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: 1,
+      name1: 'x',
+      n1: 1,
+      id: 1,
+      datetime1: undefined
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: 1,
+      name1: 'x',
+      n1: 1,
+      id: 1,
+      datetime1: null
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: 1,
+      name1: 'x',
+      n1: 1,
+      id: 1,
+      datetime1: ''
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: 1,
+      name1: 'x',
+      n1: 1,
+      id: 1,
+      datetime1: 'abc'
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: 1,
+      name1: 'x',
+      n1: 1,
+      id: 1,
+      datetime1: true
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: 1,
+      name1: 'x',
+      n1: 1,
+      id: 1,
+      datetime1: false
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: 1,
+      name1: 'x',
+      n1: 1,
+      id: 1,
+      datetime1: -1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: 1,
+      name1: 'x',
+      n1: 1,
+      id: 1,
+      datetime1: 0
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: 1,
+      name1: 'x',
+      n1: 1,
+      id: 1,
+      datetime1: 1.9
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: 1,
+      name1: 'x',
+      n1: 1,
+      id: 1,
+      datetime1: '1999-06-06 12:0:0'
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: 1,
+      name1: 'x',
+      n1: 1,
+      id: 1,
+      datetime1: '2016-01-05T11:22:20.527Z'
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+  })
   it('array1', function () {
     let a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -812,6 +1037,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -819,6 +1045,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -826,6 +1053,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -833,6 +1061,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -840,6 +1069,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -847,6 +1077,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -856,6 +1087,7 @@ describe('checkParam的单元测试', function () {
   })
   it('array1 正向测试', function () {
     let a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -863,6 +1095,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -870,6 +1103,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -877,6 +1111,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -886,6 +1121,7 @@ describe('checkParam的单元测试', function () {
   })
   it('array2', function () {
     let a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -893,12 +1129,14 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -906,6 +1144,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -913,6 +1152,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -920,6 +1160,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -927,6 +1168,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -934,6 +1176,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -941,6 +1184,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -948,6 +1192,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -955,6 +1200,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -962,6 +1208,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -969,6 +1216,7 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
@@ -976,47 +1224,107 @@ describe('checkParam的单元测试', function () {
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       id: 1
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: '',
       id: 1
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       id: 1
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: 0,
       id: 1
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: -0.1,
       id: 1
     }
     assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'x',
       n1: -1.1,
       id: 1
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
     a = {
+      enum: 1,
       name1: 'xcc',
       n1: -0.1,
       id: 1
     }
     assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
   })
-
+  it('enum', function () {
+    let a = {
+      enum: 1,
+      name1: 'x',
+      n1: 1,
+      id: 1
+    }
+    assert.strictEqual(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: '1',
+      name1: 'x',
+      n1: 1,
+      id: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      name1: 'x',
+      n1: 1,
+      id: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: undefined,
+      name1: 'x',
+      n1: 1,
+      id: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: null,
+      name1: 'x',
+      n1: 1,
+      id: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+    a = {
+      enum: NaN,
+      name1: 'x',
+      n1: 1,
+      id: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+  })
+  it('enum1', function () {
+    let a = {
+      enum: 1,
+      enum1: 1,
+      name1: 'x',
+      n1: 1,
+      id: 1
+    }
+    assert.strictEqual(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+  })
   it('default', function () {
     let a = {
+      enum: 1,
       name1: 'x',
       n1: 1,
       id: 1,
