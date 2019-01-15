@@ -7,7 +7,7 @@
 
 [![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/kongnet/meeko)
 
-## 开始你的征途 Start your way
+## 开始你的征途 Start your way :cn:
 ``` js
 let $ = require('meeko')
 ```
@@ -81,7 +81,7 @@ $.now().format('X')
 ``` js
 可以化为日期的字符串，日期型都可以。日期型没意义因为初始化就确定时间了,日期字
 符型必须有 “/” 或者 “-”
-#now() 作为默认值代表 当前时间 
+#now() 作为默认值代表 当前时间
 ```
 ## checkParam
 ``` js
@@ -93,18 +93,18 @@ $.now().format('X')
 ``` js
 [1, 2, 3, 4, 5].remove(1,2) => [1,4,5]
 ```
-* *count()* 
+* *count()*
 ``` js
  ['A', 'B', 'B', 'C', 'A', 'D'].count() => {"A":2,"B":2,"C":1,"D":1}
 ```
-* *flatten()* 
+* *flatten()*
 ``` js
 [1, [2, [3, [4, 5], 6], 7], 8].flatten() => [1,2,3,4,5,6,7,8]
 ```
-* *orderBy()* 
+* *orderBy()*
 ``` js
 [{ name: 'A', age: 48 }, { name: 'B', age: 36 }, { name: 'C', age: 26 }]
-.orderBy(['age'],['asc']) 
+.orderBy(['age'],['asc'])
 => [{"name":"C","age":26},{"name":"B","age":36},{"name":"A","age":48}] 默认升序
 ```
 ## 原型扩展 String prototype
@@ -153,5 +153,6 @@ sequenceDiagram
     Note right of Bot: 人工智能核心代码
     用户B->>Bot: 在吗？
     Bot-->>用户B: 在!
-    Note right of Bot: 去除[啊吗嘛]等<br/>语气助词,?换成! 
+    Note right of Bot: 去除[啊吗嘛]等<br/>语气助词,?换成!
 ```
+
