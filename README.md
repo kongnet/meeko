@@ -7,7 +7,7 @@
 
 [![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/kongnet/meeko)
 
-## 开始你的征途 Start your way :cn:
+## 开始你的征途 Start your way
 ``` js
 let $ = require('meeko')
 ```
@@ -155,4 +155,6 @@ sequenceDiagram
     Bot-->>用户B: 在!
     Note right of Bot: 去除[啊吗嘛]等<br/>语气助词,?换成!
 ```
+
+https://gitmoji.carloscuesta.me/
 
