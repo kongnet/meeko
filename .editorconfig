@@ -1,24 +1,18 @@
-# EditorConfig is awesome: https://EditorConfig.org
-
-# top-most EditorConfig file
+# http://editorconfig.org
 root = true
 
-# Unix-style newlines with a newline ending every file
 [*]
 indent_style = space
 indent_size = 2
 end_of_line = lf
-insert_final_newline = true
 charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
 
-# Matches multiple files with brace expansion notation
-# Set default charset
-[*.{js,py}]
-
-# 4 space indentation
+# Use 4 spaces for the Python files
 [*.py]
 indent_size = 4
 
-# Tab indentation (no size specified)
-[Makefile]
-indent_style = tab
+# The JSON files contain newlines inconsistently
+[*.json]
+insert_final_newline = ignore
