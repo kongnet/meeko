@@ -40,6 +40,14 @@ let $ = require('meeko')
 
 ![JSON color format](https://github.com/kongnet/meeko/raw/master/screenShot/jsonFormat.png)
 
+``` js
+let colWidth = [5, 10, 6]
+let data = [{ id: '1', b: 'aaa', c: 'cccc1' }, { id: '2', b: 'bbb', c: 'cccc2' }, { id: '3', b: 'ccc', c: 'cccc3' }]
+$.drawTable(data, colWidth)
+```
+
+![drawTable](https://github.com/kongnet/meeko/raw/master/screenShot/drawTable.png)
+
 ## 颜色基本函数 Color basic function
 ``` js
 $.log($.c.dimr('dimred', backGroundColor[41-47], isUnderline))

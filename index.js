@@ -170,11 +170,43 @@ const json = {
   stringify: JSON.stringify
 }
 const now = () => new Date()
+// 画字符串表格
+function drawLine (colWidth) {
+  let s = ''
+  for (let i = 0; i < colWidth.length; i++) {
+    s += '+'
+    for (let j = 0; j < colWidth[i]; j++) {
+      s += '-'
+    }
+  }
+  console.log(s + '+')
+}
+function drawTable (data, colWidth) {
+  let len = data.length
+  let s = ''
+  let keys = Object.keys(data[0])
+  let keysLen = keys.length
+  for (let i = 0; i < keysLen; i++) {
+    s += keys[i].fillStr(' ', colWidth[i]) + '|'
+  }
+  drawLine(colWidth)
+  console.log('|' + s.toUpperCase())
+  drawLine(colWidth)
+  for (let i = 0; i < len; i++) {
+    s = ''
+    for (let k = 0; k < keysLen; k++) {
+      s += data[i][keys[k]].fillStr(' ', colWidth[k]) + '|'
+    }
+    console.log('|' + s)
+  }
+  drawLine(colWidth)
+}
 console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${'\x1b[2;4;32m' + 'https://github.com/kongnet/meeko.git' + cFn()}`)
 module.exports = {
   c,
   compare,
   dir,
+  drawTable,
   err,
   ext,
   fake,

@@ -95,6 +95,10 @@ let a = {
   x: 10.8 }
 $.log($.json.parse('{a:1}'))
 $.dir('$.dir(a)', a)
+let colWidth = [5, 10, 6]
+
+let data = [{ id: '1', b: 'aaa', c: 'cccc1' }, { id: '2', b: 'bbb', c: 'cccc2' }, { id: '3', b: 'ccc', c: 'cccc3' }]
+$.drawTable(data, colWidth)
 $.dir('$.now() +$.now()', $.now(), +$.now())
 $.dir($.now().format())
 $.dir([1, 2, 3, 4].shuffle())
