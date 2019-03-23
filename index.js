@@ -181,21 +181,41 @@ function drawLine (colWidth) {
   }
   console.log(s + '+')
 }
-function drawTable (data, colWidth) {
+function drawTable (data, colWidth, option = { color: 0 }) {
   let len = data.length
   let s = ''
   let keys = Object.keys(data[0])
   let keysLen = keys.length
   for (let i = 0; i < keysLen; i++) {
-    s += keys[i].fillStr(' ', colWidth[i]) + '|'
+    if (option.color) {
+      s += c.dimg(keys[i].fillStr(' ', colWidth[i]).toUpperCase()) + '|'
+    } else {
+      s += keys[i].fillStr(' ', colWidth[i]).toUpperCase() + '|'
+    }
   }
   drawLine(colWidth)
-  console.log('|' + s.toUpperCase())
+  console.log('|' + s)
   drawLine(colWidth)
   for (let i = 0; i < len; i++) {
     s = ''
     for (let k = 0; k < keysLen; k++) {
-      s += data[i][keys[k]].fillStr(' ', colWidth[k]) + '|'
+      let v = data[i][keys[k]]
+      let valueType = typeof v
+      v = v + ''
+      if (option.color) {
+        switch (valueType) {
+          case 'number':
+            s += c.dimy(v.fillStr(' ', colWidth[k])) + '|'
+            break
+          case 'boolean':
+            s += c.dimr(v.fillStr(' ', colWidth[k])) + '|'
+            break
+          default:
+            s += c.dimm(v.fillStr(' ', colWidth[k])) + '|'
+        }
+      } else {
+        s += v.fillStr(' ', colWidth[k]) + '|'
+      }
     }
     console.log('|' + s)
   }
