@@ -1,6 +1,6 @@
 /node_modules
 /coverage
 /*.log
-/test.*
+/test*.*
 package-lock.json
 .scannerwork
