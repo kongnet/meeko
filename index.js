@@ -114,7 +114,7 @@ const err = function (...args) {
       str = str + args[i] + ' '
     }
   }
-  trace.err(str + (option.logTime ? s : ''))
+  trace.error(str + (option.logTime ? s : ''))
   return 1
 }
 
