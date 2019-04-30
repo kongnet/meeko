@@ -103,3 +103,13 @@ $.drawTable(data, colWidth, { color: 1 })
 $.dir('$.now() +$.now()', $.now(), +$.now())
 $.dir($.now().format())
 $.dir([1, 2, 3, 4].shuffle())
+
+let spinner = new $.Spinner('dots7')
+spinner.setShowTxt()
+spinner.start()
+spinner.stop()
+spinner.start('dots2')
+setTimeout(() => {
+  spinner.setShowTxt('gogo')
+  spinner.stop()
+}, 200)
