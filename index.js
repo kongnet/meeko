@@ -241,5 +241,6 @@ module.exports = {
   Snowflake,
   tools,
   tpl,
-  wait
+  wait,
+  getStackTrace
 }
