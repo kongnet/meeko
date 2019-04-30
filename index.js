@@ -164,6 +164,7 @@ const reg = require('./lib/reg')
 const tpl = require('./lib/tpl')
 const requireAll = require('./lib/requireDir')
 let Snowflake = require('./lib/Snowflake.js')
+let Spinner = require('./lib/Spinner.js')
 const pipe = (...funcs) => arg => funcs.reduce((p, fn) => fn(p), arg)
 const json = {
   parse: function (s) { return (Function('return ' + s))() }, // 为了解决key没有双引号
@@ -222,6 +223,7 @@ function drawTable (data, colWidth, option = { color: 0 }) {
   drawLine(colWidth)
 }
 console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${'\x1b[2;4;32m' + 'https://github.com/kongnet/meeko.git' + cFn()}`)
+
 module.exports = {
   c,
   compare,
@@ -239,6 +241,7 @@ module.exports = {
   reg,
   requireAll,
   Snowflake,
+  Spinner,
   tools,
   tpl,
   wait,
