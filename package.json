@@ -18,9 +18,9 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "co-mocha": "*",
+    "co-mocha": "^1.2.2",
     "coveralls": "*",
-    "istanbul": "*",
+    "istanbul": "^1.0.0-alpha.2",
     "mocha": "^5.2.0",
     "standard": "*"
   },

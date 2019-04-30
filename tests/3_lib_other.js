@@ -96,8 +96,11 @@ describe('其他函数的单元测试', function () {
   })
   it('compare', function () {
     let items = [{ 'name': 'a', lev: 1 }, { name: 'b', lev: 2 }]
-    assert.deepStrictEqual(items.sort($.compare('lev', 'desc')), [{ 'name': 'b', lev: 2 }, { name: 'a', lev: 1 }])
-    assert.deepStrictEqual(items.sort($.compare('lev')), [{ 'name': 'a', lev: 1 }, { name: 'b', lev: 2 }])
+
+    items.sort($.compare('lev', 'desc'))
+    assert.deepStrictEqual(items, [{ 'name': 'b', lev: 2 }, { name: 'a', lev: 1 }])
+    items.sort($.compare('lev'))
+    assert.deepStrictEqual(items, [{ 'name': 'a', lev: 1 }, { name: 'b', lev: 2 }])
   })
   it('utf8&lzw', function () {
     assert.strictEqual($.tools.utf8.encode('你好abc'), 'ä½ å¥½abc')
@@ -116,6 +119,7 @@ describe('其他函数的单元测试', function () {
     let tempIds = []
     for (let i = 0; i < 100; i++) {
       let tempId = tempSnowflake.nextId()
+      $.log(tempId)
       if (tempIds.indexOf(tempId) < 0) {
         tempIds.push(tempId)
       }
