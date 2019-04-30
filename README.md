@@ -48,6 +48,15 @@ $.drawTable(data, colWidth)
 
 ![drawTable](https://github.com/kongnet/meeko/raw/master/screenShot/drawTable.png)
 
+## 命令行Spinner动画
+``` js
+
+let spinner = new $.Spinner('dots2')
+spinner.start()
+   // '⣾⣽⣻⢿⡿⣟⣯⣷'
+
+
+```
 ## 颜色基本函数 Color basic function
 ``` js
 $.log($.c.dimr('dimred', backGroundColor[41-47], isUnderline))
