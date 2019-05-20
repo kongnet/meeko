@@ -46,6 +46,9 @@ describe('深copy测试', function () {
 })
 describe('timeAgo测试', function () {
   it('timeAgo测试', function () {
+    assert.strictEqual($.tools.timeAgo(1558338047719, 1558338047719), '刚刚')
+    assert.strictEqual($.tools.timeAgo(1558338047710, 1558338047719), '刚刚')
+    assert.strictEqual($.tools.timeAgo(1558338047819, 1558338047710), '刚刚')
     assert.strictEqual($.tools.timeAgo('2016-1-1', '2016-1-1'), '刚刚')
     assert.strictEqual($.tools.timeAgo('2016-1-1', '2017-2-1'), '1年前')
     assert.strictEqual($.tools.timeAgo('2016-1-1', '2016-3-1'), '2个月前')
@@ -117,14 +120,14 @@ describe('其他函数的单元测试', function () {
   it('Snowflake', function () {
     let tempSnowflake = new $.Snowflake(1, 1, 0)
     let tempIds = []
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 10; i++) {
       let tempId = tempSnowflake.nextId()
       $.log(tempId)
       if (tempIds.indexOf(tempId) < 0) {
         tempIds.push(tempId)
       }
     }
-    assert.strictEqual(tempIds.length, 100)
+    assert.strictEqual(tempIds.length, 10)
   })
 })
 describe('模板引擎单元测试', function () {
