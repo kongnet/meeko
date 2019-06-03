@@ -165,6 +165,8 @@ const tpl = require('./lib/tpl')
 const requireAll = require('./lib/requireDir')
 let Snowflake = require('./lib/Snowflake.js')
 let Spinner = require('./lib/Spinner.js')
+let Mock = require('./lib/Mock.js')
+
 const pipe = (...funcs) => arg => funcs.reduce((p, fn) => fn(p), arg)
 const json = {
   parse: function (s) { return (Function('return ' + s))() }, // 为了解决key没有双引号
@@ -235,6 +237,7 @@ module.exports = {
   json,
   log,
   math,
+  Mock,
   now,
   option,
   pipe,

@@ -57,6 +57,23 @@ spinner.start()
 
 
 ```
+## mock扩展
+``` js
+  genDatetime // 产生起始日期-终止日期中间的日期 形式为 YYYY-MM-DD hh:mm:ss genDatetime('2016-1-1' '2016-2-2')
+  genData // 产生 指定字符串中用到的字符 返回指定长度  genData('abcdefghijklmnopqrstuvwxyz',10)
+  genName // 随机返回2-3的人名
+  genCard // 随机返回形式合格的身份码
+  genIp // 随机ip地址
+  genUrl // 随机返回 中间随机长度的 url genUrl(5)
+  genPhone // 随机返回 中国手机号码
+  genColor // 随机范围 hex颜色 和 rgba颜色 genColor('rgba')
+  genWord // 返回指定长度的中文常用字
+  genText // 返回指定长度的随机句子 >10才会有，。 也占1个汉字
+  genConstellation // 随机返回星座
+  genBool // 随机返回0,1`@genBool`
+  genEnum // 随机范围 数组的一个值 genEnum([1,2,3,'5x'])
+```
+
 ## 颜色基本函数 Color basic function
 ``` js
 $.log($.c.dimr('dimred', backGroundColor[41-47], isUnderline))
