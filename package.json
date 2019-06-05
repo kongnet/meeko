@@ -23,7 +23,8 @@
     "coveralls": "*",
     "istanbul": "^1.0.0-alpha.2",
     "mocha": "^5.2.0",
-    "standard": "*"
+    "standard": "*",
+    "mockjs":"*"
   },
   "standard": {
     "globals": [
