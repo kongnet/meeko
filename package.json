@@ -1,6 +1,6 @@
 {
   "name": "meeko",
-  "version": "1.7.51",
+  "version": "1.7.52",
   "description": "meeko自用函数",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "istanbul": "^1.0.0-alpha.2",
     "mocha": "^5.2.0",
     "standard": "*",
-    "mockjs":"*"
+    "mockjs": "*"
   },
   "standard": {
     "globals": [
