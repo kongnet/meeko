@@ -147,6 +147,14 @@ describe('Number原型扩展的单元测试', function () {
   it('round', function () {
     assert.strictEqual(1.123457, 1.123456789.round(6))
     assert.strictEqual(1, 1.123456789.round(0))
+    assert.strictEqual(1, (1.123456789).round(0))
+    assert.strictEqual(1, (1).round(0))
+  })
+  it('isPrime', function () {
+    assert.strictEqual(true, (2).isPrime()) // 9007199254740881 安全数中最大的质数
+    assert.strictEqual(false, (4).isPrime())
+    assert.strictEqual(true, (13).isPrime())
+    assert.strictEqual(false, (15).isPrime())
   })
 })
 describe('Buffer原型扩展的单元测试', function () {

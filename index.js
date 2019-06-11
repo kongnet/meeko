@@ -1,5 +1,4 @@
 /* istanbul ignore next */
-
 'use strict'
 const Pack = require('./package.json')
 function ext (a, b) {
@@ -15,6 +14,8 @@ function ext (a, b) {
 }
 const _s = require('./lib/string')
 ext(String.prototype, _s)
+const _n = require('./lib/number')
+ext(Number.prototype, _n)
 const _d = require('./lib/date')
 ext(Date.prototype, _d)
 const _a = require('./lib/array')
@@ -23,11 +24,6 @@ let option = {
   logTime: true
 }
 
-Number.prototype.round = function (p) {  //eslint-disable-line
-  p = Math.pow(10, p || 0)
-  return Math.round(this * p) / p
-}
-Number.prototype.fillStr = String.prototype.fillStr  //eslint-disable-line
 Date.prototype.fillStr = String.prototype.fillStr  //eslint-disable-line
 Buffer.prototype.contact = function (b) {
   /*
@@ -127,7 +123,11 @@ function strColor (k, v) {
   }
   return v
 }
-
+/**
+ * dir json着色函数.
+ * @param {...*} [...] 任何参数
+ * @return {string} 返回 jsonString
+ */
 const dir = function (...args) {
   for (let i = 0; i < args.length; i++) {
     let ss = JSON.stringify(args[i], strColor, 4)
@@ -184,12 +184,13 @@ function drawLine (colWidth) {
   }
   console.log(s + '+')
 }
-function drawTable (data, colWidth, option = { color: 0 }) {
+function drawTable (data, colWidth = [], option = { color: 0 }) {
   let len = data.length
   let s = ''
   let keys = Object.keys(data[0])
   let keysLen = keys.length
   for (let i = 0; i < keysLen; i++) {
+    colWidth[i] = colWidth[i] || 15 // 默认的列宽为15
     if (option.color) {
       s += c.dimg(keys[i].fillStr(' ', colWidth[i]).toUpperCase()) + '|'
     } else {
@@ -224,9 +225,30 @@ function drawTable (data, colWidth, option = { color: 0 }) {
   }
   drawLine(colWidth)
 }
+/**
+ * benchmark，性能测试函数.
+ * @param {function} fn - 被执行的函数.
+ * @param {number} n - 执行次数.
+ * @return {string} 返回 [函数名] [执行时间] 毫秒 [每毫秒运行次数]/ms [执行次数] 次.
+ * @example
+ * let prime = function () { return (641).isPrime() }
+ * $.benchmark(prime)
+ * // prime     41 毫秒  24390.2439/ms 1e+6 次
+ */
+let benchmark = function (fn = (function () {}), n = 1000000) {
+  let t = Date.now()
+  for (let i = 0; i < n; i++) {
+    fn()
+  }
+  let diffTime = Date.now() - t
+  let spendTime = diffTime + ' 毫秒'
+  let perSec = ((n / diffTime * 10000) / 10000 | 0) + '/ms'
+  console.log(c.y((fn.name || '').fillStr(' ', 15)), spendTime.fillStr(' ', 8), perSec.fillStr(' ', 10), n.toExponential() + ' 次')
+}
 console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${'\x1b[2;4;32m' + 'https://github.com/kongnet/meeko.git' + cFn()}`)
 
 module.exports = {
+  benchmark,
   c,
   compare,
   dir,
