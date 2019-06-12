@@ -8,6 +8,10 @@ let assert = require('assert')
 describe('Array原型扩展的单元测试', function () {
   it('copy', function () {
     assert.strictEqual([1].copy()[0], 1)
+    let a = [0, 1]
+    let b = a.copy()
+    a[0] = 1
+    assert.strictEqual(a[0] !== b[0], true)
   })
   it('count', function () {
     assert.strictEqual(JSON.stringify(['A', 'B', 'B', 'C', 'A', 'D'].count()), '{"A":2,"B":2,"C":1,"D":1}')
