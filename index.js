@@ -235,7 +235,7 @@ function drawTable (data, colWidth = [], option = { color: 0 }) {
  * $.benchmark(prime)
  * // prime     41 毫秒  24390.2439/ms 1e+6 次
  */
-let benchmark = function (fn = (function () {}), n = 1000000) {
+let benchmark = function (fn = (function () {}), msg = '', n = 1000000) {
   let t = Date.now()
   for (let i = 0; i < n; i++) {
     fn()
@@ -243,7 +243,7 @@ let benchmark = function (fn = (function () {}), n = 1000000) {
   let diffTime = Date.now() - t
   let spendTime = diffTime + ' 毫秒'
   let perSec = ((n / diffTime * 10000) / 10000 | 0) + '/ms'
-  console.log(c.y((fn.name || '').fillStr(' ', 15)), spendTime.fillStr(' ', 8), perSec.fillStr(' ', 10), n.toExponential() + ' 次')
+  console.log(c.y((fn.name || '').fillStr(' ', 15)), spendTime.fillStr(' ', 8), perSec.fillStr(' ', 10), n.toExponential() + ' 次', msg)
 }
 console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${'\x1b[2;4;32m' + 'https://github.com/kongnet/meeko.git' + cFn()}`)
 

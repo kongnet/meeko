@@ -101,8 +101,8 @@ $.drawTable(data, colWidth)
 $.drawTable(data, colWidth, { color: 1 })
 let timesFunc = function () { return 'x'.times(100) }
 let repeatFunc = function () { return 'x'.repeat(100) }
-$.benchmark(timesFunc, 10000)
-$.benchmark(repeatFunc, 10000)
+$.benchmark(timesFunc, '', 10000)
+$.benchmark(repeatFunc, '', 10000)
 
 $.dir('$.now() +$.now()', $.now(), +$.now())
 $.dir($.now().format())
