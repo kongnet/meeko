@@ -31,6 +31,7 @@ describe('Date原型扩展的单元测试', function () {
   it('date8', function () {
     assert.strictEqual('20151229', d1.date8())
     assert.strictEqual('20160102', d2.date8())
+    assert.strictEqual('2016-01-02', d2.date8('-'))
   })
   it('dateAdd年', function () {
     assert.strictEqual('2016-12-29 01:11:01', d1.dateAdd('y', 1).date2Str())
@@ -39,10 +40,13 @@ describe('Date原型扩展的单元测试', function () {
   it('dateAdd季度', function () {
     assert.strictEqual('2016-03-29 01:11:01', d1.dateAdd('q', 1).date2Str())
     assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('q', -1).date2Str())
+    assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('q', 0).date2Str())
   })
   it('dateAdd月', function () {
-    assert.strictEqual('2016-01-29 01:11:01', d1.dateAdd('m', 1).date2Str())
-    assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('m', -1).date2Str())
+    assert.strictEqual('2016-01-29 01:11:01', d1.dateAdd('M', 1).date2Str())
+    assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('M', -1).date2Str())
+    assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('M', 0).date2Str())
+    assert.strictEqual('2015-12-29 01:11:01', d1.offset('M', 0).date2Str())
   })
   it('dateAdd周', function () {
     assert.strictEqual('2016-01-05 01:11:01', d1.dateAdd('w', 1).date2Str())
@@ -57,8 +61,8 @@ describe('Date原型扩展的单元测试', function () {
     assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('h', -1).date2Str())
   })
   it('dateAdd分', function () {
-    assert.strictEqual('2015-12-29 01:12:01', d1.dateAdd('n', 1).date2Str())
-    assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('n', -1).date2Str())
+    assert.strictEqual('2015-12-29 01:12:01', d1.dateAdd('m', 1).date2Str())
+    assert.strictEqual('2015-12-29 01:11:01', d1.dateAdd('m', -1).date2Str())
   })
   it('dateAdd秒', function () {
     assert.strictEqual('2015-12-29 01:11:02', d1.dateAdd('s', 1).date2Str())
