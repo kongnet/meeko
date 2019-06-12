@@ -241,8 +241,8 @@ let benchmark = function (fn = (function () {}), msg = '', n = 1000000) {
     fn()
   }
   let diffTime = Date.now() - t
-  let spendTime = diffTime + ' 毫秒'
-  let perSec = ((n / diffTime * 10000) / 10000 | 0) + '/ms'
+  let spendTime = diffTime + ' ms'
+  let perSec = ((n / diffTime * 10000) / 10000 | 0) + ' / ms'
   console.log(c.y((fn.name || '').fillStr(' ', 15)), spendTime.fillStr(' ', 8), perSec.fillStr(' ', 10), n.toExponential() + ' 次', msg)
 }
 console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${'\x1b[2;4;32m' + 'https://github.com/kongnet/meeko.git' + cFn()}`)
