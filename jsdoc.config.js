@@ -2,7 +2,7 @@ module.exports = {
   plugins: [],
   recurseDepth: 10,
   source: {
-    include: ['lib', 'index.js', 'lib/tools'],
+    include: ['lib', 'index.js', 'lib/tools', 'lib/fake'],
     exclude: [ /* array of paths to exclude */ ],
     includePattern: '.+\\.js(doc|x)?$',
     excludePattern: '(^|\\/|\\\\)_'

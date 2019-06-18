@@ -6,12 +6,14 @@
 [![NPM](https://nodei.co/npm/meeko.png?downloads=true&stars=true)](https://nodei.co/npm/meeko/)
 
 [![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/kongnet/meeko)
-
+## 安装
+``` js
+npm i meeko
+```
 ## 开始你的征途 Start your way
 ``` js
 let $ = require('meeko')
 ```
-
 ## 数学函数 Math function
 * *intersect (a = [])* 交集
 ``` js
