@@ -6,6 +6,9 @@ let assert = require('assert')
 
 describe('Math扩展函数的单元测试', () => {
   let a = [2, 1, 8.1, 3, 4, 5.1, 6.7]
+  it('sum', () => {
+    assert.strictEqual($.math.sum(a).toFixed(1), '29.9')
+  })
   it('num2e', () => {
     assert.strictEqual($.math.num2e(0.00000129466), '1.2947e-6')
     assert.strictEqual($.math.num2e(0.00000129466, 1), '1.3e-6')
