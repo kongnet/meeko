@@ -6,6 +6,7 @@
   "scripts": {
     "patch": "git add . && git commit -m:pencil2: && npm version patch && npm publish .",
     "push": "npm version patch && npm publish . && git push",
+    "jsdoc":"jsdoc ./README.md --configure  ./jsdoc.config.js",
     "snazzy": "snazzy *.js ./lib/**/*.js --verbose",
     "testlocal": "standard *.js && istanbul cover ./node_modules/mocha/bin/_mocha -- -r co-mocha --reporter spec --timeout 100000 --recursive tests/",
     "test": "istanbul cover ./node_modules/mocha/bin/_mocha -- -r co-mocha --reporter spec --timeout 100000 --recursive tests/",
@@ -22,9 +23,10 @@
     "co-mocha": "^1.2.2",
     "coveralls": "*",
     "istanbul": "^1.0.0-alpha.2",
+    "minami": "^1.2.3",
     "mocha": "^5.2.0",
-    "standard": "*",
-    "mockjs": "*"
+    "mockjs": "*",
+    "standard": "*"
   },
   "standard": {
     "globals": [
