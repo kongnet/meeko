@@ -6,6 +6,17 @@
 [![NPM](https://nodei.co/npm/meeko.png?downloads=true&stars=true)](https://nodei.co/npm/meeko/)
 
 [![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/kongnet/meeko)
+
+[![meeko](https://img.shields.io/npm/dy/meeko.svg)](https://img.shields.io/npm/dy/meeko.svg)
+[![meeko](https://img.shields.io/npm/l/meeko.svg?style=popout)](https://img.shields.io/npm/l/meeko.svg?style=popout)
+[![meeko](https://img.shields.io/github/package-json/v/kongnet/meeko.svg?style=popout)](https://img.shields.io/github/package-json/v/kongnet/meeko.svg?style=popout)
+[![meeko](https://img.shields.io/github/commit-activity/y/kongnet/meeko.svg?style=popout)](https://img.shields.io/github/commit-activity/y/kongnet/meeko.svg?style=popout)
+
+[![meeko](https://img.shields.io/github/repo-size/kongnet/meeko.svg)](https://img.shields.io/github/repo-size/kongnet/meeko.svg)
+[![meeko](https://img.shields.io/sonar/https/sonarcloud.io/kongnet_meeko/quality_gate.svg)](https://img.shields.io/sonar/https/sonarcloud.io/kongnet_meeko/quality_gate.svg)
+[![meeko](https://img.shields.io/sonar/https/sonarcloud.io/kongnet_meeko/tech_debt.svg)](https://img.shields.io/sonar/https/sonarcloud.io/kongnet_meeko/tech_debt.svg)
+[![meeko](https://img.shields.io/sonar/https/sonarcloud.io/kongnet_meeko/violations.svg?style=popout&format=long)](https://img.shields.io/sonar/https/sonarcloud.io/kongnet_meeko/violations.svg?style=popout&format=long)
+
 ## 安装
 ``` js
 npm i meeko
