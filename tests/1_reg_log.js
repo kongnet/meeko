@@ -40,7 +40,7 @@ r = $.requireAll({
   filter: function (fileName) {
     // $.log(fileName)
   },
-  map: function (name, path) {
+  map: function (name) {
     return name.replace(/_([a-z])/g, function (m, c) {
       return c.toUpperCase()
     })
