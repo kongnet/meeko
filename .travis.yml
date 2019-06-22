@@ -9,3 +9,4 @@ addons:
       secure: "$SONAR_TOKEN"
 after_script:
   - npm run coveralls
+  - sonar-scanner
