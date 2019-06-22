@@ -2,5 +2,11 @@ sudo: false
 language: node_js
 node_js:
   - stable
+addons:
+  sonarcloud:
+    organization: "kongnet-github"
+    token:
+      secure: "1627737bcf3612b907da594cf882dbaa97d6946d"
 after_script:
   - npm run coveralls
+  - sonar-scanner
