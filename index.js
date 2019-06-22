@@ -10,9 +10,9 @@ const Pack = require('./package.json')
  * */
 function ext (a, b) {
   if (a && b) {
-    for (let c in b) {
-      if (b.hasOwnProperty(c)) {
-        a[c] = b[c]
+    for (let item in b) {
+      if (b.hasOwnProperty(item)) {
+        a[item] = b[item]
       }
     }
     return a
@@ -254,9 +254,9 @@ const dir = function (...args) {
  * [{ 'name': 'a', lev: 1 }, { name: 'b', lev: 2 }].sort($.compare('lev', 'desc'))
  * // [{ name: 'b', lev: 2 }, { 'name': 'a', lev: 1 }]
  * */
-function compare (k, dir) {
+function compare (k, order) {
   return function (a, b) {
-    return (dir === 'desc') ? (b[k] - a[k]) : (a[k] - b[k]) // ~~(a[k] < b[k]) : ~~(a[k] > b[k])
+    return (order === 'desc') ? (b[k] - a[k]) : (a[k] - b[k]) // ~~(a[k] < b[k]) : ~~(a[k] > b[k])
   }
 }
 
@@ -348,14 +348,14 @@ function drawLine (colWidth) {
  * |3    |ccc       |cccc3 |
  * +-----+----------+------+
  * */
-function drawTable (data, colWidth = [], option = { color: 0 }) {
+function drawTable (data, colWidth = [], opt = { color: 0 }) {
   let len = data.length
   let s = ''
   let keys = Object.keys(data[0])
   let keysLen = keys.length
   for (let i = 0; i < keysLen; i++) {
     colWidth[i] = colWidth[i] || 15 // 默认的列宽为15
-    if (option.color) {
+    if (opt.color) {
       s += c.dimg(keys[i].fillStr(' ', colWidth[i]).toUpperCase()) + '|'
     } else {
       s += keys[i].fillStr(' ', colWidth[i]).toUpperCase() + '|'
@@ -370,7 +370,7 @@ function drawTable (data, colWidth = [], option = { color: 0 }) {
       let v = data[i][keys[k]]
       let valueType = typeof v
       v = v + ''
-      if (option.color) {
+      if (opt.color) {
         switch (valueType) {
           case 'number':
             s += c.dimy(v.fillStr(' ', colWidth[k])) + '|'
