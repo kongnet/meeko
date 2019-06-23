@@ -13,9 +13,11 @@
 [![meeko](https://img.shields.io/github/commit-activity/y/kongnet/meeko.svg?style=popout)](https://img.shields.io/github/commit-activity/y/kongnet/meeko.svg?style=popout)
 
 [![meeko](https://img.shields.io/github/repo-size/kongnet/meeko.svg)](https://img.shields.io/github/repo-size/kongnet/meeko.svg)
-[![meeko](https://img.shields.io/sonar/https/sonarcloud.io/kongnet_meeko/quality_gate.svg)](https://img.shields.io/sonar/https/sonarcloud.io/kongnet_meeko/quality_gate.svg)
+
 [![meeko](https://img.shields.io/sonar/https/sonarcloud.io/kongnet_meeko/tech_debt.svg)](https://img.shields.io/sonar/https/sonarcloud.io/kongnet_meeko/tech_debt.svg)
 [![meeko](https://img.shields.io/sonar/https/sonarcloud.io/kongnet_meeko/violations.svg?style=popout&format=long)](https://sonarcloud.io/dashboard?id=kongnet_meeko)
+
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=kongnet_meeko)](https://sonarcloud.io/dashboard?id=kongnet_meeko)
 
 ## 安装
 ``` js
