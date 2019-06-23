@@ -23,6 +23,10 @@
 ``` js
 npm i meeko
 ```
+## 全覆盖率测试
+``` js
+npm test
+```
 ## 开始你的征途 Start your way
 ``` js
 let $ = require('meeko')
