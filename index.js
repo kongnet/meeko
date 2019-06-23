@@ -3,73 +3,6 @@
 const Pack = require('./package.json')
 
 /**
- * @description 合并两个对象，与 Object.assign 类似，但只能合并两个
- * @param {object} a a对象，将b对象的可枚举属性复制到此对象，如果a对象已有相同属性，将被覆盖
- * @param {object} b b对象，不会修改此对象
- * @return {object} a对象，此方法并不会生成新对象
- * */
-function ext (a, b) {
-  if (a && b) {
-    for (let item in b) {
-      if (b.hasOwnProperty(item)) {
-        a[item] = b[item]
-      }
-    }
-    return a
-  }
-  return null
-}
-const _s = require('./lib/string')
-ext(String.prototype, _s)
-const _n = require('./lib/number')
-ext(Number.prototype, _n)
-const _d = require('./lib/date')
-ext(Date.prototype, _d)
-const _a = require('./lib/array')
-ext(Array.prototype, _a)
-let option = {
-  logTime: true
-}
-
-/**
- * @memberof Date_prototype#
- * @param {string} str - 填充字符
- * @param {number} len - 总长度
- * @param {number} pos - 1右面，-1左面
- * @description 给日期前后补充字符串
- * @function fillStr
- * @return {string}
- * @example
- * new Date().fillStr('a', 50)
- * // Tue Dec 29 2015 01:11:01 GMT+0800 (中国标准时间)aa
- */
-Date.prototype.fillStr = String.prototype.fillStr  //eslint-disable-line
-
-/**
- * @namespace Buffer_prototype
- * */
-/**
- * @memberof Buffer_prototype#
- * @description 合并两个Buffer
- * @function contact
- * @param {Buffer} b 另一Buffer
- * @return {Buffer}
- * @example
- * Buffer.from('123').contact(Buffer.from('456')).toString()
- * // "123456"
- * */
-Buffer.prototype.contact = function (b) {
-  /*
-  utf8 有bom头
-  EF BB BF [239 187 191]
-  */
-  let buf = Buffer.alloc(this.length + b.length)
-  this.copy(buf, 0, 0, this.length)
-  b.copy(buf, this.length, 0, b.length)
-  return buf
-}
-
-/**
  * 返回控制台颜色包裹体
  * 背景色:                          前景色:
  * 40: 黑                          30: 黑
@@ -164,6 +97,76 @@ const c = {
   dimc (s, bc, u) { return cFn(36, 2, bc, u) + s + cFn() },
   dimw (s, bc, u) { return cFn(37, 2, bc, u) + s + cFn() }
 }
+/**
+ * @description 合并两个对象，与 Object.assign 类似，但只能合并两个
+ * @param {object} a a对象，将b对象的可枚举属性复制到此对象，如果a对象已有相同属性，将被覆盖
+ * @param {object} b b对象，不会修改此对象
+ * @return {object} a对象，此方法并不会生成新对象
+ * */
+function ext (a, b) {
+  if (a && b) {
+    for (let item in b) {
+      if (!a.hasOwnProperty(item)) {
+        a[item] = b[item]
+      } else {
+        console.log(c.g(item),'ESx new method')
+      }
+    }
+    return a
+  }
+  return null
+}
+const _s = require('./lib/string')
+ext(String.prototype, _s)
+const _n = require('./lib/number')
+ext(Number.prototype, _n)
+const _d = require('./lib/date')
+ext(Date.prototype, _d)
+const _a = require('./lib/array')
+ext(Array.prototype, _a)
+let option = {
+  logTime: true
+}
+
+/**
+ * @memberof Date_prototype#
+ * @param {string} str - 填充字符
+ * @param {number} len - 总长度
+ * @param {number} pos - 1右面，-1左面
+ * @description 给日期前后补充字符串
+ * @function fillStr
+ * @return {string}
+ * @example
+ * new Date().fillStr('a', 50)
+ * // Tue Dec 29 2015 01:11:01 GMT+0800 (中国标准时间)aa
+ */
+Date.prototype.fillStr = String.prototype.fillStr  //eslint-disable-line
+
+/**
+ * @namespace Buffer_prototype
+ * */
+/**
+ * @memberof Buffer_prototype#
+ * @description 合并两个Buffer
+ * @function contact
+ * @param {Buffer} b 另一Buffer
+ * @return {Buffer}
+ * @example
+ * Buffer.from('123').contact(Buffer.from('456')).toString()
+ * // "123456"
+ * */
+Buffer.prototype.contact = function (b) {
+  /*
+  utf8 有bom头
+  EF BB BF [239 187 191]
+  */
+  let buf = Buffer.alloc(this.length + b.length)
+  this.copy(buf, 0, 0, this.length)
+  b.copy(buf, this.length, 0, b.length)
+  return buf
+}
+
+
 
 /**
  * 获取错误堆栈跟踪数据
