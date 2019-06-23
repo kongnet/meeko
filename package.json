@@ -1,6 +1,6 @@
 {
   "name": "meeko",
-  "version": "1.7.61",
+  "version": "1.7.62",
   "description": "meeko自用函数",
   "main": "index.js",
   "scripts": {
@@ -61,7 +61,9 @@
       "brace-style": [
         2,
         "1tbs",
-        { "allowSingleLine": true }
+        {
+          "allowSingleLine": true
+        }
       ],
       "quotes": [
         1,
