@@ -109,7 +109,7 @@ function ext (a, b) {
       if (!a.hasOwnProperty(item)) {
         a[item] = b[item]
       } else {
-        console.log(c.g(item),'ESx new method')
+        console.log(c.g(item), 'ESx new method')
       }
     }
     return a
@@ -165,8 +165,6 @@ Buffer.prototype.contact = function (b) {
   b.copy(buf, this.length, 0, b.length)
   return buf
 }
-
-
 
 /**
  * 获取错误堆栈跟踪数据
