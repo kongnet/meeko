@@ -109,7 +109,7 @@ function ext (a, b) {
       if (!a.hasOwnProperty(item)) {
         a[item] = b[item]
       } else {
-        console.log(c.g(item), 'ESx new method')
+        console.log(c.g(item.toUpperCase()), 'ES2015-2020 new method')
       }
     }
     return a
@@ -127,7 +127,12 @@ ext(Array.prototype, _a)
 let option = {
   logTime: true
 }
-
+let _proto_ = {
+  a: _a,
+  d: _d,
+  n: _n,
+  s: _s
+}
 /**
  * @memberof Date_prototype#
  * @param {string} str - 填充字符
@@ -412,8 +417,7 @@ let benchmark = function (fn = (function () {}), msg = '', n = 1000000) {
   console.log(c.y((fn.name || '').fillStr(' ', 15)), spendTime.fillStr(' ', 8), perSec.fillStr(' ', 10), n.toExponential() + ' 次', msg)
 }
 console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${'\x1b[2;4;32m' + 'https://github.com/kongnet/meeko.git' + cFn()}`)
-
-module.exports = {
+let exportObj = {
   benchmark,
   c,
   compare,
@@ -436,5 +440,7 @@ module.exports = {
   tools,
   tpl,
   wait,
-  getStackTrace
+  getStackTrace,
+  _proto_
 }
+module.exports = exportObj
