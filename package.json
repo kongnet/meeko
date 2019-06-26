@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "patch": "git add . && git commit -m:pencil2: && npm version patch && npm publish .",
+    "cz": "git add . && git status && git cz && npm version patch && npm publish .",
     "push": "npm version patch && npm publish . && git push",
     "jsdoc": "jsdoc ./README.md --configure  ./jsdoc.config.js",
     "snazzy": "snazzy *.js ./lib/**/*.js --verbose",
@@ -22,6 +23,7 @@
   "devDependencies": {
     "co-mocha": "^1.2.2",
     "coveralls": "*",
+    "cz-jt": "^0.1.7",
     "istanbul": "^1.0.0-alpha.2",
     "minami": "^1.2.3",
     "mocha": "^5.2.0",
@@ -81,5 +83,10 @@
       ]
     },
     "extends": "eslint:recommended"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-jt"
+    }
   }
 }
