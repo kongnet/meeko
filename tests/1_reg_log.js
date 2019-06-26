@@ -115,7 +115,6 @@ let aggregateCol = ['money', 'id', 'push_uid', 'uid', 'money']
 let aggregateOpt = ['sum', 'count', 'max', 'min', 'avg']
 
 $.dir(o.groupBy(groupCol, aggregateCol, aggregateOpt).orderBy(['source', 'mark'], ['desc', 'asc']))
-
 let spinner = new $.Spinner('dots7')
 let spinner1 = new $.Spinner()
 spinner.setShowTxt()

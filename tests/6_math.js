@@ -43,14 +43,14 @@ describe('Math扩展函数的单元测试', () => {
   it('variance 方差 5.542041', () =>
     assert.strictEqual($.math.variance(a).toFixed(6), '5.542041')
   )
-  it('stddev 标准偏差/标准差/均方差 2.354154 方差开根号', () => {
+  it('stddev 总体标准偏差/标准差/均方差 2.354154 方差开根号', () => {
     assert.strictEqual($.math.stddev(a).toFixed(6), '2.354154')
     assert.strictEqual($.math.stddev([1, 2, 3, 4, 5]), 1.4142135623730951)
   })
-  it('varianceCorrect 更正方差 6.465714 n-1', () =>
+  it('varianceCorrect 样本标准偏差的方差,更正方差 6.465714 n-1', () =>
     assert.strictEqual($.math.varianceCorrect(a).toFixed(6), '6.465714')
   )
-  it('stddevCorrect 更正的标准偏差 2.542777 更正开根号', () =>
+  it('stddevCorrect 样本标准偏差 2.542777 更正开根号', () =>
     assert.strictEqual($.math.stddevCorrect(a).toFixed(6), '2.542777')
   )
   it('mean Deviation 平均偏差 2.024490', () =>
@@ -95,8 +95,8 @@ describe('Math扩展函数的单元测试', () => {
     assert.strictEqual(JSON.stringify(rst3), `{"a":1.8454140471460965,"b":0.46635474401809107,"r":0.26630441651302567,"f":"y=1.8454*x^0.4664 R^2=0.2663"}`)
   )
   let rst4 = $.math.pearson([56, 97, 76, 59, 86, 62, 32, 69, 75, 79, 36, 70, 48, 57, 86, 88, 92, 85, 75, 48], [8, 45, 35, 12, 37, 24, 5, 21, 36, 32, 10, 27, 15, 19, 41, 50, 39, 42, 35, 17])
-  let rst5 = $.math.pearson([2.5,3.5,3.0,3.5,2.5,3.0], [3.0,3.5,1.5,5.0,3.5,3.0])
-  it(`pearson相关指数`, () =>{
+  let rst5 = $.math.pearson([2.5, 3.5, 3.0, 3.5, 2.5, 3.0], [3.0, 3.5, 1.5, 5.0, 3.5, 3.0])
+  it(`pearson相关指数`, () => {
     assert.strictEqual(rst4.toFixed(3), '0.931')
     assert.strictEqual(rst5.toFixed(3), '0.396')
   })
