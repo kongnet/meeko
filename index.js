@@ -20,7 +20,7 @@ const Pack = require('./package.json')
  * @return {string}
  * */
 const cFn = function (s, fc, dimNum, bc, isUnderline) {
-  return `${isUnderline ? '\x1b[4m' : ''}${dimNum ? `\x1b[${dimNum}m` : '\x1b[37m'}${fc ? `\x1b[${fc}m` : '\x1b[37m'}${bc ? `\x1b[${bc}m` : '\x1b[40m'}${s || ''}\x1b[0m`
+  return `${isUnderline ? '\x1b[4m' : ''}${dimNum ? `\x1b[${dimNum}m` : ''}${fc ? `\x1b[${fc}m` : '\x1b[37m'}${bc ? `\x1b[${bc}m` : ''}${s || ''}\x1b[0m`
 }
 
 /**
@@ -67,13 +67,13 @@ const c = {
     return `\x1b[${y};${x};H`
   },
 
-  r (s, bc, u) { return cFn(s, 31, 2, bc, u) },
-  g (s, bc, u) { return cFn(s, 32, 2, bc, u) },
-  y (s, bc, u) { return cFn(s, 33, 2, bc, u) },
-  b (s, bc, u) { return cFn(s, 34, 2, bc, u) },
-  m (s, bc, u) { return cFn(s, 35, 2, bc, u) },
-  c (s, bc, u) { return cFn(s, 36, 2, bc, u) },
-  w (s, bc, u) { return cFn(s, 37, 2, bc, u) },
+  r (s, bc, u) { return cFn(s, 31, 1, bc, u) },
+  g (s, bc, u) { return cFn(s, 32, 1, bc, u) },
+  y (s, bc, u) { return cFn(s, 33, 1, bc, u) },
+  b (s, bc, u) { return cFn(s, 34, 1, bc, u) },
+  m (s, bc, u) { return cFn(s, 35, 1, bc, u) },
+  c (s, bc, u) { return cFn(s, 36, 1, bc, u) },
+  w (s, bc, u) { return cFn(s, 37, 1, bc, u) },
   dimr (s, bc, u) { return cFn(s, 31, 0, bc, u) },
   dimg (s, bc, u) { return cFn(s, 32, 0, bc, u) },
   dimy (s, bc, u) { return cFn(s, 33, 0, bc, u) },
