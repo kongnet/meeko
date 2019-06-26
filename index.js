@@ -19,8 +19,8 @@ const Pack = require('./package.json')
  * @param {boolean} [isUnderline] 是否有下横线
  * @return {string}
  * */
-const cFn = function (fc, dimNum, bc, isUnderline) {
-  return `\x1b[0;${isUnderline ? '4;' : ''}${dimNum ? dimNum + ';' : ''}${bc ? bc + ';' : ''}${fc || ''}m`
+const cFn = function (s, fc, dimNum, bc, isUnderline) {
+  return `${isUnderline ? '\x1b[4m' : ''}${dimNum ? `\x1b[${dimNum}m` : '\x1b[37m'}${fc ? `\x1b[${fc}m` : '\x1b[37m'}${bc ? `\x1b[${bc}m` : '\x1b[40m'}${s || ''}\x1b[0m`
 }
 
 /**
@@ -66,36 +66,21 @@ const c = {
   xy (x, y) {
     return `\x1b[${y};${x};H`
   },
-  none: cFn(),
-  black: cFn(30, 1),
-  red: cFn(31, 1),
-  green: cFn(32, 1),
-  yellow: cFn(33, 1),
-  blue: cFn(34, 1),
-  magenta: cFn(35, 1),
-  cyan: cFn(36, 1),
-  white: cFn(37, 1),
-  dimred: cFn(31, 2),
-  dimgreen: cFn(32, 2),
-  dimyellow: cFn(33, 2),
-  dimblue: cFn(34, 2),
-  dimmagenta: cFn(35, 2),
-  dimcyan: cFn(36, 2),
-  dimwhite: cFn(37, 2),
-  r (s, bc, u) { return cFn(31, 1, bc, u) + s + cFn() },
-  g (s, bc, u) { return cFn(32, 1, bc, u) + s + cFn() },
-  y (s, bc, u) { return cFn(33, 1, bc, u) + s + cFn() },
-  b (s, bc, u) { return cFn(34, 1, bc, u) + s + cFn() },
-  m (s, bc, u) { return cFn(35, 1, bc, u) + s + cFn() },
-  c (s, bc, u) { return cFn(36, 1, bc, u) + s + cFn() },
-  w (s, bc, u) { return cFn(37, 1, bc, u) + s + cFn() },
-  dimr (s, bc, u) { return cFn(31, 2, bc, u) + s + cFn() },
-  dimg (s, bc, u) { return cFn(32, 2, bc, u) + s + cFn() },
-  dimy (s, bc, u) { return cFn(33, 2, bc, u) + s + cFn() },
-  dimb (s, bc, u) { return cFn(34, 2, bc, u) + s + cFn() },
-  dimm (s, bc, u) { return cFn(35, 2, bc, u) + s + cFn() },
-  dimc (s, bc, u) { return cFn(36, 2, bc, u) + s + cFn() },
-  dimw (s, bc, u) { return cFn(37, 2, bc, u) + s + cFn() }
+
+  r (s, bc, u) { return cFn(s, 31, 2, bc, u) },
+  g (s, bc, u) { return cFn(s, 32, 2, bc, u) },
+  y (s, bc, u) { return cFn(s, 33, 2, bc, u) },
+  b (s, bc, u) { return cFn(s, 34, 2, bc, u) },
+  m (s, bc, u) { return cFn(s, 35, 2, bc, u) },
+  c (s, bc, u) { return cFn(s, 36, 2, bc, u) },
+  w (s, bc, u) { return cFn(s, 37, 2, bc, u) },
+  dimr (s, bc, u) { return cFn(s, 31, 0, bc, u) },
+  dimg (s, bc, u) { return cFn(s, 32, 0, bc, u) },
+  dimy (s, bc, u) { return cFn(s, 33, 0, bc, u) },
+  dimb (s, bc, u) { return cFn(s, 34, 0, bc, u) },
+  dimm (s, bc, u) { return cFn(s, 35, 0, bc, u) },
+  dimc (s, bc, u) { return cFn(s, 36, 0, bc, u) },
+  dimw (s, bc, u) { return cFn(s, 37, 0, bc, u) }
 }
 /**
  * @description 合并两个对象，与 Object.assign 类似，但只能合并两个
@@ -189,7 +174,7 @@ const trace = console
  * */
 const log = function (...args) {
   getStackTrace().split('\n')[2].match(re)
-  let s = c.none + ' [' + c.dimgreen + RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']'
+  let s = ' [' + c.dimg(RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '')) + ']'
   let str = ''
   for (let i = 0; i < args.length; i++) {
     if (typeof args[i] === 'object') {
@@ -206,7 +191,7 @@ const log = function (...args) {
  * */
 const err = function (...args) {
   getStackTrace().split('\n')[2].match(re)
-  let s = c.none + ' [' + c.dimred + RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '') + c.none + ']'
+  let s = ' [' + c.dimr(RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '')) + ']'
   let str = ''
   for (let i = 0; i < args.length; i++) {
     if (typeof args[i] === 'object') {
@@ -416,7 +401,7 @@ let benchmark = function (fn = (function () {}), msg = '', n = 1000000) {
   let perSec = ((n / diffTime * 10000) / 10000 | 0) + ' / ms'
   console.log(c.y((fn.name || '').fillStr(' ', 15)), spendTime.fillStr(' ', 8), perSec.fillStr(' ', 10), n.toExponential() + ' 次', msg)
 }
-console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${'\x1b[2;4;32m' + 'https://github.com/kongnet/meeko.git' + cFn()}`)
+console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${c.g('https://github.com/kongnet/meeko.git')}`)
 let exportObj = {
   benchmark,
   c,
