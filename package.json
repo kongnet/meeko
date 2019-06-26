@@ -1,6 +1,6 @@
 {
   "name": "meeko",
-  "version": "1.7.68",
+  "version": "1.7.69",
   "description": "meeko自用函数",
   "main": "index.js",
   "scripts": {
@@ -45,17 +45,16 @@
   },
   "eslintConfig": {
     "parser": "babel-eslint",
-    "plugins": [
-    ],
+    "plugins": [],
     "parserOptions": {
       "ecmaVersion": 2017,
       "sourceType": "module",
       "ecmaFeatures": {
-          "experimentalObjectRestSpread": true,
-          "jsx": true,
-          "modules": true
+        "experimentalObjectRestSpread": true,
+        "jsx": true,
+        "modules": true
       }
-  },
+    },
     "env": {
       "browser": true,
       "node": true,
