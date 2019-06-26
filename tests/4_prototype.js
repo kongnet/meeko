@@ -160,6 +160,13 @@ describe('Number原型扩展的单元测试', function () {
     assert.strictEqual(true, (13).isPrime())
     assert.strictEqual(false, (15).isPrime())
   })
+  it('prettyBytes', function () {
+    assert.strictEqual('1 KB', (1000).prettyBytes())
+    assert.strictEqual('0 B', (0).prettyBytes())
+    assert.strictEqual('0B', (0).prettyBytes(0, false))
+    assert.strictEqual('-27.145 GB', (-27145424323.5821).prettyBytes(5))
+    assert.strictEqual('123MB', (123456789).prettyBytes(3, false))
+  })
 })
 describe('Buffer原型扩展的单元测试', function () {
   it('contact', function () {
