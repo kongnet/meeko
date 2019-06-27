@@ -107,6 +107,8 @@ const _n = require('./lib/number')
 ext(Number.prototype, _n)
 const _d = require('./lib/date')
 ext(Date.prototype, _d)
+const _f = require('./lib/function')
+ext(Function.prototype, _f)
 const _a = require('./lib/array')
 ext(Array.prototype, _a)
 let option = {
