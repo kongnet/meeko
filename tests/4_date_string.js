@@ -2,13 +2,13 @@
 /* global it */
 /* global $ */
 'use strict'
-var $ = require('../index')
+let $ = require('../index')
 let assert = require('assert')
 
 describe('Date原型扩展的单元测试', function () {
-  var d1 = new Date('2015-12-29 01:11:01')
-  var d2 = new Date('2016-01-02 20:09:31')
-  var d3 = new Date('2018-01-01 20:09:31')
+  let d1 = new Date('2015-12-29 01:11:01')
+  let d2 = new Date('2016-01-02 20:09:31')
+  let d3 = new Date('2018-01-01 20:09:31')
   it('getWeek', function () {
     assert.strictEqual(52, d1.getWeek())
     assert.strictEqual(52, d2.getWeek())
@@ -145,33 +145,5 @@ describe('String原型扩展的单元测试', function () {
   it('tc', function () {
     assert.strictEqual('ab c', 'ab'.tc('c'))
     assert.strictEqual('ab', 'ab c'.tc('c'))
-  })
-})
-describe('Number原型扩展的单元测试', function () {
-  it('round', function () {
-    assert.strictEqual(1.123457, 1.123456789.round(6))
-    assert.strictEqual(1, 1.123456789.round(0))
-    assert.strictEqual(1, (1.123456789).round(0))
-    assert.strictEqual(1, (1).round(0))
-  })
-  it('isPrime', function () {
-    assert.strictEqual(true, (2).isPrime()) // 9007199254740881 安全数中最大的质数
-    assert.strictEqual(false, (4).isPrime())
-    assert.strictEqual(true, (13).isPrime())
-    assert.strictEqual(false, (15).isPrime())
-  })
-  it('prettyBytes', function () {
-    assert.strictEqual('1 KB', (1000).prettyBytes())
-    assert.strictEqual('0 B', (0).prettyBytes())
-    assert.strictEqual('0B', (0).prettyBytes(0, false))
-    assert.strictEqual('-27.145 GB', (-27145424323.5821).prettyBytes(5))
-    assert.strictEqual('123MB', (123456789).prettyBytes(3, false))
-  })
-})
-describe('Buffer原型扩展的单元测试', function () {
-  it('contact', function () {
-    let buf = Buffer.from([1, 2])
-    let buf1 = buf.contact(Buffer.from([3, 4]))
-    assert.strictEqual(3, buf1[2])
   })
 })

@@ -1,8 +1,7 @@
 /* global describe */
 /* global it */
-/* global $ */
 'use strict'
-var $ = require('../index')
+let $ = require('../index')
 let assert = require('assert')
 
 describe('Array原型扩展的单元测试', function () {

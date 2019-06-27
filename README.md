@@ -19,6 +19,8 @@
 
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=kongnet_meeko)](https://sonarcloud.io/dashboard?id=kongnet_meeko)
 
+> 贡献者 TouchTheTop 、haua
+
 ## 安装
 ``` js
 npm i meeko
