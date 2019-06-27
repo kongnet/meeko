@@ -319,7 +319,9 @@ function drawLine (colWidth) {
       s += '-'
     }
   }
-  console.log(s + '+')
+  let r = s + '+'
+  console.log(r)
+  return r + '\n'
 }
 
 /**
@@ -344,6 +346,7 @@ function drawLine (colWidth) {
 function drawTable (data, colWidth = [], opt = { color: 0 }) {
   let len = data.length
   let s = ''
+  let allStr = ''
   let keys = Object.keys(data[0])
   let keysLen = keys.length
   for (let i = 0; i < keysLen; i++) {
@@ -354,9 +357,10 @@ function drawTable (data, colWidth = [], opt = { color: 0 }) {
       s += keys[i].fillStr(' ', colWidth[i]).toUpperCase() + '|'
     }
   }
-  drawLine(colWidth)
+  allStr += drawLine(colWidth)
   console.log('|' + s)
-  drawLine(colWidth)
+  allStr += '|' + s + '\n'
+  allStr += drawLine(colWidth)
   for (let i = 0; i < len; i++) {
     s = ''
     for (let k = 0; k < keysLen; k++) {
@@ -379,8 +383,10 @@ function drawTable (data, colWidth = [], opt = { color: 0 }) {
       }
     }
     console.log('|' + s)
+    allStr += '|' + s + '\n'
   }
-  drawLine(colWidth)
+  allStr += drawLine(colWidth)
+  return allStr
 }
 
 /**
