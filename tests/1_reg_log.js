@@ -127,12 +127,12 @@ spinner1.start()
 spinner.stop()
 spinner.start('dots2')
 setTimeout(() => {
+  waitNotEmptyObj.x = 1
   spinner.setShowTxt('gogo')
   spinner.stop()
   spinner1.stop()
 }, 200)
 
-waitNotEmptyObj.x = 1
 async function waitNotEmptyFunc () {
   await $.tools.waitNotEmpty(waitNotEmptyObj, 'x', function () {})
 }
