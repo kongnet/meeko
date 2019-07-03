@@ -22,9 +22,12 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "babel-eslint": "^10.0.2",
+    "cc-jt": "^0.1.1",
     "co-mocha": "^1.2.2",
     "coveralls": "*",
     "cz-jt": "^0.1.7",
+    "eslint": "^6.0.1",
     "istanbul": "^1.0.0-alpha.2",
     "minami": "^1.2.3",
     "mocha": "^5.2.0",
@@ -81,10 +84,7 @@
         1,
         "single"
       ],
-      "semi": [
-        0,
-        "always"
-      ],
+      "semi": 0,
       "space-infix-ops": 1,
       "no-console": 0,
       "complexity": [
