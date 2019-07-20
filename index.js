@@ -90,11 +90,11 @@ const c = {
  * */
 function ext (a, b) {
   if (a && b) {
-    for (let item in b) {
+    for (const item in b) {
       if (!a.hasOwnProperty(item)) {
         a[item] = b[item]
       } else {
-        console.log(c.g(item.toUpperCase()), 'ES2015-2020 new method')
+        // console.log(c.g(item.toUpperCase()), 'ES2015-2020 new method')
       }
     }
     return a
@@ -120,7 +120,7 @@ _proto_ = {
   s: _s
 }
 
-let option = {
+const option = {
   logTime: true
 }
 
@@ -156,7 +156,7 @@ Buffer.prototype.contact = function (b) {
   utf8 有bom头
   EF BB BF [239 187 191]
   */
-  let buf = Buffer.alloc(this.length + b.length)
+  const buf = Buffer.alloc(this.length + b.length)
   this.copy(buf, 0, 0, this.length)
   b.copy(buf, this.length, 0, b.length)
   return buf
@@ -167,11 +167,11 @@ Buffer.prototype.contact = function (b) {
  * @return string
  * */
 const getStackTrace = function () {
-  let obj = {}
+  const obj = {}
   Error.captureStackTrace(obj, getStackTrace)
   return obj.stack
 }
-let os = process.platform
+const os = process.platform
 const re = os.includes('win32') ? /\\(.+)\.js:(\d+:\d+)/g : /\/(.+)\.js:(\d+:\d+)/g
 const trace = console
 
@@ -180,7 +180,7 @@ const trace = console
  * */
 const log = function (...args) {
   getStackTrace().split('\n')[2].match(re)
-  let s = ' [' + c.dimg(RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '')) + ']'
+  const s = ' [' + c.dimg(RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '')) + ']'
   let str = ''
   for (let i = 0; i < args.length; i++) {
     if (typeof args[i] === 'object') {
@@ -197,7 +197,7 @@ const log = function (...args) {
  * */
 const err = function (...args) {
   getStackTrace().split('\n')[2].match(re)
-  let s = ' [' + c.dimr(RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '')) + ']'
+  const s = ' [' + c.dimr(RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '')) + ']'
   let str = ''
   for (let i = 0; i < args.length; i++) {
     if (typeof args[i] === 'object') {
@@ -278,9 +278,9 @@ const fake = require('./lib/fake')
 const reg = require('./lib/reg')
 const tpl = require('./lib/tpl')
 const requireAll = require('./lib/requireDir')
-let Snowflake = require('./lib/Snowflake.js')
-let Spinner = require('./lib/Spinner.js')
-let Mock = require('./lib/Mock.js')
+const Snowflake = require('./lib/Snowflake.js')
+const Spinner = require('./lib/Spinner.js')
+const Mock = require('./lib/Mock.js')
 
 /**
  * 把数组里的函数挨个执行，并且把前面函数的返回值传给下一个函数
@@ -323,7 +323,7 @@ function drawLine (colWidth) {
       s += '-'
     }
   }
-  let r = s + '+'
+  const r = s + '+'
   console.log(r)
   return r + '\n'
 }
@@ -348,11 +348,11 @@ function drawLine (colWidth) {
  * +-----+----------+------+
  * */
 function drawTable (data, colWidth = [], opt = { color: 0 }) {
-  let len = data.length
+  const len = data.length
   let s = ''
   let allStr = ''
-  let keys = Object.keys(data[0])
-  let keysLen = keys.length
+  const keys = Object.keys(data[0])
+  const keysLen = keys.length
   for (let i = 0; i < keysLen; i++) {
     colWidth[i] = colWidth[i] || 15 // 默认的列宽为15
     if (opt.color) {
@@ -369,7 +369,7 @@ function drawTable (data, colWidth = [], opt = { color: 0 }) {
     s = ''
     for (let k = 0; k < keysLen; k++) {
       let v = data[i][keys[k]]
-      let valueType = typeof v
+      const valueType = typeof v
       v = v + ''
       if (opt.color) {
         switch (valueType) {
@@ -403,18 +403,18 @@ function drawTable (data, colWidth = [], opt = { color: 0 }) {
  * $.benchmark(prime)
  * // prime     41 毫秒  24390.2439/ms 1e+6 次
  */
-let benchmark = function (fn = (function () {}), msg = '', n = 1000000) {
-  let t = Date.now()
+const benchmark = function (fn = (function () {}), msg = '', n = 1000000) {
+  const t = Date.now()
   for (let i = 0; i < n; i++) {
     fn()
   }
-  let diffTime = Date.now() - t
-  let spendTime = diffTime + ' ms'
-  let perSec = ((n / diffTime * 10000) / 10000 | 0) + ' / ms'
+  const diffTime = Date.now() - t
+  const spendTime = diffTime + ' ms'
+  const perSec = ((n / diffTime * 10000) / 10000 | 0) + ' / ms'
   console.log(c.y((fn.name || '').fillStr(' ', 15)), spendTime.fillStr(' ', 8), perSec.fillStr(' ', 10), n.toExponential() + ' 次', msg)
 }
 console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${c.g('https://github.com/kongnet/meeko.git')}`)
-let exportObj = {
+const exportObj = {
   benchmark,
   c,
   compare,
