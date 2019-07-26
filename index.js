@@ -405,7 +405,8 @@ function drawTable (data, colWidth = [], opt = { color: 0 }) {
             s += c.dimm(v.fillStr(' ', colWidth[k])) + '|'
         }
       } else {
-        s += v.fillStr(' ', colWidth[k]) + '|'
+        const diffLen = (/\u001b\[(?:\d*){0,5}\d*m/g).test(v) ? 13 : 0
+        s += v.fillStr(' ', colWidth[k] + diffLen) + '|'
       }
     }
     console.log('|' + s)

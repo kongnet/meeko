@@ -28,12 +28,13 @@
     "coveralls": "*",
     "cz-jt": "^0.1.7",
     "eslint": "^6.0.1",
+    "eslint-plugin-react": "^7.14.3",
     "istanbul": "^1.0.0-alpha.2",
     "minami": "^1.2.3",
     "mocha": "^5.2.0",
     "mochawesome": "^4.0.1",
     "mockjs": "*",
-    "standard": "*"
+    "standard": "^13.1.0"
   },
   "standard": {
     "globals": [
