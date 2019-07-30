@@ -21,10 +21,15 @@ const Pack = require('./package.json')
  * */
 
 const cFn = function (s, fc, dimNum, bc, isUnderline) {
-  return `${isUnderline ? '\x1b[4m' : ''}${dimNum ? `\x1b[${dimNum}m` : ''}${fc ? `\x1b[${fc}m` : '\x1b[37m'}${bc ? `\x1b[${bc}m` : ''}${s || ''}\x1b[0m`
+  return `${isUnderline ? '\x1b[4m' : ''}${dimNum ? `\x1b[2m` : ''}${fc ? `\x1b[${fc}m` : '\x1b[37m'}${bc ? `\x1b[${bc}m` : ''}${s || ''}\x1b[0m`
 }
 
 /**
+ *  0  All attributes off		5  Blink
+		1  Bold				7  Reverse Video
+		2  Dim				8  Invisible
+		4  Underline
+
  * @description 控制台控制以及颜色输出
  * @prop {string} [cls] 把光标位置设到0,0，并清屏
  * @prop {function} [xy] 设置光标位置 $.c.xy(0,0)
@@ -71,20 +76,20 @@ const c = {
     return `\x1b[${y};${x};H`
   },
 
-  r (s, bc, u) { return cFn(s, 31, 1, bc, u) },
-  g (s, bc, u) { return cFn(s, 32, 1, bc, u) },
-  y (s, bc, u) { return cFn(s, 33, 1, bc, u) },
-  b (s, bc, u) { return cFn(s, 34, 1, bc, u) },
-  m (s, bc, u) { return cFn(s, 35, 1, bc, u) },
-  c (s, bc, u) { return cFn(s, 36, 1, bc, u) },
-  w (s, bc, u) { return cFn(s, 37, 1, bc, u) },
-  dimr (s, bc, u) { return cFn(s, 31, 0, bc, u) },
-  dimg (s, bc, u) { return cFn(s, 32, 0, bc, u) },
-  dimy (s, bc, u) { return cFn(s, 33, 0, bc, u) },
-  dimb (s, bc, u) { return cFn(s, 34, 0, bc, u) },
-  dimm (s, bc, u) { return cFn(s, 35, 0, bc, u) },
-  dimc (s, bc, u) { return cFn(s, 36, 0, bc, u) },
-  dimw (s, bc, u) { return cFn(s, 37, 0, bc, u) }
+  r (s, bc, u) { return cFn(s, 31, 0, bc, u) },
+  g (s, bc, u) { return cFn(s, 32, 0, bc, u) },
+  y (s, bc, u) { return cFn(s, 33, 0, bc, u) },
+  b (s, bc, u) { return cFn(s, 34, 0, bc, u) },
+  m (s, bc, u) { return cFn(s, 35, 0, bc, u) },
+  c (s, bc, u) { return cFn(s, 36, 0, bc, u) },
+  w (s, bc, u) { return cFn(s, 37, 0, bc, u) },
+  dimr (s, bc, u) { return cFn(s, 31, 1, bc, u) },
+  dimg (s, bc, u) { return cFn(s, 32, 1, bc, u) },
+  dimy (s, bc, u) { return cFn(s, 33, 1, bc, u) },
+  dimb (s, bc, u) { return cFn(s, 34, 1, bc, u) },
+  dimm (s, bc, u) { return cFn(s, 35, 1, bc, u) },
+  dimc (s, bc, u) { return cFn(s, 36, 1, bc, u) },
+  dimw (s, bc, u) { return cFn(s, 37, 1, bc, u) }
 }
 
 /**
