@@ -1,6 +1,6 @@
 {
   "name": "meeko",
-  "version": "1.7.88",
+  "version": "1.7.89",
   "description": "meeko自用函数",
   "main": "index.js",
   "scripts": {
@@ -20,8 +20,7 @@
   },
   "author": "Kongnet <9601698@qq.com>",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-eslint": "^10.0.2",
     "cc-jt": "^0.1.1",
