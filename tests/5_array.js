@@ -1,17 +1,21 @@
 /* global describe */
 /* global it */
 'use strict'
-let $ = require('../index')
-let assert = require('assert')
-let assertLog = function () {
+const $ = require('../index')
+const assert = require('assert')
+const assertLog = function () {
   global.assertCount++
   return assert.strictEqual(...arguments)
 }
 describe('Array原型扩展的单元测试', function () {
+  it('pick', function () {
+    assertLog([1].pick(), 1)
+    assertLog([1, 2].includes([1, 2].pick()), true)
+  })
   it('copy', function () {
     assertLog([1].copy()[0], 1)
-    let a = [0, 1]
-    let b = a.copy()
+    const a = [0, 1]
+    const b = a.copy()
     a[0] = 1
     assertLog(a[0] !== b[0], true)
   })
@@ -42,12 +46,12 @@ describe('Array原型扩展的单元测试', function () {
     assertLog(r, true)
   })
   it('unique', function () {
-    let r = [undefined, null, 1, 1, '1', '1', null, undefined, NaN, NaN].unique()
-    assertLog(r.equals([ undefined, null, 1, '1', NaN ]), true) // 用JSON.stringify 会错误
+    const r = [undefined, null, 1, 1, '1', '1', null, undefined, NaN, NaN].unique()
+    assertLog(r.equals([undefined, null, 1, '1', NaN]), true) // 用JSON.stringify 会错误
   })
   it('intersect', function () {
     let r = [undefined, true, null, 1, 1, false, '1', '1', null, 'undefined', NaN, NaN].intersect([1, '1', 'undefined', undefined, 2, '5', true, null, false, NaN])
-    assertLog(r.equals([ undefined, true, null, 1, false, '1', 'undefined', NaN ]), true)
+    assertLog(r.equals([undefined, true, null, 1, false, '1', 'undefined', NaN]), true)
     r = [undefined, true, null, 1, 1, false, '1', '1', null, 'undefined', NaN, NaN].intersect()
     assertLog(r.equals([]), true)
     r = [1, 2, 3].intersect([3, 4, 5])
@@ -55,7 +59,7 @@ describe('Array原型扩展的单元测试', function () {
   })
   it('union', function () {
     let r = [undefined, true, null, 1, 1, '1', '1', null, 'undefined', NaN, NaN].union([1, '1', 'undefined', undefined, 2, '5', true, null])
-    assertLog(r.equals([ undefined, true, null, 1, '1', 'undefined', NaN, 2, '5' ]), true)
+    assertLog(r.equals([undefined, true, null, 1, '1', 'undefined', NaN, 2, '5']), true)
     r = [undefined, true, null, 1, 1, '1', '1', null, 'undefined', NaN, NaN].union()
     assertLog(r.equals([undefined, true, null, 1, '1', 'undefined', NaN]), true)
     r = [1, 2, 3].union([3, 4, 5])

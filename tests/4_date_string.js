@@ -2,16 +2,16 @@
 /* global it */
 /* global $ */
 'use strict'
-let $ = require('../index')
-let assert = require('assert')
-let assertLog = function () {
+const $ = require('../index')
+const assert = require('assert')
+const assertLog = function () {
   global.assertCount++
   return assert.strictEqual(...arguments)
 }
 describe('Date原型扩展的单元测试', function () {
-  let d1 = new Date('2015-12-29 01:11:01')
-  let d2 = new Date('2016-01-02 20:09:31')
-  let d3 = new Date('2018-01-01 20:09:31')
+  const d1 = new Date('2015-12-29 01:11:01')
+  const d2 = new Date('2016-01-02 20:09:31')
+  const d3 = new Date('2018-01-01 20:09:31')
   it('getWeek', function () {
     assertLog(52, d1.getWeek())
     assertLog(52, d2.getWeek())
