@@ -21,7 +21,7 @@ const Pack = require('./package.json')
  * */
 
 const cFn = function (s, fc, dimNum, bc, isUnderline) {
-  return `${isUnderline ? '\x1b[4m' : ''}${dimNum ? `\x1b[2m` : ''}${fc ? `\x1b[${fc}m` : '\x1b[37m'}${bc ? `\x1b[${bc}m` : ''}${s || ''}\x1b[0m`
+  return `${isUnderline ? '\x1b[4m' : ''}${dimNum ? '\x1b[2m' : ''}${fc ? `\x1b[${fc}m` : '\x1b[37m'}${bc ? `\x1b[${bc}m` : ''}${s || ''}\x1b[0m`
 }
 
 /**
