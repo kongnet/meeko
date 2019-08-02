@@ -444,6 +444,7 @@ const benchmark = function (fn = (function () { /* do nothing */ }), msg = '', n
 }
 console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${c.g('https://github.com/kongnet/meeko.git')}`)
 const exportObj = {
+  tools,
   benchmark,
   c,
   compare,
@@ -463,7 +464,6 @@ const exportObj = {
   requireAll,
   Snowflake,
   Spinner,
-  tools,
   tpl,
   wait,
   getStackTrace,

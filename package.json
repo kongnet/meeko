@@ -24,6 +24,7 @@
   "devDependencies": {
     "babel-eslint": "^10.0.2",
     "cc-jt": "^0.1.1",
+    "chai": "^4.2.0",
     "co-mocha": "^1.2.2",
     "coveralls": "*",
     "cz-jt": "^0.1.7",
