@@ -2,7 +2,8 @@
 'use strict'
 const Pack = require('./package.json')
 
-/**
+const cFn = function cFn (s, fc, dimNum, bc, isUnderline) {
+  /**
  * 返回控制台颜色包裹体
  * 背景色:                          前景色:
  * 40: 黑                          30: 黑
@@ -19,16 +20,14 @@ const Pack = require('./package.json')
  * @param {boolean} [isUnderline] 是否有下横线
  * @return {string}
  * */
-
-const cFn = function (s, fc, dimNum, bc, isUnderline) {
   return `${isUnderline ? '\x1b[4m' : ''}${dimNum ? '\x1b[2m' : ''}${fc ? `\x1b[${fc}m` : '\x1b[37m'}${bc ? `\x1b[${bc}m` : ''}${s || ''}\x1b[0m`
 }
 
 /**
- *  0  All attributes off		5  Blink
-		1  Bold				7  Reverse Video
-		2  Dim				8  Invisible
-		4  Underline
+ *  0  All attributes off  5  Blink
+    1  Bold   7  Reverse Video
+    2  Dim    8  Invisible
+    4  Underline
 
  * @description 控制台控制以及颜色输出
  * @prop {string} [cls] 把光标位置设到0,0，并清屏
@@ -193,7 +192,7 @@ const trace = console
  * @param {...mixed[]} args 要打印的参数
  * */
 
-const log = function (...args) {
+const log = function log (...args) {
   getStackTrace().split('\n')[2].match(re)
   const s = ' [' + c.dimg(RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str()
     .replaceAll('-', '')) + ']'
@@ -213,7 +212,7 @@ const log = function (...args) {
  * @param {...mixed[]} args 要打印的参数
  * */
 
-const err = function (...args) {
+const err = function err (...args) {
   getStackTrace().split('\n')[2].match(re)
   const s = ' [' + c.dimr(RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str()
     .replaceAll('-', '')) + ']'
@@ -244,7 +243,7 @@ function strColor (k, v) {
  * @param {...array<mixed>} args 任何参数
  */
 
-const dir = function (...args) {
+const dir = function dir (...args) {
   for (let i = 0; i < args.length; i++) {
     let ss = JSON.stringify(args[i], strColor, 4)
     ss = ss.replaceAll('"#cyan#', c.cyan)
@@ -432,7 +431,7 @@ function drawTable (data, colWidth = [], opt = { color: 0 }) {
  * // prime     41 毫秒  24390.2439/ms 1e+6 次
  */
 
-const benchmark = function (fn = (function () { /* do nothing */ }), msg = '', n = 1000000) {
+const benchmark = function benchmark (fn = (function () { /* do nothing */ }), msg = '', n = 1000000) {
   const t = Date.now()
   for (let i = 0; i < n; i++) {
     fn()
@@ -444,7 +443,7 @@ const benchmark = function (fn = (function () { /* do nothing */ }), msg = '', n
 }
 console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${c.g('https://github.com/kongnet/meeko.git')}`)
 const exportObj = {
-  tools,
+  _proto_,
   benchmark,
   c,
   compare,
@@ -453,6 +452,7 @@ const exportObj = {
   err,
   ext,
   fake,
+  getStackTrace,
   json,
   log,
   math,
@@ -464,9 +464,8 @@ const exportObj = {
   requireAll,
   Snowflake,
   Spinner,
+  tools,
   tpl,
-  wait,
-  getStackTrace,
-  _proto_
+  wait
 }
 module.exports = exportObj
