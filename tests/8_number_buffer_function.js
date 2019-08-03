@@ -2,8 +2,8 @@
 /* global it */
 'use strict'
 const $ = require('../index')
-let assert = require('assert')
-let assertLog = function () {
+const assert = require('assert')
+const assertLog = function () {
   global.assertCount++
   return assert.strictEqual(...arguments)
 }
@@ -30,14 +30,14 @@ describe('Number原型扩展的单元测试', function () {
 })
 describe('Buffer原型扩展的单元测试', function () {
   it('contact', function () {
-    let buf = Buffer.from([1, 2])
-    let buf1 = buf.contact(Buffer.from([3, 4]))
+    const buf = Buffer.from([1, 2])
+    const buf1 = buf.contact(Buffer.from([3, 4]))
     assertLog(3, buf1[2])
   })
 })
 describe('Function原型扩展的单元测试', function () {
   it('help', function () {
-    let func = function () {
+    const func = function () {
       /* abc */
     }
     assertLog('abc', func.help())

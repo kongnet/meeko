@@ -3,8 +3,8 @@
 'use strict'
 global.assertCount = 0
 var $ = require('../index')
-let assert = require('assert')
-let assertLog = function () {
+const assert = require('assert')
+const assertLog = function () {
   global.assertCount++
   return assert.strictEqual(...arguments)
 }
@@ -1318,7 +1318,7 @@ describe('checkParam的单元测试', function () {
     assertLog(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
   })
   it('enum1', function () {
-    let a = {
+    const a = {
       enum: 1,
       enum1: 1,
       name1: 'x',
@@ -1328,7 +1328,7 @@ describe('checkParam的单元测试', function () {
     assertLog(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
   })
   it('default', function () {
-    let a = {
+    const a = {
       enum: 1,
       name1: 'x',
       n1: 1,
