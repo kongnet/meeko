@@ -13,10 +13,10 @@ module.exports = {
     dictionaries: ['jsdoc', 'closure']
   },
   opts: {
-    'encoding': 'utf8',
-    'private': true,
-    'recurse': true,
-    'template': './node_modules/minami'
+    encoding: 'utf8',
+    private: true,
+    recurse: true,
+    template: './node_modules/minami'
   },
   templates: {
     cleverLinks: false,

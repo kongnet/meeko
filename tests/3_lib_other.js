@@ -3,8 +3,8 @@
 /* global BigInt */
 'use strict'
 var $ = require('../index')
-let assert = require('assert')
-let assertLog = function () {
+const assert = require('assert')
+const assertLog = function () {
   global.assertCount++
   return assert.strictEqual(...arguments)
 }
@@ -101,12 +101,12 @@ describe('其他函数的单元测试', function () {
     assertLog(1, $.err({}, 2))
   })
   it('compare', function () {
-    let items = [{ 'name': 'a', lev: 1 }, { name: 'b', lev: 2 }]
+    const items = [{ name: 'a', lev: 1 }, { name: 'b', lev: 2 }]
 
     items.sort($.compare('lev', 'desc'))
-    assert.deepStrictEqual(items, [{ 'name': 'b', lev: 2 }, { name: 'a', lev: 1 }])
+    assert.deepStrictEqual(items, [{ name: 'b', lev: 2 }, { name: 'a', lev: 1 }])
     items.sort($.compare('lev'))
-    assert.deepStrictEqual(items, [{ 'name': 'a', lev: 1 }, { name: 'b', lev: 2 }])
+    assert.deepStrictEqual(items, [{ name: 'a', lev: 1 }, { name: 'b', lev: 2 }])
   })
   it('utf8&lzw', function () {
     assertLog($.tools.utf8.encode('你好abc'), 'ä½ å¥½abc')
@@ -121,10 +121,10 @@ describe('其他函数的单元测试', function () {
     assertLog($.fake.whichNetwork('20052887711'), -1)
   })
   it('Snowflake', function () {
-    let tempSnowflake = new $.Snowflake(1, 1, 0)
-    let tempIds = []
+    const tempSnowflake = new $.Snowflake(1, 1, 0)
+    const tempIds = []
     for (let i = 0; i < 10; i++) {
-      let tempId = tempSnowflake.nextId()
+      const tempId = tempSnowflake.nextId()
       $.log(tempId)
       if (tempIds.indexOf(tempId) < 0) {
         tempIds.push(tempId)
@@ -508,7 +508,7 @@ describe('判断类型函数单元测试', function () {
 })
 describe('pipe', function () {
   it('pipe', function () {
-    let r = $.pipe(x => x.toUpperCase(), // 单词变大写
+    const r = $.pipe(x => x.toUpperCase(), // 单词变大写
       a => a.split(''), // -----------------分成数组
       a => a[3], // ------------------------取下标3
       s => s.charCodeAt(0).toString(16), // 变为16进制

@@ -2,7 +2,7 @@
 /* global it */
 'use strict'
 const $ = require('../index')
-let assert = require('assert')
+const assert = require('assert')
 
 describe('结束', function () {
   it('结束', function () {
