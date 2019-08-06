@@ -45,6 +45,10 @@ describe('各类分布的随机产生', function () {
       global.assertCount++
       random.doubleLog(4, 5).should.be.a('number')
       global.assertCount++
+      random.doubleLog(2, 15).should.be.a('number')
+      global.assertCount++
+      random.doubleLog(3, 55).should.be.a('number')
+      global.assertCount++
     })
     it('产生随机数通过 Erlang', function () {
       random.erlang(1, 1).should.be.a('number')
@@ -78,6 +82,14 @@ describe('各类分布的随机产生', function () {
       random.gamma(1, 0, 4).should.be.a('number')
       global.assertCount++
       random.gamma(1, -1, 8).should.be.a('number')
+      global.assertCount++
+      random.gamma(1, 1, 4).should.be.a('number')
+      global.assertCount++
+      random.gamma(1, -2, 8).should.be.a('number')
+      global.assertCount++
+      random.gamma(1, -3, 4).should.be.a('number')
+      global.assertCount++
+      random.gamma(1, -1, 1).should.be.a('number')
       global.assertCount++
     })
     it('产生随机数通过 Laplace', function () {
@@ -144,6 +156,12 @@ describe('各类分布的随机产生', function () {
       random.triangular(0, 10, 1).should.be.a('number')
       global.assertCount++
       random.triangular(0, 1, 10).should.be.a('number')
+      global.assertCount++
+      random.triangular(1, 1, 1).should.be.a('number')
+      global.assertCount++
+      random.triangular(2, 10, 1).should.be.a('number')
+      global.assertCount++
+      random.triangular(3, 1, 10).should.be.a('number')
       global.assertCount++
     })
     it('产生随机数通过 Uniform', function () {
