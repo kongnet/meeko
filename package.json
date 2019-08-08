@@ -4,9 +4,8 @@
   "description": "meeko自用函数",
   "main": "index.js",
   "scripts": {
-    "changelog": "conventional-changelog -p atom -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "patch": "git add . && git commit -m:pencil2: && npm version patch && npm publish .",
-    "cz": "git add . && git status && git cz",
+    "cz": "git add . && git status && git cz && conventional-changelog -p atom -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "push": "npm version patch && npm publish . && git push",
     "jsdoc": "jsdoc ./README.md --configure  ./jsdoc.config.js",
     "snazzy": "snazzy *.js ./lib/**/*.js --verbose",

@@ -1,3 +1,12 @@
+## [1.7.95](https://github.com/kongnet/meeko/compare/v1.7.94...v1.7.95) (2019-08-08)
+
+
+### :memo:
+
+* 增加changelog scripts ([76ce120](https://github.com/kongnet/meeko/commit/76ce120))
+
+
+
 ## [1.7.94](https://github.com/kongnet/meeko/compare/v1.7.93...v1.7.94) (2019-08-07)
 
 
