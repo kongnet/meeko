@@ -4,8 +4,9 @@
   "description": "meeko自用函数",
   "main": "index.js",
   "scripts": {
+    "changelog":"conventional-changelog -p atom -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "patch": "git add . && git commit -m:pencil2: && npm version patch && npm publish .",
-    "cz": "git add . && git status && git cz && npm version patch && npm publish .",
+    "cz": "git add . && git status && git cz",
     "push": "npm version patch && npm publish . && git push",
     "jsdoc": "jsdoc ./README.md --configure  ./jsdoc.config.js",
     "snazzy": "snazzy *.js ./lib/**/*.js --verbose",
@@ -20,7 +21,10 @@
   },
   "author": "Kongnet <9601698@qq.com>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "conventional-changelog-cli": "^2.0.23",
+    "jimi-web-changelog": "^0.1.7"
+  },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
     "cc-jt": "^0.1.1",
