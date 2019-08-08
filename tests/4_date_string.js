@@ -118,6 +118,12 @@ describe('String原型扩展的单元测试', function () {
   it('toUp', function () {
     assertLog('ABC1', 'abc1'.toUp())
   })
+  it('toDate', function () {
+    assertLog(new Date('2019-01-01').date2Str(), '20190101'.toDate().date2Str())
+    assertLog(new Date('2019-02-02 10:32:11').date2Str(), '2019-02-02 10:32:11'.toDate().date2Str())
+    assertLog(-1, '20190155'.toDate())
+    assertLog(-1, 'sadfasf'.toDate())
+  })
   it('format', function () {
     assertLog('abcdefg1', 'a{0}c{1}e{2}g{3}'.format('b', 'd', 'f', 1))
   })

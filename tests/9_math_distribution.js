@@ -91,6 +91,10 @@ describe('各类分布的随机产生', function () {
       global.assertCount++
       random.gamma(1, -1, 1).should.be.a('number')
       global.assertCount++
+      random.gamma(2, 0, 10).should.be.a('number')
+      global.assertCount++
+      random.gamma(3, 1, 100).should.be.a('number')
+      global.assertCount++
     })
     it('产生随机数通过 Laplace', function () {
       random.laplace(1, 1).should.be.a('number')

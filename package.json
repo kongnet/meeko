@@ -20,11 +20,9 @@
   },
   "author": "Kongnet <9601698@qq.com>",
   "license": "MIT",
-  "dependencies": {
-    "conventional-changelog-cli": "^2.0.23",
-    "jimi-web-changelog": "^0.1.7"
-  },
+  "dependencies": { },
   "devDependencies": {
+    "conventional-changelog-cli": "^2.0.23",
     "babel-eslint": "^10.0.2",
     "cc-jt": "^0.1.1",
     "chai": "^4.2.0",
