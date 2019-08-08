@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "patch": "git add . && git commit -m:pencil2: && npm version patch && npm publish .",
-    "cz": "git add . && git status && git cz && conventional-changelog -p atom -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
+    "cz": "git add . && git status && git cz && conventional-changelog -p atom -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md && git commit -m:pencil2 ",
     "push": "npm version patch && npm publish . && git push",
     "jsdoc": "jsdoc ./README.md --configure  ./jsdoc.config.js",
     "snazzy": "snazzy *.js ./lib/**/*.js --verbose",
