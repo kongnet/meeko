@@ -1,10 +1,10 @@
 {
   "name": "meeko",
-  "version": "1.7.94",
+  "version": "1.7.95",
   "description": "meeko自用函数",
   "main": "index.js",
   "scripts": {
-    "changelog":"conventional-changelog -p atom -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
+    "changelog": "conventional-changelog -p atom -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "patch": "git add . && git commit -m:pencil2: && npm version patch && npm publish .",
     "cz": "git add . && git status && git cz",
     "push": "npm version patch && npm publish . && git push",
