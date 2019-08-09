@@ -1,3 +1,12 @@
+## [1.7.98](https://github.com/kongnet/meeko/compare/v1.7.97...v1.7.98) (2019-08-08)
+
+
+### :memo:
+
+* package.json ([279001b](https://github.com/kongnet/meeko/commit/279001b))
+
+
+
 ## [1.7.97](https://github.com/kongnet/meeko/compare/v1.7.96...v1.7.97) (2019-08-08)
 
 
