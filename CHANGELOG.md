@@ -1,3 +1,17 @@
+## [1.7.99](https://github.com/kongnet/meeko/compare/v1.7.98...v1.7.99) (2019-08-09)
+
+
+### :sparkles:
+
+* 增加斯皮尔曼相关系数函数 ([0331482](https://github.com/kongnet/meeko/commit/0331482))
+* 增加肯德尔相关分析和斯皮尔曼相关分析函数 ([31dbd77](https://github.com/kongnet/meeko/commit/31dbd77))
+
+### :truck:
+
+* 数组原型函数count移动到math原型下 ([6b61220](https://github.com/kongnet/meeko/commit/6b61220))
+
+
+
 ## [1.7.98](https://github.com/kongnet/meeko/compare/v1.7.97...v1.7.98) (2019-08-08)
 
 
