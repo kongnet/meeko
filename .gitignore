@@ -4,6 +4,7 @@ out
 output
 *.html
 *.log
+*.csv
 test*.*
 package-lock.json
 .scannerwork
