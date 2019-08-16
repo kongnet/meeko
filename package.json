@@ -20,12 +20,7 @@
   },
   "author": "Kongnet <9601698@qq.com>",
   "license": "MIT",
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
-    "pluralize": "^8.0.0",
-    "request-promise": "^4.2.4",
-    "request-promise-native": "^1.0.7"
-  },
+  "dependencies": {},
   "devDependencies": {
     "conventional-changelog-cli": "^2.0.23",
     "babel-eslint": "^10.0.2",
