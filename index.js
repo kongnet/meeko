@@ -296,6 +296,7 @@ const wait = function (t) {
 const math = require('./lib/math')
 const tools = require('./lib/tools')
 const fake = require('./lib/fake')
+const file = require('./lib/file')
 const reg = require('./lib/reg')
 const tpl = require('./lib/tpl')
 const requireAll = require('./lib/requireDir')
@@ -452,6 +453,7 @@ const exportObj = {
   err,
   ext,
   fake,
+  file,
   getStackTrace,
   json,
   log,
