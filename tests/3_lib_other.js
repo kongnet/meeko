@@ -518,3 +518,9 @@ describe('pipe', function () {
     assertLog(`\\u0054`, r)
   })
 })
+describe('fileMd5', function () {
+  it('fileMd5', function () {
+    const fileMd5 = $.tools.md5File('./tests/zzz_zend.js')
+    assertLog(fileMd5, '4697d8bb99737f7e7f5511b924cd7bed')
+  })
+})
