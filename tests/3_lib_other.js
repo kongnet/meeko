@@ -53,6 +53,7 @@ describe('timeAgo测试', function () {
     assertLog($.tools.timeAgo(1558338047710, 1558338047719), '刚刚')
     assertLog($.tools.timeAgo(1558338047819, 1558338047710), '刚刚')
     assertLog($.tools.timeAgo('2016-1-1', '2016-1-1'), '刚刚')
+    assertLog($.tools.timeAgo(1558338047719, 1558338046719), '1秒后')
     assertLog($.tools.timeAgo('2016-1-1', '2017-2-1'), '1年前')
     assertLog($.tools.timeAgo('2016-1-1', '2016-3-1'), '2个月前')
     assertLog($.tools.timeAgo('2016-1-1', '2016-1-16'), '15天前')
