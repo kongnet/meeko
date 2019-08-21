@@ -1,6 +1,5 @@
 /* global describe */
 /* global it */
-/* global BigInt */
 'use strict'
 var $ = require('../index')
 const assert = require('assert')
@@ -11,8 +10,8 @@ const assertLog = function () {
 
 describe('文件操作相关', function () {
   it('getFileMd5', function () {
-    const fileMd5 = $.file.getFileMd5('./tests/zzz_zend.js')
-    assertLog(fileMd5, '4697d8bb99737f7e7f5511b924cd7bed')
+    const fileMd5 = $.file.getFileMd5('./LICENSE')
+    assertLog(fileMd5, '6d99ad314bee621647d239347e0b0add')
   })
   it('getFileType', function () {
     const f1 = $.file.getFileType('./screenShot/drawTable.png')
