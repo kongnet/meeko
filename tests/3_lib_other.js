@@ -519,3 +519,8 @@ describe('pipe', function () {
     assertLog(`\\u0054`, r)
   })
 })
+describe('obj2Url', function () {
+  it('obj2Url', function () {
+    assertLog(`a=1&b=2&c=x`, $.tools.obj2Url({ a: 1, b: 2, c: 'x' }))
+  })
+})
