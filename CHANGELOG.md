@@ -1,3 +1,12 @@
+## [1.8.1](https://github.com/kongnet/meeko/compare/v1.8.0...v1.8.1) (2019-08-23)
+
+
+### :sparkles:
+
+* 增加数组分组功能，增加类csv格式toArray功能 ([1da5890](https://github.com/kongnet/meeko/commit/1da5890))
+
+
+
 # [1.8.0](https://github.com/kongnet/meeko/compare/v1.7.100...v1.8.0) (2019-08-22)
 
 
