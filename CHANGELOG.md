@@ -1,3 +1,22 @@
+# [1.8.0](https://github.com/kongnet/meeko/compare/v1.7.100...v1.8.0) (2019-08-22)
+
+
+### :art:
+
+* toMoney add default param ([d409aa7](https://github.com/kongnet/meeko/commit/d409aa7))
+
+### :sparkles:
+
+* obj2Url ([73c3b46](https://github.com/kongnet/meeko/commit/73c3b46))
+* 增加文件md5 图片文件判断 图片文件传完判断 ([0709704](https://github.com/kongnet/meeko/commit/0709704))
+* 增加文件md5检查 ([5d4a2e9](https://github.com/kongnet/meeko/commit/5d4a2e9))
+
+### :truck:
+
+* 移动中位数函数到math原型下 ([8da9dc0](https://github.com/kongnet/meeko/commit/8da9dc0))
+
+
+
 ## [1.7.100](https://github.com/kongnet/meeko/compare/v1.7.99...v1.7.100) (2019-08-09)
 
 

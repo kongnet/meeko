@@ -108,6 +108,8 @@ $.benchmark(repeatFunc, '', 10000)
 $.dir('$.now() +$.now()', $.now(), +$.now())
 $.dir($.now().format())
 $.dir([1, 2, 3, 4].shuffle())
+$.dir([1, 2, 3, 4].fisherYates())
+$.dir([].fisherYates())
 
 const o = [{ id: 52523, push_uid: 232421, uid: 2, relation_id: 2600, money: 12, type: 1, mark: 1002, source: 3, remark: '你的团队成员桃成功推广商品，收益结算完成', extend: '', created_at: 1548844685, updated_at: 1548897208, d_flag: 0 }, { id: 52505, push_uid: 232421, uid: 2, relation_id: 2404, money: 53, type: 1, mark: 1002, source: 3, remark: '你的团队成员桃成功推广商品，收益结算完成', extend: '', created_at: 1548844684, updated_at: 1548897189, d_flag: 0 }, { id: 52480, push_uid: 546945, uid: 539299, relation_id: 2887, money: 1045, type: 1, mark: 3001, source: 1, remark: '你的粉丝xxxxxxxx', extend: '', created_at: 1548844559, updated_at: 1548897039, d_flag: 0 }, { id: 52479, push_uid: 623249, uid: 2, relation_id: 2877, money: 5, type: 1, mark: 3001, source: 3, remark: '你的团队成员王蓓成功推广商品，订单完成，奖励', extend: '', created_at: 1548844559, updated_at: 1548897038, d_flag: 0 }, { id: 52478, push_uid: 623249, uid: 544402, relation_id: 2877, money: 11, type: 1, mark: 3001, source: 3, remark: '你的团队成员王蓓成功推广商品，订单完成，奖励', extend: '', created_at: 1548844559, updated_at: 1548897037, d_flag: 0 }, { id: 52477, push_uid: 623249, uid: 623249, relation_id: 2877, money: 16, type: 1, mark: 3001, source: 2, remark: '成功推广商品漫步者（EDIFIER） K550 头戴式有线电竞耳机 带麦克风带线控电脑音乐游戏吃鸡耳麦 典雅黑，订单完成，奖励', extend: '', created_at: 1548844559, updated_at: 1548897036, d_flag: 0 }, { id: 52476, push_uid: 623249, uid: 544402, relation_id: 2877, money: 16, type: 1, mark: 3001, source: 1, remark: '你的粉丝王蓓成功购买商品，奖励', extend: '', created_at: 1548844559, updated_at: 1548897035, d_flag: 0 }]
 

@@ -439,7 +439,7 @@ const benchmark = function benchmark (fn = (function () { /* do nothing */ }), m
   }
   const diffTime = Date.now() - t
   const spendTime = diffTime + ' ms'
-  const perSec = (n / diffTime * 10000 / 10000 | 0) + ' / ms'
+  const perSec = ((n / diffTime * 10000 / 10000 | 0) + '').toMoney() + ' /ms'
   console.log(c.y((fn.name || '').fillStr(' ', 15)), spendTime.fillStr(' ', 8), perSec.fillStr(' ', 10), n.toExponential() + ' 次', msg)
 }
 console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${c.g('https://github.com/kongnet/meeko.git')}`)

@@ -97,4 +97,11 @@ describe('Array原型扩展的单元测试', function () {
     assertLog([1, 2, 3, 4, 5].remove()[0], 2)
     assertLog([1, 2, 3, 4, 5].remove(1, 2)[1], 4)
   })
+  it('chunk', function () {
+    assertLog([1, 2, 3, 4, 5].chunk(2)[1][0], 3)
+    assertLog([1, 2, 3, 4, 5].chunk(6)[5], void (0))
+  })
+  it('countBy', function () {
+    assertLog([6.1, 4.2, 6.3].countBy(Math.floor)['6'], 2)// {4: 1, 6: 2}
+  })
 })
