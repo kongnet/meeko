@@ -17,11 +17,12 @@ describe('代数函数测试', function () {
     3,  2, 3, 3, 34
    -1, -3, 5, 7, 13
     9, -5, 3, 6, 26`
-
+      const rst = [3, 5, 2, 3]
       const r = $.math.gaussian($.file.csv2Arr(matrixStr, ',', 1, (v) => +v.trim()))
         .map(x => +x.toFixed(10))
-        .equals([3, 5, 2, 3])
+        .equals(rst)
       assertLog(r, true)
+      console.log(matrixStr, '\n', '=>', rst)
     })
   })
 })
