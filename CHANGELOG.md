@@ -1,4 +1,4 @@
-## [1.8.1](https://github.com/kongnet/meeko/compare/v1.7.92...v1.8.1) (2019-08-25)
+## [1.8.2](https://github.com/kongnet/meeko/compare/v1.7.92...v1.8.2) (2019-08-25)
 
 
 ### :art:
@@ -18,6 +18,7 @@
 
 * obj2Url ([73c3b46](https://github.com/kongnet/meeko/commit/73c3b46))
 * string原型增加toDate方法 ([596fd89](https://github.com/kongnet/meeko/commit/596fd89))
+* 增减高斯消元法，优化csv2arr函数 ([a24e4e2](https://github.com/kongnet/meeko/commit/a24e4e2))
 * 增加数组分组功能，增加类csv格式toArray功能 ([1da5890](https://github.com/kongnet/meeko/commit/1da5890))
 * 增加文件md5 图片文件判断 图片文件传完判断 ([0709704](https://github.com/kongnet/meeko/commit/0709704))
 * 增加文件md5检查 ([5d4a2e9](https://github.com/kongnet/meeko/commit/5d4a2e9))
