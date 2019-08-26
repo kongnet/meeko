@@ -12,6 +12,9 @@ describe('Math扩展函数的单元测试', () => {
   it('sum', () => {
     assertLog($.math.sum(a).toFixed(1), '29.9')
   })
+  it('approximatelyEqual', () => {
+    assertLog($.math.approximatelyEqual(29.99999, 30), true)
+  })
   it('num2e', () => {
     assertLog($.math.num2e(0.00000129466), '1.2947e-6')
     assertLog($.math.num2e(0.00000129466, 1), '1.3e-6')
