@@ -1,9 +1,15 @@
-## [1.8.4](https://github.com/kongnet/meeko/compare/v1.8.1...v1.8.4) (2019-08-26)
+## [1.8.6](https://github.com/kongnet/meeko/compare/v1.8.5...v1.8.6) (2019-08-26)
+
+
+
+
+## [1.8.5](https://github.com/kongnet/meeko/compare/v1.8.1...v1.8.5) (2019-08-26)
 
 
 ### :sparkles:
 
 * 增减高斯消元法，优化csv2arr函数 ([a24e4e2](https://github.com/kongnet/meeko/commit/a24e4e2))
+* 增加近似值函数 ([98a65a4](https://github.com/kongnet/meeko/commit/98a65a4))
 
 ### :white_check_mark:
 
