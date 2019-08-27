@@ -20,7 +20,8 @@
   },
   "author": "Kongnet <9601698@qq.com>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "conventional-changelog-cli": "^2.0.23",
     "babel-eslint": "^10.0.2",
