@@ -1,17 +1,15 @@
 const $ = require('./index')
-const { execSync,exec } = require('child_process')
+const { execSync, exec } = require('child_process')
 
-
-try{
-  let r = exec('npm test', function (err, ...x) {
+try {
+  const r = exec('npm test', function (err, ...x) {
     if (err) {
-      (/\n(.+Error.+)\n/g).test(x[0])
-      console.log(x[0].replace(RegExp.$1,$.c.r(RegExp.$1)))
+      const isErrorStr = (/\n(.+Error.+)\n/g).test(x[0])
+      console.log(isErrorStr ? x[0].replace(RegExp.$1, $.c.r(RegExp.$1)) : x[0])
       return
     }
     console.log(x[0])
   })
-
-}catch(e){
+} catch (e) {
 
 }
