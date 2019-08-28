@@ -1,3 +1,12 @@
+## [1.8.7](https://github.com/kongnet/meeko/compare/v1.8.6...v1.8.7) (2019-08-27)
+
+
+### :fire:
+
+* 增加运营判断的手机号码，增加mocha 自动反复运行模式 ([1421b45](https://github.com/kongnet/meeko/commit/1421b45))
+
+
+
 ## [1.8.6](https://github.com/kongnet/meeko/compare/v1.8.5...v1.8.6) (2019-08-26)
 
 

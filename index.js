@@ -301,6 +301,7 @@ const reg = require('./lib/reg')
 const tpl = require('./lib/tpl')
 const requireAll = require('./lib/requireDir')
 const Snowflake = require('./lib/Snowflake.js')
+const NaiveBayes = require('./lib/NaiveBayes.js')
 const Spinner = require('./lib/Spinner.js')
 const Mock = require('./lib/Mock.js')
 
@@ -465,6 +466,7 @@ const exportObj = {
   reg,
   requireAll,
   Snowflake,
+  NaiveBayes,
   Spinner,
   tools,
   tpl,
