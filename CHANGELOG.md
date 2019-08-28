@@ -1,3 +1,12 @@
+## [1.8.8](https://github.com/kongnet/meeko/compare/v1.8.7...v1.8.8) (2019-08-28)
+
+
+### :sparkles:
+
+* 增加文字贝叶斯分类函数 ([1214fa8](https://github.com/kongnet/meeko/commit/1214fa8))
+
+
+
 ## [1.8.7](https://github.com/kongnet/meeko/compare/v1.8.6...v1.8.7) (2019-08-27)
 
 
