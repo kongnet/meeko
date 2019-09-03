@@ -1,3 +1,12 @@
+## [1.8.9](https://github.com/kongnet/meeko/compare/v1.8.8...v1.8.9) (2019-08-28)
+
+
+### :white_check_mark:
+
+* 增加测试用例 ([7c121ca](https://github.com/kongnet/meeko/commit/7c121ca))
+
+
+
 ## [1.8.8](https://github.com/kongnet/meeko/compare/v1.8.7...v1.8.8) (2019-08-28)
 
 
