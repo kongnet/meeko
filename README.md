@@ -197,6 +197,9 @@ new $.Snowflake(workId, dataCenterId, sequence) // 工作进程id ，服务器id
       s => `\\u${s}` -----------------------转成\uxxxx 形式
     )('Test') ------------------------------ => \u0054
 ```
+
+![nb_text](https://github.com/kongnet/meeko/raw/master/screenShot/nb_text.png)
+
 ```mermaid
 sequenceDiagram
     participant 用户A
@@ -210,6 +213,6 @@ sequenceDiagram
     Bot-->>用户B: 在!
     Note right of Bot: 去除[啊吗嘛]等<br/>语气助词,?换成!
 ```
-![nb_text](https://github.com/kongnet/meeko/raw/master/screenShot/nb_text.png)
+
 https://gitmoji.carloscuesta.me/
 

@@ -1,3 +1,12 @@
+## [1.8.10](https://github.com/kongnet/meeko/compare/v1.8.9...v1.8.10) (2019-09-03)
+
+
+### :sparkles:
+
+* mock增加tools中的genUUID ([2ef7418](https://github.com/kongnet/meeko/commit/2ef7418))
+
+
+
 ## [1.8.9](https://github.com/kongnet/meeko/compare/v1.8.8...v1.8.9) (2019-08-28)
 
 
