@@ -524,3 +524,10 @@ describe('obj2Url', function () {
     assertLog(`a=1&b=2&c=x`, $.tools.obj2Url({ a: 1, b: 2, c: 'x' }))
   })
 })
+describe('objByString', function () {
+  it('objByString', function () {
+    const a = [{ x: { y: [1, 2] } }]
+    assertLog(2, $.tools.objByString(a, '[0].x.y[1]'))
+    assertLog(undefined, $.tools.objByString(a, '[0].x.y[2]'))
+  })
+})
