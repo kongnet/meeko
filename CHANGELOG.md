@@ -1,4 +1,4 @@
-## [1.8.13](https://github.com/kongnet/meeko/compare/v1.8.4...v1.8.13) (2019-09-08)
+## [1.8.14](https://github.com/kongnet/meeko/compare/v1.8.4...v1.8.14) (2019-09-08)
 
 
 ### :fire:
@@ -8,6 +8,7 @@
 ### :sparkles:
 
 * mock增加tools中的genUUID ([2ef7418](https://github.com/kongnet/meeko/commit/2ef7418))
+* 增加多项式拟合方法 ([03ebf20](https://github.com/kongnet/meeko/commit/03ebf20))
 * 增加文字贝叶斯分类函数 ([1214fa8](https://github.com/kongnet/meeko/commit/1214fa8))
 * 增加用字符串形式访问对象内部 ([4bff921](https://github.com/kongnet/meeko/commit/4bff921))
 * 增加近似值函数 ([98a65a4](https://github.com/kongnet/meeko/commit/98a65a4))
