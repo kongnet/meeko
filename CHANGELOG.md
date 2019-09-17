@@ -1,3 +1,8 @@
+## [1.8.16](https://github.com/kongnet/meeko/compare/v1.8.15...v1.8.16) (2019-09-17)
+
+
+
+
 ## [1.8.15](https://github.com/kongnet/meeko/compare/v1.8.14...v1.8.15) (2019-09-17)
 
 
@@ -6,9 +11,14 @@
 ## [1.8.14](https://github.com/kongnet/meeko/compare/v1.8.13...v1.8.14) (2019-09-17)
 
 
+### :bug:
+
+* 修正+- => - ([d7759a6](https://github.com/kongnet/meeko/commit/d7759a6))
+
 ### :sparkles:
 
 * 增加genList函数，增加README.md一个例子 ([2e712d5](https://github.com/kongnet/meeko/commit/2e712d5))
+* 增加多项式拟合方法 ([03ebf20](https://github.com/kongnet/meeko/commit/03ebf20))
 
 
 
