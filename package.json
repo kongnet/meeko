@@ -22,7 +22,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "cc-jt": "^0.1.1",
+    "cc-jt": "^0.1.26",
     "chai": "^4.2.0",
     "co-mocha": "^1.2.2",
     "conventional-changelog-cli": "^2.0.23",
