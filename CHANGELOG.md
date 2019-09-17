@@ -1,3 +1,12 @@
+## [1.8.13](https://github.com/kongnet/meeko/compare/v1.8.12...v1.8.13) (2019-09-05)
+
+
+### :sparkles:
+
+* 增加用字符串形式访问对象内部 ([4bff921](https://github.com/kongnet/meeko/commit/4bff921))
+
+
+
 ## [1.8.12](https://github.com/kongnet/meeko/compare/v1.8.11...v1.8.12) (2019-09-05)
 
 

@@ -206,18 +206,34 @@ new $.Snowflake(workId, dataCenterId, sequence) // 工作进程id ，服务器id
 
 ![nb_text](https://github.com/kongnet/meeko/raw/master/screenShot/nb_text.png)
 
-```mermaid
-sequenceDiagram
-    participant 用户A
-    participant 用户B
-    participant Bot
-    用户A->>Bot: 你好啊？
+## 常用用错概念  await 某实例的then函数
+```javascript
+function thenFunc(){
+  let me =this
+  me.then=async function (resolve,reject) {
+  await $.wait(2000)
+  resolve('success')
+  reject('failure')
+  console.log(2)
+}
+  me.a1='a1'
+  return me
+}
 
-    Bot-->>用户A: 你好!
-    Note right of Bot: 人工智能核心代码
-    用户B->>Bot: 在吗？
-    Bot-->>用户B: 在!
-    Note right of Bot: 去除[啊吗嘛]等<br/>语气助词,?换成!
+async function init(){
+  try{
+      let r =new thenFunc()
+      await r
+      console.log(11,r)
+    }catch(err){
+      console.log(err)
+    }
+}
+init()
+process.on('unhandledRejection',function(e){
+console.log(e,'xxx')
+})
+
 ```
 
 https://gitmoji.carloscuesta.me/
