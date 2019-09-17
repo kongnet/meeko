@@ -1,6 +1,6 @@
 {
   "name": "meeko",
-  "version": "1.8.14",
+  "version": "1.8.15",
   "description": "meeko自用函数",
   "main": "index.js",
   "scripts": {
