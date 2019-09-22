@@ -1,9 +1,10 @@
-## [1.8.18](https://github.com/kongnet/meeko/compare/v1.8.15...v1.8.18) (2019-09-22)
+## [1.8.19](https://github.com/kongnet/meeko/compare/v1.8.15...v1.8.19) (2019-09-22)
 
 
 ### :sparkles:
 
 * 增加genList函数，增加README.md一个例子 ([2e712d5](https://github.com/kongnet/meeko/commit/2e712d5))
+* 增加mock占位符 ([8c7749e](https://github.com/kongnet/meeko/commit/8c7749e))
 
 
 
