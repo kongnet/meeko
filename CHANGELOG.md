@@ -1,9 +1,10 @@
-## [1.8.20](https://github.com/kongnet/meeko/compare/v1.8.18...v1.8.20) (2019-09-25)
+## [1.8.21](https://github.com/kongnet/meeko/compare/v1.8.18...v1.8.21) (2019-09-25)
 
 
 ### :sparkles:
 
 * 增加mock占位符 ([8c7749e](https://github.com/kongnet/meeko/commit/8c7749e))
+* 增加循环删除 ([84f8c01](https://github.com/kongnet/meeko/commit/84f8c01))
 
 
 
