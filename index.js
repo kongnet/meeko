@@ -299,6 +299,7 @@ const fake = require('./lib/fake')
 const file = require('./lib/file')
 const reg = require('./lib/reg')
 const tpl = require('./lib/tpl')
+const color = require('./lib/color')
 const requireAll = require('./lib/requireDir')
 const Snowflake = require('./lib/Snowflake.js')
 const NaiveBayes = require('./lib/NaiveBayes.js')
@@ -448,6 +449,7 @@ const exportObj = {
   _proto_,
   benchmark,
   c,
+  color,
   compare,
   dir,
   drawTable,
