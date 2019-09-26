@@ -18,6 +18,9 @@
     "type": "git",
     "url": "https://github.com/kongnet/meeko.git"
   },
+  "engines": {
+    "node": ">= 10.0.0"
+  },
   "author": "Kongnet <9601698@qq.com>",
   "license": "MIT",
   "dependencies": {},

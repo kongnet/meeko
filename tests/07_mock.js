@@ -36,6 +36,7 @@ const data = Mock.mock({
     img: `@genEnum(['https://','http://'])/resource.aijiatui.com/@genData('0123456789',11)/company/moments/@genData('abcdefghijklmnopqrstuvwxyz0123456789',32).jpeg`,
     skuCode: null,
     arrList: `@genList(10)`,
+    arrList2: `@genList(10,2)`,
     svg: '@genImg()',
     svg1: '@genImg({isText:"n"})',
     svg2: '@genImg({size:"100"})'
