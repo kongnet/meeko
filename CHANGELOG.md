@@ -1,3 +1,12 @@
+## [1.8.23](https://github.com/kongnet/meeko/compare/v1.8.22...v1.8.23) (2019-09-26)
+
+
+### :sparkles:
+
+* 增加颜色类 ([94b78b9](https://github.com/kongnet/meeko/commit/94b78b9))
+
+
+
 ## [1.8.22](https://github.com/kongnet/meeko/compare/v1.8.21...v1.8.22) (2019-09-25)
 
 
