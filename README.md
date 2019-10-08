@@ -39,6 +39,22 @@ npm test
 ``` js
 let $ = require('meeko')
 ```
+## 趣题收集
+
+``` js
+// 小明玩王者荣耀胜率为50% 每天玩10局，问每天小明连胜3局以上的概率是多少？
+const $ = require('meeko')
+const times = 3000000             // 总模拟次数
+console.log(
+  '10'.repeat(times/2).split('')  // 填入一半1 一半0
+  .fisherYates()                  // 洗牌算法
+  .chunk(10)                      // 按10个一组分组,每天10局
+  .filter(item=>(/1{3,10}/g).test(item.join(''))) // 找出10次内满足 3次-10次连胜的情况
+  .length/(times/10)              // 换算到每天
+  )
+// 0.5080 => 50%
+```
+
 ## 数学函数 Math function
 * *intersect (a = [])* 交集
 ``` js
