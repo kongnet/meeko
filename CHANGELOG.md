@@ -1,3 +1,12 @@
+## [1.8.25](https://github.com/kongnet/meeko/compare/v1.8.24...v1.8.25) (2019-10-08)
+
+
+### :memo:
+
+* 增加趣题 ([39abe88](https://github.com/kongnet/meeko/commit/39abe88))
+
+
+
 ## [1.8.24](https://github.com/kongnet/meeko/compare/v1.8.23...v1.8.24) (2019-10-08)
 
 
