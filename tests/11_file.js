@@ -11,7 +11,7 @@ const assertLog = function () {
 describe('文件操作相关', function () {
   it('getFileMd5', function () {
     const fileMd5 = $.file.getFileMd5('./LICENSE')
-    assertLog(fileMd5, '6d99ad314bee621647d239347e0b0add')
+    assertLog(fileMd5, 'e92f26ff2a20b6350d971922fae36db9')
   })
   it('getFileType', function () {
     const f1 = $.file.getFileType('./screenShot/drawTable.png')
