@@ -1,4 +1,4 @@
-## 1.8.26 (2019-10-14)
+## [1.8.27](https://github.com/kongnet/meeko/compare/4f5a27d...v1.8.27) (2019-10-14)
 
 
 ### :art:
