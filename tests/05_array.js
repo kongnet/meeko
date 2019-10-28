@@ -8,6 +8,15 @@ const assertLog = function () {
   return assert.strictEqual(...arguments)
 }
 describe('Array原型扩展的单元测试', function () {
+  it('allCheck', function () {
+    assertLog(true, [1, 2, 3, 4, 5, 6].allCheck())
+    assertLog(false, [1, 2, 3, 4, 5, 6].allCheck(x => x > 6))
+  })
+  it('indexOfAll', function () {
+    assertLog(true, $.tools.equals([0, 6], [1, 2, 3, 4, 5, 6, 1].indexOfAll(1)))
+    assertLog(true, $.tools.equals([], [1, 2, 3, 4, 5, 6, 1].indexOfAll(11)))
+    assertLog(true, $.tools.equals([6], [1, 2, 3, 4, 5, 6, '2'].indexOfAll('2')))
+  })
   it('pick', function () {
     assertLog([1].pick(), 1)
     assertLog([1, 2].includes([1, 2].pick()), true)
@@ -21,6 +30,7 @@ describe('Array原型扩展的单元测试', function () {
   })
   it('count', function () {
     assertLog(JSON.stringify(['A', 'B', 'B', 'C', 'A', 'D'].count()), '{"A":2,"B":2,"C":1,"D":1}')
+    assertLog(true, $.tools.equals([5.2, 4.2, 5.3].countBy(Math.floor), { 5: 2, 4: 1 }))
   })
   it('flatten', function () {
     assertLog([1, [2, [3, [4, 5], 6], 7], 8].flatten().join(''), '12345678')

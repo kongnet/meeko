@@ -531,3 +531,16 @@ describe('objByString', function () {
     assertLog(undefined, $.tools.objByString(a, '[0].x.y[2]'))
   })
 })
+describe('size', function () {
+  it('size', function () {
+    const a = { a: 1, b: { c: 1 } }
+    assertLog(2, $.tools.size(a))
+    assertLog(4, $.tools.size('😀'))
+  })
+})
+describe('equals', function () {
+  it('equals', function () {
+    assertLog(true, $.tools.equals({ a: [2, { e: 3, h: { h: undefined } }], b: [new Date('2019-1-1 10:10:10'), 4], c: 'foo' }, { a: [2, { h: { h: undefined }, e: 3 }], b: [new Date('2019-01-01 10:10:10'), 4], c: 'foo' }))
+    assertLog(true, $.tools.equals([1, 3, 5], [1, 2, 3, 4, 5, 6].filter($.tools.negate(n => n % 2 === 0))))
+  })
+})
