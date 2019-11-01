@@ -349,3 +349,21 @@ describe('Math偏度和3个峰度函数单元测试', () => {
     assertLog($.math.kurt3(a), -0.9473710436927472)
   )
 })
+
+describe('组合数学相关函数', () => {
+  it('arrangement全排列', () =>
+    assertLog($.math.arrangement(40, 4), 2193360)
+  )
+  it('combination组合', () =>
+    assertLog($.math.combination(13, 4), 715)
+  )
+  it('hCombin带回放的组合', () =>
+    assertLog($.math.hCombin(10, 4), 715)
+  )
+  it('fac阶乘', () => {
+    assertLog($.math.fac(4), 24)
+    assertLog($.math.fac(0), 1)
+    assertLog($.math.fac(-10), -1)
+  }
+  )
+})
