@@ -1,3 +1,12 @@
+## [1.8.29](https://github.com/kongnet/meeko/compare/v1.8.28...v1.8.29) (2019-10-28)
+
+
+### :sparkles:
+
+* 增加$.tools.equals比较对象相等,$.tools.size获取对象长度 ([140ed1b](https://github.com/kongnet/meeko/commit/140ed1b))
+
+
+
 ## [1.8.28](https://github.com/kongnet/meeko/compare/v1.8.27...v1.8.28) (2019-10-15)
 
 
