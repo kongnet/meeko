@@ -1,26 +1,29 @@
 /* istanbul ignore next */
 'use strict'
+const { PerformanceObserver, performance } = require('perf_hooks')
 const Pack = require('./package.json')
 
 const cFn = function cFn (s, fc, dimNum, bc, isUnderline) {
   /**
- * 返回控制台颜色包裹体
- * 背景色:                          前景色:
- * 40: 黑                          30: 黑
- * 41: 红                          31: 红
- * 42: 绿                          32: 绿
- * 43: 黄                          33: 黄
- * 44: 蓝                          34: 蓝
- * 45: 紫                          35: 紫
- * 46: 深绿                        36: 深绿
- * 47: 白色                        37: 白色
- * @param {int} [fc] 前景色 frontColor， 可选 30-37
- * @param {enum} [dimNum] 设为1高亮度（其实是加粗），设为2或0则无高亮
- * @param {int} [bc] 背景色 backgroundColor，可选 40-47
- * @param {boolean} [isUnderline] 是否有下横线
- * @return {string}
- * */
-  return `${isUnderline ? '\x1b[4m' : ''}${dimNum ? '\x1b[2m' : ''}${fc ? `\x1b[${fc}m` : '\x1b[37m'}${bc ? `\x1b[${bc}m` : ''}${s || ''}\x1b[0m`
+   * 返回控制台颜色包裹体
+   * 背景色:                          前景色:
+   * 40: 黑                          30: 黑
+   * 41: 红                          31: 红
+   * 42: 绿                          32: 绿
+   * 43: 黄                          33: 黄
+   * 44: 蓝                          34: 蓝
+   * 45: 紫                          35: 紫
+   * 46: 深绿                        36: 深绿
+   * 47: 白色                        37: 白色
+   * @param {int} [fc] 前景色 frontColor， 可选 30-37
+   * @param {enum} [dimNum] 设为1高亮度（其实是加粗），设为2或0则无高亮
+   * @param {int} [bc] 背景色 backgroundColor，可选 40-47
+   * @param {boolean} [isUnderline] 是否有下横线
+   * @return {string}
+   * */
+  return `${isUnderline ? '\x1b[4m' : ''}${dimNum ? '\x1b[2m' : ''}${
+    fc ? `\x1b[${fc}m` : '\x1b[37m'
+  }${bc ? `\x1b[${bc}m` : ''}${s || ''}\x1b[0m`
 }
 
 /**
@@ -65,7 +68,6 @@ const cFn = function cFn (s, fc, dimNum, bc, isUnderline) {
  */
 
 const c = {
-
   /*
   http://stanislavs.org/helppc/ansi_codes.html
   */
@@ -75,20 +77,48 @@ const c = {
     return `\x1b[${y};${x};H`
   },
 
-  r (s, bc, u) { return cFn(s, 31, 0, bc, u) },
-  g (s, bc, u) { return cFn(s, 32, 0, bc, u) },
-  y (s, bc, u) { return cFn(s, 33, 0, bc, u) },
-  b (s, bc, u) { return cFn(s, 34, 0, bc, u) },
-  m (s, bc, u) { return cFn(s, 35, 0, bc, u) },
-  c (s, bc, u) { return cFn(s, 36, 0, bc, u) },
-  w (s, bc, u) { return cFn(s, 37, 0, bc, u) },
-  dimr (s, bc, u) { return cFn(s, 31, 1, bc, u) },
-  dimg (s, bc, u) { return cFn(s, 32, 1, bc, u) },
-  dimy (s, bc, u) { return cFn(s, 33, 1, bc, u) },
-  dimb (s, bc, u) { return cFn(s, 34, 1, bc, u) },
-  dimm (s, bc, u) { return cFn(s, 35, 1, bc, u) },
-  dimc (s, bc, u) { return cFn(s, 36, 1, bc, u) },
-  dimw (s, bc, u) { return cFn(s, 37, 1, bc, u) }
+  r (s, bc, u) {
+    return cFn(s, 31, 0, bc, u)
+  },
+  g (s, bc, u) {
+    return cFn(s, 32, 0, bc, u)
+  },
+  y (s, bc, u) {
+    return cFn(s, 33, 0, bc, u)
+  },
+  b (s, bc, u) {
+    return cFn(s, 34, 0, bc, u)
+  },
+  m (s, bc, u) {
+    return cFn(s, 35, 0, bc, u)
+  },
+  c (s, bc, u) {
+    return cFn(s, 36, 0, bc, u)
+  },
+  w (s, bc, u) {
+    return cFn(s, 37, 0, bc, u)
+  },
+  dimr (s, bc, u) {
+    return cFn(s, 31, 1, bc, u)
+  },
+  dimg (s, bc, u) {
+    return cFn(s, 32, 1, bc, u)
+  },
+  dimy (s, bc, u) {
+    return cFn(s, 33, 1, bc, u)
+  },
+  dimb (s, bc, u) {
+    return cFn(s, 34, 1, bc, u)
+  },
+  dimm (s, bc, u) {
+    return cFn(s, 35, 1, bc, u)
+  },
+  dimc (s, bc, u) {
+    return cFn(s, 36, 1, bc, u)
+  },
+  dimw (s, bc, u) {
+    return cFn(s, 37, 1, bc, u)
+  }
 }
 
 /**
@@ -146,7 +176,7 @@ const option = {
  * new Date().fillStr('a', 50)
  * // Tue Dec 29 2015 01:11:01 GMT+0800 (中国标准时间)aa
  */
-Date.prototype.fillStr = String.prototype.fillStr  //eslint-disable-line
+Date.prototype.fillStr = String.prototype.fillStr //eslint-disable-line
 
 /**
  * @namespace Buffer_prototype
@@ -185,7 +215,9 @@ const getStackTrace = function () {
   return obj.stack
 }
 const os = process.platform
-const re = os.includes('win32') ? /\\(.+)\.js:(\d+:\d+)/g : /\/(.+)\.js:(\d+:\d+)/g
+const re = os.includes('win32')
+  ? /\\(.+)\.js:(\d+:\d+)/g
+  : /\/(.+)\.js:(\d+:\d+)/g
 const trace = console
 
 /**
@@ -193,9 +225,19 @@ const trace = console
  * */
 
 const log = function log (...args) {
-  getStackTrace().split('\n')[2].match(re)
-  const s = ' [' + c.dimg(RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str()
-    .replaceAll('-', '')) + ']'
+  getStackTrace()
+    .split('\n')[2]
+    .match(re)
+  const s =
+    ' [' +
+    c.dimg(
+      RegExp.$1 +
+        ':' +
+        RegExp.$2 +
+        ' ' +
+        new Date().date2Str().replaceAll('-', '')
+    ) +
+    ']'
   let str = ''
   for (let i = 0; i < args.length; i++) {
     if (typeof args[i] === 'object') {
@@ -213,9 +255,19 @@ const log = function log (...args) {
  * */
 
 const err = function err (...args) {
-  getStackTrace().split('\n')[2].match(re)
-  const s = ' [' + c.dimr(RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str()
-    .replaceAll('-', '')) + ']'
+  getStackTrace()
+    .split('\n')[2]
+    .match(re)
+  const s =
+    ' [' +
+    c.dimr(
+      RegExp.$1 +
+        ':' +
+        RegExp.$2 +
+        ' ' +
+        new Date().date2Str().replaceAll('-', '')
+    ) +
+    ']'
   let str = ''
   for (let i = 0; i < args.length; i++) {
     if (typeof args[i] === 'object') {
@@ -246,7 +298,8 @@ function strColor (k, v) {
 const dir = function dir (...args) {
   for (let i = 0; i < args.length; i++) {
     let ss = JSON.stringify(args[i], strColor, 4)
-    ss = ss.replaceAll('"#cyan#', c.cyan)
+    ss = ss
+      .replaceAll('"#cyan#', c.cyan)
       .replaceAll('#none#"', c.none)
       .replace(/"(.+)": /g, c.g('$1') + ': ')
       .replace(/(true)(,|'')\n/g, c.r('$1$2\n'))
@@ -286,7 +339,7 @@ function compare (k, order) {
  * */
 
 const wait = function (t) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve()
     }, t)
@@ -324,7 +377,9 @@ const pipe = (...funcs) => arg => funcs.reduce((p, fn) => fn(p), arg)
  * */
 
 const json = {
-  parse: function (s) { return Function('return ' + s)() }, // 为了解决key没有双引号
+  parse: function (s) {
+    return Function('return ' + s)()
+  }, // 为了解决key没有双引号
   stringify: JSON.stringify
 }
 
@@ -412,7 +467,7 @@ function drawTable (data, colWidth = [], opt = { color: 0 }) {
             s += c.dimm(v.fillStr(' ', colWidth[k])) + '|'
         }
       } else {
-        const diffLen = (/\u001b\[(?:\d*){0,5}\d*m/g).test(v) ? 13 : 0
+        const diffLen = /\u001b\[(?:\d*){0,5}\d*m/g.test(v) ? 13 : 0
         s += v.fillStr(' ', colWidth[k] + diffLen) + '|'
       }
     }
@@ -434,17 +489,39 @@ function drawTable (data, colWidth = [], opt = { color: 0 }) {
  * // prime     41 毫秒  24390.2439/ms 1e+6 次
  */
 
-const benchmark = function benchmark (fn = (function () { /* do nothing */ }), msg = '', n = 1000000) {
-  const t = Date.now()
+const benchmark = function benchmark (
+  fn = function () {
+    /* do nothing */
+  },
+  msg = '',
+  n = 1000000
+) {
+  const t = performance.now()
+  let everyTime = 0
+  let timeSpend = 0
+  let dt = 0
   for (let i = 0; i < n; i++) {
+    everyTime = performance.now()
     fn()
+    dt = performance.now() - everyTime
+    timeSpend += dt
   }
-  const diffTime = Date.now() - t
-  const spendTime = diffTime + ' ms'
-  const perSec = ((n / diffTime * 10000 / 10000 | 0) + '').toMoney() + ' /ms'
-  console.log(c.y((fn.name || '').fillStr(' ', 15)), spendTime.fillStr(' ', 8), perSec.fillStr(' ', 10), n.toExponential() + ' 次', msg)
+  const diffTime = timeSpend
+  const spendTime = diffTime.toFixed(0) + ' ms'
+  const perSec =
+    (((((n / diffTime) * 10000) / 10000) | 0) + '').toMoney() + ' /ms'
+  console.log(
+    c.y((fn.name || '').fillStr(' ', 15)),
+    spendTime.fillStr(' ', 8),
+    perSec.fillStr(' ', 10),
+    n.toExponential() + ' 次',
+    msg
+  )
 }
-console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${c.g('https://github.com/kongnet/meeko.git')}`)
+console.log(
+  c.g('✔'),
+  `Meeko (${c.y(Pack.version)}) ${c.g('https://github.com/kongnet/meeko.git')}`
+)
 const exportObj = {
   _proto_,
   benchmark,

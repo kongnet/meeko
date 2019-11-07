@@ -57,7 +57,8 @@ function aglo (func) {
   const rad = Math.abs((Math.atan(n1.a) / Math.PI).toFixed(10))
   const radN = rad / radOne
 
-  if (radN <= 0.000023) { // 0.0000697461524012751
+  if (radN <= 0.000023) {
+    // 0.0000697461524012751
     console.log('O(1) 常量级别')
     return radN
   }
@@ -70,7 +71,7 @@ function aglo (func) {
     return radN
   }
   if (radN > 0.0005 && radN <= 0.01) {
-    console.log('O(N*log2(N)) N级别')
+    console.log('O(N*log2(N)) N*log2(N)级别')
     return radN
   }
   if (radN > 0.01 && radN <= 2.1) {
@@ -98,4 +99,5 @@ for (let i = 0; i < 10000; i++) {
   timeArr.push(aglo(test))
 }
 console.log(Math.min.apply(null, timeArr), Math.max.apply(null, timeArr)) */
-console.log(aglo(test))
+
+console.log(aglo(fn2))

@@ -13,7 +13,7 @@ function factorialize1 (num) {
   } else if (num === 0 || num === 1) {
     return 1
   } else {
-    return (num * factorialize1(num - 1))
+    return num * factorialize1(num - 1)
   }
 }
 function fac1 () {
@@ -27,15 +27,25 @@ $.benchmark(fac1, '递归阶乘', 100000)
 $.benchmark(fac2, '不递归阶乘', 100000)
 
 logTitle('四舍五入比较')
-const round1 = () => (function (n, dec) { return n.round(dec) })(1.23456789, 4)
-const round2 = () => (function (n, dec) { return Number(`${Math.round(`${n}e${dec}`)}e-${dec}`) })(1.23456789, 4)
+const round1 = () =>
+  (function (n, dec) {
+    return n.round(dec)
+  })(1.23456789, 4)
+const round2 = () =>
+  (function (n, dec) {
+    return Number(`${Math.round(`${n}e${dec}`)}e-${dec}`)
+  })(1.23456789, 4)
 $.benchmark(round1, 'sky四舍五入到某一位', 100000)
 $.benchmark(round2, '网上技巧es6实现任意位四舍五入', 100000)
 
 logTitle('去重函数比较')
 const uniq1 = function () {
   function uniq (array) {
-    const temp = {}; const r = []; const len = array.length; let val; let type
+    const temp = {}
+    const r = []
+    const len = array.length
+    let val
+    let type
     for (let i = 0; i < len; i++) {
       val = array[i]
       type = typeof val
@@ -57,9 +67,12 @@ const uniq2 = function () {
 
 const uniq3 = function () {
   function uniq (array) {
-    const n = [array[0]]; let hasNaN = 0 // 结果数组
+    const n = [array[0]]
+    let hasNaN = 0 // 结果数组
     for (let i = 1; i < array.length; i++) {
-      if (array.indexOf(array[i]) === i) { n.push(array[i]) }
+      if (array.indexOf(array[i]) === i) {
+        n.push(array[i])
+      }
       if (hasNaN === 0 && isNaN(array[i])) {
         hasNaN = 1
         n.push(NaN)
@@ -124,7 +137,7 @@ const chunk2 = function () {
     let idx = 0
     const newArray = []
     while (idx < array.length) {
-      newArray.push(array.slice(idx, idx += subGroupLength))
+      newArray.push(array.slice(idx, (idx += subGroupLength)))
     }
     return newArray
   }
@@ -148,16 +161,18 @@ $.benchmark(shuffle2, 'Fisher-Yates洗牌算法')
 
 logTitle('唯一ID生成比较')
 const tempSnowflake = new $.Snowflake(1, 1, 0)
-const genSnowFlake = function () { return tempSnowflake.nextId() }
-const genUUID = function () { return $.tools.uuid() }
+const genSnowFlake = function () {
+  return tempSnowflake.nextId()
+}
+const genUUID = function () {
+  return $.tools.uuid()
+}
 
 const UUIDGen = () =>
   ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-    (c ^ crypto.randomBytes(1)[0] & 15 >> c / 4).toString(16)
+    (c ^ (crypto.randomBytes(1)[0] & (15 >> (c / 4)))).toString(16)
   )
 $.benchmark(genSnowFlake, 'sky SnowFlake函数', 100000)
 $.benchmark(genUUID, 'sky gUID函数', 100000)
 
 $.benchmark(UUIDGen, 'UUIDGen', 10000)
-
-
