@@ -41,6 +41,9 @@ describe('Array原型扩展的单元测试', function () {
       $.tools.equals([5.2, 4.2, 5.3].countBy(Math.floor), { 5: 2, 4: 1 })
     )
   })
+  it('mode', function () {
+    assertLog([1, 1, 1, 2, 3].mode().join(''), '1')
+  })
   it('flatten', function () {
     assertLog([1, [2, [3, [4, 5], 6], 7], 8].flatten().join(''), '12345678')
   })
