@@ -1,4 +1,4 @@
-## [1.8.32](https://github.com/kongnet/meeko/compare/v1.8.20...v1.8.32) (2019-11-10)
+## [1.8.33](https://github.com/kongnet/meeko/compare/v1.8.20...v1.8.33) (2019-11-10)
 
 
 ### :art:
@@ -17,6 +17,7 @@
 
 * README增加趣题 ([f08fe41](https://github.com/kongnet/meeko/commit/f08fe41))
 * 增加$.tools.equals比较对象相等,$.tools.size获取对象长度 ([140ed1b](https://github.com/kongnet/meeko/commit/140ed1b))
+* 增加4分位数 ([3969376](https://github.com/kongnet/meeko/commit/3969376))
 * 增加循环删除 ([84f8c01](https://github.com/kongnet/meeko/commit/84f8c01))
 * 增加颜色类 ([94b78b9](https://github.com/kongnet/meeko/commit/94b78b9))
 
