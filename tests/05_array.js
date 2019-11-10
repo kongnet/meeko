@@ -283,7 +283,7 @@ describe('Array原型扩展的单元测试', function () {
   it('median', function () {
     assertLog([1, 2, 3, 4, 5, 6].median(), 3.5)
     assertLog([1, 2, 3, 4, 5].median(), 3)
-    assertLog([].median(), 0)
+    assertLog([].median(), NaN)
   })
   it('remove', function () {
     assertLog([1, 2, 3, 4, 5].remove()[0], 2)
