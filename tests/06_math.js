@@ -650,6 +650,7 @@ describe('组合数学相关函数', () => {
   })
 })
 describe('第k个最大最小', () => {
+  let r = $.math.secRand(0, 10000)
   it('第k个最大最小', () => {
     assertLog($.math.largek(rawData, 6), 9.545351287)
     assertLog($.math.smallk(rawData, 6), -9.005651691)

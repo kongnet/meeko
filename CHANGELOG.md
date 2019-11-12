@@ -1,3 +1,12 @@
+## [1.8.37](https://github.com/kongnet/meeko/compare/v1.8.36...v1.8.37) (2019-11-12)
+
+
+### :sparkles:
+
+* 增加k最大和k最小函数 ([d1866cb](https://github.com/kongnet/meeko/commit/d1866cb))
+
+
+
 ## [1.8.36](https://github.com/kongnet/meeko/compare/v1.8.32...v1.8.36) (2019-11-11)
 
 
