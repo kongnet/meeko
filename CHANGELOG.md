@@ -1,9 +1,10 @@
-## [1.8.35](https://github.com/kongnet/meeko/compare/v1.8.32...v1.8.35) (2019-11-11)
+## [1.8.36](https://github.com/kongnet/meeko/compare/v1.8.32...v1.8.36) (2019-11-11)
 
 
 ### :sparkles:
 
 * 增加4分位数 ([3969376](https://github.com/kongnet/meeko/commit/3969376))
+* 增加gcd lcm 因式分解函数 ([c6782b3](https://github.com/kongnet/meeko/commit/c6782b3))
 
 
 

@@ -629,7 +629,7 @@ describe('Math相关系数函数单元测试', () => {
 })
 describe('Math偏度和3个峰度函数单元测试', () => {
   const a = [53, 61, 49, 66, 78, 47]
-  it('skew 偏度 pandas模块 0.7826325504212567', () =>
+  it('skew 偏度 同excel skew 0.7826325504212567', () =>
     assertLog($.math.skew(a).toFixed(6), '0.782633'))
   it('kurt1 峰度/峰态系数 pandas模块 Estimators of population kurtosis人口峰度 -0.2631655441038472', () =>
     assertLog($.math.kurt1(a), -0.2631655441038472))
@@ -647,5 +647,11 @@ describe('组合数学相关函数', () => {
     assertLog($.math.fac(4), 24)
     assertLog($.math.fac(0), 1)
     assertLog($.math.fac(-10), -1)
+  })
+})
+describe('第k个最大最小', () => {
+  it('第k个最大最小', () => {
+    assertLog($.math.largek(rawData, 6), 9.545351287)
+    assertLog($.math.smallk(rawData, 6), -9.005651691)
   })
 })
