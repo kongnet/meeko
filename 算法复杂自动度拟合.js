@@ -91,8 +91,10 @@ function aglo (func) {
   console.log($.math.lnFitting([1, 2, 3, 4, 5, 6, 7], [1, 2, 3, 4, 5, 6, 7]))
   console.log($.math.powerFitting([1, 2, 3, 4, 5, 6, 7], [1, 2, 3, 4, 5, 6, 7]))
   console.log($.math.polyFitting([1, 2, 3, 4, 5, 6, 7], [1, 2, 3, 4, 5, 6, 7])) */
+
   return radN
 }
+
 /*
 const timeArr = []
 for (let i = 0; i < 10000; i++) {

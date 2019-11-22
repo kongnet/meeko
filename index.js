@@ -21,6 +21,7 @@ const cFn = function cFn (s, fc, dimNum, bc, isUnderline) {
    * @param {boolean} [isUnderline] 是否有下横线
    * @return {string}
    * */
+
   return `${isUnderline ? '\x1b[4m' : ''}${dimNum ? '\x1b[2m' : ''}${
     fc ? `\x1b[${fc}m` : '\x1b[37m'
   }${bc ? `\x1b[${bc}m` : ''}${s || ''}\x1b[0m`
@@ -68,6 +69,7 @@ const cFn = function cFn (s, fc, dimNum, bc, isUnderline) {
  */
 
 const c = {
+
   /*
   http://stanislavs.org/helppc/ansi_codes.html
   */
@@ -235,7 +237,8 @@ const log = function log (...args) {
         ':' +
         RegExp.$2 +
         ' ' +
-        new Date().date2Str().replaceAll('-', '')
+        new Date().date2Str()
+          .replaceAll('-', '')
     ) +
     ']'
   let str = ''
@@ -265,7 +268,8 @@ const err = function err (...args) {
         ':' +
         RegExp.$2 +
         ' ' +
-        new Date().date2Str().replaceAll('-', '')
+        new Date().date2Str()
+          .replaceAll('-', '')
     ) +
     ']'
   let str = ''
@@ -492,6 +496,7 @@ function drawTable (data, colWidth = [], opt = { color: 0 }) {
 const benchmark = function benchmark (
   fn = function () {
     /* do nothing */
+
   },
   msg = '',
   n = 1000000
@@ -509,7 +514,7 @@ const benchmark = function benchmark (
   const diffTime = timeSpend
   const spendTime = diffTime.toFixed(0) + ' ms'
   const perSec =
-    (((((n / diffTime) * 10000) / 10000) | 0) + '').toMoney() + ' /ms'
+    ((n / diffTime * 10000 / 10000 | 0) + '').toMoney() + ' /ms'
   console.log(
     c.y((fn.name || '').fillStr(' ', 15)),
     spendTime.fillStr(' ', 8),
