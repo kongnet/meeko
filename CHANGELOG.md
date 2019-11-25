@@ -1,3 +1,12 @@
+## [1.8.40](https://github.com/kongnet/meeko/compare/v1.8.39...v1.8.40) (2019-11-22)
+
+
+### :zap:
+
+* enum入参trim一下 ([fb3e37b](https://github.com/kongnet/meeko/commit/fb3e37b))
+
+
+
 ## [1.8.39](https://github.com/kongnet/meeko/compare/v1.8.38...v1.8.39) (2019-11-12)
 
 
