@@ -5,7 +5,291 @@ const crypto = require('crypto')
 function logTitle (s = '', strNum = 32) {
   console.log(`\n${'='.repeat(strNum)}${s}${'='.repeat(strNum)}\n`)
 }
+logTitle('基础-判断属性存在')
+const propExistObj = { name: 'sky' }
+const propExist1 = () => 'name' in propExistObj
+const propExist2 = () => propExistObj['name'] !== undefined
+const propExist3 = () => propExistObj.hasOwnProperty('name')
+$.benchmark(propExist1, 'key in 方式', 1e6)
+$.benchmark(propExist2, '直接判断undefined', 1e6)
+$.benchmark(propExist3, 'hasOwnProperty判断', 1e6)
 
+logTitle('基础-字符串存在判断')
+const strOri =
+  '9999nas56765d.n.kasdkskdnfkjsdfkjhsdfiuhsdfiusadfiuhsdfiöhsdifhsäodfskyjiosdfisdfsdfnosdfiosdf89sdfs98pdfzp98sdf98psfzp8sfzp8sfzp89szfp8snasd.n.kasdkskdskynfkjsdfkjhsdfiuhsdfiusadfiuhsdfiöhsdifhsäodfjiosdfisdfsdfnosdfiosdf89sdfs98pdfzp98sdf98psfzp8sfzp8sfzp89szfp8snasd.n.kasdkskdnfkjsdfkjhsdfiuhsdfiusadfiuhsdfiöhsdifhsäodfjiosdfisdfsdfnosdfiosdf89sdfs98pdfzp98sdf98psfzp8sfzp8sfzp89szfp8snasd.hellon.kasdkskdnfkjsdfkjhsdfiuhsdfiusadfiuhsdfiöhsdifhsäodfjiosdfisdfsdfnosdfiosdf89sdfs98pdfzp98sdf98psfzp8sfzp8sfzp89szfp8s'
+const needle = 'sky'
+const needleRegex = /sky/g
+const strExist1 = () => strOri.indexOf(needle) > -1
+const strExist2 = () => needleRegex.test(strOri)
+const strExist3 = () => strOri.match(needleRegex)
+const strExist4 = () => strOri.includes(needle)
+const strExist5 = () => strOri.search(needleRegex)
+$.benchmark(strExist1, 'indexOf查找')
+$.benchmark(strExist2, '正则')
+$.benchmark(strExist3, 'match判断')
+$.benchmark(strExist4, 'es6 includes判断')
+$.benchmark(strExist5, 'search判断')
+logTitle('基础-克隆数组')
+const cloneArray = [
+  29,
+  27,
+  28,
+  838,
+  22,
+  2882,
+  2,
+  93,
+  84,
+  74,
+  7,
+  933,
+  3754,
+  3874,
+  22838,
+  38464,
+  3837,
+  82424,
+  2927,
+  2625,
+  63,
+  27,
+  28,
+  838,
+  22,
+  2882,
+  2,
+  93,
+  84,
+  74,
+  7,
+  933,
+  3754,
+  3874,
+  22838,
+  38464,
+  3837,
+  82424,
+  2927,
+  2625,
+  63,
+  27,
+  28,
+  838,
+  22,
+  2882,
+  2,
+  93,
+  84,
+  74,
+  7,
+  933,
+  3754,
+  3874,
+  22838,
+  38464,
+  3837,
+  82424,
+  2927,
+  2625,
+  63,
+  27,
+  28,
+  838,
+  22,
+  2882,
+  2,
+  93,
+  84,
+  74,
+  7,
+  933,
+  3754,
+  3874,
+  22838,
+  38464,
+  3837,
+  82424,
+  2927,
+  2625,
+  63
+]
+const cloneArr1 = () => cloneArray.slice()
+const cloneArr2 = () => [].concat(cloneArray)
+const cloneArr3 = () => {
+  let a = []
+  for (let i = cloneArray.length; i--;) {
+    a.unshift(cloneArray[i])
+  }
+  return a
+}
+const cloneArr4 = () => {
+  let a = []
+  for (let i = 0, l = cloneArray.length; i < l; i++) {
+    a.push(cloneArray[i])
+  }
+  return a
+}
+const cloneArr5 = () => {
+  let l = cloneArray.length
+  let a = new Array(l)
+  for (let i = 0; i < l; i++) {
+    a[i] = cloneArray[i]
+  }
+  return a
+}
+const cloneArr6 = () => Array.apply(undefined, cloneArray)
+const cloneArr7 = () =>
+  cloneArray.map(function (i) {
+    return i
+  })
+const cloneArr8 = () => JSON.parse(JSON.stringify(cloneArray))
+$.benchmark(cloneArr1, 'slice克隆', 1e5)
+$.benchmark(cloneArr2, 'concat克隆', 1e5)
+$.benchmark(cloneArr3, 'unshift克隆', 1e5)
+$.benchmark(cloneArr4, 'push克隆', 1e5)
+$.benchmark(cloneArr5, 'index克隆', 1e5)
+$.benchmark(cloneArr6, '数组apply克隆', 1e5)
+$.benchmark(cloneArr7, 'map克隆', 1e5)
+$.benchmark(cloneArr8, 'JSON.stringify克隆', 1e5)
+
+logTitle('基础-数组对象查找')
+const findArr = [
+  { id: 29938 },
+  { id: 32994 },
+  { id: 38428 },
+  { id: 20395 },
+  { id: 32949 }
+]
+
+const oFind = {}
+oFind['29938'] = { id: 29938 }
+oFind['32994'] = { id: 32994 }
+oFind['38428'] = { id: 38428 }
+oFind['20395'] = { id: 20395 }
+oFind['32949'] = { id: 32949 }
+
+const keyToFind = '38428'
+const findId1 = () => {
+  let result
+
+  for (let i = 0; i < findArr.length; ++i) {
+    if (findArr[i].id == keyToFind) {
+      result = findArr[i].id
+      break
+    }
+  }
+  return result
+}
+const findId2 = () => findArr.find(item => item.id == keyToFind)
+const findId3 = () => oFind[keyToFind]
+$.benchmark(findId1, 'for循环查找', 1e6)
+$.benchmark(findId2, 'find迭代函数查找', 1e6)
+$.benchmark(findId3, 'hash直接查找', 1e6)
+
+logTitle('基础-delete undefined null')
+const delObj = {
+  name: 'sky',
+  lastName: 'kong'
+}
+const del1 = () => delete delObj.name
+const del2 = () => (delObj.name = undefined)
+const del3 = () => (delObj.name = null)
+$.benchmark(del1, 'delete删', 1e6)
+$.benchmark(del2, '赋值undefined', 1e6)
+$.benchmark(del3, '赋值null', 1e6)
+
+logTitle('基础-判断整数')
+
+const isInt1 = () => {
+  const value = 0.15
+  return (
+    !isNaN(value) &&
+    (function (x) {
+      return (x | 0) === x
+    })(parseFloat(value))
+  )
+}
+
+const isInt2 = () => $.tools.isInt(0.15)
+$.benchmark(isInt1, '普通判断整数', 1e6)
+$.benchmark(isInt2, '正则判断整数', 1e6)
+
+logTitle('基础-数组最大最小值')
+const minMaxArr = [
+  82,
+  28,
+  2726,
+  28,
+  29,
+  19,
+  282737,
+  88,
+  2827,
+  917,
+  2,
+  2828,
+  999,
+  827,
+  82,
+  928272,
+  2826,
+  373636,
+  278,
+  2282,
+  292727,
+  282,
+  23,
+  833,
+  92829,
+  282,
+  2,
+  939,
+  111,
+  8382,
+  238
+]
+const minMax1 = () => [Math.min(...minMaxArr), Math.max(...minMaxArr)]
+const minMax2 = () => [
+  minMaxArr.reduce((a, b) => Math.min(a, b)),
+  minMaxArr.reduce((a, b) => Math.max(a, b))
+]
+const minMax3 = () => [
+  Math.min.apply(null, minMaxArr),
+  Math.max.apply(null, minMaxArr)
+]
+
+$.benchmark(minMax1, 'es6 解构查找数组最值', 1e6)
+$.benchmark(minMax2, 'reduce查找数组最值', 1e6)
+$.benchmark(minMax3, '普通方式查找数组最值', 1e6)
+
+logTitle('基础-字符串拼接')
+const strConcat1 = () => {
+  const t = 'x'
+  let tt = ''
+  for (let i = 0; i < 1000; i++) {
+    tt += t
+  }
+  return tt
+}
+const strConcat2 = () => {
+  const t = 'x'
+  let tt = []
+  for (let i = 0; i < 1000; i++) {
+    tt.push(t)
+  }
+  return tt.join('')
+}
+const strConcat3 = () => {
+  const t = 'x'
+  let tt = []
+  for (let i = 0; i < 1000; i++) {
+    tt[tt.length] = t
+  }
+  return tt.join('')
+}
+$.benchmark(strConcat1, '直接+=', 1e4)
+$.benchmark(strConcat2, 'join字符串', 1e4)
+$.benchmark(strConcat3, 'length-join', 1e4)
 logTitle('阶乘比较')
 function factorialize1 (num) {
   if (num < 0) {
@@ -137,7 +421,7 @@ const chunk2 = function () {
     let idx = 0
     const newArray = []
     while (idx < array.length) {
-      newArray.push(array.slice(idx, idx += subGroupLength))
+      newArray.push(array.slice(idx, (idx += subGroupLength)))
     }
     return newArray
   }
@@ -170,7 +454,7 @@ const genUUID = function () {
 
 const UUIDGen = () =>
   ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-    (c ^ crypto.randomBytes(1)[0] & 15 >> c / 4).toString(16)
+    (c ^ (crypto.randomBytes(1)[0] & (15 >> (c / 4)))).toString(16)
   )
 $.benchmark(genSnowFlake, 'sky SnowFlake函数', 100000)
 $.benchmark(genUUID, 'sky gUID函数', 100000)
@@ -179,13 +463,12 @@ $.benchmark(UUIDGen, 'UUIDGen', 10000)
 logTitle('随机整数生成比较')
 
 function secRand (a, b) {
-  /*
-（1）首先找到样本数据Y的最小值Min及最大值Max
-（2）计算系数为：k=(b-a)/(Max-Min)
-（3）得到归一化到[a,b)区间的数据：norY=a+k(Y-Min)
-*/
+  // （1）首先找到样本数据Y的最小值Min及最大值Max
+  // （2）计算系数为：k=(b-a)/(Max-Min)
+  // （3）得到归一化到[a,b)区间的数据：norY=a+k(Y-Min)
+
   let r = crypto.randomBytes(4) // 0-4294967295
-  return Math.floor((b - a + 1) / 4294967295 * r.readUInt32LE(0)) + a
+  return Math.floor(((b - a + 1) / 4294967295) * r.readUInt32LE(0)) + a
 }
 const rand1 = function () {
   return $.math.uniformRandInt(0, 10000)
@@ -194,4 +477,4 @@ const rand2 = function () {
   return secRand(0, 10000)
 }
 $.benchmark(rand1, '普通包含两端随机函数', 100000)
-$.benchmark(rand2, '安全包含两端随机函数', 100000)
+$.benchmark(rand2, '安全包含两端随机函数randomBytes实现', 100000)
