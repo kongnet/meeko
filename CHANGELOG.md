@@ -1,3 +1,12 @@
+## [1.8.43](https://github.com/kongnet/meeko/compare/v1.8.42...v1.8.43) (2019-12-06)
+
+
+### :sparkles:
+
+* 增加基础函数的benchmark ([dc7014f](https://github.com/kongnet/meeko/commit/dc7014f))
+
+
+
 ## [1.8.42](https://github.com/kongnet/meeko/compare/v1.8.41...v1.8.42) (2019-11-25)
 
 
