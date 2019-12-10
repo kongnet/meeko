@@ -11,21 +11,26 @@ const assertLog = function () {
 describe('Date原型扩展的单元测试', function () {
   const d1 = new Date('2015-12-29 01:11:01')
   const d2 = new Date('2016-01-02 20:09:31')
-  const d3 = new Date('2018-01-01 20:09:31')
+  const d3 = new Date('2019-12-31 20:09:31')
+  it('isLeap', function () {
+    assertLog(false, d1.isLeap())
+    assertLog(true, d2.isLeap())
+    assertLog(false, d3.isLeap())
+  })
   it('getWeek', function () {
-    assertLog(52, d1.getWeek())
-    assertLog(52, d2.getWeek())
-    assertLog(1, d3.getWeek())
+    assertLog(53, d1.getWeek())
+    assertLog(1, d2.getWeek())
+    assertLog(53, d3.getWeek())
   })
   it('format', function () {
     assertLog('2015-12-29 01:11:01', d1.format())
-    assertLog(+new Date('2015-12-29 01:11:01') / 1000 | 0, +d1.format('X'))
+    assertLog((+new Date('2015-12-29 01:11:01') / 1000) | 0, +d1.format('X'))
     assertLog('2015/12/29', d1.format('yyyy/MM/dd'))
     assertLog('2015/12/29/011101', d1.format('YYYY/MM/DD/HHmmss'))
     assertLog('20151229011101', d1.format('YYYYMMDDHHmmss'))
     assertLog('2015-12-29 01:11:01', d1.format('YYYY-MM-DD HH:mm:ss'))
     assertLog('2015-12-29 01:11:01', d1.format('yyyy-MM-dd hh:mm:ss'))
-    assertLog('2015-12-29 01:11:01 52 4', d1.format('yyyy-MM-dd hh:mm:ss ww q'))
+    assertLog('2015-12-29 01:11:01 53 4', d1.format('yyyy-MM-dd hh:mm:ss ww q'))
   })
   it('date2Str', function () {
     assertLog('2015-12-29 01:11:01', d1.date2Str())
@@ -120,7 +125,10 @@ describe('String原型扩展的单元测试', function () {
   })
   it('toDate', function () {
     assertLog(new Date('2019-01-01').date2Str(), '20190101'.toDate().date2Str())
-    assertLog(new Date('2019-02-02 10:32:11').date2Str(), '2019-02-02 10:32:11'.toDate().date2Str())
+    assertLog(
+      new Date('2019-02-02 10:32:11').date2Str(),
+      '2019-02-02 10:32:11'.toDate().date2Str()
+    )
     assertLog(-1, '20190155'.toDate())
     assertLog(-1, 'sadfasf'.toDate())
   })
