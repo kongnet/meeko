@@ -1,3 +1,12 @@
+## [1.8.45](https://github.com/kongnet/meeko/compare/v1.8.44...v1.8.45) (2019-12-10)
+
+
+### :sparkles:
+
+* (增加闰年判断，修正第几周函数) ([8ed3e0f](https://github.com/kongnet/meeko/commit/8ed3e0f))
+
+
+
 ## [1.8.44](https://github.com/kongnet/meeko/compare/v1.8.43...v1.8.44) (2019-12-06)
 
 
