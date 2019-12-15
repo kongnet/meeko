@@ -2,13 +2,13 @@
 /* global it */
 'use strict'
 global.assertCount = 0
-var $ = require('../index')
+let $ = require('../index')
 const assert = require('assert')
 const assertLog = function () {
   global.assertCount++
   return assert.strictEqual(...arguments)
 }
-var b = {
+let b = {
   id: {
     desc: 'id',
     req: 1,
@@ -28,7 +28,6 @@ var b = {
     req: 1,
     type: 'string',
     size: [1, 2]
-
   },
   n1: {
     desc: '数值节点1',
@@ -49,7 +48,6 @@ var b = {
     desc: '节点权限',
     type: 'positive',
     size: [-1, 1]
-
   },
   description: {
     desc: '节点详情',
@@ -92,13 +90,20 @@ var b = {
   },
   enum1: {
     desc: '枚举类型',
-    type: 'enum'
+    type: 'enum',
+    size: ['pedding']
+  },
+  file: {
+    name: 'file',
+    desc: '上传的file组件id',
+    type: 'file',
+    size: [0, 1024 * 1024 * 0.2],
+    fileType: ['image/png', 'image/jpeg']
   }
 }
 describe('checkParam的单元测试', function () {
   assertLog(1, $.log($.c.cls + $.c.xy(0, 0)))
-  it('int', function * () {
-    yield $.tools.wait(1)
+  it('int', function () {
     let a = {
       enum: 1,
       name1: 'x',
@@ -302,14 +307,22 @@ describe('checkParam的单元测试', function () {
       id: 1,
       url: 1
     }
-    assertLog(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      401,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
       n1: 1,
       id: 1
     }
-    assertLog(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      200,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
@@ -317,7 +330,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       url: undefined
     }
-    assertLog(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      200,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
@@ -325,7 +342,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       url: null
     }
-    assertLog(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      200,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
@@ -333,7 +354,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       url: ''
     }
-    assertLog(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      200,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
@@ -341,7 +366,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       url: 'abc'
     }
-    assertLog(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      401,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
@@ -349,7 +378,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       url: true
     }
-    assertLog(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      401,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
@@ -357,7 +390,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       url: false
     }
-    assertLog(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      200,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
@@ -365,7 +402,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       url: -1
     }
-    assertLog(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      401,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
@@ -373,7 +414,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       url: 0
     }
-    assertLog(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      200,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
@@ -381,7 +426,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       url: 1.9
     }
-    assertLog(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      401,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
@@ -389,7 +438,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       url: 'https://www.npmjs.com/package/meeko'
     }
-    assertLog(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      200,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
@@ -397,7 +450,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       url: 'http://www.npmjs.com/package/meeko'
     }
-    assertLog(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      200,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
@@ -405,7 +462,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       url: 'https://'
     }
-    assertLog(401, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      401,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
   })
   it('bool', function () {
     let a = {
@@ -1098,7 +1159,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       array1: []
     }
-    assertLog(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      200,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
@@ -1106,7 +1171,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       array1: ['jjhh', '', '4r59ew5es4', '4445']
     }
-    assertLog(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      200,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
@@ -1114,7 +1183,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       array1: [123, 321, 55.2, 11]
     }
-    assertLog(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      200,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
     a = {
       enum: 1,
       name1: 'x',
@@ -1122,7 +1195,11 @@ describe('checkParam的单元测试', function () {
       id: 1,
       array1: [123, 321, 55, 11]
     }
-    assertLog(200, $.tools.checkParam(a, b).code, '被测试数据：' + JSON.stringify(a))
+    assertLog(
+      200,
+      $.tools.checkParam(a, b).code,
+      '被测试数据：' + JSON.stringify(a)
+    )
   })
   it('array2', function () {
     let a = {
@@ -1320,12 +1397,24 @@ describe('checkParam的单元测试', function () {
   it('enum1', function () {
     const a = {
       enum: 1,
-      enum1: 1,
+      enum1: [1, 2],
       name1: 'x',
       n1: 1,
       id: 1
     }
     assertLog(401, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
+  })
+  it('file', function () {
+    b.file.req = 1
+    const a = {
+      enum: 1,
+      enum1: 'pedding',
+      name1: 'x',
+      n1: 1,
+      id: 1,
+      file: [{ size: 1024, type: 'image/jpeg' }]
+    }
+    assertLog(200, $.tools.checkParam(a, b).code, $.tools.checkParam(a, b).msg)
   })
   it('default', function () {
     const a = {
