@@ -1,5 +1,12 @@
 instrumentation:
-  root: .   # 执行的根目录
+  root: . # 执行的根目录
   extensions:
-    - .js   # 检查覆盖率的文件扩张名
-  excludes: ['**/node_modules/**','**/lib/reg/**','**/lib/color.js','**/lib/file.js','算法复杂自动度拟合.js']
+    - .js # 检查覆盖率的文件扩张名
+  excludes:
+    [
+      '**/node_modules/**',
+      '**/lib/reg/**',
+      '**/lib/color.js',
+      '**/lib/file.js',
+      '**/lib/qrcode.js',
+    ]

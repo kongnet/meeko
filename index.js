@@ -69,7 +69,6 @@ const cFn = function cFn (s, fc, dimNum, bc, isUnderline) {
  */
 
 const c = {
-
   /*
   http://stanislavs.org/helppc/ansi_codes.html
   */
@@ -237,8 +236,7 @@ const log = function log (...args) {
         ':' +
         RegExp.$2 +
         ' ' +
-        new Date().date2Str()
-          .replaceAll('-', '')
+        new Date().date2Str().replaceAll('-', '')
     ) +
     ']'
   let str = ''
@@ -268,8 +266,7 @@ const err = function err (...args) {
         ':' +
         RegExp.$2 +
         ' ' +
-        new Date().date2Str()
-          .replaceAll('-', '')
+        new Date().date2Str().replaceAll('-', '')
     ) +
     ']'
   let str = ''
@@ -362,7 +359,7 @@ const Snowflake = require('./lib/Snowflake.js')
 const NaiveBayes = require('./lib/NaiveBayes.js')
 const Spinner = require('./lib/Spinner.js')
 const Mock = require('./lib/Mock.js')
-
+const qrcode = require('./lib/qrcode.js')
 /**
  * 把数组里的函数挨个执行，并且把前面函数的返回值传给下一个函数
  * @param {...function[]} [funcs]
@@ -496,7 +493,6 @@ function drawTable (data, colWidth = [], opt = { color: 0 }) {
 const benchmark = function benchmark (
   fn = function () {
     /* do nothing */
-
   },
   msg = '',
   n = 1000000
@@ -514,7 +510,7 @@ const benchmark = function benchmark (
   const diffTime = timeSpend
   const spendTime = diffTime.toFixed(0) + ' ms'
   const perSec =
-    ((n / diffTime * 10000 / 10000 | 0) + '').toMoney() + ' /ms'
+    (((((n / diffTime) * 10000) / 10000) | 0) + '').toMoney() + ' /ms'
   console.log(
     c.y((fn.name || '').fillStr(' ', 15)),
     spendTime.fillStr(' ', 8),
@@ -547,6 +543,7 @@ const exportObj = {
   now,
   option,
   pipe,
+  qrcode,
   reg,
   requireAll,
   Snowflake,
