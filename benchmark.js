@@ -8,7 +8,7 @@ function logTitle (s = '', strNum = 32) {
 logTitle('基础-判断属性存在')
 const propExistObj = { name: 'sky' }
 const propExist1 = () => 'name' in propExistObj
-const propExist2 = () => propExistObj['name'] !== undefined
+const propExist2 = () => propExistObj.name !== undefined
 const propExist3 = () => propExistObj.hasOwnProperty('name')
 $.benchmark(propExist1, 'key in 方式', 1e6)
 $.benchmark(propExist2, '直接判断undefined', 1e6)
@@ -192,8 +192,8 @@ const delObj = {
   lastName: 'kong'
 }
 const del1 = () => delete delObj.name
-const del2 = () => (delObj.name = undefined)
-const del3 = () => (delObj.name = null)
+const del2 = () => delObj.name = undefined
+const del3 = () => delObj.name = null
 $.benchmark(del1, 'delete删', 1e6)
 $.benchmark(del2, '赋值undefined', 1e6)
 $.benchmark(del3, '赋值null', 1e6)
@@ -421,7 +421,7 @@ const chunk2 = function () {
     let idx = 0
     const newArray = []
     while (idx < array.length) {
-      newArray.push(array.slice(idx, (idx += subGroupLength)))
+      newArray.push(array.slice(idx, idx += subGroupLength))
     }
     return newArray
   }
@@ -454,7 +454,7 @@ const genUUID = function () {
 
 const UUIDGen = () =>
   ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-    (c ^ (crypto.randomBytes(1)[0] & (15 >> (c / 4)))).toString(16)
+    (c ^ crypto.randomBytes(1)[0] & 15 >> c / 4).toString(16)
   )
 $.benchmark(genSnowFlake, 'sky SnowFlake函数', 100000)
 $.benchmark(genUUID, 'sky gUID函数', 100000)
@@ -468,7 +468,7 @@ function secRand (a, b) {
   // （3）得到归一化到[a,b)区间的数据：norY=a+k(Y-Min)
 
   let r = crypto.randomBytes(4) // 0-4294967295
-  return Math.floor(((b - a + 1) / 4294967295) * r.readUInt32LE(0)) + a
+  return Math.floor((b - a + 1) / 4294967295 * r.readUInt32LE(0)) + a
 }
 const rand1 = function () {
   return $.math.uniformRandInt(0, 10000)
