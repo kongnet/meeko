@@ -1,9 +1,10 @@
-## [1.8.47](https://github.com/kongnet/meeko/compare/v1.8.46...v1.8.47) (2019-12-18)
+## [1.8.48](https://github.com/kongnet/meeko/compare/v1.8.46...v1.8.48) (2019-12-18)
 
 
 ### :sparkles:
 
 * checkparam的file类型增加长度和类型判断 ([25aaa13](https://github.com/kongnet/meeko/commit/25aaa13))
+* 增加二维码生成 ([e29dab1](https://github.com/kongnet/meeko/commit/e29dab1))
 
 
 
