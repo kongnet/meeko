@@ -1,3 +1,12 @@
+## [1.8.51](https://github.com/kongnet/meeko/compare/v1.8.50...v1.8.51) (2019-12-30)
+
+
+### :sparkles:
+
+* 性能测试增加稳定百分比显示 ([eba8521](https://github.com/kongnet/meeko/commit/eba8521))
+
+
+
 ## [1.8.50](https://github.com/kongnet/meeko/compare/v1.8.49...v1.8.50) (2019-12-25)
 
 
