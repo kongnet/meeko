@@ -1,3 +1,16 @@
+## [1.8.50](https://github.com/kongnet/meeko/compare/v1.8.49...v1.8.50) (2019-12-25)
+
+
+### :art:
+
+* 修改buf方法名称 ([afe0197](https://github.com/kongnet/meeko/commit/afe0197))
+
+### :sparkles:
+
+* 增加buffer $.buf.split $.buf.join方法 ([38bb564](https://github.com/kongnet/meeko/commit/38bb564))
+
+
+
 ## [1.8.49](https://github.com/kongnet/meeko/compare/v1.8.48...v1.8.49) (2019-12-23)
 
 

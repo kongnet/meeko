@@ -152,7 +152,7 @@ const _d = require('./lib/date')
 ext(Date.prototype, _d)
 const _f = require('./lib/function')
 ext(Function.prototype, _f)
-const _a = require('./lib/array')
+const _a = require('./lib/array.js')
 ext(Array.prototype, _a)
 _proto_ = {
   a: _a,
@@ -504,21 +504,29 @@ const benchmark = function benchmark (
   let everyTime = 0
   let timeSpend = 0
   let dt = 0
+  let minDt = Infinity
+  let maxDt = -Infinity
   for (let i = 0; i < n; i++) {
     everyTime = performance.now()
     fn()
     dt = performance.now() - everyTime
     timeSpend += dt
+    minDt = dt < minDt ? dt : minDt
+    maxDt = dt > minDt ? dt : maxDt
   }
   const diffTime = timeSpend
-  const spendTime = diffTime.toFixed(0) + ' ms'
-  const perSec =
-    (((((n / diffTime) * 10000) / 10000) | 0) + '').toMoney() + ' /ms'
+  const spendTime = diffTime.toFixed(0)
+  const perSec = (((n / diffTime) * 10000) / 10000) | 0
   console.log(
     c.y((fn.name || '').fillStr(' ', 15)),
-    spendTime.fillStr(' ', 8),
-    perSec.fillStr(' ', 10),
+    (spendTime + ' ms').fillStr(' ', 8, -1),
+    ((perSec + '').toMoney() + ' /ms').fillStr(' ', 10, -1),
     n.toExponential() + ' 次',
+    (
+      '±' +
+      (((maxDt - minDt) / 2 / (spendTime / n)) * 100).round(2) +
+      '%'
+    ).fillStr(' ', 9, -1),
     msg
   )
 }
