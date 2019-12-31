@@ -1,160 +1,12 @@
-## [1.8.51](https://github.com/kongnet/meeko/compare/v1.8.50...v1.8.51) (2019-12-30)
-
-
-### :sparkles:
-
-* 性能测试增加稳定百分比显示 ([eba8521](https://github.com/kongnet/meeko/commit/eba8521))
-
-
-
-## [1.8.50](https://github.com/kongnet/meeko/compare/v1.8.49...v1.8.50) (2019-12-25)
-
-
-### :art:
-
-* 修改buf方法名称 ([afe0197](https://github.com/kongnet/meeko/commit/afe0197))
-
-### :sparkles:
-
-* 增加buffer $.buf.split $.buf.join方法 ([38bb564](https://github.com/kongnet/meeko/commit/38bb564))
-
-
-
-## [1.8.49](https://github.com/kongnet/meeko/compare/v1.8.48...v1.8.49) (2019-12-23)
-
-
-
-
-## [1.8.48](https://github.com/kongnet/meeko/compare/v1.8.46...v1.8.48) (2019-12-18)
-
-
-### :sparkles:
-
-* checkparam的file类型增加长度和类型判断 ([25aaa13](https://github.com/kongnet/meeko/commit/25aaa13))
-* 增加二维码生成 ([e29dab1](https://github.com/kongnet/meeko/commit/e29dab1))
-
-
-
-## [1.8.46](https://github.com/kongnet/meeko/compare/v1.8.45...v1.8.46) (2019-12-14)
-
-
-### :sparkles:
-
-* checkparam增加file类型判断 ([90e28df](https://github.com/kongnet/meeko/commit/90e28df))
-
-
-
-## [1.8.45](https://github.com/kongnet/meeko/compare/v1.8.44...v1.8.45) (2019-12-10)
-
-
-### :sparkles:
-
-* (增加闰年判断，修正第几周函数) ([8ed3e0f](https://github.com/kongnet/meeko/commit/8ed3e0f))
-
-
-
-## [1.8.44](https://github.com/kongnet/meeko/compare/v1.8.43...v1.8.44) (2019-12-06)
-
-
-
-
-## [1.8.43](https://github.com/kongnet/meeko/compare/v1.8.42...v1.8.43) (2019-12-06)
-
-
-### :sparkles:
-
-* 增加基础函数的benchmark ([dc7014f](https://github.com/kongnet/meeko/commit/dc7014f))
-
-
-
-## [1.8.42](https://github.com/kongnet/meeko/compare/v1.8.41...v1.8.42) (2019-11-25)
-
-
-
-
-## [1.8.41](https://github.com/kongnet/meeko/compare/v1.8.40...v1.8.41) (2019-11-25)
-
-
-
-
-## [1.8.40](https://github.com/kongnet/meeko/compare/v1.8.39...v1.8.40) (2019-11-22)
-
-
-### :zap:
-
-* enum入参trim一下 ([fb3e37b](https://github.com/kongnet/meeko/commit/fb3e37b))
-
-
-
-## [1.8.39](https://github.com/kongnet/meeko/compare/v1.8.38...v1.8.39) (2019-11-12)
-
-
-
-
-## [1.8.38](https://github.com/kongnet/meeko/compare/v1.8.37...v1.8.38) (2019-11-12)
-
-
-
-
-## [1.8.37](https://github.com/kongnet/meeko/compare/v1.8.36...v1.8.37) (2019-11-12)
-
-
-### :sparkles:
-
-* 增加k最大和k最小函数 ([d1866cb](https://github.com/kongnet/meeko/commit/d1866cb))
-
-
-
-## [1.8.36](https://github.com/kongnet/meeko/compare/v1.8.32...v1.8.36) (2019-11-11)
-
-
-### :sparkles:
-
-* 增加4分位数 ([3969376](https://github.com/kongnet/meeko/commit/3969376))
-* 增加gcd lcm 因式分解函数 ([c6782b3](https://github.com/kongnet/meeko/commit/c6782b3))
-
-
-
-## [1.8.32](https://github.com/kongnet/meeko/compare/v1.8.31...v1.8.32) (2019-11-08)
-
-
-### :art:
-
-* 增加众数及单元测试 ([5bbc053](https://github.com/kongnet/meeko/commit/5bbc053))
-
-
-
-## [1.8.31](https://github.com/kongnet/meeko/compare/v1.8.30...v1.8.31) (2019-11-07)
-
-
-
-
-## [1.8.30](https://github.com/kongnet/meeko/compare/v1.8.29...v1.8.30) (2019-11-01)
-
-
-
-
-## [1.8.29](https://github.com/kongnet/meeko/compare/v1.8.28...v1.8.29) (2019-10-28)
-
-
-### :sparkles:
-
-* 增加$.tools.equals比较对象相等,$.tools.size获取对象长度 ([140ed1b](https://github.com/kongnet/meeko/commit/140ed1b))
-
-
-
-## [1.8.28](https://github.com/kongnet/meeko/compare/v1.8.27...v1.8.28) (2019-10-15)
-
-
-
-
-## [1.8.27](https://github.com/kongnet/meeko/compare/4f5a27d...v1.8.27) (2019-10-14)
+## 1.8.52 (2019-12-31)
 
 
 ### :art:
 
 * toMoney add default param ([d409aa7](https://github.com/kongnet/meeko/commit/d409aa7))
+* 修改buf方法名称 ([afe0197](https://github.com/kongnet/meeko/commit/afe0197))
 * 增加代码复杂度检测配置 ([50cebad](https://github.com/kongnet/meeko/commit/50cebad))
+* 增加众数及单元测试 ([5bbc053](https://github.com/kongnet/meeko/commit/5bbc053))
 
 ### :bug:
 
@@ -180,14 +32,24 @@
 
 ### :sparkles:
 
+* (增加闰年判断，修正第几周函数) ([8ed3e0f](https://github.com/kongnet/meeko/commit/8ed3e0f))
+* checkparam增加file类型判断 ([90e28df](https://github.com/kongnet/meeko/commit/90e28df))
+* checkparam的file类型增加长度和类型判断 ([25aaa13](https://github.com/kongnet/meeko/commit/25aaa13))
 * mock增加tools中的genUUID ([2ef7418](https://github.com/kongnet/meeko/commit/2ef7418))
 * obj2Url ([73c3b46](https://github.com/kongnet/meeko/commit/73c3b46))
 * README增加趣题 ([f08fe41](https://github.com/kongnet/meeko/commit/f08fe41))
 * string原型增加toDate方法 ([596fd89](https://github.com/kongnet/meeko/commit/596fd89))
 * 增减高斯消元法，优化csv2arr函数 ([a24e4e2](https://github.com/kongnet/meeko/commit/a24e4e2))
+* 增加$.tools.equals比较对象相等,$.tools.size获取对象长度 ([140ed1b](https://github.com/kongnet/meeko/commit/140ed1b))
+* 增加4分位数 ([3969376](https://github.com/kongnet/meeko/commit/3969376))
+* 增加buffer $.buf.split $.buf.join方法 ([38bb564](https://github.com/kongnet/meeko/commit/38bb564))
+* 增加gcd lcm 因式分解函数 ([c6782b3](https://github.com/kongnet/meeko/commit/c6782b3))
 * 增加genList函数，增加README.md一个例子 ([2e712d5](https://github.com/kongnet/meeko/commit/2e712d5))
+* 增加k最大和k最小函数 ([d1866cb](https://github.com/kongnet/meeko/commit/d1866cb))
 * 增加mock占位符 ([8c7749e](https://github.com/kongnet/meeko/commit/8c7749e))
+* 增加二维码生成 ([e29dab1](https://github.com/kongnet/meeko/commit/e29dab1))
 * 增加唯美短语，增加多种分布函数 ([4d40e8a](https://github.com/kongnet/meeko/commit/4d40e8a))
+* 增加基础函数的benchmark ([dc7014f](https://github.com/kongnet/meeko/commit/dc7014f))
 * 增加多项式拟合方法 ([03ebf20](https://github.com/kongnet/meeko/commit/03ebf20))
 * 增加循环删除 ([84f8c01](https://github.com/kongnet/meeko/commit/84f8c01))
 * 增加数组分组功能，增加类csv格式toArray功能 ([1da5890](https://github.com/kongnet/meeko/commit/1da5890))
@@ -200,6 +62,7 @@
 * 增加肯德尔相关分析和斯皮尔曼相关分析函数 ([31dbd77](https://github.com/kongnet/meeko/commit/31dbd77))
 * 增加近似值函数 ([98a65a4](https://github.com/kongnet/meeko/commit/98a65a4))
 * 增加颜色类 ([94b78b9](https://github.com/kongnet/meeko/commit/94b78b9))
+* 性能测试增加稳定百分比显示 ([eba8521](https://github.com/kongnet/meeko/commit/eba8521))
 * 让表格输出可返回输出的内容 ([defc14b](https://github.com/kongnet/meeko/commit/defc14b))
 
 ### :truck:
@@ -223,6 +86,7 @@
 ### :zap:
 
 * $.tools.rnd函数升级，更均匀的随机 ([4ff7105](https://github.com/kongnet/meeko/commit/4ff7105))
+* enum入参trim一下 ([fb3e37b](https://github.com/kongnet/meeko/commit/fb3e37b))
 
 
 
