@@ -1,3 +1,12 @@
+## [1.8.53](https://github.com/kongnet/meeko/compare/v1.8.52...v1.8.53) (2020-01-02)
+
+
+### :sparkles:
+
+* 驼峰增加一个分割参数 ([56e5513](https://github.com/kongnet/meeko/commit/56e5513))
+
+
+
 ## [1.8.52](https://github.com/kongnet/meeko/compare/v1.8.51...v1.8.52) (2019-12-30)
 
 
