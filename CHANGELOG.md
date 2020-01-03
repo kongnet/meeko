@@ -1,3 +1,8 @@
+## [1.8.54](https://github.com/kongnet/meeko/compare/v1.8.53...v1.8.54) (2020-01-02)
+
+
+
+
 ## [1.8.53](https://github.com/kongnet/meeko/compare/v1.8.52...v1.8.53) (2020-01-02)
 
 
@@ -14,6 +19,10 @@
 
 ## [1.8.51](https://github.com/kongnet/meeko/compare/v1.8.50...v1.8.51) (2019-12-30)
 
+
+### :arrow_up:
+
+* Bump handlebars from 4.2.0 to 4.5.3 ([00d0495](https://github.com/kongnet/meeko/commit/00d0495))
 
 ### :sparkles:
 
