@@ -201,10 +201,10 @@ Buffer.prototype.contact =
   EF BB BF [239 187 191]
   */
 
-    const buf = Buffer.alloc(this.length + b.length)
-    this.copy(buf, 0, 0, this.length)
-    b.copy(buf, this.length, 0, b.length)
-    return buf
+    const bf = Buffer.alloc(this.length + b.length)
+    this.copy(bf, 0, 0, this.length)
+    b.copy(bf, this.length, 0, b.length)
+    return bf
   }
 
 /**
