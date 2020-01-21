@@ -463,9 +463,9 @@ describe('Math扩展函数的单元测试', () => {
       $.math.quantile([6, 7, 15, 36, 39, 40, 41, 42, 43, 47, 49], 3),
       42.5
     )
-    assertLog($.math.quantile([1, 2, 3, 4], 1), 1.5)
+    assertLog($.math.quantile([1, 2, 3, 4], 1), 1.75)
     assertLog($.math.quantile([1, 2, 3, 4], 2), 2.5)
-    assertLog($.math.quantile([1, 2, 3, 4], 3), 3.5)
+    assertLog($.math.quantile([1, 2, 3, 4], 3), 3.25)
     assertLog($.math.quantile([]), NaN)
     assertLog($.math.quantile([7], 1), 7)
     assertLog($.math.quantile([7], 2), 7)
