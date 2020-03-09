@@ -1,9 +1,13 @@
-## [1.8.61](https://github.com/kongnet/meeko/compare/v1.8.60...v1.8.61) (2020-03-06)
+## [1.8.62](https://github.com/kongnet/meeko/compare/v1.8.60...v1.8.62) (2020-03-06)
 
 
 ### :bug:
 
 * 增加两个手机运营网段 ([e8b3ad8](https://github.com/kongnet/meeko/commit/e8b3ad8))
+
+### :zap:
+
+* 不写fileType表示支持所有文件上传 ([bfb61a6](https://github.com/kongnet/meeko/commit/bfb61a6))
 
 
 
