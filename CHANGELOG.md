@@ -1,3 +1,12 @@
+## [1.8.66](https://github.com/kongnet/meeko/compare/v1.8.65...v1.8.66) (2020-03-16)
+
+
+### :zap:
+
+* 多项式拟合增加formula返回 ([4f78475](https://github.com/kongnet/meeko/commit/4f78475))
+
+
+
 ## [1.8.65](https://github.com/kongnet/meeko/compare/v1.8.64...v1.8.65) (2020-03-16)
 
 
