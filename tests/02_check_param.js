@@ -213,7 +213,7 @@ describe('checkParam的单元测试', function () {
   it('string', function () {
     let a = {
       enum: 1,
-      name1: 'x',
+      name1: ' x ', //string类型默认会trim
       n1: 1,
       id: 1,
       name: 1
