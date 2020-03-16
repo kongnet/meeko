@@ -1,3 +1,12 @@
+## [1.8.65](https://github.com/kongnet/meeko/compare/v1.8.64...v1.8.65) (2020-03-16)
+
+
+### :zap:
+
+* 字符串类型参数默认trim一下 ([0acbef0](https://github.com/kongnet/meeko/commit/0acbef0))
+
+
+
 ## [1.8.64](https://github.com/kongnet/meeko/compare/v1.8.63...v1.8.64) (2020-03-09)
 
 
