@@ -1,6 +1,6 @@
 {
   "name": "meeko",
-  "version": "1.8.68",
+  "version": "1.8.69",
   "description": "meeko自用函数",
   "main": "index.js",
   "scripts": {
@@ -39,8 +39,17 @@
     "standard": "^13.1.0"
   },
   "standard": {
-    "globals": ["$", "describe", "it", "define", "db"],
-    "ignore": ["/lib/tpl.js", "/lib/Snowflake.js"]
+    "globals": [
+      "$",
+      "describe",
+      "it",
+      "define",
+      "db"
+    ],
+    "ignore": [
+      "/lib/tpl.js",
+      "/lib/Snowflake.js"
+    ]
   },
   "eslintConfig": {
     "parser": "babel-eslint",
@@ -74,11 +83,17 @@
           "allowSingleLine": true
         }
       ],
-      "quotes": [1, "single"],
+      "quotes": [
+        1,
+        "single"
+      ],
       "semi": 0,
       "space-infix-ops": 1,
       "no-console": 0,
-      "complexity": [1, 10]
+      "complexity": [
+        1,
+        10
+      ]
     },
     "extends": "eslint:recommended"
   },
