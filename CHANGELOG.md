@@ -1,3 +1,12 @@
+## [1.8.68](https://github.com/kongnet/meeko/compare/v1.8.67...v1.8.68) (2020-03-20)
+
+
+### :bug:
+
+* 修改二维码全数字bug ([47eca52](https://github.com/kongnet/meeko/commit/47eca52))
+
+
+
 ## [1.8.67](https://github.com/kongnet/meeko/compare/v1.8.66...v1.8.67) (2020-03-16)
 
 
