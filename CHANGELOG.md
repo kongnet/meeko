@@ -1,3 +1,17 @@
+## [1.8.71](https://github.com/kongnet/meeko/compare/v1.8.70...v1.8.71) (2020-03-25)
+
+
+
+
+## [1.8.70](https://github.com/kongnet/meeko/compare/v1.8.69...v1.8.70) (2020-03-25)
+
+
+### :zap:
+
+* 增加checkparam长度说明 ([1c44bb5](https://github.com/kongnet/meeko/commit/1c44bb5))
+
+
+
 ## [1.8.69](https://github.com/kongnet/meeko/compare/v1.8.68...v1.8.69) (2020-03-20)
 
 
