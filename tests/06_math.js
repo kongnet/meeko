@@ -1,5 +1,6 @@
 /* global describe */
 /* global it */
+
 'use strict'
 var $ = require('../index')
 const assert = require('assert')
@@ -643,6 +644,22 @@ describe('组合数学相关函数', () => {
   it('arrangement全排列', () => assertLog($.math.arrangement(40, 4), 2193360))
   it('combination组合', () => assertLog($.math.combination(13, 4), 715))
   it('hCombin带回放的组合', () => assertLog($.math.hCombin(10, 4), 715))
+  it('arrangeList数组枚举型排列输出', () =>
+    assertLog(
+      JSON.stringify($.math.arrangeList(['x', 'y', 'z'], 3).map(x => x.join())),
+      '["x,y,z","x,z,y","y,x,z","y,z,x","z,x,y","z,y,x"]'
+    ))
+  it('combinList数组枚举型排列输出', () =>
+    assertLog(
+      JSON.stringify($.math.combinList(['x', 'y', 'z'], 3).map(x => x.join())),
+      '["x,y,z"]'
+    ))
+  it('allList数组下标形式全组合排列输出', () =>
+    assertLog(
+      JSON.stringify($.math.allList(3, 3).map(x => x.join())),
+      '["0,0,0","1,0,0","2,0,0","0,1,0","1,1,0","2,1,0","0,2,0","1,2,0","2,2,0","0,0,1","1,0,1","2,0,1","0,1,1","1,1,1","2,1,1","0,2,1","1,2,1","2,2,1","0,0,2","1,0,2","2,0,2","0,1,2","1,1,2","2,1,2","0,2,2","1,2,2","2,2,2"]'
+    ))
+
   it('fac阶乘', () => {
     assertLog($.math.fac(4), 24)
     assertLog($.math.fac(0), 1)
