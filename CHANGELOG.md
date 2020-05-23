@@ -1,3 +1,12 @@
+## [1.8.74](https://github.com/kongnet/meeko/compare/v1.8.73...v1.8.74) (2020-05-13)
+
+
+### :sparkles:
+
+* 增加矩阵基础操作 ([9f65211](https://github.com/kongnet/meeko/commit/9f65211))
+
+
+
 ## [1.8.73](https://github.com/kongnet/meeko/compare/v1.8.72...v1.8.73) (2020-03-25)
 
 
