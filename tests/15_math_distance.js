@@ -27,7 +27,7 @@ describe('距离/相似度函数', () => {
     assertLog($.math.dist.chebyshevn([1, 1, 1, 1], [3, 4, 3, 4]), 3)
   })
   it('HammingDistance/Edit Distance(汉明距离/编辑距离)', () => {
-    assertLog($.math.dist.chebyshevn([1, 1, 1, 1], [3, 4, 3, 4]), 3)
+    assertLog($.math.dist.hamming([1, 1, 1, 1], [3, 4, 3, 4]), 4)
   })
   it('杰卡德相似系数', () => {
     assertLog(

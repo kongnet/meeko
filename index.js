@@ -358,7 +358,8 @@ const tpl = require('./lib/tpl')
 const color = require('./lib/color')
 const requireAll = require('./lib/requireDir')
 const Snowflake = require('./lib/Snowflake.js')
-const NaiveBayes = require('./lib/NaiveBayes.js')
+const NaiveBayes = require('./lib/ml/NaiveBayes.js')
+const Knn = require('./lib/ml/Knn')
 const Spinner = require('./lib/Spinner.js')
 const Mock = require('./lib/Mock.js')
 const qrcode = require('./lib/qrcode.js')
@@ -559,7 +560,10 @@ const exportObj = {
   reg,
   requireAll,
   Snowflake,
-  NaiveBayes,
+  ml: {
+    NaiveBayes,
+    Knn
+  },
   Spinner,
   tools,
   tpl,
