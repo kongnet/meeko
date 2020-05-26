@@ -1,3 +1,12 @@
+## [1.8.76](https://github.com/kongnet/meeko/compare/v1.8.75...v1.8.76) (2020-05-26)
+
+
+### :sparkles:
+
+* 增加距离函数 ([1cb117d](https://github.com/kongnet/meeko/commit/1cb117d))
+
+
+
 ## [1.8.75](https://github.com/kongnet/meeko/compare/v1.8.74...v1.8.75) (2020-05-23)
 
 
