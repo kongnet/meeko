@@ -1,3 +1,12 @@
+## [1.8.75](https://github.com/kongnet/meeko/compare/v1.8.74...v1.8.75) (2020-05-23)
+
+
+### :sparkles:
+
+* 增加组合排列数组型输出 ([51b9ba7](https://github.com/kongnet/meeko/commit/51b9ba7))
+
+
+
 ## [1.8.74](https://github.com/kongnet/meeko/compare/v1.8.73...v1.8.74) (2020-05-13)
 
 
