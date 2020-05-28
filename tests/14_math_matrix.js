@@ -25,6 +25,13 @@ describe('矩阵基础操作', () => {
     [5, 6, 7, 8, 5, 6, 78],
     [9, 8, 7, 6, 9, 8, 72]
   ]
+  it('lup分解', () => {
+    assertLog(
+      JSON.stringify($.math.mat.lupDecomposition(Mb)),
+      '[[[1,0],[0.6666666666666666,1]],[[3,2],[0,1.6666666666666667]],[[0,1],[1,0]]]'
+    )
+  })
+
   it('复制矩阵', () => {
     assertLog(JSON.stringify($.math.mat.deepCopy(Ma)), '[[1,2],[2,1]]')
     /*assert.throws($.math.mat.deepCopy(1), {
