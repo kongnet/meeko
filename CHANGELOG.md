@@ -1,3 +1,17 @@
+## [1.8.78](https://github.com/kongnet/meeko/compare/v1.8.77...v1.8.78) (2020-05-26)
+
+
+
+
+## [1.8.77](https://github.com/kongnet/meeko/compare/v1.8.76...v1.8.77) (2020-05-26)
+
+
+### :sparkles:
+
+* 增加KNN机器学习 ([374fbec](https://github.com/kongnet/meeko/commit/374fbec))
+
+
+
 ## [1.8.76](https://github.com/kongnet/meeko/compare/v1.8.75...v1.8.76) (2020-05-26)
 
 
