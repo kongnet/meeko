@@ -8,5 +8,6 @@ instrumentation:
       '**/lib/reg/**',
       '**/lib/color.js',
       '**/lib/file.js',
+      '**/lib/geohash.js',
       '**/lib/qrcode.js',
     ]
