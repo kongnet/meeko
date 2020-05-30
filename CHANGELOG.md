@@ -1,3 +1,12 @@
+## [1.8.80](https://github.com/kongnet/meeko/compare/v1.8.79...v1.8.80) (2020-05-30)
+
+
+### :sparkles:
+
+* 增加geohash实现 ([fadd6c6](https://github.com/kongnet/meeko/commit/fadd6c6))
+
+
+
 ## [1.8.79](https://github.com/kongnet/meeko/compare/v1.8.78...v1.8.79) (2020-05-28)
 
 

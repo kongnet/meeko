@@ -364,6 +364,7 @@ const Spinner = require('./lib/Spinner.js')
 const Mock = require('./lib/Mock.js')
 const qrcode = require('./lib/qrcode.js')
 const buf = require('./lib/buf.js')
+const geohash = require('./lib/geohash.js')
 /**
  * 把数组里的函数挨个执行，并且把前面函数的返回值传给下一个函数
  * @param {...function[]} [funcs]
@@ -549,6 +550,7 @@ const exportObj = {
   fake,
   file,
   getStackTrace,
+  geohash,
   json,
   log,
   math,
