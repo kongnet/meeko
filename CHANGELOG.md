@@ -1,3 +1,12 @@
+## [1.8.79](https://github.com/kongnet/meeko/compare/v1.8.78...v1.8.79) (2020-05-28)
+
+
+### :sparkles:
+
+* 增加lup分解 ([0861326](https://github.com/kongnet/meeko/commit/0861326))
+
+
+
 ## [1.8.78](https://github.com/kongnet/meeko/compare/v1.8.77...v1.8.78) (2020-05-26)
 
 
