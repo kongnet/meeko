@@ -1,3 +1,12 @@
+## [1.8.82](https://github.com/kongnet/meeko/compare/v1.8.81...v1.8.82) (2020-05-30)
+
+
+### :sparkles:
+
+* 增加百度高德互转 ([0b55bac](https://github.com/kongnet/meeko/commit/0b55bac))
+
+
+
 ## [1.8.81](https://github.com/kongnet/meeko/compare/v1.8.80...v1.8.81) (2020-05-30)
 
 
