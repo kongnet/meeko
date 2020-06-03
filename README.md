@@ -352,6 +352,10 @@ new $.Snowflake(workId, dataCenterId, sequence) // 工作进程id ，服务器id
 
 ![nb_text](https://github.com/kongnet/meeko/raw/master/screenShot/nb_text.png)
 
+## 特征工程之 PCA 鸢尾花降维
+
+![nb_text](https://github.com/kongnet/meeko/raw/master/screenShot/pca.png)
+
 ## 常用用错概念 await 某实例的 then 函数
 
 ```javascript
