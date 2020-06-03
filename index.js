@@ -360,6 +360,7 @@ const requireAll = require('./lib/requireDir')
 const Snowflake = require('./lib/Snowflake.js')
 const NaiveBayes = require('./lib/ml/NaiveBayes.js')
 const Knn = require('./lib/ml/Knn')
+const Pca = require('./lib/ml/Pca')
 const Spinner = require('./lib/Spinner.js')
 const Mock = require('./lib/Mock.js')
 const qrcode = require('./lib/qrcode.js')
@@ -564,7 +565,8 @@ const exportObj = {
   Snowflake,
   ml: {
     NaiveBayes,
-    Knn
+    Knn,
+    Pca
   },
   Spinner,
   tools,
