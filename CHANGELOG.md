@@ -1,3 +1,12 @@
+## [1.8.84](https://github.com/kongnet/meeko/compare/v1.8.83...v1.8.84) (2020-06-03)
+
+
+### :sparkles:
+
+* 增加pca降维函数 ([108232c](https://github.com/kongnet/meeko/commit/108232c))
+
+
+
 ## [1.8.83](https://github.com/kongnet/meeko/compare/v1.8.82...v1.8.83) (2020-06-02)
 
 
