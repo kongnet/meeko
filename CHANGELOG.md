@@ -1,3 +1,12 @@
+## [1.8.83](https://github.com/kongnet/meeko/compare/v1.8.82...v1.8.83) (2020-06-02)
+
+
+### :sparkles:
+
+* 修改knn的自动拆包数目，默认训练集的20% ([4cdb501](https://github.com/kongnet/meeko/commit/4cdb501))
+
+
+
 ## [1.8.82](https://github.com/kongnet/meeko/compare/v1.8.81...v1.8.82) (2020-05-30)
 
 
