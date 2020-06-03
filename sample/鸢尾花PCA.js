@@ -1,5 +1,5 @@
 const $ = require('meeko')
-const PCA = $.math.ml.PCA
+const PCA = $.ml.Pca
 let movieDim = [
   [5.1, 3.5, 1.4, 0.2],
   [4.9, 3.0, 1.4, 0.2],
@@ -151,7 +151,7 @@ let movieDim = [
   [6.5, 3.0, 5.2, 2.0],
   [6.2, 3.4, 5.4, 2.3],
   [5.9, 3.0, 5.1, 1.8]
-])
+]
 movieTag = [
   'Iris-setosa',
   'Iris-setosa',
