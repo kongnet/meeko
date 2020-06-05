@@ -1,3 +1,17 @@
+## [1.8.89](https://github.com/kongnet/meeko/compare/v1.8.88...v1.8.89) (2020-06-04)
+
+
+
+
+## [1.8.88](https://github.com/kongnet/meeko/compare/v1.8.87...v1.8.88) (2020-06-04)
+
+
+### :sparkles:
+
+* 增加pca输出格式 ([0a41cf4](https://github.com/kongnet/meeko/commit/0a41cf4))
+
+
+
 ## [1.8.87](https://github.com/kongnet/meeko/compare/v1.8.86...v1.8.87) (2020-06-03)
 
 

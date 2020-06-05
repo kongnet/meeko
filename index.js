@@ -2,7 +2,7 @@
 'use strict'
 const { PerformanceObserver, performance } = require('perf_hooks')
 const Pack = require('./package.json')
-
+const path = require('path')
 const cFn = function cFn (s, fc, dimNum, bc, isUnderline) {
   /**
    * 返回控制台颜色包裹体
@@ -358,9 +358,8 @@ const tpl = require('./lib/tpl')
 const color = require('./lib/color')
 const requireAll = require('./lib/requireDir')
 const Snowflake = require('./lib/Snowflake.js')
-const NaiveBayes = require('./lib/ml/NaiveBayes.js')
-const Knn = require('./lib/ml/Knn')
-const Pca = require('./lib/ml/Pca')
+const ml = requireAll({ dirname: path.join(__dirname, '.', 'lib', 'ml') })
+
 const Spinner = require('./lib/Spinner.js')
 const Mock = require('./lib/Mock.js')
 const qrcode = require('./lib/qrcode.js')
@@ -563,11 +562,7 @@ const exportObj = {
   reg,
   requireAll,
   Snowflake,
-  ml: {
-    NaiveBayes,
-    Knn,
-    Pca
-  },
+  ml,
   Spinner,
   tools,
   tpl,

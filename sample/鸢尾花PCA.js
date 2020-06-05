@@ -1,4 +1,4 @@
-const $ = require('meeko')
+const $ = require('../index')
 const PCA = $.ml.Pca
 let movieDim = [
   [5.1, 3.5, 1.4, 0.2],
@@ -304,6 +304,5 @@ movieTag = [
   'Iris-virginica',
   'Iris-virginica'
 ]
-PCA(movieDim).forEach(it => {
-  console.log(it[0] + '\t' + it[1])
-})
+let pcaResult = PCA(movieDim, 0.95, $.ml.util.none)
+pcaResult.mat.map(x => console.log(x.join('\t')))
