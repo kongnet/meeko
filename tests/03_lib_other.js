@@ -13,8 +13,16 @@ describe('uuid的单元测试', function () {
     assert.notStrictEqual('nUazy3Dk3u', $.tools.uuid(10, 64), 'nUazy3Dk3u')
   })
   it('无len', function () {
-    assert.notStrictEqual('2EC9D207-DCA5-4D96-A397-F1371D053AEB', $.tools.uuid(), '2EC9D207-DCA5-4D96-A397-F1371D053AEB')
-    assert.notStrictEqual('2EC9D207-DCA5-4D96-A397-F1371D053AEB', $.tools.uuid(null, 64), '2EC9D207-DCA5-4D96-A397-F1371D053AEB')
+    assert.notStrictEqual(
+      '2EC9D207-DCA5-4D96-A397-F1371D053AEB',
+      $.tools.uuid(),
+      '2EC9D207-DCA5-4D96-A397-F1371D053AEB'
+    )
+    assert.notStrictEqual(
+      '2EC9D207-DCA5-4D96-A397-F1371D053AEB',
+      $.tools.uuid(null, 64),
+      '2EC9D207-DCA5-4D96-A397-F1371D053AEB'
+    )
   })
 })
 describe('随机数的单元测试', function () {
@@ -66,9 +74,21 @@ describe('timeAgo测试', function () {
     assertLog($.tools.timeAgo('2016-1-1 1:13:01', '2016-1-1'), '1小时后')
     assertLog($.tools.timeAgo('2016-1-1 0:13:01', '2016-1-1'), '13分钟后')
     assertLog($.tools.timeAgo('2016-1-1 0:0:50', '2016-1-1'), '50秒后')
-    assertLog($.tools.timeAgo(new Date('2016-1-1'), new Date('2016-1-1 0:0:50')), '50秒前')
-    assertLog($.tools.timeAgo(+new Date('2016-1-1'), +new Date('2016-1-1 0:0:50')), '50秒前')
-    assertLog($.tools.timeAgo((new Date('2016-1-1 0:0:50')).toISOString(), +new Date('2016-1-1')), '50秒后')
+    assertLog(
+      $.tools.timeAgo(new Date('2016-1-1'), new Date('2016-1-1 0:0:50')),
+      '50秒前'
+    )
+    assertLog(
+      $.tools.timeAgo(+new Date('2016-1-1'), +new Date('2016-1-1 0:0:50')),
+      '50秒前'
+    )
+    assertLog(
+      $.tools.timeAgo(
+        new Date('2016-1-1 0:0:50').toISOString(),
+        +new Date('2016-1-1')
+      ),
+      '50秒后'
+    )
   })
 })
 describe('其他函数的单元测试', function () {
@@ -79,21 +99,51 @@ describe('其他函数的单元测试', function () {
     assertLog(null, $.ext('', ''))
   })
   it('tools.ifObjEmpty', function () {
-    assertLog(false, $.tools.ifObjEmpty({
-      x: 1,
-      y: 2
-    }))
+    assertLog(
+      false,
+      $.tools.ifObjEmpty({
+        x: 1,
+        y: 2
+      })
+    )
     assertLog(true, $.tools.ifObjEmpty({}))
-    assertLog(false, $.tools.ifObjEmpty({
-      x: 1,
-      y: 2
-    }, ['x']))
-    assertLog(true, $.tools.ifObjEmpty({
-      x: 1
-    }, ['x']))
+    assertLog(
+      false,
+      $.tools.ifObjEmpty(
+        {
+          x: 1,
+          y: 2
+        },
+        ['x']
+      )
+    )
+    assertLog(
+      true,
+      $.tools.ifObjEmpty(
+        {
+          x: 1
+        },
+        ['x']
+      )
+    )
   })
   it('tools.jsonPack', function () {
-    assert.deepStrictEqual([['abc', 'bac', 'cba'], [1, 2, 3], [11, 22, 33], [111, 222, 333]], $.tools.jsonPack([{ bac: 2, abc: 1, cba: 3 }, { cba: 33, bac: 22, abc: 11 }, { bac: 222, cba: 333, abc: 111 }], 1))
+    assert.deepStrictEqual(
+      [
+        ['abc', 'bac', 'cba'],
+        [1, 2, 3],
+        [11, 22, 33],
+        [111, 222, 333]
+      ],
+      $.tools.jsonPack(
+        [
+          { bac: 2, abc: 1, cba: 3 },
+          { cba: 33, bac: 22, abc: 11 },
+          { bac: 222, cba: 333, abc: 111 }
+        ],
+        1
+      )
+    )
   })
   it('log', function () {
     assertLog(1, $.log(1, 2))
@@ -102,18 +152,33 @@ describe('其他函数的单元测试', function () {
     assertLog(1, $.err({}, 2))
   })
   it('compare', function () {
-    const items = [{ name: 'a', lev: 1 }, { name: 'b', lev: 2 }]
+    const items = [
+      { name: 'a', lev: 1 },
+      { name: 'b', lev: 2 }
+    ]
 
     items.sort($.compare('lev', 'desc'))
-    assert.deepStrictEqual(items, [{ name: 'b', lev: 2 }, { name: 'a', lev: 1 }])
+    assert.deepStrictEqual(items, [
+      { name: 'b', lev: 2 },
+      { name: 'a', lev: 1 }
+    ])
     items.sort($.compare('lev'))
-    assert.deepStrictEqual(items, [{ name: 'a', lev: 1 }, { name: 'b', lev: 2 }])
+    assert.deepStrictEqual(items, [
+      { name: 'a', lev: 1 },
+      { name: 'b', lev: 2 }
+    ])
   })
   it('utf8&lzw', function () {
     assertLog($.tools.utf8.encode('你好abc'), 'ä½ å¥½abc')
     assertLog($.tools.utf8.decode('ä½ å¥½abc'), '你好abc')
-    assertLog($.tools.lzw.compress($.tools.utf8.encode('你好abc')), 'Ã¤Â½Â Ã¥Âć½abc')
-    assertLog($.tools.utf8.decode($.tools.lzw.uncompress('Ã¤Â½Â Ã¥Âć½abc')), '你好abc')
+    assertLog(
+      $.tools.lzw.compress($.tools.utf8.encode('你好abc')),
+      'Ã¤Â½Â Ã¥Âć½abc'
+    )
+    assertLog(
+      $.tools.utf8.decode($.tools.lzw.uncompress('Ã¤Â½Â Ã¥Âć½abc')),
+      '你好abc'
+    )
   })
   it('whichNetwork判断手机运营商', function () {
     assertLog($.fake.whichNetwork('13052887711'), 1)
@@ -139,11 +204,25 @@ describe('模板引擎单元测试', function () {
     $.tpl.config()
     $.tpl.config({ open: '{{', close: '}}' })
     assertLog('Laytpl Error：no data', $.tpl([]).render())
-    assertLog('Laytpl Error：Template not found', $.tpl([]).render({ tag: 'div' }))
-    assertLog('<div></div>', $.tpl('<{{d.tag}}></{{d.tag}}>').render({ tag: 'div' }))
-    assertLog('<di&amp;v></di&v>', $.tpl('<{{=d.tag}}></{{d.tag}}>').render({ tag: 'di&v' }))// =转义html标记
-    assertLog('<></>', $.tpl('<{{=d.tag}}></{{d.tag}}>').render({ tag: '' }))// =转义html标记
-    assertLog(true, $.tpl('<{{# 1+1 }></{{d.tag}}>').render({ tag: 'div' }).indexOf('Laytpl Error') >= 0)// 模板结构不对
+    assertLog(
+      'Laytpl Error：Template not found',
+      $.tpl([]).render({ tag: 'div' })
+    )
+    assertLog(
+      '<div></div>',
+      $.tpl('<{{d.tag}}></{{d.tag}}>').render({ tag: 'div' })
+    )
+    assertLog(
+      '<di&amp;v></di&v>',
+      $.tpl('<{{=d.tag}}></{{d.tag}}>').render({ tag: 'di&v' })
+    ) // =转义html标记
+    assertLog('<></>', $.tpl('<{{=d.tag}}></{{d.tag}}>').render({ tag: '' })) // =转义html标记
+    assertLog(
+      true,
+      $.tpl('<{{# 1+1 }></{{d.tag}}>')
+        .render({ tag: 'div' })
+        .indexOf('Laytpl Error') >= 0
+    ) // 模板结构不对
   })
 })
 describe('判断类型函数单元测试', function () {
@@ -484,6 +563,7 @@ describe('判断类型函数单元测试', function () {
   })
   it('isDate', function () {
     assertLog($.tools.isDate(null), false)
+    assertLog($.tools.isDate('null'), false)
     assertLog($.tools.isDate(undefined), false)
     assertLog($.tools.isDate(''), false)
     assertLog($.tools.isDate(+'1x'), false)
@@ -509,7 +589,8 @@ describe('判断类型函数单元测试', function () {
 })
 describe('pipe', function () {
   it('pipe', function () {
-    const r = $.pipe(x => x.toUpperCase(), // 单词变大写
+    const r = $.pipe(
+      x => x.toUpperCase(), // 单词变大写
       a => a.split(''), // -----------------分成数组
       a => a[3], // ------------------------取下标3
       s => s.charCodeAt(0).toString(16), // 变为16进制
@@ -540,7 +621,27 @@ describe('size', function () {
 })
 describe('equals', function () {
   it('equals', function () {
-    assertLog(true, $.tools.equals({ a: [2, { e: 3, h: { h: undefined } }], b: [new Date('2019-1-1 10:10:10'), 4], c: 'foo' }, { a: [2, { h: { h: undefined }, e: 3 }], b: [new Date('2019-01-01 10:10:10'), 4], c: 'foo' }))
-    assertLog(true, $.tools.equals([1, 3, 5], [1, 2, 3, 4, 5, 6].filter($.tools.negate(n => n % 2 === 0))))
+    assertLog(
+      true,
+      $.tools.equals(
+        {
+          a: [2, { e: 3, h: { h: undefined } }],
+          b: [new Date('2019-1-1 10:10:10'), 4],
+          c: 'foo'
+        },
+        {
+          a: [2, { h: { h: undefined }, e: 3 }],
+          b: [new Date('2019-01-01 10:10:10'), 4],
+          c: 'foo'
+        }
+      )
+    )
+    assertLog(
+      true,
+      $.tools.equals(
+        [1, 3, 5],
+        [1, 2, 3, 4, 5, 6].filter($.tools.negate(n => n % 2 === 0))
+      )
+    )
   })
 })
