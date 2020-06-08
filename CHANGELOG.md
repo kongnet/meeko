@@ -1,3 +1,12 @@
+## [1.8.94](https://github.com/kongnet/meeko/compare/v1.8.93...v1.8.94) (2020-06-08)
+
+
+### :art:
+
+* eslint ([ffe9644](https://github.com/kongnet/meeko/commit/ffe9644))
+
+
+
 ## [1.8.93](https://github.com/kongnet/meeko/compare/v1.8.92...v1.8.93) (2020-06-08)
 
 
