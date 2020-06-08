@@ -444,6 +444,7 @@ describe('Math扩展函数的单元测试', () => {
   it('range 极值', () => assertLog($.math.range(a), 7.1))
   it('median 中位数 4', () => {
     assertLog($.math.median(a), 4)
+    assertLog($.math.median([1, 2, 3, 4, 5, 6]), 3.5)
     assertLog($.math.median([1, 2, 3, 4, 5]), 3)
     assertLog($.math.median([]), NaN)
   })
