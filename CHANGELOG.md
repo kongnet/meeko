@@ -1,9 +1,13 @@
-## [1.8.91](https://github.com/kongnet/meeko/compare/v1.8.90...v1.8.91) (2020-06-08)
+## [1.8.92](https://github.com/kongnet/meeko/compare/v1.8.90...v1.8.92) (2020-06-08)
 
 
 ### :sparkles:
 
 * 增加样本和全体协方差，增加协方差矩阵算法 ([8304fe2](https://github.com/kongnet/meeko/commit/8304fe2))
+
+### :zap:
+
+* 修改增强pca算法 ([2eda8bc](https://github.com/kongnet/meeko/commit/2eda8bc))
 
 
 
