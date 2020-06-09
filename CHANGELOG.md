@@ -1,3 +1,12 @@
+## [1.8.96](https://github.com/kongnet/meeko/compare/v1.8.95...v1.8.96) (2020-06-09)
+
+
+### :sparkles:
+
+* 增加html grid模板 ([5265102](https://github.com/kongnet/meeko/commit/5265102))
+
+
+
 ## [1.8.95](https://github.com/kongnet/meeko/compare/v1.8.94...v1.8.95) (2020-06-08)
 
 
