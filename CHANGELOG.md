@@ -1,3 +1,8 @@
+## [1.8.99](https://github.com/kongnet/meeko/compare/v1.8.98...v1.8.99) (2020-06-09)
+
+
+
+
 ## [1.8.98](https://github.com/kongnet/meeko/compare/v1.8.97...v1.8.98) (2020-06-09)
 
 
