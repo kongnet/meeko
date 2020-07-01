@@ -1,7 +1,11 @@
 'use strict'
 const $ = require('../index')
 const path = require('path')
-
+const assert = require('assert')
+const assertLog = function () {
+  global.assertCount++
+  return assert.strictEqual(...arguments)
+}
 let r =
   'a(?!p)(?=p)((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))'
 console.log($.reg.gen(r))
@@ -261,3 +265,57 @@ async function waitNotEmptyFunc () {
   await $.tools.waitNotEmpty(waitNotEmptyObj, 'x', function () {})
 }
 waitNotEmptyFunc()
+
+describe('fake 身份证check', function () {
+  it('身份证check', function () {
+    assertLog($.fake.checkIdCard.check('050107801003402'), false)
+    assertLog($.fake.checkIdCard.check('032126198909252301'), false)
+    assertLog($.fake.checkIdCard.check('6321261989092'), false)
+    assertLog($.fake.checkIdCard.check('632126098909252301'), false)
+    assertLog($.fake.checkIdCard.check('632126699909252301'), false)
+
+    assertLog($.fake.checkIdCard.check('150107801003402'), true)
+    assertLog($.fake.checkIdCard.check('160107801003402'), false)
+    assertLog($.fake.checkIdCard.check('632126198909252301'), true)
+
+    assertLog($.fake.checkIdCard.check('6321261989092523011'), false) //非15 和18
+
+    assertLog($.fake.checkIdCard.check('632126198909252302'), false)
+    assertLog(
+      $.fake.checkIdCard.getId15('632126198909252301'),
+      '632126890925230'
+    )
+    assertLog($.fake.checkIdCard.getId15('632126890925230'), '632126890925230')
+    assertLog($.fake.checkIdCard.getId15('63212689092520'), null)
+    assertLog(
+      $.fake.checkIdCard.getId18('632126890925230'),
+      '632126198909252301'
+    )
+    assertLog(
+      $.fake.checkIdCard.getId18('632126198909252301'),
+      '632126198909252301'
+    )
+    assertLog(
+      JSON.stringify($.fake.checkIdCard.getInfo('632126198909252301')),
+      JSON.stringify({ gender: '女', birthday: '1989-09-25' })
+    )
+    assertLog(
+      JSON.stringify($.fake.checkIdCard.getInfo('632126890925230')),
+      JSON.stringify({ gender: '女', birthday: '1989-09-25' })
+    )
+
+    assertLog(
+      JSON.stringify($.fake.checkIdCard.getInfo('632126198909252311')),
+      JSON.stringify({ gender: '男', birthday: '1989-09-25' })
+    )
+    assertLog(
+      JSON.stringify($.fake.checkIdCard.getInfo('632126890925231')),
+      JSON.stringify({ gender: '男', birthday: '1989-09-25' })
+    )
+
+    assertLog($.fake.checkIdCard.getId18('63212619890925230'), null)
+    assertLog($.fake.checkIdCard.check('932126198909252301'), false)
+    assertLog($.fake.checkIdCard.check('632126298909252301'), false)
+    assertLog($.fake.checkIdCard.check('632126198999252301'), false)
+  })
+})
