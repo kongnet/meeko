@@ -1,3 +1,17 @@
+## [1.8.105](https://github.com/kongnet/meeko/compare/v1.8.104...v1.8.105) (2020-07-06)
+
+
+
+
+## [1.8.104](https://github.com/kongnet/meeko/compare/v1.8.103...v1.8.104) (2020-07-01)
+
+
+### :sparkles:
+
+* 增加身份证检测函数 ([b2a796e](https://github.com/kongnet/meeko/commit/b2a796e))
+
+
+
 ## [1.8.103](https://github.com/kongnet/meeko/compare/v1.8.102...v1.8.103) (2020-06-16)
 
 

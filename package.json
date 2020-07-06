@@ -1,6 +1,6 @@
 {
   "name": "meeko",
-  "version": "1.8.104",
+  "version": "1.8.105",
   "description": "meeko自用函数",
   "main": "index.js",
   "scripts": {
@@ -31,9 +31,9 @@
     "conventional-changelog-cli": "^2.0.23",
     "coveralls": "*",
     "cz-jt": "^0.1.7",
-    "istanbul": "^1.0.0-alpha.2",
+    "istanbul": "^0.4.5",
     "minami": "1.2.3",
-    "mocha": "^5.2.0",
+    "mocha": "^8.0.1",
     "mochawesome": "^4.0.1",
     "mockjs": "*",
     "standard": "^13.1.0"
