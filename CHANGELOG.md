@@ -1,3 +1,12 @@
+## [1.8.108](https://github.com/kongnet/meeko/compare/v1.8.107...v1.8.108) (2020-07-13)
+
+
+### :sparkles:
+
+* 增加腾讯百度地图坐标互换 ([e19be8a](https://github.com/kongnet/meeko/commit/e19be8a))
+
+
+
 ## [1.8.107](https://github.com/kongnet/meeko/compare/v1.8.106...v1.8.107) (2020-07-13)
 
 
