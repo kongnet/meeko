@@ -1172,7 +1172,7 @@ describe('checkParam的单元测试', function () {
       array1: ['jjhh', '', '4r59ew5es4', '4445']
     }
     assertLog(
-      401,
+      200,
       $.tools.checkParam(a, b).code,
       '被测试数据：' + JSON.stringify(a)
     )
