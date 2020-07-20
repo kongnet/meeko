@@ -358,7 +358,7 @@ const tpl = require('./lib/tpl')
 const color = require('./lib/color')
 const requireAll = require('./lib/requireDir')
 const Snowflake = require('./lib/Snowflake.js')
-const ml = requireAll({ dirname: path.join(__dirname, '.', 'lib', 'ml') })
+const ml = require('./lib/ml') // requireAll({ dirname: path.join(__dirname, '.', 'lib', 'ml') })
 
 const Spinner = require('./lib/Spinner.js')
 const Mock = require('./lib/Mock.js')
