@@ -1,3 +1,12 @@
+## [1.8.114](https://github.com/kongnet/meeko/compare/v1.8.113...v1.8.114) (2020-07-22)
+
+
+### :zap:
+
+* 增强深度比较equals ([7c02dfd](https://github.com/kongnet/meeko/commit/7c02dfd))
+
+
+
 ## [1.8.113](https://github.com/kongnet/meeko/compare/v1.8.112...v1.8.113) (2020-07-20)
 
 
