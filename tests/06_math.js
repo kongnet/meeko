@@ -417,7 +417,27 @@ for (let i = 0; i < rawData.length; i += 2) {
   polyX.push(rawData[i])
   polyY.push(rawData[i + 1])
 }
-
+// https://wenku.baidu.com/view/cc0f9b0f52ea551810a68716.html
+let smoothY = [
+  12.9,
+  14.91,
+  15.96,
+  14.41,
+  14.57,
+  14.6,
+  15.35,
+  15.84,
+  16.9,
+  18.26,
+  17.4,
+  18.71,
+  19.53,
+  20.82
+]
+let diff1 = $.math.exponentialSmoothing(smoothY)
+let diff2 = $.math.exponentialSmoothing(diff1)
+let diff3 = $.math.exponentialSmoothing(diff2)
+//console.log(y, diff1, diff2, diff3)
 describe('Math扩展函数的单元测试', () => {
   const a = [2, 1, 8.1, 3, 4, 5.1, 6.7]
   it('sum', () => {
