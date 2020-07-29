@@ -437,9 +437,13 @@ let smoothY = [
 let diff1 = $.math.exponentialSmoothing(smoothY)
 let diff2 = $.math.exponentialSmoothing(diff1)
 let diff3 = $.math.exponentialSmoothing(diff2)
+
 //console.log(y, diff1, diff2, diff3)
 describe('Math扩展函数的单元测试', () => {
   const a = [2, 1, 8.1, 3, 4, 5.1, 6.7]
+  it('genRange', () => {
+    assertLog($.math.genRange(0, 5, 2).join(','), [0, 2, 4, 6, 8, 10].join(','))
+  })
   it('sum', () => {
     assertLog($.math.sum(a).toFixed(1), '29.9')
   })

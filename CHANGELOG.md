@@ -1,3 +1,13 @@
+## [1.8.115](https://github.com/kongnet/meeko/compare/v1.8.114...v1.8.115) (2020-07-28)
+
+
+### :art:
+
+* 增加指数平滑函数 ([012e895](https://github.com/kongnet/meeko/commit/012e895))
+* 增加指数平滑函数测试用例 ([aa1f324](https://github.com/kongnet/meeko/commit/aa1f324))
+
+
+
 ## [1.8.114](https://github.com/kongnet/meeko/compare/v1.8.113...v1.8.114) (2020-07-22)
 
 
