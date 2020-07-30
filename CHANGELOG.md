@@ -1,3 +1,12 @@
+## [1.8.116](https://github.com/kongnet/meeko/compare/v1.8.115...v1.8.116) (2020-07-29)
+
+
+### :zap:
+
+* 增加一个预测函数放到ml下 ([f10554d](https://github.com/kongnet/meeko/commit/f10554d))
+
+
+
 ## [1.8.115](https://github.com/kongnet/meeko/compare/v1.8.114...v1.8.115) (2020-07-28)
 
 
