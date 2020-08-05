@@ -135,7 +135,7 @@ function ext (a, b) {
       if (!a.hasOwnProperty(item)) {
         a[item] = b[item]
       } else {
-        // console.log(c.g(item.toUpperCase()), 'ES2015-2020 new method')
+        console.log(c.g(item.toUpperCase()), 'ES2015-2021 new method')
       }
     }
     return a

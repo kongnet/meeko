@@ -1,3 +1,12 @@
+## [1.8.117](https://github.com/kongnet/meeko/compare/v1.8.116...v1.8.117) (2020-07-30)
+
+
+### :sparkles:
+
+* 增加预测函数异常点判断 ([ba8e47d](https://github.com/kongnet/meeko/commit/ba8e47d))
+
+
+
 ## [1.8.116](https://github.com/kongnet/meeko/compare/v1.8.115...v1.8.116) (2020-07-29)
 
 

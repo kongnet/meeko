@@ -2,7 +2,7 @@
 
 ## 文档 Document
 
-> http://meeko.jhw.la/
+> https://free.xiaojia7879.com/meeko/
 
 ![Build Stat](https://api.travis-ci.org/kongnet/meeko.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/kongnet/meeko/badge.svg?branch=master)](https://coveralls.io/github/kongnet/meeko?branch=master)

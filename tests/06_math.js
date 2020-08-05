@@ -477,6 +477,11 @@ describe('Math扩展函数的单元测试', () => {
     assertLog($.math.quantile(a, 2), 4)
     assertLog($.math.quantile(a, 1), 2.5)
     assertLog($.math.quantile(a, 3), 5.9)
+    assertLog($.math.quantile(a, 0), 1)
+    assertLog($.math.quantile(a, 4), 8.1)
+    assertLog($.math.quantile(a, 0, 'exec'), NaN)
+    assertLog($.math.quantile(a, 4, 'exec'), NaN)
+    assertLog($.math.quantile(a, 5), 4)
     assertLog(
       $.math.quantile([6, 7, 15, 36, 39, 40, 41, 42, 43, 47, 49], 1),
       25.5
@@ -501,6 +506,12 @@ describe('Math扩展函数的单元测试', () => {
     assertLog($.math.quantile([2], 1), null)
 
     assertLog($.math.quantile([1, 2, 3, 4, 5], 1), 3.5) */
+  })
+  it('quantileAll 四分位数', () => {
+    assertLog(
+      JSON.stringify($.math.quantileAll(a)),
+      '{"min":1,"Q1":2.5,"Q2":4,"Q3":5.9,"max":8.1,"IQR":3.4000000000000004,"upper":9.3,"lower":2.5}'
+    )
   })
   it('variance 方差 5.542041', () =>
     assertLog($.math.variance(a).toFixed(6), '5.542041'))
