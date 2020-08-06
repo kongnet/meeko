@@ -135,7 +135,8 @@ function ext (a, b) {
       if (!a.hasOwnProperty(item)) {
         a[item] = b[item]
       } else {
-        console.log(c.g(item.toUpperCase()), 'ES2015-2021 new method')
+        globalThis.isMeekoLoad &&
+          console.log(c.g(item.toUpperCase()), 'ES2015-2021 new method')
       }
     }
     return a
@@ -532,10 +533,14 @@ const benchmark = function benchmark (
     msg
   )
 }
-console.log(
-  c.g('✔'),
-  `Meeko (${c.y(Pack.version)}) ${c.g('https://github.com/kongnet/meeko.git')}`
-)
+globalThis.isMeekoLoad &&
+  console.log(
+    c.g('✔'),
+    `Meeko (${c.y(Pack.version)}) ${c.g(
+      'https://github.com/kongnet/meeko.git'
+    )}`
+  )
+globalThis.isMeekoLoad = true
 const exportObj = {
   _proto_,
   benchmark,

@@ -1,3 +1,27 @@
+## [1.8.121](https://github.com/kongnet/meeko/compare/v1.8.120...v1.8.121) (2020-08-05)
+
+
+
+
+## [1.8.120](https://github.com/kongnet/meeko/compare/v1.8.119...v1.8.120) (2020-08-05)
+
+
+
+
+## [1.8.119](https://github.com/kongnet/meeko/compare/v1.8.118...v1.8.119) (2020-08-05)
+
+
+
+
+## [1.8.118](https://github.com/kongnet/meeko/compare/v1.8.117...v1.8.118) (2020-08-05)
+
+
+### :zap:
+
+* 增加quantileAll ([6a1a6e2](https://github.com/kongnet/meeko/commit/6a1a6e2))
+
+
+
 ## [1.8.117](https://github.com/kongnet/meeko/compare/v1.8.116...v1.8.117) (2020-07-30)
 
 
