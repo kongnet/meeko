@@ -1,3 +1,12 @@
+## [1.8.124](https://github.com/kongnet/meeko/compare/v1.8.123...v1.8.124) (2020-08-07)
+
+
+### :bug:
+
+* 修正spearman相似度，增加测试用例 ([c85e4a6](https://github.com/kongnet/meeko/commit/c85e4a6))
+
+
+
 ## [1.8.123](https://github.com/kongnet/meeko/compare/v1.8.122...v1.8.123) (2020-08-07)
 
 

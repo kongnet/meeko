@@ -23,6 +23,9 @@ describe('距离/相似度函数', () => {
   it('ManhattanDistance(曼哈顿距离)', () => {
     assertLog($.math.dist.manhattan([1, 1, 2, 2], [2, 2, 4, 4]), 6)
   })
+  it('LanceDistance(兰氏距离)', () => {
+    assertLog($.math.dist.lance([1, 1, 2, 2], [2, 2, 4, 4]), 1)
+  })
   it('Chebyshev Distance(切比雪夫距离)', () => {
     assertLog($.math.dist.chebyshevn([1, 1, 1, 1], [3, 4, 3, 4]), 3)
   })
