@@ -1,3 +1,12 @@
+## [1.8.123](https://github.com/kongnet/meeko/compare/v1.8.122...v1.8.123) (2020-08-07)
+
+
+### :zap:
+
+* 扩展静态string number date array对象 ([9b1188e](https://github.com/kongnet/meeko/commit/9b1188e))
+
+
+
 ## [1.8.122](https://github.com/kongnet/meeko/compare/v1.8.121...v1.8.122) (2020-08-06)
 
 
