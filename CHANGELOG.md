@@ -1,3 +1,12 @@
+## [1.8.122](https://github.com/kongnet/meeko/compare/v1.8.121...v1.8.122) (2020-08-06)
+
+
+### :zap:
+
+* 增加globalThis.isMeekoLoad 判断 ([b236b6f](https://github.com/kongnet/meeko/commit/b236b6f))
+
+
+
 ## [1.8.121](https://github.com/kongnet/meeko/compare/v1.8.120...v1.8.121) (2020-08-05)
 
 

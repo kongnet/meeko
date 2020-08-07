@@ -129,11 +129,15 @@ const c = {
  * @return {object} a对象，此方法并不会生成新对象
  * */
 
-function ext (a, b) {
+function ext (a, b, isCall = false) {
   if (a && b) {
     for (const item in b) {
       if (!a.hasOwnProperty(item)) {
-        a[item] = b[item]
+        if (isCall) {
+          a[item] = (first, ...arg) => b[item].apply(first, arg)
+        } else {
+          a[item] = b[item]
+        }
       } else {
         globalThis.isMeekoLoad &&
           console.log(c.g(item.toUpperCase()), 'ES2015-2021 new method')
@@ -147,14 +151,26 @@ let _proto_ = {}
 
 const _s = require('./lib/string')
 ext(String.prototype, _s)
+const string = {}
+ext(string, _s, 1)
+
 const _n = require('./lib/number')
 ext(Number.prototype, _n)
+const number = {}
+ext(number, _n, 1)
+
 const _d = require('./lib/date')
 ext(Date.prototype, _d)
+const date = {}
+ext(date, _d, 1)
+
 const _f = require('./lib/function')
 ext(Function.prototype, _f)
+
 const _a = require('./lib/array.js')
 ext(Array.prototype, _a)
+const array = {}
+ext(array, _a, 1)
 _proto_ = {
   a: _a,
   d: _d,
@@ -543,6 +559,10 @@ globalThis.isMeekoLoad &&
 globalThis.isMeekoLoad = true
 const exportObj = {
   _proto_,
+  array,
+  date,
+  number,
+  string,
   benchmark,
   buf,
   c,
