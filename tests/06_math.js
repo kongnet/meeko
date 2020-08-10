@@ -716,3 +716,14 @@ describe('第k个最大最小', () => {
     assertLog($.math.smallk(rawData, 6), -9.005651691)
   })
 })
+
+describe('hash函数', () => {
+  let r = $.math.murmurHash('你好,世界!')
+  it('murmurHash', () => {
+    assertLog(r, 1508440480)
+    assertLog(
+      r.toString(2).fillStr('0', 32, -1),
+      '01011001111010001111100110100000'
+    )
+  })
+})

@@ -26,6 +26,13 @@ describe('距离/相似度函数', () => {
   it('LanceDistance(兰氏距离)', () => {
     assertLog($.math.dist.lance([1, 1, 2, 2], [2, 2, 4, 4]), 1)
   })
+  it('LevenshteinDistance(Levenshtein距离)', () => {
+    assertLog($.math.dist.Levenshtein('我是一只小小鸟', '我是一个小小狗'), 2)
+  })
+  it('editDistance(编辑距离)', () => {
+    assertLog($.math.dist.edit('我是一只小小鸟', ''), 7)
+    assertLog($.math.dist.edit('', '我是一个小小狗'), 7)
+  })
   it('Chebyshev Distance(切比雪夫距离)', () => {
     assertLog($.math.dist.chebyshevn([1, 1, 1, 1], [3, 4, 3, 4]), 3)
   })

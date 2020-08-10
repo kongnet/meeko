@@ -1,3 +1,12 @@
+## [1.8.125](https://github.com/kongnet/meeko/compare/v1.8.124...v1.8.125) (2020-08-07)
+
+
+### :sparkles:
+
+* 加入兰氏距离 ([ccd503c](https://github.com/kongnet/meeko/commit/ccd503c))
+
+
+
 ## [1.8.124](https://github.com/kongnet/meeko/compare/v1.8.123...v1.8.124) (2020-08-07)
 
 
