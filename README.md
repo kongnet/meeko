@@ -44,84 +44,22 @@ npm test
 let $ = require('meeko')
 ```
 
-## 趣题收集
+## 常用机器学习常用距离和相似度 math.dist 下
 
-```js
-// 小明玩王者荣耀胜率为50% 每天玩10局，问每天小明连胜3局以上的概率是多少？
-// 解法一
-const $ = require('meeko')
-const times = 3000000 // 总模拟次数
-console.log(
-  '10'
-    .repeat(times / 2)
-    .split('') // 填入一半1 一半0
-    .fisherYates() // 洗牌算法
-    .chunk(10) // 按10个一组分组,每天10局
-    .filter(item => /1{3,10}/g.test(item.join(''))).length / // 找出10次内满足 3次-10次连胜的情况
-    (times / 10) // 换算到每天
-)
-// 0.5080 => 50%
+- Euclidean Distance(欧式距离)
+- Standardized Euclidean Distance(标准化欧氏距离)
+- ManhattanDistance(曼哈顿距离)
+- mahalanobis(马氏距离) ml.util 下
+- LanceDistance(兰氏距离)
+- LevenshteinDistance(Levenshtein 距离)/editDistance(编辑距离)
+- Chebyshev Distance(切比雪夫距离)
+- HammingDistance(汉明距离)
+- 杰卡德相似系数
+- 杰卡德距离
+- Cos(Cosine 余弦)相似度
+- Dice 相关系数
 
-// 解法二
-/**
- * 样本空间 10
- * 胜利概率 1/2 成功 失败
- * 目标 大于连续三次胜利
- */
-function 获取大于连续三次胜利概率 (测试次数 = 10000) {
-  let 测试通过 = 0
-  function 玩一天 () {
-    胜利次数 = 0
-    for (let i = 0; i < 10; i++) {
-      if (成功吗()) {
-        if (++胜利次数 === 3) return 测试通过++
-      } else {
-        胜利次数 = 0
-      }
-    }
-  }
-  for (let i = 0; i < 测试次数; i++) 玩一天()
-  return 测试通过 / 测试次数
-}
-
-function 成功吗 () {
-  return Math.random() > 0.5
-}
-
-function 单元测试__成功吗 () {
-  let 测试通过 = 0
-  let 测试次数 = 1000
-  for (let i = 0; i < 测试次数; i++) {
-    if (成功吗()) 测试通过++
-  }
-  return 测试通过 / 测试次数
-}
-// 获取大于连续三次胜利概率()
-// 最终解法 520 / 1024
-```
-
-```js
-// 一个自然数将它的末尾数字移到首位,得到的新数是原数的2倍,求这个自然数
-let [n, mod] = [0n, 1n]
-while (mod !== 0n) {
-  n = n + 1n
-  mod = ((20n * 10n ** n - 4n) * 10n) % 19n
-}
-console.log('结果:', ((20n * 10n ** n - 4n) * 10n) / 19n + 2n)
-// 105263157894736842n
-```
-
-```js
-/*
-编写完成分数转小数函数fraction2decimal
-输入2个正整数(<2^52)，输出小数，如有循环节 用[]框出，
-例如 1,7=> 0.[142857] 13,90=> 0.1[4] 1,1=>1
-普通要求：代码控制在20行内，15分钟完成
-更高要求：代码控制在10行内，算法复杂度O(N)
-*/
-```
-
-## 矩阵基础操作
+## 矩阵基础操作 math.mat 下
 
 - 复制矩阵
 - 矩阵转置
@@ -387,3 +325,80 @@ process.on('unhandledRejection', function (e) {
 ```
 
 https://gitmoji.carloscuesta.me/
+
+## 趣题收集
+
+```js
+// 小明玩王者荣耀胜率为50% 每天玩10局，问每天小明连胜3局以上的概率是多少？
+// 解法一
+const $ = require('meeko')
+const times = 3000000 // 总模拟次数
+console.log(
+  '10'
+    .repeat(times / 2)
+    .split('') // 填入一半1 一半0
+    .fisherYates() // 洗牌算法
+    .chunk(10) // 按10个一组分组,每天10局
+    .filter(item => /1{3,10}/g.test(item.join(''))).length / // 找出10次内满足 3次-10次连胜的情况
+    (times / 10) // 换算到每天
+)
+// 0.5080 => 50%
+
+// 解法二
+/**
+ * 样本空间 10
+ * 胜利概率 1/2 成功 失败
+ * 目标 大于连续三次胜利
+ */
+function 获取大于连续三次胜利概率 (测试次数 = 10000) {
+  let 测试通过 = 0
+  function 玩一天 () {
+    胜利次数 = 0
+    for (let i = 0; i < 10; i++) {
+      if (成功吗()) {
+        if (++胜利次数 === 3) return 测试通过++
+      } else {
+        胜利次数 = 0
+      }
+    }
+  }
+  for (let i = 0; i < 测试次数; i++) 玩一天()
+  return 测试通过 / 测试次数
+}
+
+function 成功吗 () {
+  return Math.random() > 0.5
+}
+
+function 单元测试__成功吗 () {
+  let 测试通过 = 0
+  let 测试次数 = 1000
+  for (let i = 0; i < 测试次数; i++) {
+    if (成功吗()) 测试通过++
+  }
+  return 测试通过 / 测试次数
+}
+// 获取大于连续三次胜利概率()
+// 最终解法 520 / 1024
+```
+
+```js
+// 一个自然数将它的末尾数字移到首位,得到的新数是原数的2倍,求这个自然数
+let [n, mod] = [0n, 1n]
+while (mod !== 0n) {
+  n = n + 1n
+  mod = ((20n * 10n ** n - 4n) * 10n) % 19n
+}
+console.log('结果:', ((20n * 10n ** n - 4n) * 10n) / 19n + 2n)
+// 105263157894736842n
+```
+
+```js
+/*
+编写完成分数转小数函数fraction2decimal
+输入2个正整数(<2^52)，输出小数，如有循环节 用[]框出，
+例如 1,7=> 0.[142857] 13,90=> 0.1[4] 1,1=>1
+普通要求：代码控制在20行内，15分钟完成
+更高要求：代码控制在10行内，算法复杂度O(N)
+*/
+```

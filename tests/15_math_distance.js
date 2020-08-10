@@ -23,6 +23,22 @@ describe('距离/相似度函数', () => {
   it('ManhattanDistance(曼哈顿距离)', () => {
     assertLog($.math.dist.manhattan([1, 1, 2, 2], [2, 2, 4, 4]), 6)
   })
+  it('mahalanobis(马氏距离)', () => {
+    assertLog(
+      $.ml.util.mahalanobis(
+        [
+          [3, 4],
+          [5, 6],
+          [2, 2],
+          [8, 4]
+        ],
+        1,
+        0,
+        1
+      )[3],
+      2.5316182392080586
+    )
+  })
   it('LanceDistance(兰氏距离)', () => {
     assertLog($.math.dist.lance([1, 1, 2, 2], [2, 2, 4, 4]), 1)
   })
@@ -39,7 +55,7 @@ describe('距离/相似度函数', () => {
   it('Chebyshev Distance(切比雪夫距离)', () => {
     assertLog($.math.dist.chebyshevn([1, 1, 1, 1], [3, 4, 3, 4]), 3)
   })
-  it('HammingDistance/Edit Distance(汉明距离/编辑距离)', () => {
+  it('HammingDistance(汉明距离)', () => {
     assertLog($.math.dist.hamming([1, 1, 1, 1], [3, 4, 3, 4]), 4)
   })
   it('杰卡德相似系数', () => {

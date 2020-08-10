@@ -1,3 +1,13 @@
+## [1.8.126](https://github.com/kongnet/meeko/compare/v1.8.125...v1.8.126) (2020-08-10)
+
+
+### :sparkles:
+
+* 增加编辑距离及测试用例 ([a2cfc48](https://github.com/kongnet/meeko/commit/a2cfc48))
+* 增加murmurHash函数 ([00cfb97](https://github.com/kongnet/meeko/commit/00cfb97))
+
+
+
 ## [1.8.125](https://github.com/kongnet/meeko/compare/v1.8.124...v1.8.125) (2020-08-07)
 
 
