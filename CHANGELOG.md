@@ -1,3 +1,12 @@
+## [1.8.129](https://github.com/kongnet/meeko/compare/v1.8.128...v1.8.129) (2020-08-11)
+
+
+### :sparkles:
+
+* globalThis 兼容修改 ([6779d7f](https://github.com/kongnet/meeko/commit/6779d7f))
+
+
+
 ## [1.8.128](https://github.com/kongnet/meeko/compare/v1.8.127...v1.8.128) (2020-08-11)
 
 

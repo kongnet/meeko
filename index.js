@@ -4,17 +4,19 @@ const { PerformanceObserver, performance } = require('perf_hooks')
 const Pack = require('./package.json')
 const path = require('path')
 
-if (!globalThis) {
+var getGlobal = function () {
   if (typeof self !== 'undefined') {
-    global.globalThis = self
+    return self
   }
   if (typeof window !== 'undefined') {
-    global.globalThis = window
+    return window
   }
   if (typeof global !== 'undefined') {
-    global.globalThis = global
+    return global
   }
 }
+let globalThis = getGlobal()
+
 const cFn = function cFn (s, fc, dimNum, bc, isUnderline) {
   /**
    * 返回控制台颜色包裹体
