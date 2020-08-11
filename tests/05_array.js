@@ -10,7 +10,10 @@ const assertLog = function () {
 describe('Array原型扩展的单元测试', function () {
   it('allCheck', function () {
     assertLog(true, [1, 2, 3, 4, 5, 6].allCheck())
-    assertLog(false, [1, 2, 3, 4, 5, 6].allCheck(x => x > 6))
+    assertLog(
+      false,
+      [1, 2, 3, 4, 5, 6].allCheck(x => x > 6)
+    )
   })
   it('indexOfAll', function () {
     assertLog(true, $.tools.equals([0, 6], [1, 2, 3, 4, 5, 6, 1].indexOfAll(1)))
@@ -35,6 +38,10 @@ describe('Array原型扩展的单元测试', function () {
     assertLog(
       JSON.stringify(['A', 'B', 'B', 'C', 'A', 'D'].count()),
       '{"A":2,"B":2,"C":1,"D":1}'
+    )
+    assertLog(
+      JSON.stringify(['A', 'B', 'B', 'C', 'A', 'D'].countAdv()),
+      '[{"k":"A","v":2,"w":0.3333333333333333},{"k":"B","v":2,"w":0.3333333333333333},{"k":"C","v":1,"w":0.16666666666666666},{"k":"D","v":1,"w":0.16666666666666666}]'
     )
     assertLog(
       true,

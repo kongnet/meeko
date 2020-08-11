@@ -1,3 +1,12 @@
+## [1.8.127](https://github.com/kongnet/meeko/compare/v1.8.126...v1.8.127) (2020-08-10)
+
+
+### :sparkles:
+
+* 增加马氏距离，及测试用例 ([0714ef5](https://github.com/kongnet/meeko/commit/0714ef5))
+
+
+
 ## [1.8.126](https://github.com/kongnet/meeko/compare/v1.8.125...v1.8.126) (2020-08-10)
 
 
