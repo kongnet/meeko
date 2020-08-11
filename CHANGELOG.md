@@ -1,3 +1,12 @@
+## [1.8.128](https://github.com/kongnet/meeko/compare/v1.8.127...v1.8.128) (2020-08-11)
+
+
+### :sparkles:
+
+* countAdv ([35e756d](https://github.com/kongnet/meeko/commit/35e756d))
+
+
+
 ## [1.8.127](https://github.com/kongnet/meeko/compare/v1.8.126...v1.8.127) (2020-08-10)
 
 
