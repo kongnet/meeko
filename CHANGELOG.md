@@ -1,3 +1,12 @@
+## [1.8.131](https://github.com/kongnet/meeko/compare/v1.8.130...v1.8.131) (2020-08-14)
+
+
+### :sparkles:
+
+* 增加决策树函数 ([51e1f3b](https://github.com/kongnet/meeko/commit/51e1f3b))
+
+
+
 ## [1.8.130](https://github.com/kongnet/meeko/compare/v1.8.129...v1.8.130) (2020-08-11)
 
 
