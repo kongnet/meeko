@@ -1,3 +1,12 @@
+## [1.8.132](https://github.com/kongnet/meeko/compare/v1.8.131...v1.8.132) (2020-08-17)
+
+
+### :sparkles:
+
+* 混淆矩阵confusion Matrix ([3cfa60e](https://github.com/kongnet/meeko/commit/3cfa60e))
+
+
+
 ## [1.8.131](https://github.com/kongnet/meeko/compare/v1.8.130...v1.8.131) (2020-08-14)
 
 
