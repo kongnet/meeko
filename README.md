@@ -76,6 +76,36 @@ let $ = require('meeko')
 - 高斯约旦消元法
 - 高斯约旦消元法求逆矩阵
 
+## 矩阵高级操作 math.Matrix 下
+
+- R 语言矩阵基础操作
+- 1 创建一个向量 ok
+- 2 创建一个矩阵 ok
+- 3 矩阵转置 ok
+- 4 矩阵相加减 ok
+- 5 数与矩阵相 ok
+- 6 矩阵相乘 ok
+- 7 矩阵对角元素相关运算 ok
+- 设置数 ok
+- 设置数组 ok
+- 获取方阵对角线 ok
+- 8 矩阵求逆 ok
+- 9 矩阵的特征值与特征向量 ok 雅克比迭代
+- 10 矩阵的 Choleskey 分解 ok
+- 11 矩阵奇异值分解 【SVD】ok
+- 12 矩阵 QR 分解 ok
+- 13 矩阵广义逆(Moore-Penrose)
+- 14 矩阵 Kronecker 积
+- 15 矩阵的维数 ok
+- 16 矩阵的行和、列和、行平均与列平均 ok 【sum mean 中位 方差 标准差】
+- 17 矩阵 X'X 的逆
+- 18 取矩阵的上、下三角部分
+- 19 backsolve&fowardsolve 函数
+- 20 row()与 col()函 ok
+- 21 行列式的值 ok
+- 22 向量化算子
+- 23 时间序列的滞后值
+
 ## 数学函数 Math function
 
 - _intersect (a = [])_ 交集

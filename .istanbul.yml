@@ -12,4 +12,5 @@ instrumentation:
       '**/lib/qrcode.js',
       '**/lib/ml/**',
       '**/lib/template/**',
+      '**/lib/mathMatrixAdv.js',
     ]

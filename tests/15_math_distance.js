@@ -70,6 +70,13 @@ describe('距离/相似度函数', () => {
       0.5714285714285714
     )
   })
+  it('Dice系数', () => {
+    assertLog(
+      $.math.dist.diceCoefficient([1, 2, 3, 8, 9, 0], [1, 3, 4, 3, 0, 0]),
+      0.5
+    )
+  })
+
   it('Cos(Cosine 余弦)相似度', () => {
     assertLog($.math.dist.cosn([1, 1, 1, 1], [2, 2, 2, 3]), 0.9819805060619657)
   })

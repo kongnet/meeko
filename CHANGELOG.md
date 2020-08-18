@@ -1,3 +1,12 @@
+## [1.8.133](https://github.com/kongnet/meeko/compare/v1.8.132...v1.8.133) (2020-08-18)
+
+
+### :sparkles:
+
+* mode众数多于1个才算 ([551fce0](https://github.com/kongnet/meeko/commit/551fce0))
+
+
+
 ## [1.8.132](https://github.com/kongnet/meeko/compare/v1.8.131...v1.8.132) (2020-08-17)
 
 
