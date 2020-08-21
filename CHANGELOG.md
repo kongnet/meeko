@@ -1,3 +1,12 @@
+## [1.8.134](https://github.com/kongnet/meeko/compare/v1.8.133...v1.8.134) (2020-08-18)
+
+
+### :sparkles:
+
+* 增加Matrix链式操作 ([8603c65](https://github.com/kongnet/meeko/commit/8603c65))
+
+
+
 ## [1.8.133](https://github.com/kongnet/meeko/compare/v1.8.132...v1.8.133) (2020-08-18)
 
 
