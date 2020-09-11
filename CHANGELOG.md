@@ -1,3 +1,12 @@
+## [1.8.135](https://github.com/kongnet/meeko/compare/v1.8.134...v1.8.135) (2020-08-21)
+
+
+### :ambulance:
+
+* (K) K值step=2增加 ([019af30](https://github.com/kongnet/meeko/commit/019af30))
+
+
+
 ## [1.8.134](https://github.com/kongnet/meeko/compare/v1.8.133...v1.8.134) (2020-08-18)
 
 
