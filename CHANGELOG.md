@@ -1,3 +1,12 @@
+## [1.8.136](https://github.com/kongnet/meeko/compare/v1.8.135...v1.8.136) (2020-09-11)
+
+
+### :zap:
+
+* 增加mat中map函数的行列参数 ([e8de3cf](https://github.com/kongnet/meeko/commit/e8de3cf))
+
+
+
 ## [1.8.135](https://github.com/kongnet/meeko/compare/v1.8.134...v1.8.135) (2020-08-21)
 
 

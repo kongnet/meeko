@@ -154,6 +154,10 @@ describe('String原型扩展的单元测试', function () {
     assertLog('aBC', 'a-b-c'.camelize())
     assertLog('aB1C1', 'a_b1_c1'.camelize('_'))
   })
+  it('deCamelize', function () {
+    assertLog('a-b-c', 'aBC'.deCamelize())
+    assertLog('a_b1_c1', 'aB1C1'.deCamelize('_'))
+  })
   it('ac', function () {
     assertLog('ab c', 'ab'.ac('c'))
   })
