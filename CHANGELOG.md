@@ -1,3 +1,12 @@
+## [1.8.137](https://github.com/kongnet/meeko/compare/v1.8.136...v1.8.137) (2020-09-23)
+
+
+### :sparkles:
+
+* 增加deCamelize 默认分割符- ([8ac0fbf](https://github.com/kongnet/meeko/commit/8ac0fbf))
+
+
+
 ## [1.8.136](https://github.com/kongnet/meeko/compare/v1.8.135...v1.8.136) (2020-09-11)
 
 
