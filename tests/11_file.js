@@ -21,6 +21,9 @@ describe('文件操作相关', function () {
     const f1 = $.file.checkImgComplete('./screenShot/drawTable.png', 'png')
     assertLog(f1, true)
   })
+  it('readBig', function () {
+    $.file.readBig('./package.json', undefined, undefined, function (a, b) { console.log(a, b) })
+  })
   it('csv2Arr', function () {
     const person = `p1	男
 p2	男
