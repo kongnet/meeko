@@ -1,3 +1,12 @@
+## [1.8.140](https://github.com/kongnet/meeko/compare/v1.8.139...v1.8.140) (2020-11-26)
+
+
+### :sparkles:
+
+* 新增大文件读取readBig方法 ([affc7a7](https://github.com/kongnet/meeko/commit/affc7a7))
+
+
+
 ## [1.8.139](https://github.com/kongnet/meeko/compare/v1.8.138...v1.8.139) (2020-09-24)
 
 

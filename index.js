@@ -26,7 +26,7 @@ let globalThis = getGlobal()
  * @return {object} a对象，此方法并不会生成新对象
  * */
 
-function ext (a, b, isCall = false) {
+function ext(a, b, isCall = false) {
   if (a && b) {
     for (const item in b) {
       if (!a.hasOwnProperty(item)) {
@@ -141,7 +141,7 @@ const trace = console
  * @param {...mixed[]} args 要打印的参数
  * */
 
-const log = function log (...args) {
+const log = function log(...args) {
   getStackTrace()
     .split('\n')[2]
     .match(re)
@@ -149,10 +149,10 @@ const log = function log (...args) {
     ' [' +
     c.dimg(
       RegExp.$1 +
-        ':' +
-        RegExp.$2 +
-        ' ' +
-        new Date().date2Str().replaceAll('-', '')
+      ':' +
+      RegExp.$2 +
+      ' ' +
+      new Date().date2Str().replaceAll('-', '')
     ) +
     ']'
   let str = ''
@@ -171,7 +171,7 @@ const log = function log (...args) {
  * @param {...mixed[]} args 要打印的参数
  * */
 
-const err = function err (...args) {
+const err = function err(...args) {
   getStackTrace()
     .split('\n')[2]
     .match(re)
@@ -179,10 +179,10 @@ const err = function err (...args) {
     ' [' +
     c.dimr(
       RegExp.$1 +
-        ':' +
-        RegExp.$2 +
-        ' ' +
-        new Date().date2Str().replaceAll('-', '')
+      ':' +
+      RegExp.$2 +
+      ' ' +
+      new Date().date2Str().replaceAll('-', '')
     ) +
     ']'
   let str = ''
@@ -197,7 +197,7 @@ const err = function err (...args) {
   return 1
 }
 
-function strColor (k, v) {
+function strColor(k, v) {
   if (typeof v === 'function') {
     return `[function ${k}]`
   }
@@ -212,7 +212,7 @@ function strColor (k, v) {
  * @param {...array<mixed>} args 任何参数
  */
 
-const dir = function dir (...args) {
+const dir = function dir(...args) {
   for (let i = 0; i < args.length; i++) {
     let ss = JSON.stringify(args[i], strColor, 4)
     ss = ss
@@ -241,7 +241,7 @@ const dir = function dir (...args) {
  * // [{ name: 'b', lev: 2 }, { 'name': 'a', lev: 1 }]
  * */
 
-function compare (k, order) {
+function compare(k, order) {
   return function (a, b) {
     return order === 'desc' ? b[k] - a[k] : a[k] - b[k] // ~~(a[k] < b[k]) : ~~(a[k] > b[k])
   }
@@ -280,6 +280,7 @@ const Mock = require('./lib/Mock.js')
 const qrcode = require('./lib/qrcode.js')
 const buf = require('./lib/buf.js')
 const geo = require('./lib/geo.js')
+const cryptoExt = require('./lib/CryptoExt.js')
 /**
  * 把数组里的函数挨个执行，并且把前面函数的返回值传给下一个函数
  * @param {...function[]} [funcs]
@@ -322,7 +323,7 @@ const now = () => new Date()
  * // prime     41 毫秒  24390.2439/ms 1e+6 次
  */
 
-const benchmark = function benchmark (
+const benchmark = function benchmark(
   fn = function () {
     /* do nothing */
   },
@@ -378,6 +379,7 @@ const exportObj = {
   c,
   color,
   compare,
+  Crypto: cryptoExt,
   dir,
   drawTable: tools.drawTable,
   err,
