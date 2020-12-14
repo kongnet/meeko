@@ -1,5 +1,5 @@
 /* istanbul ignore next */
-'use strict'
+// @ts-check
 const { PerformanceObserver, performance } = require('perf_hooks')
 const Pack = require('./package.json')
 const path = require('path')
@@ -36,7 +36,7 @@ function ext(a, b, isCall = false) {
           a[item] = b[item]
         }
       } else {
-        globalThis.isMeekoLoad &&
+        globalThis['isMeekoLoad'] &&
           console.log(c.g(item.toUpperCase()), 'ES2015-2021 new method')
       }
     }
@@ -49,17 +49,17 @@ let _proto_ = {}
 const _s = require('./lib/string')
 ext(String.prototype, _s)
 const string = {}
-ext(string, _s, 1)
+ext(string, _s, !0)
 
 const _n = require('./lib/number')
 ext(Number.prototype, _n)
 const number = {}
-ext(number, _n, 1)
+ext(number, _n, !0)
 
 const _d = require('./lib/date')
 ext(Date.prototype, _d)
 const date = {}
-ext(date, _d, 1)
+ext(date, _d, !0)
 
 const _f = require('./lib/function')
 ext(Function.prototype, _f)
@@ -67,7 +67,7 @@ ext(Function.prototype, _f)
 const _a = require('./lib/array.js')
 ext(Array.prototype, _a)
 const array = {}
-ext(array, _a, 1)
+ext(array, _a, !0)
 _proto_ = {
   a: _a,
   d: _d,
@@ -88,10 +88,10 @@ const option = {
  * @function fillStr
  * @return {string}
  * @example
- * new Date().fillStr('a', 50)
+ * new Date()['fillStr']('a', 50)
  * // Tue Dec 29 2015 01:11:01 GMT+0800 (中国标准时间)aa
  */
-Date.prototype.fillStr = String.prototype.fillStr //eslint-disable-line
+Date.prototype['fillStr'] = String.prototype['fillStr']  //eslint-disable-line
 
 /**
  * @namespace Buffer_prototype
@@ -107,8 +107,8 @@ Date.prototype.fillStr = String.prototype.fillStr //eslint-disable-line
  * // "123456"
  * */
 
-Buffer.prototype.contact =
-  Buffer.prototype.contact ||
+Buffer.prototype['contact'] =
+  Buffer.prototype['contact'] ||
   function (b) {
     /*
   utf8 有bom头
@@ -138,7 +138,7 @@ const re = os.includes('win32')
 const trace = console
 
 /**
- * @param {...mixed[]} args 要打印的参数
+ * @param {...any[]} args 要打印的参数
  * */
 
 const log = function log(...args) {
@@ -152,7 +152,7 @@ const log = function log(...args) {
       ':' +
       RegExp.$2 +
       ' ' +
-      new Date().date2Str().replaceAll('-', '')
+      new Date()['date2Str']()['replaceAll']('-', '')
     ) +
     ']'
   let str = ''
@@ -168,7 +168,7 @@ const log = function log(...args) {
 }
 
 /**
- * @param {...mixed[]} args 要打印的参数
+ * @param {...any[]} args 要打印的参数
  * */
 
 const err = function err(...args) {
@@ -182,7 +182,7 @@ const err = function err(...args) {
       ':' +
       RegExp.$2 +
       ' ' +
-      new Date().date2Str().replaceAll('-', '')
+      new Date()['date2Str']()['replaceAll']('-', '')
     ) +
     ']'
   let str = ''
@@ -209,15 +209,15 @@ function strColor(k, v) {
 
 /**
  * dir json着色函数.
- * @param {...array<mixed>} args 任何参数
+ * @param {...array<any>} args 任何参数
  */
 
 const dir = function dir(...args) {
   for (let i = 0; i < args.length; i++) {
     let ss = JSON.stringify(args[i], strColor, 4)
     ss = ss
-      .replaceAll('"#cyan#', c.cyan)
-      .replaceAll('#none#"', c.none)
+    ['replaceAll']('"#cyan#', c.cyan)
+    ['replaceAll']('#none#"', c.none)
       .replace(/"(.+)": /g, c.g('$1') + ': ')
       .replace(/(true)(,|'')\n/g, c.r('$1$2\n'))
       .replace(/(false)(,|'')\n/g, c.r('$1$2\n'))
@@ -233,8 +233,8 @@ const dir = function dir(...args) {
 
 /**
  * 返回一个sort函数，用于给对象数组根据某字段排序，类似sql中的order by
- * @param {string} k 排序根据的k
- * @param {enum} dir 可选 desc|asc
+ * @param {String} k 排序根据的k
+ * @param {String} order 可选 desc|asc
  * @return function
  * @example
  * [{ 'name': 'a', lev: 1 }, { name: 'b', lev: 2 }].sort($.compare('lev', 'desc'))
@@ -249,7 +249,7 @@ function compare(k, order) {
 
 /**
  * setTimeout的promise版
- * @param {int} t 毫秒
+ * @param {Number} t 毫秒
  * @return Promise
  * @example
  * await $.wait(5000)
@@ -283,7 +283,7 @@ const geo = require('./lib/geo.js')
 const cryptoExt = require('./lib/CryptoExt.js')
 /**
  * 把数组里的函数挨个执行，并且把前面函数的返回值传给下一个函数
- * @param {...function[]} [funcs]
+ * @param {any} [funcs]
  * @return mixed
  * @example
  * $.pipe(arg=>{return arg.push(1)},arg=>{return arg.push(2))([0])
@@ -316,7 +316,7 @@ const now = () => new Date()
  * benchmark，性能测试函数.
  * @param {function} fn - 被执行的函数.
  * @param {number} n - 执行次数.
- * @return {string} 返回 [函数名] [执行时间] 毫秒 [每毫秒运行次数]/ms [执行次数] 次.
+ * @return {void} 返回 [函数名] [执行时间] 毫秒 [每毫秒运行次数]/ms [执行次数] 次.
  * @example
  * let prime = function () { return (641).isPrime() }
  * $.benchmark(prime)
@@ -345,29 +345,29 @@ const benchmark = function benchmark(
     maxDt = dt > minDt ? dt : maxDt
   }
   const diffTime = timeSpend
-  const spendTime = diffTime.toFixed(0)
+  const spendTime = +diffTime.toFixed(0)
   const perSec = (((n / diffTime) * 10000) / 10000) | 0
   console.log(
-    c.y((fn.name || '').fillStr(' ', 15)),
-    (spendTime + ' ms').fillStr(' ', 8, -1),
-    ((perSec + '').toMoney() + ' /ms').fillStr(' ', 10, -1),
+    c.y((fn.name || '')['fillStr'](' ', 15)),
+    (spendTime + ' ms')['fillStr'](' ', 8, -1),
+    ((perSec + '')['toMoney']() + ' /ms')['fillStr'](' ', 10, -1),
     n.toExponential() + ' 次',
     (
       '±' +
-      (((maxDt - minDt) / 2 / (spendTime / n)) * 100).round(2) +
+      (((maxDt - minDt) / 2 / (spendTime / n)) * 100)['round'](2) +
       '%'
-    ).fillStr(' ', 9, -1),
+    )['fillStr'](' ', 9, -1),
     msg
   )
 }
-globalThis.isMeekoLoad &&
+globalThis['isMeekoLoad'] &&
   console.log(
     c.g('✔'),
     `Meeko (${c.y(Pack.version)}) ${c.g(
       'https://github.com/kongnet/meeko.git'
     )}`
   )
-globalThis.isMeekoLoad = true
+globalThis['isMeekoLoad'] = true
 const exportObj = {
   _proto_,
   array,

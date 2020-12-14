@@ -1,3 +1,12 @@
+## [1.8.141](https://github.com/kongnet/meeko/compare/v1.8.140...v1.8.141) (2020-12-07)
+
+
+### :sparkles:
+
+* 增加AES加解密方法，兼容java ([fdcb947](https://github.com/kongnet/meeko/commit/fdcb947))
+
+
+
 ## [1.8.140](https://github.com/kongnet/meeko/compare/v1.8.139...v1.8.140) (2020-11-26)
 
 

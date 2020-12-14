@@ -3,7 +3,7 @@ let Segment = require('segment')
 let segment = new Segment()
 segment.useDefault()
 
-function similarity (x = [], y = []) {
+function similarity(x = [], y = []) {
   let [xy, xSq, ySq, len] = [0, 0, 0, x.length]
   for (let i = 0; i < len; i++) {
     xy += x[i] * y[i]
@@ -56,7 +56,7 @@ let text = `价格便宜一半！ 共有产权房如何助力住房小康
  * @param {Integer} sentenceNum
  * @param {Array} split
  */
-function abstract (
+function abstract(
   text = '',
   sentenceNum = 3,
   split = ['，', '。', '；', '？', '：', '！', '…']

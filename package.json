@@ -52,10 +52,9 @@
     ]
   },
   "eslintConfig": {
-    "parser": "babel-eslint",
     "plugins": [],
     "parserOptions": {
-      "ecmaVersion": 2017,
+      "ecmaVersion": 2020,
       "sourceType": "module",
       "ecmaFeatures": {
         "experimentalObjectRestSpread": true,

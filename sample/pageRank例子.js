@@ -1,6 +1,6 @@
-const $ = require('meeko')
+const $ = require('../index')
 
-function isMarkov (mat) {
+function isMarkov(mat) {
   let esp = 1e-10
   let isPositive = !1
   let colSum = []
@@ -17,7 +17,7 @@ function isMarkov (mat) {
   return colSum.every(x => Math.abs(1 - x) <= esp) && isPositive
 }
 
-function strIndex2num (str) {
+function strIndex2num(str) {
   str = str.toUp()
   let a = str.split('')
   let len = a.length
@@ -27,7 +27,7 @@ function strIndex2num (str) {
   }
   return s
 }
-function num2IndexStr (num) {
+function num2IndexStr(num) {
   return num
     .toString(26)
     .split('')
@@ -35,7 +35,7 @@ function num2IndexStr (num) {
     .join('')
 }
 
-function pageRank (transMat, initVector, damping = 0.85, iter = 100) {
+function pageRank(transMat, initVector, damping = 0.85, iter = 100) {
   const esp = 1e-9
   const len = transMat.length
   if (!isMarkov(transMat)) return { iter: 0, r: transMat, isMarkov: false } // 马尔科夫矩阵判断，元素非负，列和为1
@@ -59,7 +59,7 @@ function pageRank (transMat, initVector, damping = 0.85, iter = 100) {
   return { iter: iter, r: r, isMarkov: true }
 }
 
-function createNetwork (edges) {
+function createNetwork(edges) {
   /*
     edges: [从哪里=> 跳转到哪里 ]
   */
