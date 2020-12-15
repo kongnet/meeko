@@ -31,6 +31,7 @@
     "cc-jt": "^0.1.26",
     "chai": "^4.2.0",
     "co-mocha": "^1.2.2",
+    "codecov": "^3.8.1",
     "conventional-changelog-cli": "^2.0.23",
     "coveralls": "*",
     "cz-jt": "^0.1.7",
@@ -39,8 +40,7 @@
     "mocha": "^8.0.1",
     "mochawesome": "^4.0.1",
     "mockjs": "*",
-    "nyc": "^15.1.0",
-    "standard": "^13.1.0"
+    "nyc": "^15.1.0"
   },
   "standard": {
     "globals": [
