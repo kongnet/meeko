@@ -10,9 +10,10 @@
     "jsdoc": "jsdoc ./README.md --configure  ./jsdoc.config.js",
     "snazzy": "snazzy *.js ./lib/**/*.js --verbose",
     "testlocal": "standard *.js && istanbul cover ./node_modules/mocha/bin/_mocha -- -r co-mocha --reporter spec --timeout 100000 --recursive tests/",
-    "test": "istanbul cover ./node_modules/mocha/bin/_mocha -- -r co-mocha --reporter spec --timeout 100000 --recursive tests/",
+    "test_new": "nyc mocha --timeout 100000 --recursive tests/",
+    "test": "nyc mocha --recursive tests/",
     "test2": "istanbul cover ./node_modules/mocha/bin/_mocha -- -r co-mocha --reporter mochawesome --timeout 100000 --recursive tests/",
-    "codecov": "bash <(curl -s https://codecov.io/bash)",
+    "codecov": "nyc mocha --recursive tests/ && codecov",
     "coveralls": "nyc --reporter=lcov mocha --timeout 100000 --recursive tests/ && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
     "coveralls_old": "istanbul cover _mocha -- -r co-mocha --reporter spec --timeout 100000 --recursive tests/ && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
