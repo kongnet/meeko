@@ -2,6 +2,8 @@ sudo: false
 language: node_js
 node_js:
   - stable
+install:
+  - yarn
 addons:
   sonarcloud:
     organization: "$SONAR_ORG"
