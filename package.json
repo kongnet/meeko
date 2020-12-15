@@ -13,7 +13,8 @@
     "test": "istanbul cover ./node_modules/mocha/bin/_mocha -- -r co-mocha --reporter spec --timeout 100000 --recursive tests/",
     "test2": "istanbul cover ./node_modules/mocha/bin/_mocha -- -r co-mocha --reporter mochawesome --timeout 100000 --recursive tests/",
     "codecov": "bash <(curl -s https://codecov.io/bash)",
-    "coveralls": "istanbul cover _mocha -- -r co-mocha --reporter spec --timeout 100000 --recursive tests/ && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+    "coveralls": "nyc --reporter=lcov mocha --timeout 100000 --recursive tests/ && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "coveralls_old": "istanbul cover _mocha -- -r co-mocha --reporter spec --timeout 100000 --recursive tests/ && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "mocha": "^8.0.1",
     "mochawesome": "^4.0.1",
     "mockjs": "*",
+    "nyc": "^15.1.0",
     "standard": "^13.1.0"
   },
   "standard": {
