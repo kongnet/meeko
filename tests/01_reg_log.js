@@ -59,7 +59,7 @@ $.log($.fake.randStr(3))
 $.log($.fake.randTime('2016-1-1', '2016-2-2'))
 $.log($.fake.randName())
 for (let i = 0; i < 10; i++) {
-  $.log(`赵` + $.fake.randSecName())
+  $.log('赵' + $.fake.randSecName())
 }
 $.log($.fake.randColor())
 $.log($.fake.randColor('rgba'))
@@ -281,7 +281,7 @@ describe('fake 身份证check', function () {
     assertLog($.fake.checkIdCard.check('370831180112064909'), false)
     assertLog($.fake.checkIdCard.check('370831190112064901'), false)
 
-    assertLog($.fake.checkIdCard.check('3708311901120649091'), false) //非15 和18
+    assertLog($.fake.checkIdCard.check('3708311901120649091'), false) // 非15 和18
 
     assertLog($.fake.checkIdCard.check('632126198909252302'), false)
     assertLog(

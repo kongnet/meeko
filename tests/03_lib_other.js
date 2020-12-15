@@ -597,12 +597,12 @@ describe('pipe', function () {
       s => s.fillStr('0', 4, -1), // -------不足4位部分左边填0
       s => `\\u${s}` // --------------------转成\uxxxx 形式
     )('Test') // ----------------------- => \u0054
-    assertLog(`\\u0054`, r)
+    assertLog('\\u0054', r)
   })
 })
 describe('obj2Url', function () {
   it('obj2Url', function () {
-    assertLog(`a=1&b=2&c=x`, $.tools.obj2Url({ a: 1, b: 2, c: 'x' }))
+    assertLog('a=1&b=2&c=x', $.tools.obj2Url({ a: 1, b: 2, c: 'x' }))
   })
 })
 describe('objByString', function () {

@@ -116,22 +116,22 @@ const cloneArray = [
 const cloneArr1 = () => cloneArray.slice()
 const cloneArr2 = () => [].concat(cloneArray)
 const cloneArr3 = () => {
-  let a = []
+  const a = []
   for (let i = cloneArray.length; i--;) {
     a.unshift(cloneArray[i])
   }
   return a
 }
 const cloneArr4 = () => {
-  let a = []
+  const a = []
   for (let i = 0, l = cloneArray.length; i < l; i++) {
     a.push(cloneArray[i])
   }
   return a
 }
 const cloneArr5 = () => {
-  let l = cloneArray.length
-  let a = new Array(l)
+  const l = cloneArray.length
+  const a = new Array(l)
   for (let i = 0; i < l; i++) {
     a[i] = cloneArray[i]
   }
@@ -273,7 +273,7 @@ const strConcat1 = () => {
 }
 const strConcat2 = () => {
   const t = 'x'
-  let tt = []
+  const tt = []
   for (let i = 0; i < 1000; i++) {
     tt.push(t)
   }
@@ -281,7 +281,7 @@ const strConcat2 = () => {
 }
 const strConcat3 = () => {
   const t = 'x'
-  let tt = []
+  const tt = []
   for (let i = 0; i < 1000; i++) {
     tt[tt.length] = t
   }
@@ -467,7 +467,7 @@ function secRand (a, b) {
   // （2）计算系数为：k=(b-a)/(Max-Min)
   // （3）得到归一化到[a,b)区间的数据：norY=a+k(Y-Min)
 
-  let r = crypto.randomBytes(4) // 0-4294967295
+  const r = crypto.randomBytes(4) // 0-4294967295
   return Math.floor((b - a + 1) / 4294967295 * r.readUInt32LE(0)) + a
 }
 const rand1 = function () {

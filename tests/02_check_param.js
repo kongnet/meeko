@@ -2,13 +2,13 @@
 /* global it */
 'use strict'
 global.assertCount = 0
-let $ = require('../index')
+const $ = require('../index')
 const assert = require('assert')
 const assertLog = function () {
   global.assertCount++
   return assert.strictEqual(...arguments)
 }
-let b = {
+const b = {
   id: {
     desc: 'id',
     req: 1,
@@ -213,7 +213,7 @@ describe('checkParam的单元测试', function () {
   it('string', function () {
     let a = {
       enum: 1,
-      name1: ' x ', //string类型默认会trim
+      name1: ' x ', // string类型默认会trim
       n1: 1,
       id: 1,
       name: 1

@@ -1,6 +1,6 @@
 const $ = require('../index')
 const PCA = $.ml.Pca
-let movieDim = [
+const movieDim = [
   [5.1, 3.5, 1.4, 0.2],
   [4.9, 3.0, 1.4, 0.2],
   [4.7, 3.2, 1.3, 0.2],
@@ -304,5 +304,5 @@ movieTag = [
   'Iris-virginica',
   'Iris-virginica'
 ]
-let pcaResult = PCA(movieDim, 0.95, $.ml.util.none)
+const pcaResult = PCA(movieDim, 0.95, $.ml.util.none)
 pcaResult.mat.map(x => console.log(x.join('\t')))

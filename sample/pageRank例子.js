@@ -1,10 +1,10 @@
 const $ = require('../index')
 
-function isMarkov(mat) {
-  let esp = 1e-10
+function isMarkov (mat) {
+  const esp = 1e-10
   let isPositive = !1
-  let colSum = []
-  let len = mat.length
+  const colSum = []
+  const len = mat.length
   for (let i = 0; i < len; i++) {
     for (let k = 0; k < len; k++) {
       const item = mat[i][k]
@@ -17,17 +17,17 @@ function isMarkov(mat) {
   return colSum.every(x => Math.abs(1 - x) <= esp) && isPositive
 }
 
-function strIndex2num(str) {
+function strIndex2num (str) {
   str = str.toUp()
-  let a = str.split('')
-  let len = a.length
+  const a = str.split('')
+  const len = a.length
   let s = 0
   for (let i = 0; i < len; i++) {
     s += (a[len - 1 - i].charCodeAt() - 64) * 26 ** i
   }
   return s
 }
-function num2IndexStr(num) {
+function num2IndexStr (num) {
   return num
     .toString(26)
     .split('')
@@ -35,19 +35,21 @@ function num2IndexStr(num) {
     .join('')
 }
 
-function pageRank(transMat, initVector, damping = 0.85, iter = 100) {
+function pageRank (transMat, initVector, damping = 0.85, iter = 100) {
   const esp = 1e-9
   const len = transMat.length
   if (!isMarkov(transMat)) return { iter: 0, r: transMat, isMarkov: false } // 马尔科夫矩阵判断，元素非负，列和为1
   if (!initVector)
-    // 初始化向量
+  // 初始化向量
+  {
     initVector = $.math.mat.transpose([
       Array.from({ length: len }, x => 1 / len) // 1/N
     ])
+  }
   let r = $.math.mat.mul(transMat, initVector)
   // 高斯-塞德尔迭代法
   for (let i = 0; i < iter; i++) {
-    let weightNew = $.math.mat
+    const weightNew = $.math.mat
       .mul(transMat, r)
       .map(x => [(1 - damping) / len + damping * x[0]])
     // 迭代，收敛到阀值停止
@@ -59,28 +61,28 @@ function pageRank(transMat, initVector, damping = 0.85, iter = 100) {
   return { iter: iter, r: r, isMarkov: true }
 }
 
-function createNetwork(edges) {
+function createNetwork (edges) {
   /*
     edges: [从哪里=> 跳转到哪里 ]
   */
-  let colCount = edges.map(x => x[0]).count() //计算列的总计数
+  const colCount = edges.map(x => x[0]).count() // 计算列的总计数
   let len = 0
-  for (let i in colCount) {
+  for (const i in colCount) {
     len++
   }
-  let mat = $.math.mat.zero(len, len)
+  const mat = $.math.mat.zero(len, len)
   for (let i = 0; i < edges.length; i++) {
-    let [colNum, rowNum] = [
+    const [colNum, rowNum] = [
       strIndex2num(edges[i][0]) - 1,
       strIndex2num(edges[i][1]) - 1
     ]
-    mat[rowNum][colNum] = 1 / colCount[edges[i][0]] //1/列计数 作为初始值
+    mat[rowNum][colNum] = 1 / colCount[edges[i][0]] // 1/列计数 作为初始值
   }
-  //console.log(mat)
+  // console.log(mat)
   return mat
 }
 
-let edges = [
+const edges = [
   ['a', 'b'],
   ['a', 'c'],
   ['a', 'd'],
@@ -91,7 +93,7 @@ let edges = [
   ['e', 'a']
 ]
 
-let pageRankArr = pageRank(createNetwork(edges)).r
+const pageRankArr = pageRank(createNetwork(edges)).r
 
 console.log('pageRank:', pageRankArr)
 console.log(

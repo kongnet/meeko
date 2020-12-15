@@ -418,7 +418,7 @@ for (let i = 0; i < rawData.length; i += 2) {
   polyY.push(rawData[i + 1])
 }
 // https://wenku.baidu.com/view/cc0f9b0f52ea551810a68716.html
-let smoothY = [
+const smoothY = [
   12.9,
   14.91,
   15.96,
@@ -434,11 +434,11 @@ let smoothY = [
   19.53,
   20.82
 ]
-let diff1 = $.math.exponentialSmoothing(smoothY)
-let diff2 = $.math.exponentialSmoothing(diff1)
-let diff3 = $.math.exponentialSmoothing(diff2)
+const diff1 = $.math.exponentialSmoothing(smoothY)
+const diff2 = $.math.exponentialSmoothing(diff1)
+const diff3 = $.math.exponentialSmoothing(diff2)
 
-//console.log(y, diff1, diff2, diff3)
+// console.log(y, diff1, diff2, diff3)
 describe('Math扩展函数的单元测试', () => {
   const a = [2, 1, 8.1, 3, 4, 5.1, 6.7]
   it('genRange', () => {
@@ -550,7 +550,7 @@ describe('Math扩展函数的单元测试', () => {
   it(`linearFitting ${rst.f}`, () =>
     assertLog(
       JSON.stringify(rst),
-      `{"a":0.18333333333333332,"b":3.305555555555556,"r":0.04426829268292683,"f":"y=0.1833*x+3.3056 R^2=0.0443"}`
+      '{"a":0.18333333333333332,"b":3.305555555555556,"r":0.04426829268292683,"f":"y=0.1833*x+3.3056 R^2=0.0443"}'
     ))
 
   const rst1 = $.math.exponentFitting(
@@ -560,7 +560,7 @@ describe('Math扩展函数的单元测试', () => {
   it(`exponentFitting ${rst1.f}`, () =>
     assertLog(
       JSON.stringify(rst1),
-      `{"a":2.4241733882720133,"b":0.07811356958381002,"r":0.10831424034090119,"f":"y=2.4242*e^(0.0781*x) R^2=0.1083"}`
+      '{"a":2.4241733882720133,"b":0.07811356958381002,"r":0.10831424034090119,"f":"y=2.4242*e^(0.0781*x) R^2=0.1083"}'
     ))
 
   const rst2 = $.math.lnFitting(
@@ -570,7 +570,7 @@ describe('Math扩展函数的单元测试', () => {
   it(`lnFitting ${rst2.f}`, () =>
     assertLog(
       JSON.stringify(rst2),
-      `{"a":1.224733441070464,"b":2.480130419814377,"r":0.1362718140723164,"f":"y=1.2247*ln(x)+2.4801 R^2=0.1363"}`
+      '{"a":1.224733441070464,"b":2.480130419814377,"r":0.1362718140723164,"f":"y=1.2247*ln(x)+2.4801 R^2=0.1363"}'
     ))
 
   const rst3 = $.math.powerFitting(
@@ -580,13 +580,13 @@ describe('Math扩展函数的单元测试', () => {
   it(`powerFitting ${rst3.f}`, () =>
     assertLog(
       JSON.stringify(rst3),
-      `{"a":1.8454140471460965,"b":0.46635474401809107,"r":0.26630441651302567,"f":"y=1.8454*x^0.4664 R^2=0.2663"}`
+      '{"a":1.8454140471460965,"b":0.46635474401809107,"r":0.26630441651302567,"f":"y=1.8454*x^0.4664 R^2=0.2663"}'
     ))
   const rst4 = $.math.polyFitting(polyX, polyY, 6)
   it(`polyFitting ${rst4.f}`, () =>
     assertLog(
       JSON.stringify(rst4),
-      `{"r":0.013006877594921203,"f":"y=7.8503*x^6-0.6815*x^5-11.8914*x^4+3.5150*x^3+6.1567*x^2-1.9026*x-0.4031 R^2=0.013","formula":["7.8503*x^6","-0.6815*x^5","-11.8914*x^4","3.5150*x^3","6.1567*x^2","-1.9026*x^1","-0.4031"]}`
+      '{"r":0.013006877594921203,"f":"y=7.8503*x^6-0.6815*x^5-11.8914*x^4+3.5150*x^3+6.1567*x^2-1.9026*x-0.4031 R^2=0.013","formula":["7.8503*x^6","-0.6815*x^5","-11.8914*x^4","3.5150*x^3","6.1567*x^2","-1.9026*x^1","-0.4031"]}'
     ))
 })
 
@@ -642,20 +642,20 @@ describe('Math相关系数函数单元测试', () => {
     [3.0, 3.5, 1.5, 5.0, 3.5, 3.0]
   )
   const rst51 = $.math.pearson([1, 2, 3, 4, 5, 6], [0.3, 0.9, 2.7, 2, 3.5, 5])
-  it(`pearson相关指数`, () => {
+  it('pearson相关指数', () => {
     assertLog(rst4.toFixed(3), '0.931')
     assertLog(rst5.toFixed(3), '0.396')
     assertLog(rst51.toFixed(3), '0.948')
   })
   const rst6 = $.math.spearman([3, 1, 5, 4, 2], [4, 1, 5, 2, 3])
-  it(`spearman相关指数 5个人的视觉[170, 150, 210, 180, 160]、听觉反应时[180, 165, 190, 168, 172]（单位：毫秒）两个变量排序后计算`, () => {
+  it('spearman相关指数 5个人的视觉[170, 150, 210, 180, 160]、听觉反应时[180, 165, 190, 168, 172]（单位：毫秒）两个变量排序后计算', () => {
     assertLog(rst6.toFixed(1), '0.7')
   })
   const rst6_1 = $.math.spearman(
     [5.05, 6.75, 3.21, 2.66],
     [1.65, 26.5, -5.93, 7.96]
   )
-  it(`spearman相关指数 [5.05, 6.75, 3.21, 2.66], [1.65, 26.5, -5.93, 7.96]`, () => {
+  it('spearman相关指数 [5.05, 6.75, 3.21, 2.66], [1.65, 26.5, -5.93, 7.96]', () => {
     assertLog(rst6_1.toFixed(1), '0.4')
   })
   const rst7 = $.math.kendall(
@@ -666,7 +666,7 @@ describe('Math相关系数函数单元测试', () => {
     [1, 2, 3, 4, 5, 6, 7, 8],
     [3, 4, 1, 2, 5, 7, 8, 6]
   ) // 身高体重排名
-  it(`kendall 类似pearson 两个随机变量 可以分开获取`, () => {
+  it('kendall 类似pearson 两个随机变量 可以分开获取', () => {
     assertLog(rst7.toFixed(7), '-0.9888265')
     assertLog(rst8.toFixed(3), '0.571')
   })
@@ -710,7 +710,7 @@ describe('组合数学相关函数', () => {
   })
 })
 describe('第k个最大最小', () => {
-  let r = $.math.secRand(0, 10000)
+  const r = $.math.secRand(0, 10000)
   it('第k个最大最小', () => {
     assertLog($.math.largek(rawData, 6), 9.545351287)
     assertLog($.math.smallk(rawData, 6), -9.005651691)
@@ -718,7 +718,7 @@ describe('第k个最大最小', () => {
 })
 
 describe('hash函数', () => {
-  let r = $.math.murmurHash('你好,世界!')
+  const r = $.math.murmurHash('你好,世界!')
   it('murmurHash', () => {
     assertLog(r, 1508440480)
     assertLog(

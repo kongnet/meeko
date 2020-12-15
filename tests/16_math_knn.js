@@ -9,8 +9,8 @@ const assertLog = function () {
 }
 describe('KNN', () => {
   it('电影分类', () => {
-    //维度解释 搞笑，拥抱，打斗
-    let movieObjArr = [
+    // 维度解释 搞笑，拥抱，打斗
+    const movieObjArr = [
       { name: '宝贝当家', dim: [45, 2, 9], tag: '喜剧片' },
       { name: '美人鱼', dim: [21, 17, 5], tag: '喜剧片' },
       { name: '澳门风云3', dim: [54, 9, 11], tag: '喜剧片' },
@@ -25,28 +25,28 @@ describe('KNN', () => {
       { name: '新步步惊心', dim: [8, 34, 17], tag: '爱情片' }
     ]
 
-    let movieDim = []
-    let movieTag = []
+    const movieDim = []
+    const movieTag = []
     movieObjArr.forEach(item => {
       movieDim.push(item.dim)
       movieTag.push(item.tag)
     })
-    let knn = new $.ml.Knn()
-    ;['euclidean' /*, 'euclideans', 'manhattan' */].forEach(item => {
-      //console.log(item)
-      knn.set(movieDim, movieTag, 3, item) //先学习
+    const knn = new $.ml.Knn()
+    ;['euclidean'].forEach(item => {
+      // console.log(item)
+      knn.set(movieDim, movieTag, 3, item) // 先学习
       console.log('自动计算最佳K值', knn.optimize())
     })
 
-    knn.set(movieDim, movieTag, 4, 'euclideans') //先学习
+    knn.set(movieDim, movieTag, 4, 'euclideans') // 先学习
     assertLog(
       JSON.stringify(knn.predict([23, 3, 17])),
       '{"result":{"tag":"动作片","maxValue":2},"whole":{"动作片":2,"喜剧片":2},"algorithm":"euclideans"}'
-    ) //分类 唐人街探案: [23, 3, 17,???] 属于什么类型电影
-    knn.set(movieDim, movieTag, 3, 'euclidean') //先学习
+    ) // 分类 唐人街探案: [23, 3, 17,???] 属于什么类型电影
+    knn.set(movieDim, movieTag, 3, 'euclidean') // 先学习
     assertLog(
       JSON.stringify(knn.predict([23, 3, 17])),
       '{"result":{"tag":"喜剧片","maxValue":2},"whole":{"动作片":1,"喜剧片":2},"algorithm":"euclidean"}'
-    ) //分类 唐人街探案: [23, 3, 17,???] 属于什么类型电影
+    ) // 分类 唐人街探案: [23, 3, 17,???] 属于什么类型电影
   })
 })

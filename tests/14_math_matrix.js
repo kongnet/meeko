@@ -8,15 +8,15 @@ const assertLog = function () {
   return assert.strictEqual(...arguments)
 }
 describe('矩阵基础操作', () => {
-  let Ma = [
+  const Ma = [
     [1, 2],
     [2, 1]
   ]
-  let Mb = [
+  const Mb = [
     [2, 3],
     [3, 2]
   ]
-  let Mc = [
+  const Mc = [
     [1, 3, 4, 0, 2, 33, 4],
     [6, 7, 8, 5, 62, 7, 8],
     [98, 7, 6, 9, 8, 7, 6],
@@ -34,9 +34,9 @@ describe('矩阵基础操作', () => {
 
   it('复制矩阵', () => {
     assertLog(JSON.stringify($.math.mat.deepCopy(Ma)), '[[1,2],[2,1]]')
-    /*assert.throws($.math.mat.deepCopy(1), {
+    /* assert.throws($.math.mat.deepCopy(1), {
       message: '输入必须是矩阵'
-    })*/
+    }) */
   })
   it('矩阵转置', () => {
     assertLog(JSON.stringify($.math.mat.transpose(Ma)), '[[1,2],[2,1]]')
