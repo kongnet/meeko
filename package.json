@@ -8,7 +8,6 @@
     "cz": "conventional-changelog -p atom -i CHANGELOG.md -s -r 0 && git add . && git status && git cz",
     "push": "npm version patch && npm publish . && git push",
     "jsdoc": "jsdoc ./README.md --configure  ./jsdoc.config.js",
-    "snazzy": "snazzy *.js ./lib/**/*.js --verbose",
     "testlocal": "standard *.js && istanbul cover ./node_modules/mocha/bin/_mocha -- -r co-mocha --reporter spec --timeout 100000 --recursive tests/",
     "test_new": "nyc mocha --timeout 100000 --recursive tests/",
     "test": "nyc mocha --recursive tests/",
