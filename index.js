@@ -6,7 +6,7 @@ const path = require('path')
 const tools = require('./lib/tools')
 const c = tools.c
 
-var getGlobal = function () {
+const getGlobal = function () {
   if (typeof self !== 'undefined') {
     return self
   }
@@ -284,7 +284,7 @@ const cryptoExt = require('./lib/CryptoExt.js')
 /**
  * 把数组里的函数挨个执行，并且把前面函数的返回值传给下一个函数
  * @param {any} [funcs]
- * @return mixed
+ * @return void 0
  * @example
  * $.pipe(arg=>{return arg.push(1)},arg=>{return arg.push(2))([0])
  * // [0,1,2]

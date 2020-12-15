@@ -1,3 +1,12 @@
+## [1.8.142](https://github.com/kongnet/meeko/compare/v1.8.141...v1.8.142) (2020-12-14)
+
+
+### :zap:
+
+* 使用@ts-check增强参数验证 ([55df0f4](https://github.com/kongnet/meeko/commit/55df0f4))
+
+
+
 ## [1.8.141](https://github.com/kongnet/meeko/compare/v1.8.140...v1.8.141) (2020-12-07)
 
 
