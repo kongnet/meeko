@@ -199,6 +199,7 @@ describe('其他函数的单元测试', function () {
     assertLog(tempIds.length, 10)
   })
 })
+
 describe('模板引擎单元测试', function () {
   it('tpl', function () {
     $.tpl.config()
@@ -225,6 +226,7 @@ describe('模板引擎单元测试', function () {
     ) // 模板结构不对
   })
 })
+
 describe('判断类型函数单元测试', function () {
   it('getType', function () {
     assertLog($.tools.getType({}), 'Object')
