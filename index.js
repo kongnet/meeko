@@ -152,7 +152,8 @@ const log = function log (...args) {
       ':' +
       RegExp.$2 +
       ' ' +
-      new Date().date2Str().replaceAll('-', '')
+      new Date().date2Str()
+        .replaceAll('-', '')
     ) +
     ']'
   let str = ''
@@ -182,7 +183,8 @@ const err = function err (...args) {
       ':' +
       RegExp.$2 +
       ' ' +
-      new Date().date2Str().replaceAll('-', '')
+      new Date().date2Str()
+        .replaceAll('-', '')
     ) +
     ']'
   let str = ''
@@ -281,6 +283,7 @@ const qrcode = require('./lib/qrcode.js')
 const buf = require('./lib/buf.js')
 const geo = require('./lib/geo.js')
 const cryptoExt = require('./lib/CryptoExt.js')
+
 /**
  * 把数组里的函数挨个执行，并且把前面函数的返回值传给下一个函数
  * @param {any} [funcs]
@@ -326,6 +329,7 @@ const now = () => new Date()
 const benchmark = function benchmark (
   fn = function () {
     /* do nothing */
+
   },
   msg = '',
   n = 1000000
@@ -346,7 +350,7 @@ const benchmark = function benchmark (
   }
   const diffTime = timeSpend
   const spendTime = +diffTime.toFixed(0)
-  const perSec = (((n / diffTime) * 10000) / 10000) | 0
+  const perSec = n / diffTime * 10000 / 10000 | 0
   console.log(
     c.y((fn.name || '').fillStr(' ', 15)),
     (spendTime + ' ms').fillStr(' ', 8, -1),
@@ -354,7 +358,7 @@ const benchmark = function benchmark (
     n.toExponential() + ' 次',
     (
       '±' +
-      (((maxDt - minDt) / 2 / (spendTime / n)) * 100).round(2) +
+      ((maxDt - minDt) / 2 / (spendTime / n) * 100).round(2) +
       '%'
     ).fillStr(' ', 9, -1),
     msg

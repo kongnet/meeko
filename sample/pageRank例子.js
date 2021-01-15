@@ -9,7 +9,7 @@ function isMarkov (mat) {
     for (let k = 0; k < len; k++) {
       const item = mat[i][k]
       isPositive = item >= 0 ? !0 : !1
-      if (!isPositive) return !1
+      if (!isPositive) { return !1 }
       colSum[k] = colSum[k] || 0
       colSum[k] += item
     }
@@ -38,7 +38,7 @@ function num2IndexStr (num) {
 function pageRank (transMat, initVector, damping = 0.85, iter = 100) {
   const esp = 1e-9
   const len = transMat.length
-  if (!isMarkov(transMat)) return { iter: 0, r: transMat, isMarkov: false } // 马尔科夫矩阵判断，元素非负，列和为1
+  if (!isMarkov(transMat)) { return { iter: 0, r: transMat, isMarkov: false } } // 马尔科夫矩阵判断，元素非负，列和为1
   if (!initVector)
   // 初始化向量
   {
