@@ -1,3 +1,12 @@
+## [1.8.155](https://github.com/kongnet/meeko/compare/v1.8.154...v1.8.155) (2021-02-01)
+
+
+### :zap:
+
+* 增加高德与wgs84|CGCS2000互转 ([9f39034](https://github.com/kongnet/meeko/commit/9f39034))
+
+
+
 ## [1.8.154](https://github.com/kongnet/meeko/compare/v1.8.153...v1.8.154) (2021-01-15)
 
 

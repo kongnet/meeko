@@ -26,7 +26,7 @@ const globalThis = getGlobal()
  * @return {object} a对象，此方法并不会生成新对象
  * */
 
-function ext (a, b, isCall = false) {
+function ext(a, b, isCall = false) {
   if (a && b) {
     for (const item in b) {
       if (!a.hasOwnProperty(item)) {
@@ -36,8 +36,7 @@ function ext (a, b, isCall = false) {
           a[item] = b[item]
         }
       } else {
-        globalThis.isMeekoLoad &&
-          console.log(c.g(item.toUpperCase()), 'ES2015-2021 new method')
+        // globalThis.isMeekoLoad && console.log(c.g(item.toUpperCase()), 'ES2015-2021 new method')
       }
     }
     return a
@@ -141,7 +140,7 @@ const trace = console
  * @param {...any[]} args 要打印的参数
  * */
 
-const log = function log (...args) {
+const log = function log(...args) {
   getStackTrace()
     .split('\n')[2]
     .match(re)
@@ -172,7 +171,7 @@ const log = function log (...args) {
  * @param {...any[]} args 要打印的参数
  * */
 
-const err = function err (...args) {
+const err = function err(...args) {
   getStackTrace()
     .split('\n')[2]
     .match(re)
@@ -199,7 +198,7 @@ const err = function err (...args) {
   return 1
 }
 
-function strColor (k, v) {
+function strColor(k, v) {
   if (typeof v === 'function') {
     return `[function ${k}]`
   }
@@ -214,7 +213,7 @@ function strColor (k, v) {
  * @param {...array<any>} args 任何参数
  */
 
-const dir = function dir (...args) {
+const dir = function dir(...args) {
   for (let i = 0; i < args.length; i++) {
     let ss = JSON.stringify(args[i], strColor, 4)
     ss = ss
@@ -243,7 +242,7 @@ const dir = function dir (...args) {
  * // [{ name: 'b', lev: 2 }, { 'name': 'a', lev: 1 }]
  * */
 
-function compare (k, order) {
+function compare(k, order) {
   return function (a, b) {
     return order === 'desc' ? b[k] - a[k] : a[k] - b[k] // ~~(a[k] < b[k]) : ~~(a[k] > b[k])
   }
@@ -326,7 +325,7 @@ const now = () => new Date()
  * // prime     41 毫秒  24390.2439/ms 1e+6 次
  */
 
-const benchmark = function benchmark (
+const benchmark = function benchmark(
   fn = function () {
     /* do nothing */
 
