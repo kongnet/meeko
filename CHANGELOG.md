@@ -1,3 +1,12 @@
+## [1.8.157](https://github.com/kongnet/meeko/compare/v1.8.156...v1.8.157) (2021-03-25)
+
+
+### :zap:
+
+* benchmark adjust ([dc2c21e](https://github.com/kongnet/meeko/commit/dc2c21e))
+
+
+
 ## [1.8.156](https://github.com/kongnet/meeko/compare/v1.8.155...v1.8.156) (2021-02-01)
 
 
