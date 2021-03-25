@@ -1,3 +1,8 @@
+## [1.8.156](https://github.com/kongnet/meeko/compare/v1.8.155...v1.8.156) (2021-02-01)
+
+
+
+
 ## [1.8.155](https://github.com/kongnet/meeko/compare/v1.8.154...v1.8.155) (2021-02-01)
 
 
