@@ -23,6 +23,7 @@ describe('Number原型扩展的单元测试', function () {
   it('prettyBytes', function () {
     assertLog('1 KB', (1000).prettyBytes())
     assertLog('0 B', (0).prettyBytes())
+    assertLog('0.123 B', (0.12345).prettyBytes())
     assertLog('0B', (0).prettyBytes(0, false))
     assertLog('-27.145 GB', (-27145424323.5821).prettyBytes(5))
     assertLog('123MB', (123456789).prettyBytes(3, false))
