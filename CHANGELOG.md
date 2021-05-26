@@ -1,3 +1,12 @@
+## [1.8.159](https://github.com/kongnet/meeko/compare/v1.8.158...v1.8.159) (2021-05-18)
+
+
+### :bug:
+
+* prettyBytes B阶段小数保留位数修正 ([496e351](https://github.com/kongnet/meeko/commit/496e351))
+
+
+
 ## [1.8.158](https://github.com/kongnet/meeko/compare/v1.8.157...v1.8.158) (2021-03-25)
 
 
