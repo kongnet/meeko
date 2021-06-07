@@ -727,3 +727,14 @@ describe('hash函数', () => {
     )
   })
 })
+describe('傅里叶分析', () => {
+  it('傅里叶分析', () => {
+    assertLog(JSON.stringify($.math.fourierAnalysis([1, 2, 1, 2, 1, 2, 1, 2])), '{"period":2.6666666666666665}')
+  })
+})
+describe('自相关函数', () => {
+  it('自相关函数', () => {
+    assertLog($.math.autoCorrelation([1, 2, 1, 2, 1, 2, 1, 2]), -0.875)
+    assertLog($.math.autoCorrelation([1, 2, 1, 2, 1, 2, 1, 2], 2), 0.75)
+  })
+})

@@ -1,3 +1,12 @@
+## [1.8.160](https://github.com/kongnet/meeko/compare/v1.8.159...v1.8.160) (2021-05-26)
+
+
+### :zap:
+
+* 增加file类型全允许 ([33c1cc6](https://github.com/kongnet/meeko/commit/33c1cc6))
+
+
+
 ## [1.8.159](https://github.com/kongnet/meeko/compare/v1.8.158...v1.8.159) (2021-05-18)
 
 
