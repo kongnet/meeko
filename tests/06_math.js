@@ -738,3 +738,18 @@ describe('自相关函数', () => {
     assertLog($.math.autoCorrelation([1, 2, 1, 2, 1, 2, 1, 2], 2), 0.75)
   })
 })
+describe('stat', () => {
+  it('stat', () => {
+    assertLog(JSON.stringify($.math.stat([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])), JSON.stringify({
+      len: 10,
+      xmean: 5.5,
+      ymean: 5.5,
+      sumx: 82.5,
+      sumy: 82.5,
+      sumxy: 82.5
+    }))
+    assertLog(JSON.stringify($.math.stat([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 100, 100)), JSON.stringify(
+      { len: 10, xmean: 100, ymean: 100, sumx: 89385, sumy: 89385, sumxy: 89385 }
+    ))
+  })
+})

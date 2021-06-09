@@ -1,5 +1,5 @@
 /* istanbul ignore next */
-// @ts-check
+
 const { PerformanceObserver, performance } = require('perf_hooks')
 const Pack = require('./package.json')
 const path = require('path')
@@ -317,7 +317,9 @@ const now = () => new Date()
 /**
  * benchmark，性能测试函数.
  * @param {function} fn - 被执行的函数.
+ * @param {String} msg - 后面的说明
  * @param {number} n - 执行次数.
+ * @param {*} isJson  - 是否json返回
  * @return {void} 返回 [函数名] [执行时间] 毫秒 [每毫秒运行次数]/ms [执行次数] 次.
  * @example
  * let prime = function () { return (641).isPrime() }
@@ -330,9 +332,9 @@ const benchmark = function benchmark (
     /* do nothing */
   },
   msg = '',
-  n = 1000000
+  n = 1000000,
+  isJson = false
 ) {
-  const t = performance.now()
   let everyTime = 0
   let timeSpend = 0
   let dt = 0

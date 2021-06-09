@@ -1,3 +1,12 @@
+## [1.8.161](https://github.com/kongnet/meeko/compare/v1.8.160...v1.8.161) (2021-06-07)
+
+
+### :sparkles:
+
+* 增加傅里叶分析和自相关函数2个函数 ([7409ba4](https://github.com/kongnet/meeko/commit/7409ba4))
+
+
+
 ## [1.8.160](https://github.com/kongnet/meeko/compare/v1.8.159...v1.8.160) (2021-05-26)
 
 
