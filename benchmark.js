@@ -5,16 +5,12 @@ const crypto = require('crypto')
 function logTitle (s = '', strNum = 32) {
   console.log(`\n${'='.repeat(strNum)}${s}${'='.repeat(strNum)}\n`)
 }
-logTitle('基础-判断属性存在')
+
 const propExistObj = { name: 'sky' }
 const propExist1 = () => 'name' in propExistObj
 const propExist2 = () => propExistObj.name !== undefined
 const propExist3 = () => propExistObj.hasOwnProperty('name')
-$.benchmark(propExist1, 'key in 方式', 1e6)
-$.benchmark(propExist2, '直接判断undefined', 1e6)
-$.benchmark(propExist3, 'hasOwnProperty判断', 1e6)
 
-logTitle('基础-字符串存在判断')
 const strOri =
   '9999nas56765d.n.kasdkskdnfkjsdfkjhsdfiuhsdfiusadfiuhsdfiöhsdifhsäodfskyjiosdfisdfsdfnosdfiosdf89sdfs98pdfzp98sdf98psfzp8sfzp8sfzp89szfp8snasd.n.kasdkskdskynfkjsdfkjhsdfiuhsdfiusadfiuhsdfiöhsdifhsäodfjiosdfisdfsdfnosdfiosdf89sdfs98pdfzp98sdf98psfzp8sfzp8sfzp89szfp8snasd.n.kasdkskdnfkjsdfkjhsdfiuhsdfiusadfiuhsdfiöhsdifhsäodfjiosdfisdfsdfnosdfiosdf89sdfs98pdfzp98sdf98psfzp8sfzp8sfzp89szfp8snasd.hellon.kasdkskdnfkjsdfkjhsdfiuhsdfiusadfiuhsdfiöhsdifhsäodfjiosdfisdfsdfnosdfiosdf89sdfs98pdfzp98sdf98psfzp8sfzp8sfzp89szfp8s'
 const needle = 'sky'
@@ -24,12 +20,7 @@ const strExist2 = () => needleRegex.test(strOri)
 const strExist3 = () => strOri.match(needleRegex)
 const strExist4 = () => strOri.includes(needle)
 const strExist5 = () => strOri.search(needleRegex)
-$.benchmark(strExist1, 'indexOf查找')
-$.benchmark(strExist2, '正则')
-$.benchmark(strExist3, 'match判断')
-$.benchmark(strExist4, 'es6 includes判断')
-$.benchmark(strExist5, 'search判断')
-logTitle('基础-克隆数组')
+
 const cloneArray = [
   29,
   27,
@@ -143,14 +134,87 @@ const cloneArr7 = () =>
     return i
   })
 const cloneArr8 = () => JSON.parse(JSON.stringify(cloneArray))
-$.benchmark(cloneArr1, 'slice克隆', 1e5)
-$.benchmark(cloneArr2, 'concat克隆', 1e5)
-$.benchmark(cloneArr3, 'unshift克隆', 1e5)
-$.benchmark(cloneArr4, 'push克隆', 1e5)
-$.benchmark(cloneArr5, 'index克隆', 1e5)
-$.benchmark(cloneArr6, '数组apply克隆', 1e5)
-$.benchmark(cloneArr7, 'map克隆', 1e5)
-$.benchmark(cloneArr8, 'JSON.stringify克隆', 1e5)
+
+logTitle('基础-delete undefined null')
+const delObj1 = {
+  name: 'sky',
+  lastName: 'kong'
+}
+const delObj2 = {
+  name: 'sky',
+  lastName: 'kong'
+}
+const delObj3 = {
+  name: 'sky',
+  lastName: 'kong'
+}
+const del1 = () => { delete delObj1.name; return 1 }
+const del2 = () => { delObj2.name = undefined; return 1 }
+const del3 = () => { delObj3.name = null; return 1 }
+
+const strConcat1 = () => {
+  const t = 'x'
+  let tt = ''
+  for (let i = 0; i < 1000; i++) {
+    tt += t
+  }
+  return tt
+}
+const strConcat2 = () => {
+  const t = 'x'
+  const tt = []
+  for (let i = 0; i < 1000; i++) {
+    tt.push(t)
+  }
+  return tt.join('')
+}
+const strConcat3 = () => {
+  const t = 'x'
+  const tt = []
+  for (let i = 0; i < 1000; i++) {
+    tt[i] = t
+  }
+  return tt.join('')
+}
+
+const testSuite = [{
+  name: '基础-判断属性存在',
+  testArr: [
+    [propExist1, 'key in 方式', 1e6],
+    [propExist2, '直接判断undefined', 1e6],
+    [propExist3, 'hasOwnProperty判断', 1e6]
+  ]
+}, {
+  name: '基础-字符串存在判断',
+  testArr: [[strExist1, 'indexOf查找'],
+    [strExist2, '正则'],
+    [strExist3, 'match判断'],
+    [strExist4, 'es6 includes判断'],
+    [strExist5, 'search判断']]
+}, {
+  name: '基础-克隆数组',
+  testArr: [[cloneArr1, 'slice克隆', 1e5],
+    [cloneArr2, 'concat克隆', 1e5],
+    [cloneArr3, 'unshift克隆', 1e5],
+    [cloneArr4, 'push克隆', 1e5],
+    [cloneArr5, 'index克隆', 1e5],
+    [cloneArr6, '数组apply克隆', 1e5],
+    [cloneArr7, 'map克隆', 1e5],
+    [cloneArr8, 'JSON.stringify克隆', 1e5]]
+}, {
+  name: '基础-delete undefined null',
+  testArr: [[del1, 'delete删', 1e6],
+    [del2, '赋值undefined', 1e6],
+    [del3, '赋值null', 1e6]]
+}, {
+  name: '基础-字符串拼接',
+  testArr: [[strConcat1, '直接+=', 1e4],
+    [strConcat2, 'join字符串', 1e4],
+    [strConcat3, 'length-join', 1e4]]
+}
+]
+
+$.bench.suite(testSuite)
 
 logTitle('基础-数组对象查找')
 const findArr = [
@@ -173,30 +237,18 @@ const findId1 = () => {
   let result
 
   for (let i = 0; i < findArr.length; ++i) {
-    if (findArr[i].id == keyToFind) {
+    if (findArr[i].id === +keyToFind) {
       result = findArr[i].id
       break
     }
   }
   return result
 }
-const findId2 = () => findArr.find(item => item.id == keyToFind)
+const findId2 = () => findArr.find(item => item.id === +keyToFind)
 const findId3 = () => oFind[keyToFind]
 $.benchmark(findId1, 'for循环查找', 1e6)
 $.benchmark(findId2, 'find迭代函数查找', 1e6)
 $.benchmark(findId3, 'hash直接查找', 1e6)
-
-logTitle('基础-delete undefined null')
-const delObj = {
-  name: 'sky',
-  lastName: 'kong'
-}
-const del1 = () => delete delObj.name
-const del2 = () => delObj.name = undefined
-const del3 = () => delObj.name = null
-$.benchmark(del1, 'delete删', 1e6)
-$.benchmark(del2, '赋值undefined', 1e6)
-$.benchmark(del3, '赋值null', 1e6)
 
 logTitle('基础-判断整数')
 
@@ -257,39 +309,15 @@ const minMax3 = () => [
   Math.min.apply(null, minMaxArr),
   Math.max.apply(null, minMaxArr)
 ]
-
+const minMax4 = () => [
+  $.math.min(minMaxArr),
+  $.math.max(minMaxArr)
+]
 $.benchmark(minMax1, 'es6 解构查找数组最值', 1e6)
 $.benchmark(minMax2, 'reduce查找数组最值', 1e6)
 $.benchmark(minMax3, '普通方式查找数组最值', 1e6)
+$.benchmark(minMax4, 'reduce查找数组最值2', 1e6)
 
-logTitle('基础-字符串拼接')
-const strConcat1 = () => {
-  const t = 'x'
-  let tt = ''
-  for (let i = 0; i < 1000; i++) {
-    tt += t
-  }
-  return tt
-}
-const strConcat2 = () => {
-  const t = 'x'
-  const tt = []
-  for (let i = 0; i < 1000; i++) {
-    tt.push(t)
-  }
-  return tt.join('')
-}
-const strConcat3 = () => {
-  const t = 'x'
-  const tt = []
-  for (let i = 0; i < 1000; i++) {
-    tt[tt.length] = t
-  }
-  return tt.join('')
-}
-$.benchmark(strConcat1, '直接+=', 1e4)
-$.benchmark(strConcat2, 'join字符串', 1e4)
-$.benchmark(strConcat3, 'length-join', 1e4)
 logTitle('阶乘比较')
 function factorialize1 (num) {
   if (num < 0) {

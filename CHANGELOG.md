@@ -1,3 +1,12 @@
+## [1.8.162](https://github.com/kongnet/meeko/compare/v1.8.161...v1.8.162) (2021-06-09)
+
+
+### :zap:
+
+* stat增加指定平均值 ([97f00e2](https://github.com/kongnet/meeko/commit/97f00e2))
+
+
+
 ## [1.8.161](https://github.com/kongnet/meeko/compare/v1.8.160...v1.8.161) (2021-06-07)
 
 
