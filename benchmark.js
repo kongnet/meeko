@@ -177,6 +177,21 @@ const strConcat3 = () => {
   return tt.join('')
 }
 
+function secRand (a, b) {
+  // （1）首先找到样本数据Y的最小值Min及最大值Max
+  // （2）计算系数为：k=(b-a)/(Max-Min)
+  // （3）得到归一化到[a,b)区间的数据：norY=a+k(Y-Min)
+
+  const r = crypto.randomBytes(4) // 0-4294967295
+  return Math.floor((b - a + 1) / 4294967295 * r.readUInt32LE(0)) + a
+}
+const rand1 = function () {
+  return $.math.uniformRandInt(0, 10000)
+}
+const rand2 = function () {
+  return secRand(0, 10000)
+}
+
 const testSuite = [{
   name: '基础-判断属性存在',
   testArr: [
@@ -211,6 +226,10 @@ const testSuite = [{
   testArr: [[strConcat1, '直接+=', 1e4],
     [strConcat2, 'join字符串', 1e4],
     [strConcat3, 'length-join', 1e4]]
+}, {
+  name: '随机整数生成比较',
+  testArr: [[rand1, '普通包含两端随机函数', 1e5],
+    [rand2, '安全包含两端随机函数randomBytes实现', 1e5]]
 }
 ]
 
@@ -487,22 +506,3 @@ const UUIDGen = () =>
 $.benchmark(genSnowFlake, 'sky SnowFlake函数', 100000)
 $.benchmark(genUUID, 'sky gUID函数', 100000)
 $.benchmark(UUIDGen, 'UUIDGen', 10000)
-
-logTitle('随机整数生成比较')
-
-function secRand (a, b) {
-  // （1）首先找到样本数据Y的最小值Min及最大值Max
-  // （2）计算系数为：k=(b-a)/(Max-Min)
-  // （3）得到归一化到[a,b)区间的数据：norY=a+k(Y-Min)
-
-  const r = crypto.randomBytes(4) // 0-4294967295
-  return Math.floor((b - a + 1) / 4294967295 * r.readUInt32LE(0)) + a
-}
-const rand1 = function () {
-  return $.math.uniformRandInt(0, 10000)
-}
-const rand2 = function () {
-  return secRand(0, 10000)
-}
-$.benchmark(rand1, '普通包含两端随机函数', 100000)
-$.benchmark(rand2, '安全包含两端随机函数randomBytes实现', 100000)
