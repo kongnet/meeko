@@ -1,3 +1,12 @@
+## [1.8.164](https://github.com/kongnet/meeko/compare/v1.8.163...v1.8.164) (2021-07-08)
+
+
+### :bug:
+
+* (原型扩展设置enumerable不可枚举) ([8dd0024](https://github.com/kongnet/meeko/commit/8dd00248451b40598af8c75fc6dd0e183e9d39d6))
+
+
+
 ## [1.8.163](https://github.com/kongnet/meeko/compare/v1.8.162...v1.8.163) (2021-06-15)
 
 
