@@ -1,8 +1,15 @@
 {
   "name": "meeko",
-  "version": "1.8.166",
+  "version": "1.8.167",
   "description": "meeko自用函数",
-  "keywords": ["js","tools","math","ml","ai","coverage"],
+  "keywords": [
+    "js",
+    "tools",
+    "math",
+    "ml",
+    "ai",
+    "coverage"
+  ],
   "main": "index.js",
   "scripts": {
     "patch": "git add . && git commit -m:pencil2: && npm version patch && npm publish .",
