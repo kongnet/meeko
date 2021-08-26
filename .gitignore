@@ -9,4 +9,5 @@ test*.*
 package-lock.json
 .scannerwork
 .nyc_output
+.vscode
 mochawesome-report
