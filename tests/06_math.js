@@ -720,10 +720,10 @@ describe('第k个最大最小', () => {
 describe('hash函数', () => {
   const r = $.math.murmurHash('你好,世界!')
   it('murmurHash', () => {
-    assertLog(r, 1508440480)
+    assertLog(r, 1008576884)
     assertLog(
       r.toString(2).fillStr('0', 32, -1),
-      '01011001111010001111100110100000'
+      '00111100000111011010100101110100'
     )
   })
 })

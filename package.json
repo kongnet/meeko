@@ -11,6 +11,9 @@
     "coverage"
   ],
   "main": "index.js",
+  "browser":{
+    "./index.js" : "./index.browser.js"
+  },
   "scripts": {
     "patch": "git add . && git commit -m:pencil2: && npm version patch && npm publish .",
     "cz": "conventional-changelog -p atom -i CHANGELOG.md -s -r 0 && git add . && git status && git cz",

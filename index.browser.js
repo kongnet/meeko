@@ -178,7 +178,6 @@ const math = require('./lib/math')
 const matAdv = require('./lib/mathMatrixAdv')
 Object.assign(math, matAdv)
 const fake = require('./lib/fake')
-const file = require('./lib/file')
 const reg = require('./lib/reg')
 const tpl = require('./lib/tpl')
 const color = require('./lib/color')
@@ -191,7 +190,6 @@ const Mock = require('./lib/Mock.js')
 const qrcode = require('./lib/qrcode.js')
 const buf = require('./lib/buf.js')
 const geo = require('./lib/geo.js')
-const cryptoExt = require('./lib/CryptoExt.js')
 
 /**
  * 把数组里的函数挨个执行，并且把前面函数的返回值传给下一个函数
@@ -244,13 +242,11 @@ const exportObj = {
   c,
   color,
   compare,
-  Crypto: cryptoExt,
   dir,
   drawTable: tools.drawTable,
   err,
   ext,
   fake,
-  file,
   getStackTrace,
   geo,
   json,
