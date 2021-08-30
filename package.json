@@ -1,6 +1,6 @@
 {
   "name": "meeko",
-  "version": "1.8.168",
+  "version": "1.8.169",
   "description": "meeko自用函数",
   "keywords": [
     "js",
@@ -11,8 +11,8 @@
     "coverage"
   ],
   "main": "index.js",
-  "browser":{
-    "./index.js" : "./index.browser.js"
+  "browser": {
+    "./index.js": "./index.browser.js"
   },
   "scripts": {
     "patch": "git add . && git commit -m:pencil2: && npm version patch && npm publish .",
