@@ -181,7 +181,6 @@ const fake = require('./lib/fake')
 const reg = require('./lib/reg')
 const tpl = require('./lib/tpl')
 const color = require('./lib/color')
-const requireAll = require('./lib/requireDir')
 const Snowflake = require('./lib/Snowflake.js')
 const ml = require('./lib/ml') // requireAll({ dirname: path.join(__dirname, '.', 'lib', 'ml') })
 
@@ -258,7 +257,6 @@ const exportObj = {
   pipe,
   qrcode,
   reg,
-  requireAll,
   Snowflake,
   ml,
   Spinner,
