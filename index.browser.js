@@ -40,7 +40,7 @@ const getStackTrace = function () {
   Error.captureStackTrace(obj, getStackTrace)
   return obj.stack
 }
-const os = process.platform
+const os = 'win32' // process.platform
 const re = os.includes('win32')
   ? /\\(.+)\.js:(\d+:\d+)/g
   : /\/(.+)\.js:(\d+:\d+)/g
