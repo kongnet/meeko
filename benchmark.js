@@ -229,7 +229,21 @@ const thousand_format_with_mod = function (number, p = 3) {
   }
   return (sign < 0 ? '-' : '') + r
 }
+const isEmpty = function () {
+  const o = {}
+  return !!Object.keys(o).length
+}
+const isEmpty2 = function () {
+  const o = {}
+  return JSON.stringify(o) === '{}'
+}
 const testSuite = [{
+  name: '基础-判断对象为空',
+  testArr: [
+    [isEmpty, 'Object.keys判断空', 1e6],
+    [isEmpty2, 'JSON.stringify判断为空', 1e6]
+  ]
+}, {
   name: '基础-判断属性存在',
   testArr: [
     [propExist1, 'key in 方式', 1e6],
