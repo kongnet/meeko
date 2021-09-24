@@ -1,3 +1,12 @@
+## [1.8.179](https://github.com/kongnet/meeko/compare/v1.8.178...v1.8.179) (2021-09-08)
+
+
+### :ambulance:
+
+* 四分位函数内部数组copy修正 ([ed7eafe](https://github.com/kongnet/meeko/commit/ed7eafeebadc06d70e6f322029d482ee404a74af))
+
+
+
 ## [1.8.178](https://github.com/kongnet/meeko/compare/v1.8.177...v1.8.178) (2021-08-30)
 
 
