@@ -1,3 +1,12 @@
+## [1.8.180](https://github.com/kongnet/meeko/compare/v1.8.179...v1.8.180) (2021-09-24)
+
+
+### :bug:
+
+* 改一下函数说明 ([7311a8b](https://github.com/kongnet/meeko/commit/7311a8b9c45e89bd0f30fc6bf1dcf03dbd36eb90))
+
+
+
 ## [1.8.179](https://github.com/kongnet/meeko/compare/v1.8.178...v1.8.179) (2021-09-08)
 
 
