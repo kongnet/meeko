@@ -237,6 +237,28 @@ const isEmpty2 = function () {
   const o = {}
   return JSON.stringify(o) === '{}'
 }
+const invSqrt = function (f) {
+  return 1 / Math.sqrt(f)
+}
+
+const buf = new ArrayBuffer(4) // Float32Array.BYTES_PER_ELEMENT
+const f32 = new Float32Array(buf)
+const u32 = new Uint32Array(buf)
+function invSqrt2 (x) {
+  const x2 = 0.5 * (f32[0] = x)
+  u32[0] = (0x5f3759df - (u32[0] >> 1))
+  let y = f32[0]
+  y = y * (1.5 - (x2 * y ** 2)) // 1st iteration
+  return y
+}
+
+const invSqrtTest = function () {
+  return invSqrt(3277)
+}
+const invSqrtTest2 = function () {
+  return invSqrt2(3277)
+}
+
 const testSuite = [{
   name: '基础-判断对象为空',
   testArr: [
@@ -294,6 +316,11 @@ const testSuite = [{
       return thousand_format_with_mod(123456789.123456789)
     }, '', 100000]
   ]
+},
+{
+  name: '倒数平方',
+  testArr: [[invSqrtTest, '平方倒数1', 1e6],
+    [invSqrtTest2, '魔法数0x5f3759df平方倒数2', 1e6]]
 }
 ]
 

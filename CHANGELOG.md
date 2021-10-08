@@ -1,3 +1,12 @@
+## [1.8.181](https://github.com/kongnet/meeko/compare/v1.8.180...v1.8.181) (2021-09-27)
+
+
+### :zap:
+
+* 增加2个公式的latex支持 ([69d4c87](https://github.com/kongnet/meeko/commit/69d4c87c14632164b9eddf545d11ed5efd014f43))
+
+
+
 ## [1.8.180](https://github.com/kongnet/meeko/compare/v1.8.179...v1.8.180) (2021-09-24)
 
 
