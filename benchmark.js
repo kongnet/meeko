@@ -211,7 +211,7 @@ const thousand = function (number, p = 3) {
   return (sign < 0 ? '-' : '') + r + (fraction ? '.' + fraction.slice(0, p) : '')
 }
 
-const thousand_format_with_mod = function (number, p = 3) {
+const thousandFormatWithMod = function (number, p = 3) {
   const sign = Math.sign(number)
   var n = Math.abs(number)
   var r = ''
@@ -313,7 +313,7 @@ const testSuite = [{
       return thousand(123456789.123456789)
     }, '', 100000],
     [function 数值取模法 () {
-      return thousand_format_with_mod(123456789.123456789)
+      return thousandFormatWithMod(123456789.123456789)
     }, '', 100000]
   ]
 },
