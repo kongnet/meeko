@@ -479,6 +479,7 @@ describe('Math扩展函数的单元测试', () => {
     assertLog($.math.quantile(a, 3), 5.9)
     assertLog($.math.quantile(a, 0), 1)
     assertLog($.math.quantile(a, 4), 8.1)
+
     assertLog($.math.quantile(a, 0, 'exec'), NaN)
     assertLog($.math.quantile(a, 4, 'exec'), NaN)
     assertLog($.math.quantile(a, 5), 4)
@@ -550,7 +551,7 @@ describe('Math扩展函数的单元测试', () => {
   it(`linearFitting ${rst.f}`, () =>
     assertLog(
       JSON.stringify(rst),
-      '{"a":0.18333333333333332,"b":3.305555555555556,"r":0.04426829268292683,"f":"y=0.1833*x+3.3056 R^2=0.0443"}'
+      '{"a":0.18333333333333332,"b":3.305555555555556,"r":0.04426829268292683,"f":"y=0.1833*x+3.3056 R^2=0.0443","latex":"y=0.1833\\times x+3.3056  R^{2}=0.0443"}'
     ))
 
   const rst1 = $.math.exponentFitting(
@@ -560,7 +561,7 @@ describe('Math扩展函数的单元测试', () => {
   it(`exponentFitting ${rst1.f}`, () =>
     assertLog(
       JSON.stringify(rst1),
-      '{"a":2.4241733882720133,"b":0.07811356958381002,"r":0.10831424034090119,"f":"y=2.4242*e^(0.0781*x) R^2=0.1083"}'
+      '{"a":2.4241733882720133,"b":0.07811356958381002,"r":0.10831424034090119,"f":"y=2.4242*e^(0.0781*x) R^2=0.1083","latex":"y=2.4242\\times e^{ (0.0781\\times x)} R^{2}=0.1083"}'
     ))
 
   const rst2 = $.math.lnFitting(

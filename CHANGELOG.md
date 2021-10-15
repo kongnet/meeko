@@ -1,3 +1,13 @@
+## [1.8.182](https://github.com/kongnet/meeko/compare/v1.8.181...v1.8.182) (2021-10-08)
+
+
+### :zap:
+
+* (增加0x5f3759df平方倒数计算benchmark) ([13b14ef](https://github.com/kongnet/meeko/commit/13b14efecfec1a97e67dc65942f185ee66843b44))
+* 增加 const buf = new ArrayBuffer(4) ([ef3d226](https://github.com/kongnet/meeko/commit/ef3d22690ee861c1070229c9dd7761cf1dd2418b))
+
+
+
 ## [1.8.181](https://github.com/kongnet/meeko/compare/v1.8.180...v1.8.181) (2021-09-27)
 
 
