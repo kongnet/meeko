@@ -934,7 +934,7 @@
   dependencies:
     "array-find-index" "^1.0.1"
 
-"cz-jt@^0.1.7":
+"cz-jt@^0.1.11":
   "integrity" "sha512-iswgjZRMoiphp/K04SwEQA9J9yqAyeaLQ1Lrlyd+13knnppwYOEgd2Jo9+0gLl6lA1huj5bmZdBcvFeGR/uSkg=="
   "resolved" "https://registry.npmjs.org/cz-jt/-/cz-jt-0.1.11.tgz"
   "version" "0.1.11"

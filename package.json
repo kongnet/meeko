@@ -44,7 +44,7 @@
     "codecov": "^3.8.1",
     "conventional-changelog-cli": "^2.0.23",
     "coveralls": "*",
-    "cz-jt": "^0.1.7",
+    "cz-jt": "^0.1.11",
     "istanbul": "^0.4.5",
     "minami": "1.2.3",
     "mocha": "^8.0.1",
