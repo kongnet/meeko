@@ -6,7 +6,7 @@ const Pack = require('./package.json')
 const tools = require('./lib/tools')
 const c = tools.c
 
-const getGlobal = function () {
+const getGlobal = function () { // 普通解决方案但并不完美
   if (typeof self !== 'undefined') {
     return self
   }
@@ -189,9 +189,14 @@ const ml = require('./lib/ml') // requireAll({ dirname: path.join(__dirname, '.'
 const Spinner = require('./lib/Spinner.js')
 const Mock = require('./lib/Mock.js')
 const qrcode = require('./lib/qrcode.js')
-const buf = require('./lib/buf.js')
 const geo = require('./lib/geo.js')
 const cryptoExt = require('./lib/CryptoExt.js')
+let buf
+if (Buffer !== undefined){
+  buf = require('./lib/buf.js')
+} else {
+  buf = {}
+}
 
 /**
  * 把数组里的函数挨个执行，并且把前面函数的返回值传给下一个函数

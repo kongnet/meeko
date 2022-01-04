@@ -1,3 +1,12 @@
+## [1.8.186](https://github.com/kongnet/meeko/compare/v1.8.185...v1.8.186) (2021-12-24)
+
+
+### :bug:
+
+* (洗牌算法修正) ([c016d47](https://github.com/kongnet/meeko/commit/c016d47))
+
+
+
 ## [1.8.185](https://github.com/kongnet/meeko/compare/v1.8.184...v1.8.185) (2021-12-24)
 
 
