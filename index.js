@@ -50,7 +50,7 @@ const trace = console
  * @param {...any[]} args 要打印的参数
  * */
 
-const log = function log (...args) {
+const log = function log(...args) {
   getStackTrace()
     .split('\n')[2]
     .match(re)
@@ -81,7 +81,7 @@ const log = function log (...args) {
  * @param {...any[]} args 要打印的参数
  * */
 
-const err = function err (...args) {
+const err = function err(...args) {
   getStackTrace()
     .split('\n')[2]
     .match(re)
@@ -108,7 +108,7 @@ const err = function err (...args) {
   return 1
 }
 
-function strColor (k, v) {
+function strColor(k, v) {
   if (typeof v === 'function') {
     return `[function ${k}]`
   }
@@ -123,7 +123,7 @@ function strColor (k, v) {
  * @param {...array<any>} args 任何参数
  */
 
-const dir = function dir (...args) {
+const dir = function dir(...args) {
   for (let i = 0; i < args.length; i++) {
     let ss = JSON.stringify(args[i], strColor, 4)
     ss = ss
@@ -152,7 +152,7 @@ const dir = function dir (...args) {
  * // [{ name: 'b', lev: 2 }, { 'name': 'a', lev: 1 }]
  * */
 
-function compare (k, order) {
+function compare(k, order) {
   return function (a, b) {
     return order === 'desc' ? b[k] - a[k] : a[k] - b[k] // ~~(a[k] < b[k]) : ~~(a[k] > b[k])
   }
@@ -192,7 +192,7 @@ const qrcode = require('./lib/qrcode.js')
 const geo = require('./lib/geo.js')
 const cryptoExt = require('./lib/CryptoExt.js')
 let buf
-if (Buffer !== undefined){
+if (Buffer !== undefined) {
   buf = require('./lib/buf.js')
 } else {
   buf = {}
@@ -220,6 +220,13 @@ const json = {
     return Function('return ' + s)()
   }, // 为了解决key没有双引号
   stringify: JSON.stringify
+}
+const to = function (p, diyErrCode = {}, okCode = null) {
+  return p
+    .then((d) => [okCode, d])
+    .catch((err) => {
+      return [Object.assign(err, diyErrCode), null]
+    })
 }
 
 /**
@@ -273,6 +280,7 @@ const exportObj = {
   Spinner,
   tools,
   tpl,
+  to,
   wait
 }
 module.exports = exportObj

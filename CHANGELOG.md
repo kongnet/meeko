@@ -1,3 +1,12 @@
+## [1.8.187](https://github.com/kongnet/meeko/compare/v1.8.186...v1.8.187) (2022-01-04)
+
+
+### :zap:
+
+* 浏览器兼容 ([95decde](https://github.com/kongnet/meeko/commit/95decde))
+
+
+
 ## [1.8.186](https://github.com/kongnet/meeko/compare/v1.8.185...v1.8.186) (2021-12-24)
 
 
