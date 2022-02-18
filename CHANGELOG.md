@@ -1,3 +1,16 @@
+## [1.8.188](https://github.com/kongnet/meeko/compare/v1.8.187...v1.8.188) (2022-02-18)
+
+
+### :sparkles:
+
+* 增加promise to函数 ([604cbae](https://github.com/kongnet/meeko/commit/604cbae))
+
+### :zap:
+
+* 去除tool下string原型扩展 ([f8dcbb7](https://github.com/kongnet/meeko/commit/f8dcbb7))
+
+
+
 ## [1.8.187](https://github.com/kongnet/meeko/compare/v1.8.186...v1.8.187) (2022-01-04)
 
 
