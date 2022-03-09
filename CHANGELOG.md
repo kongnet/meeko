@@ -1,3 +1,12 @@
+## [1.8.191](https://github.com/kongnet/meeko/compare/v1.8.190...v1.8.191) (2022-03-03)
+
+
+### :zap:
+
+* wait ([a00de3d](https://github.com/kongnet/meeko/commit/a00de3d))
+
+
+
 ## [1.8.190](https://github.com/kongnet/meeko/compare/v1.8.189...v1.8.190) (2022-02-18)
 
 
