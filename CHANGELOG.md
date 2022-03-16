@@ -1,3 +1,12 @@
+## [1.8.192](https://github.com/kongnet/meeko/compare/v1.8.191...v1.8.192) (2022-03-09)
+
+
+### :bug:
+
+* 修复groupBy avg计算 ([27219b5](https://github.com/kongnet/meeko/commit/27219b5))
+
+
+
 ## [1.8.191](https://github.com/kongnet/meeko/compare/v1.8.190...v1.8.191) (2022-03-03)
 
 
