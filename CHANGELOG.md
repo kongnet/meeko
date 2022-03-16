@@ -1,3 +1,12 @@
+## [1.8.193](https://github.com/kongnet/meeko/compare/v1.8.192...v1.8.193) (2022-03-16)
+
+
+### :sparkles:
+
+* 增加数组的findMaxMin函数 ([8cc018a](https://github.com/kongnet/meeko/commit/8cc018a))
+
+
+
 ## [1.8.192](https://github.com/kongnet/meeko/compare/v1.8.191...v1.8.192) (2022-03-09)
 
 
