@@ -303,8 +303,17 @@ describe('Array原型扩展的单元测试', function () {
   it('countBy', function () {
     assertLog([6.1, 4.2, 6.3].countBy(Math.floor)['6'], 2) // {4: 1, 6: 2}
   })
+  it('max', function () {
+    assertLog([6.1, 4.2, 6.3].max(), 6.3)
+  })
+  it('min', function () {
+    assertLog([6.1, 4.2, 6.3].min(), 4.2)
+  })
+  it('sum', function () {
+    assertLog([1n, 4n, 6n].sum(), 11n)
+  })
   it('findMaxMin', function () {
     assertLog(JSON.stringify([6.1, 4.2, 6.3].findMaxMin()), '{"max":6.3,"min":4.2,"maxIdx":2,"minIdx":1,"count":3,"sum":16.6}')
   })
-  
+
 })
