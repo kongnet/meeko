@@ -47,8 +47,8 @@
     "cz-jt": "^0.1.11",
     "istanbul": "^0.4.5",
     "minami": "1.2.3",
-    "mocha": "^8.0.1",
-    "mochawesome": "^4.0.1",
+    "mocha": "^9.1.4",
+    "mochawesome": "^7.1.2",
     "mockjs": "^1.0.0",
     "nyc": "^15.1.0"
   },
