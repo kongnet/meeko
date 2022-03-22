@@ -314,6 +314,11 @@ describe('Array原型扩展的单元测试', function () {
   })
   it('findMaxMin', function () {
     assertLog(JSON.stringify([6.1, 4.2, 6.3].findMaxMin()), '{"max":6.3,"min":4.2,"maxIdx":2,"minIdx":1,"count":3,"sum":16.6}')
+    assertLog([1n, 2n, 3n].findMaxMin().sum, 6n)
+    /*
+    > [1n,2n,3n,4n,5n].findMaxMin()
+      { max: 5n, min: 1n, maxIdx: 4, minIdx: 0, count: 5, sum: 15n }
+    */
   })
 
 })

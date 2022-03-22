@@ -1,3 +1,12 @@
+## [1.8.196](https://github.com/kongnet/meeko/compare/v1.8.195...v1.8.196) (2022-03-22)
+
+
+### :sparkles:
+
+* 增加数组BigInt max min sum ([3da70a1](https://github.com/kongnet/meeko/commit/3da70a1))
+
+
+
 ## [1.8.195](https://github.com/kongnet/meeko/compare/v1.8.194...v1.8.195) (2022-03-16)
 
 
