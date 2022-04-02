@@ -108,7 +108,7 @@ const cloneArr1 = () => cloneArray.slice()
 const cloneArr2 = () => [].concat(cloneArray)
 const cloneArr3 = () => {
   const a = []
-  for (let i = cloneArray.length; i--; ) {
+  for (let i = cloneArray.length; i > 0; i--) {
     a.unshift(cloneArray[i])
   }
   return a
@@ -224,8 +224,8 @@ const thousand = function (number, p = 3) {
 
 const thousandFormatWithMod = function (number, p = 3) {
   const sign = Math.sign(number)
-  var n = Math.abs(number)
-  var r = ''
+  let n = Math.abs(number)
+  let r = ''
   let mod
   do {
     mod = n % 1000
@@ -233,8 +233,8 @@ const thousandFormatWithMod = function (number, p = 3) {
     r = ~~mod + (r ? ',' + r : '')
   } while (n > 1)
 
-  var strNumber = number + ''
-  var index = strNumber.indexOf('.')
+  let strNumber = number + ''
+  let index = strNumber.indexOf('.')
   if (index > 0) {
     r += strNumber.substring(index).slice(0, p + 1)
   }
