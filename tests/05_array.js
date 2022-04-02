@@ -320,5 +320,4 @@ describe('Array原型扩展的单元测试', function () {
       { max: 5n, min: 1n, maxIdx: 4, minIdx: 0, count: 5, sum: 15n }
     */
   })
-
 })

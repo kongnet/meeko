@@ -1,5 +1,5 @@
 const $ = require('./index')
-const fs = require('fs')
+
 const crypto = require('crypto')
 
 function logTitle (s = '', strNum = 32) {
@@ -108,7 +108,7 @@ const cloneArr1 = () => cloneArray.slice()
 const cloneArr2 = () => [].concat(cloneArray)
 const cloneArr3 = () => {
   const a = []
-  for (let i = cloneArray.length; i--;) {
+  for (let i = cloneArray.length; i--; ) {
     a.unshift(cloneArray[i])
   }
   return a
@@ -148,9 +148,18 @@ const delObj3 = {
   name: 'sky',
   lastName: 'kong'
 }
-const del1 = () => { delete delObj1.name; return 1 }
-const del2 = () => { delObj2.name = undefined; return 1 }
-const del3 = () => { delObj3.name = null; return 1 }
+const del1 = () => {
+  delete delObj1.name
+  return 1
+}
+const del2 = () => {
+  delObj2.name = undefined
+  return 1
+}
+const del3 = () => {
+  delObj3.name = null
+  return 1
+}
 
 const strConcat1 = () => {
   const t = 'x'
@@ -183,7 +192,7 @@ function secRand (a, b) {
   // （3）得到归一化到[a,b)区间的数据：norY=a+k(Y-Min)
 
   const r = crypto.randomBytes(4) // 0-4294967295
-  return Math.floor((b - a + 1) / 4294967295 * r.readUInt32LE(0)) + a
+  return Math.floor(((b - a + 1) / 4294967295) * r.readUInt32LE(0)) + a
 }
 const rand1 = function () {
   return $.math.uniformRandInt(0, 10000)
@@ -208,7 +217,9 @@ const thousand = function (number, p = 3) {
     r = r.substring(1)
   }
 
-  return (sign < 0 ? '-' : '') + r + (fraction ? '.' + fraction.slice(0, p) : '')
+  return (
+    (sign < 0 ? '-' : '') + r + (fraction ? '.' + fraction.slice(0, p) : '')
+  )
 }
 
 const thousandFormatWithMod = function (number, p = 3) {
@@ -246,9 +257,9 @@ const f32 = new Float32Array(buf)
 const u32 = new Uint32Array(buf)
 function invSqrt2 (x) {
   const x2 = 0.5 * (f32[0] = x)
-  u32[0] = (0x5f3759df - (u32[0] >> 1))
+  u32[0] = 0x5f3759df - (u32[0] >> 1)
   let y = f32[0]
-  y = y * (1.5 - (x2 * y ** 2)) // 1st iteration
+  y = y * (1.5 - x2 * y ** 2) // 1st iteration
   return y
 }
 
@@ -259,69 +270,101 @@ const invSqrtTest2 = function () {
   return invSqrt2(3277)
 }
 
-const testSuite = [{
-  name: '基础-判断对象为空',
-  testArr: [
-    [isEmpty, 'Object.keys判断空', 1e6],
-    [isEmpty2, 'JSON.stringify判断为空', 1e6]
-  ]
-}, {
-  name: '基础-判断属性存在',
-  testArr: [
-    [propExist1, 'key in 方式', 1e6],
-    [propExist2, '直接判断undefined', 1e6],
-    [propExist3, 'hasOwnProperty判断', 1e6]
-  ]
-}, {
-  name: '基础-字符串存在判断',
-  testArr: [[strExist1, 'indexOf查找'],
-    [strExist2, '正则'],
-    [strExist3, 'match判断'],
-    [strExist4, 'es6 includes判断'],
-    [strExist5, 'search判断']]
-}, {
-  name: '基础-克隆数组',
-  testArr: [[cloneArr1, 'slice克隆', 1e5],
-    [cloneArr2, 'concat克隆', 1e5],
-    [cloneArr3, 'unshift克隆', 1e5],
-    [cloneArr4, 'push克隆', 1e5],
-    [cloneArr5, 'index克隆', 1e5],
-    [cloneArr6, '数组apply克隆', 1e5],
-    [cloneArr7, 'map克隆', 1e5],
-    [cloneArr8, 'JSON.stringify克隆', 1e5]]
-}, {
-  name: '基础-delete undefined null',
-  testArr: [[del1, 'delete删', 1e6],
-    [del2, '赋值undefined', 1e6],
-    [del3, '赋值null', 1e6]]
-}, {
-  name: '基础-字符串拼接',
-  testArr: [[strConcat1, '直接+=', 1e4],
-    [strConcat2, 'join字符串', 1e4],
-    [strConcat3, 'length-join', 1e4]]
-}, {
-  name: '随机整数生成比较',
-  testArr: [[rand1, '普通包含两端随机函数', 1e5],
-    [rand2, '安全包含两端随机函数randomBytes实现', 1e5]]
-}, {
-  name: '千分位显示',
-  testArr: [
-    [function 原生 () {
-      return (123456789.123456789).toLocaleString()
-    }, '', 100000],
-    [function 普通切割 () {
-      return thousand(123456789.123456789)
-    }, '', 100000],
-    [function 数值取模法 () {
-      return thousandFormatWithMod(123456789.123456789)
-    }, '', 100000]
-  ]
-},
-{
-  name: '倒数平方',
-  testArr: [[invSqrtTest, '平方倒数1', 1e6],
-    [invSqrtTest2, '魔法数0x5f3759df平方倒数2', 1e6]]
-}
+const testSuite = [
+  {
+    name: '基础-判断对象为空',
+    testArr: [
+      [isEmpty, 'Object.keys判断空', 1e6],
+      [isEmpty2, 'JSON.stringify判断为空', 1e6]
+    ]
+  },
+  {
+    name: '基础-判断属性存在',
+    testArr: [
+      [propExist1, 'key in 方式', 1e6],
+      [propExist2, '直接判断undefined', 1e6],
+      [propExist3, 'hasOwnProperty判断', 1e6]
+    ]
+  },
+  {
+    name: '基础-字符串存在判断',
+    testArr: [
+      [strExist1, 'indexOf查找'],
+      [strExist2, '正则'],
+      [strExist3, 'match判断'],
+      [strExist4, 'es6 includes判断'],
+      [strExist5, 'search判断']
+    ]
+  },
+  {
+    name: '基础-克隆数组',
+    testArr: [
+      [cloneArr1, 'slice克隆', 1e5],
+      [cloneArr2, 'concat克隆', 1e5],
+      [cloneArr3, 'unshift克隆', 1e5],
+      [cloneArr4, 'push克隆', 1e5],
+      [cloneArr5, 'index克隆', 1e5],
+      [cloneArr6, '数组apply克隆', 1e5],
+      [cloneArr7, 'map克隆', 1e5],
+      [cloneArr8, 'JSON.stringify克隆', 1e5]
+    ]
+  },
+  {
+    name: '基础-delete undefined null',
+    testArr: [
+      [del1, 'delete删', 1e6],
+      [del2, '赋值undefined', 1e6],
+      [del3, '赋值null', 1e6]
+    ]
+  },
+  {
+    name: '基础-字符串拼接',
+    testArr: [
+      [strConcat1, '直接+=', 1e4],
+      [strConcat2, 'join字符串', 1e4],
+      [strConcat3, 'length-join', 1e4]
+    ]
+  },
+  {
+    name: '随机整数生成比较',
+    testArr: [
+      [rand1, '普通包含两端随机函数', 1e5],
+      [rand2, '安全包含两端随机函数randomBytes实现', 1e5]
+    ]
+  },
+  {
+    name: '千分位显示',
+    testArr: [
+      [
+        function 原生 () {
+          return (123456789.123456789).toLocaleString()
+        },
+        '',
+        100000
+      ],
+      [
+        function 普通切割 () {
+          return thousand(123456789.123456789)
+        },
+        '',
+        100000
+      ],
+      [
+        function 数值取模法 () {
+          return thousandFormatWithMod(123456789.123456789)
+        },
+        '',
+        100000
+      ]
+    ]
+  },
+  {
+    name: '倒数平方',
+    testArr: [
+      [invSqrtTest, '平方倒数1', 1e6],
+      [invSqrtTest2, '魔法数0x5f3759df平方倒数2', 1e6]
+    ]
+  }
 ]
 
 $.bench.suite(testSuite)
@@ -419,10 +462,7 @@ const minMax3 = () => [
   Math.min.apply(null, minMaxArr),
   Math.max.apply(null, minMaxArr)
 ]
-const minMax4 = () => [
-  $.math.min(minMaxArr),
-  $.math.max(minMaxArr)
-]
+const minMax4 = () => [$.math.min(minMaxArr), $.math.max(minMaxArr)]
 $.benchmark(minMax1, 'es6 解构查找数组最值', 1e6)
 $.benchmark(minMax2, 'reduce查找数组最值', 1e6)
 $.benchmark(minMax3, '普通方式查找数组最值', 1e6)
@@ -559,7 +599,7 @@ const chunk2 = function () {
     let idx = 0
     const newArray = []
     while (idx < array.length) {
-      newArray.push(array.slice(idx, idx += subGroupLength))
+      newArray.push(array.slice(idx, (idx += subGroupLength)))
     }
     return newArray
   }
@@ -592,7 +632,7 @@ const genUUID = function () {
 
 const UUIDGen = () =>
   ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-    (c ^ crypto.randomBytes(1)[0] & 15 >> c / 4).toString(16)
+    (c ^ (crypto.randomBytes(1)[0] & (15 >> (c / 4)))).toString(16)
   )
 $.benchmark(genSnowFlake, 'sky SnowFlake函数', 100000)
 $.benchmark(genUUID, 'sky gUID函数', 100000)

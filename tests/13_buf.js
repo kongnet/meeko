@@ -1,7 +1,7 @@
 /* global describe */
 /* global it */
 'use strict'
-var $ = require('../index')
+const $ = require('../index')
 const assert = require('assert')
 const assertLog = function () {
   global.assertCount++

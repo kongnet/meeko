@@ -33,7 +33,7 @@
     "url": "https://github.com/kongnet/meeko.git"
   },
   "engines": {
-    "node": ">= 10.0.0"
+    "node": ">= 12.0.0"
   },
   "author": "Kongnet <9601698@qq.com>",
   "license": "MIT",
@@ -58,7 +58,8 @@
       "describe",
       "it",
       "define",
-      "db"
+      "db",
+      "performance"
     ],
     "ignore": [
       "/lib/tpl.js",

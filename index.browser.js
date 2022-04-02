@@ -58,11 +58,10 @@ const log = function log (...args) {
     ' [' +
     c.dimg(
       RegExp.$1 +
-      ':' +
-      RegExp.$2 +
-      ' ' +
-      new Date().date2Str()
-        .replaceAll('-', '')
+        ':' +
+        RegExp.$2 +
+        ' ' +
+        new Date().date2Str().replaceAll('-', '')
     ) +
     ']'
   let str = ''
@@ -89,11 +88,10 @@ const err = function err (...args) {
     ' [' +
     c.dimr(
       RegExp.$1 +
-      ':' +
-      RegExp.$2 +
-      ' ' +
-      new Date().date2Str()
-        .replaceAll('-', '')
+        ':' +
+        RegExp.$2 +
+        ' ' +
+        new Date().date2Str().replaceAll('-', '')
     ) +
     ']'
   let str = ''

@@ -1,7 +1,7 @@
 /* global describe */
 /* global it */
 'use strict'
-var $ = require('../index')
+const $ = require('../index')
 const assert = require('assert')
 const assertLog = function () {
   global.assertCount++
@@ -29,8 +29,8 @@ function thousand (number, p = 3) {
 
 function format_with_mod (number, p = 3) {
   const sign = Math.sign(number)
-  var n = Math.abs(number)
-  var r = ''
+  let n = Math.abs(number)
+  let r = ''
   let mod
   do {
     mod = n % 1000
@@ -38,8 +38,8 @@ function format_with_mod (number, p = 3) {
     r = ~~mod + (r ? ',' + r : '')
   } while (n > 1)
 
-  var strNumber = number + ''
-  var index = strNumber.indexOf('.')
+  const strNumber = number + ''
+  const index = strNumber.indexOf('.')
   if (index > 0) {
     r += strNumber.substring(index).slice(0, p + 1)
   }
