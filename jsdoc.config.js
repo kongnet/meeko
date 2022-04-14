@@ -23,8 +23,7 @@ module.exports = {
     monospaceLinks: false,
     default: {
       outputSourceFiles: false,
-      staticFiles: {
-      }
+      staticFiles: {}
     }
   }
 }

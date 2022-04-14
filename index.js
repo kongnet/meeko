@@ -42,9 +42,7 @@ const getStackTrace = function () {
   return obj.stack
 }
 const os = process.platform
-const re = os.includes('win32')
-  ? /\\(.+)\.js:(\d+:\d+)/g
-  : /\/(.+)\.js:(\d+:\d+)/g
+const re = os.includes('win32') ? /\\(.+)\.js:(\d+:\d+)/g : /\/(.+)\.js:(\d+:\d+)/g
 const trace = console
 
 /**
@@ -55,16 +53,7 @@ const log = function log (...args) {
   getStackTrace()
     .split('\n')[2]
     .match(re)
-  const s =
-    ' [' +
-    c.dimg(
-      RegExp.$1 +
-        ':' +
-        RegExp.$2 +
-        ' ' +
-        new Date().date2Str().replaceAll('-', '')
-    ) +
-    ']'
+  const s = ' [' + c.dimg(RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '')) + ']'
   let str = ''
   for (let i = 0; i < args.length; i++) {
     if (typeof args[i] === 'object') {
@@ -85,16 +74,7 @@ const err = function err (...args) {
   getStackTrace()
     .split('\n')[2]
     .match(re)
-  const s =
-    ' [' +
-    c.dimr(
-      RegExp.$1 +
-        ':' +
-        RegExp.$2 +
-        ' ' +
-        new Date().date2Str().replaceAll('-', '')
-    ) +
-    ']'
+  const s = ' [' + c.dimr(RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '')) + ']'
   let str = ''
   for (let i = 0; i < args.length; i++) {
     if (typeof args[i] === 'object') {
@@ -235,13 +215,7 @@ const to = function (p, diyErrCode = {}, okCode = null) {
 
 const now = () => new Date()
 
-globalThis.isMeekoLoad &&
-  console.log(
-    c.g('✔'),
-    `Meeko (${c.y(Pack.version)}) ${c.g(
-      'https://github.com/kongnet/meeko.git'
-    )}`
-  )
+globalThis.isMeekoLoad && console.log(c.g('✔'), `Meeko (${c.y(Pack.version)}) ${c.g('https://github.com/kongnet/meeko.git')}`)
 globalThis.isMeekoLoad = true
 const exportObj = {
   // _proto_,
