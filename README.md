@@ -17,10 +17,10 @@
 
 [![meeko](https://img.shields.io/github/repo-size/kongnet/meeko.svg)](https://img.shields.io/github/repo-size/kongnet/meeko.svg)
 
-[![meeko](https://img.shields.io/sonar/https/sonarcloud.io/kongnet_meeko/tech_debt.svg)](https://img.shields.io/sonar/https/sonarcloud.io/kongnet_meeko/tech_debt.svg)
-[![meeko](https://img.shields.io/sonar/https/sonarcloud.io/kongnet_meeko/violations.svg?style=popout&format=long)](https://sonarcloud.io/dashboard?id=kongnet_meeko)
+[![meeko](https://img.shields.io/sonar/https/sonarcloud.io/meeko/tech_debt.svg)](https://img.shields.io/sonar/https/sonarcloud.io/meeko/tech_debt.svg)
+[![meeko](https://img.shields.io/sonar/https/sonarcloud.io/meeko/violations.svg?style=popout&format=long)](https://sonarcloud.io/dashboard?id=meeko)
 
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=kongnet_meeko)](https://sonarcloud.io/dashboard?id=kongnet_meeko)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=meeko)](https://sonarcloud.io/dashboard?id=meeko)
 
 > 贡献者 TouchTheTop 、haua
 
