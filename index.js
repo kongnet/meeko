@@ -88,6 +88,10 @@ const err = function err (...args) {
 }
 
 function strColor (k, v) {
+  if (typeof v === 'bigint') {
+    return '#yellow#' + v.toString() + 'n' + '#none#'
+  }
+
   if (typeof v === 'function') {
     return `[function ${k}]`
   }
@@ -106,6 +110,7 @@ const dir = function dir (...args) {
   for (let i = 0; i < args.length; i++) {
     let ss = JSON.stringify(args[i], strColor, 4)
     ss = ss
+      .replaceAll('"#yellow#', c.yellow)
       .replaceAll('"#cyan#', c.cyan)
       .replaceAll('#none#"', c.none)
       .replace(/"(.+)": /g, c.g('$1') + ': ')
@@ -117,7 +122,7 @@ const dir = function dir (...args) {
       .replace(/([0-9.]+)\n/g, c.y('$1') + '\n')
       .replace(/,\n/g, c.y(',\n'))
       .replace(/("|{|}|[|])/g, c.y('$1'))
-    trace.log(ss)
+    console.log(ss)
   }
 }
 
