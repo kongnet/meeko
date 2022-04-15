@@ -89,7 +89,7 @@ const err = function err (...args) {
 
 function strColor (k, v) {
   if (typeof v === 'bigint') {
-    return '#yellow#' + v.toString() + 'n' + '#none#'
+    return '#green#' + v.toString() + 'n' + '#none#'
   }
 
   if (typeof v === 'function') {
@@ -110,9 +110,9 @@ const dir = function dir (...args) {
   for (let i = 0; i < args.length; i++) {
     let ss = JSON.stringify(args[i], strColor, 4)
     ss = ss
-      .replaceAll('"#yellow#', c.yellow)
-      .replaceAll('"#cyan#', c.cyan)
-      .replaceAll('#none#"', c.none)
+      .replace('#none#', c.none)
+      .replace('#cyan', c.cyan)
+      .replace('#green', c.green)
       .replace(/"(.+)": /g, c.g('$1') + ': ')
       .replace(/(true)(,|'')\n/g, c.r('$1$2\n'))
       .replace(/(false)(,|'')\n/g, c.r('$1$2\n'))

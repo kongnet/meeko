@@ -1,3 +1,12 @@
+## [1.8.219](https://github.com/kongnet/meeko/compare/v1.8.218...v1.8.219) (2022-04-15)
+
+
+### :zap:
+
+* $.dir支持BigInt ([0585f59](https://github.com/kongnet/meeko/commit/0585f5981c5bd3a72355eb82b14b7d1de269844c))
+
+
+
 ## [1.8.218](https://github.com/kongnet/meeko/compare/v1.8.217...v1.8.218) (2022-04-15)
 
 
