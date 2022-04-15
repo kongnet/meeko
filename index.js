@@ -107,8 +107,8 @@ function strColor (k, v) {
  */
 
 const dir = function dir (...args) {
-  for (let i = 0; i < args.length; i++) {
-    let ss = JSON.stringify(args[i], strColor, 4)
+  for (let item of args) {
+    let ss = JSON.stringify(item, strColor, 4)
     ss = ss
       .replace('#none#', c.none)
       .replace('#cyan#', c.cyan)
