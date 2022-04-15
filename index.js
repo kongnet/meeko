@@ -111,8 +111,8 @@ const dir = function dir (...args) {
     let ss = JSON.stringify(args[i], strColor, 4)
     ss = ss
       .replace('#none#', c.none)
-      .replace('#cyan', c.cyan)
-      .replace('#green', c.green)
+      .replace('#cyan#', c.cyan)
+      .replace('#green#', c.green)
       .replace(/"(.+)": /g, c.g('$1') + ': ')
       .replace(/(true)(,|'')\n/g, c.r('$1$2\n'))
       .replace(/(false)(,|'')\n/g, c.r('$1$2\n'))
