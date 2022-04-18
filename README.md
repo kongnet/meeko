@@ -2,23 +2,17 @@
 
 ## 文档 Document
 
-![Build Stat](https://api.travis-ci.org/kongnet/meeko.svg?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/kongnet/meeko/badge.svg?branch=master)](https://coveralls.io/github/kongnet/meeko?branch=master)
-
+![Build Stat](https://api.travis-ci.org/kongnet/meeko.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/kongnet/meeko/badge.svg?branch=master)](https://coveralls.io/github/kongnet/meeko?branch=master)
 
 [![NPM](https://nodei.co/npm/meeko.png?downloads=true&stars=true)](https://nodei.co/npm/meeko/)
 
 [![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/kongnet/meeko)
 
-[![meeko](https://img.shields.io/npm/dy/meeko.svg)](https://img.shields.io/npm/dy/meeko.svg)
-[![meeko](https://img.shields.io/npm/l/meeko.svg?style=popout)](https://img.shields.io/npm/l/meeko.svg?style=popout)
-[![meeko](https://img.shields.io/github/package-json/v/kongnet/meeko.svg?style=popout)](https://img.shields.io/github/package-json/v/kongnet/meeko.svg?style=popout)
-[![meeko](https://img.shields.io/github/commit-activity/y/kongnet/meeko.svg?style=popout)](https://img.shields.io/github/commit-activity/y/kongnet/meeko.svg?style=popout)
+[![meeko](https://img.shields.io/npm/dy/meeko.svg)](https://img.shields.io/npm/dy/meeko.svg) [![meeko](https://img.shields.io/npm/l/meeko.svg?style=popout)](https://img.shields.io/npm/l/meeko.svg?style=popout) [![meeko](https://img.shields.io/github/package-json/v/kongnet/meeko.svg?style=popout)](https://img.shields.io/github/package-json/v/kongnet/meeko.svg?style=popout) [![meeko](https://img.shields.io/github/commit-activity/y/kongnet/meeko.svg?style=popout)](https://img.shields.io/github/commit-activity/y/kongnet/meeko.svg?style=popout)
 
 [![meeko](https://img.shields.io/github/repo-size/kongnet/meeko.svg)](https://img.shields.io/github/repo-size/kongnet/meeko.svg)
 
-[![meeko](https://img.shields.io/sonar/https/sonarcloud.io/meeko/tech_debt.svg)](https://img.shields.io/sonar/https/sonarcloud.io/meeko/tech_debt.svg)
-[![meeko](https://img.shields.io/sonar/https/sonarcloud.io/meeko/violations.svg?style=popout&format=long)](https://sonarcloud.io/dashboard?id=meeko)
+[![meeko](https://img.shields.io/sonar/https/sonarcloud.io/meeko/tech_debt.svg)](https://img.shields.io/sonar/https/sonarcloud.io/meeko/tech_debt.svg) [![meeko](https://img.shields.io/sonar/https/sonarcloud.io/meeko/violations.svg?style=popout&format=long)](https://sonarcloud.io/dashboard?id=meeko)
 
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=meeko)](https://sonarcloud.io/dashboard?id=meeko)
 
@@ -29,14 +23,16 @@
 ```js
 npm i meeko
 ```
-## Nodejs用法
+
+## Nodejs 用法
+
 ```js
 const $ = require('meeko')
 // 傅里叶分析
-$.math.fourierAnalysis([1, 2, 1, 2, 1, 2, 1, 2])
+$.math.fourierAnalysis([1, 2, 1, 2, 1, 2, 1, 2])
 ```
 
-## Browser用法
+## Browser 用法
 
 ```js
 import * as $ from 'meeko'
@@ -171,6 +167,7 @@ let $ = require('meeko')
 ```js
 * $.dir(object)
 * 内部10行代码实现 注意字符串下标数组无法显示
+* 支持BigInt类型
 ```
 
 ![JSON color format](https://github.com/kongnet/meeko/raw/master/screenShot/jsonFormat.png)
