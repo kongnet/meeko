@@ -55,11 +55,11 @@ const log = function log (...args) {
     .match(re)
   const s = ' [' + c.dimg(RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '')) + ']'
   let str = ''
-  for (let i = 0; i < args.length; i++) {
-    if (typeof args[i] === 'object') {
-      str = str + JSON.stringify(args[i]) + ' '
+  for (let item of args) {
+    if (typeof item === 'object') {
+      str = str + JSON.stringify(item) + ' '
     } else {
-      str = str + args[i] + ' '
+      str = str + item + ' '
     }
   }
   trace.log(str + (option.logTime ? s : ''))
@@ -76,11 +76,11 @@ const err = function err (...args) {
     .match(re)
   const s = ' [' + c.dimr(RegExp.$1 + ':' + RegExp.$2 + ' ' + new Date().date2Str().replaceAll('-', '')) + ']'
   let str = ''
-  for (let i = 0; i < args.length; i++) {
-    if (typeof args[i] === 'object') {
-      str = str + JSON.stringify(args[i]) + ' '
+  for (let item of args) {
+    if (typeof item === 'object') {
+      str = str + JSON.stringify(item) + ' '
     } else {
-      str = str + args[i] + ' '
+      str = str + item + ' '
     }
   }
   trace.error(str + (option.logTime ? s : ''))
