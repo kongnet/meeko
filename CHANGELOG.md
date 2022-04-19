@@ -1,3 +1,12 @@
+## [1.8.225](https://github.com/kongnet/meeko/compare/v1.8.224...v1.8.225) (2022-04-19)
+
+
+### :white_check_mark:
+
+* 覆盖测试bigint dir ([3316862](https://github.com/kongnet/meeko/commit/3316862ff81a820e10369d75ead7822f0d0ec831))
+
+
+
 ## [1.8.224](https://github.com/kongnet/meeko/compare/v1.8.223...v1.8.224) (2022-04-18)
 
 
