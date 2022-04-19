@@ -6,8 +6,7 @@ const assertLog = function () {
   global.assertCount++
   return assert.strictEqual(...arguments)
 }
-let r =
-  'a(?!p)(?=p)((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))'
+let r = 'a(?!p)(?=p)((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))'
 console.log($.reg.gen(r))
 r = '[\u4e00-\u9fa5\xff]{10,20}'
 
@@ -16,8 +15,7 @@ r = '^-([1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*)$'
 console.log($.reg.gen(r))
 r = ''
 console.log($.reg.gen(r))
-r =
-  '^\\0\\cXabc\\01\\xff\\o\u0000.[\\b]\\b\\B\\d[0-9]\\D\\f\\n\\r\\s\\S\\t\\v\\w[a-zA-Z0-9]\\W[^a-zA-Z0-9]+\\o.*$'
+r = '^\\0\\cXabc\\01\\xff\\o\u0000.[\\b]\\b\\B\\d[0-9]\\D\\f\\n\\r\\s\\S\\t\\v\\w[a-zA-Z0-9]\\W[^a-zA-Z0-9]+\\o.*$'
 console.log($.reg.gen(r))
 r = '(http|https|ftp|ws|wss):\\/{2}[a-z]+\\.com'
 console.log($.reg.gen(r))
@@ -43,11 +41,11 @@ r = $.requireAll({
 })
 r = $.requireAll({
   dirname: path.join(__dirname, '..', 'lib'),
-  filter: function (fileName) {
+  filter: function (_) {
     // $.log(fileName)
   },
   map: function (name) {
-    return name.replace(/_([a-z])/g, function (m, c) {
+    return name.replace(/_([a-z])/g, function (_, c) {
       return c.toUpperCase()
     })
   }
@@ -92,11 +90,14 @@ const a = {
   u: undefined,
   d: new Date(),
   a: 1.001,
+  bigint: 13n,
   b: 'x',
   bool2: false,
   c: [0.991, 'y'],
   reg: /.+/g,
-  fn: function () {},
+  fn: function () {
+    /*do nothing */
+  },
   bool1: true,
   x: 10.8
 }
@@ -211,8 +212,7 @@ const o = [
     type: 1,
     mark: 3001,
     source: 2,
-    remark:
-      '成功推广商品漫步者（EDIFIER） K550 头戴式有线电竞耳机 带麦克风带线控电脑音乐游戏吃鸡耳麦 典雅黑，订单完成，奖励',
+    remark: '成功推广商品漫步者（EDIFIER） K550 头戴式有线电竞耳机 带麦克风带线控电脑音乐游戏吃鸡耳麦 典雅黑，订单完成，奖励',
     extend: '',
     created_at: 1548844559,
     updated_at: 1548897036,
@@ -239,11 +239,7 @@ const groupCol = ['source', 'mark']
 const aggregateCol = ['money', 'id', 'push_uid', 'uid', 'money']
 const aggregateOpt = ['sum', 'count', 'max', 'min', 'avg']
 
-$.dir(
-  o
-    .groupBy(groupCol, aggregateCol, aggregateOpt)
-    .orderBy(['source', 'mark'], ['desc', 'asc'])
-)
+$.dir(o.groupBy(groupCol, aggregateCol, aggregateOpt).orderBy(['source', 'mark'], ['desc', 'asc']))
 
 const waitNotEmptyObj = {}
 
@@ -262,7 +258,9 @@ setTimeout(() => {
 }, 200)
 
 async function waitNotEmptyFunc () {
-  await $.tools.waitNotEmpty(waitNotEmptyObj, 'x', function () {})
+  await $.tools.waitNotEmpty(waitNotEmptyObj, 'x', function () {
+    /*do nothing*/
+  })
 }
 waitNotEmptyFunc()
 
@@ -284,20 +282,11 @@ describe('fake 身份证check', function () {
     assertLog($.fake.checkIdCard.check('3708311901120649091'), false) // 非15 和18
 
     assertLog($.fake.checkIdCard.check('632126198909252302'), false)
-    assertLog(
-      $.fake.checkIdCard.getId15('370831190112064909'),
-      '370831011206490'
-    )
+    assertLog($.fake.checkIdCard.getId15('370831190112064909'), '370831011206490')
     assertLog($.fake.checkIdCard.getId15('632126890925230'), '632126890925230')
     assertLog($.fake.checkIdCard.getId15('63212689092520'), null)
-    assertLog(
-      $.fake.checkIdCard.getId18('370831011206490'),
-      '370831190112064909'
-    )
-    assertLog(
-      $.fake.checkIdCard.getId18('370831190112064909'),
-      '370831190112064909'
-    )
+    assertLog($.fake.checkIdCard.getId18('370831011206490'), '370831190112064909')
+    assertLog($.fake.checkIdCard.getId18('370831190112064909'), '370831190112064909')
     assertLog(
       JSON.stringify($.fake.checkIdCard.getInfo('440902194012308005')),
       JSON.stringify({
