@@ -45,8 +45,9 @@
     "conventional-changelog-cli": "^2.0.23",
     "coveralls": "*",
     "cz-jt": "^0.1.11",
+    "docdash": "^1.2.0",
     "istanbul": "*",
-    "minami": "*",
+    "jsdoc": "*",
     "mocha": "*",
     "mochawesome": "*",
     "mockjs": "^1.0.0",
@@ -116,5 +117,8 @@
     "commitizen": {
       "path": "./node_modules/cz-jt"
     }
+  },
+  "dependencies": {
+    "jsdoc": "^3.6.10"
   }
 }

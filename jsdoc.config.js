@@ -16,7 +16,7 @@ module.exports = {
     encoding: 'utf8',
     private: true,
     recurse: true,
-    template: './node_modules/minami'
+    template: './node_modules/docdash'
   },
   templates: {
     cleverLinks: false,
