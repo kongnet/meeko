@@ -23,11 +23,7 @@ m1.T()
 m1.sub(b)
 m1.print()
 
-const m2 = new Matrix(
-  a,
-  ['c1', 'c2', 'c3', 'c4', 'c5'],
-  ['r1', 'r2', 'r3', 'r4', 'r5']
-)
+const m2 = new Matrix(a, ['c1', 'c2', 'c3', 'c4', 'c5'], ['r1', 'r2', 'r3', 'r4', 'r5'])
 m2.mul(2)
 m2.print()
 m2.mul(0.5)
@@ -52,5 +48,9 @@ const m3 = new Matrix([
   [-16, -43, 98]
 ])
 
-m3.log(m3.dc().choleskey.lowerTriangularMatrix)
-m3.log(m3.dc().qr.orthogonalMatrix)
+describe('矩阵高级应用', function () {
+  it('矩阵高级应用', function () {
+    m3.log(m3.dc().choleskey.lowerTriangularMatrix)
+    m3.log(m3.dc().qr.orthogonalMatrix)
+  })
+})

@@ -217,9 +217,7 @@ const thousand = function (number, p = 3) {
     r = r.substring(1)
   }
 
-  return (
-    (sign < 0 ? '-' : '') + r + (fraction ? '.' + fraction.slice(0, p) : '')
-  )
+  return (sign < 0 ? '-' : '') + r + (fraction ? '.' + fraction.slice(0, p) : '')
 }
 
 const thousandFormatWithMod = function (number, p = 3) {
@@ -370,13 +368,7 @@ const testSuite = [
 $.bench.suite(testSuite)
 
 logTitle('基础-数组对象查找')
-const findArr = [
-  { id: 29938 },
-  { id: 32994 },
-  { id: 38428 },
-  { id: 20395 },
-  { id: 32949 }
-]
+const findArr = [{ id: 29938 }, { id: 32994 }, { id: 38428 }, { id: 20395 }, { id: 32949 }]
 
 const oFind = {}
 oFind['29938'] = { id: 29938 }
@@ -420,48 +412,10 @@ $.benchmark(isInt1, '普通判断整数', 1e6)
 $.benchmark(isInt2, '正则判断整数', 1e6)
 
 logTitle('基础-数组最大最小值')
-const minMaxArr = [
-  82,
-  28,
-  2726,
-  28,
-  29,
-  19,
-  282737,
-  88,
-  2827,
-  917,
-  2,
-  2828,
-  999,
-  827,
-  82,
-  928272,
-  2826,
-  373636,
-  278,
-  2282,
-  292727,
-  282,
-  23,
-  833,
-  92829,
-  282,
-  2,
-  939,
-  111,
-  8382,
-  238
-]
+const minMaxArr = [82, 28, 2726, 28, 29, 19, 282737, 88, 2827, 917, 2, 2828, 999, 827, 82, 928272, 2826, 373636, 278, 2282, 292727, 282, 23, 833, 92829, 282, 2, 939, 111, 8382, 238]
 const minMax1 = () => [Math.min(...minMaxArr), Math.max(...minMaxArr)]
-const minMax2 = () => [
-  minMaxArr.reduce((a, b) => Math.min(a, b)),
-  minMaxArr.reduce((a, b) => Math.max(a, b))
-]
-const minMax3 = () => [
-  Math.min.apply(null, minMaxArr),
-  Math.max.apply(null, minMaxArr)
-]
+const minMax2 = () => [minMaxArr.reduce((a, b) => Math.min(a, b)), minMaxArr.reduce((a, b) => Math.max(a, b))]
+const minMax3 = () => [Math.min.apply(null, minMaxArr), Math.max.apply(null, minMaxArr)]
 const minMax4 = () => [$.math.min(minMaxArr), $.math.max(minMaxArr)]
 $.benchmark(minMax1, 'es6 解构查找数组最值', 1e6)
 $.benchmark(minMax2, 'reduce查找数组最值', 1e6)
@@ -630,10 +584,7 @@ const genUUID = function () {
   return $.tools.uuid()
 }
 
-const UUIDGen = () =>
-  ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-    (c ^ (crypto.randomBytes(1)[0] & (15 >> (c / 4)))).toString(16)
-  )
+const UUIDGen = () => ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (c ^ (crypto.randomBytes(1)[0] & (15 >> (c / 4)))).toString(16))
 $.benchmark(genSnowFlake, 'sky SnowFlake函数', 100000)
 $.benchmark(genUUID, 'sky gUID函数', 100000)
 $.benchmark(UUIDGen, 'UUIDGen', 10000)

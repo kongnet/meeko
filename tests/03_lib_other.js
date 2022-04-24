@@ -13,16 +13,8 @@ describe('uuid的单元测试', function () {
     assert.notStrictEqual('nUazy3Dk3u', $.tools.uuid(10, 64), 'nUazy3Dk3u')
   })
   it('无len', function () {
-    assert.notStrictEqual(
-      '2EC9D207-DCA5-4D96-A397-F1371D053AEB',
-      $.tools.uuid(),
-      '2EC9D207-DCA5-4D96-A397-F1371D053AEB'
-    )
-    assert.notStrictEqual(
-      '2EC9D207-DCA5-4D96-A397-F1371D053AEB',
-      $.tools.uuid(null, 64),
-      '2EC9D207-DCA5-4D96-A397-F1371D053AEB'
-    )
+    assert.notStrictEqual('2EC9D207-DCA5-4D96-A397-F1371D053AEB', $.tools.uuid(), '2EC9D207-DCA5-4D96-A397-F1371D053AEB')
+    assert.notStrictEqual('2EC9D207-DCA5-4D96-A397-F1371D053AEB', $.tools.uuid(null, 64), '2EC9D207-DCA5-4D96-A397-F1371D053AEB')
   })
 })
 describe('随机数的单元测试', function () {
@@ -74,21 +66,9 @@ describe('timeAgo测试', function () {
     assertLog($.tools.timeAgo('2016-1-1 1:13:01', '2016-1-1'), '1小时后')
     assertLog($.tools.timeAgo('2016-1-1 0:13:01', '2016-1-1'), '13分钟后')
     assertLog($.tools.timeAgo('2016-1-1 0:0:50', '2016-1-1'), '50秒后')
-    assertLog(
-      $.tools.timeAgo(new Date('2016-1-1'), new Date('2016-1-1 0:0:50')),
-      '50秒前'
-    )
-    assertLog(
-      $.tools.timeAgo(+new Date('2016-1-1'), +new Date('2016-1-1 0:0:50')),
-      '50秒前'
-    )
-    assertLog(
-      $.tools.timeAgo(
-        new Date('2016-1-1 0:0:50').toISOString(),
-        +new Date('2016-1-1')
-      ),
-      '50秒后'
-    )
+    assertLog($.tools.timeAgo(new Date('2016-1-1'), new Date('2016-1-1 0:0:50')), '50秒前')
+    assertLog($.tools.timeAgo(+new Date('2016-1-1'), +new Date('2016-1-1 0:0:50')), '50秒前')
+    assertLog($.tools.timeAgo(new Date('2016-1-1 0:0:50').toISOString(), +new Date('2016-1-1')), '50秒后')
   })
 })
 describe('其他函数的单元测试', function () {
@@ -171,14 +151,8 @@ describe('其他函数的单元测试', function () {
   it('utf8&lzw', function () {
     assertLog($.tools.utf8.encode('你好abc'), 'ä½ å¥½abc')
     assertLog($.tools.utf8.decode('ä½ å¥½abc'), '你好abc')
-    assertLog(
-      $.tools.lzw.compress($.tools.utf8.encode('你好abc')),
-      'Ã¤Â½Â Ã¥Âć½abc'
-    )
-    assertLog(
-      $.tools.utf8.decode($.tools.lzw.uncompress('Ã¤Â½Â Ã¥Âć½abc')),
-      '你好abc'
-    )
+    assertLog($.tools.lzw.compress($.tools.utf8.encode('你好abc')), 'Ã¤Â½Â Ã¥Âć½abc')
+    assertLog($.tools.utf8.decode($.tools.lzw.uncompress('Ã¤Â½Â Ã¥Âć½abc')), '你好abc')
   })
   it('whichNetwork判断手机运营商', function () {
     assertLog($.fake.whichNetwork('13052887711'), 1)
@@ -199,24 +173,14 @@ describe('其他函数的单元测试', function () {
     assertLog(tempIds.length, 10)
   })
 })
-
 describe('模板引擎单元测试', function () {
   it('tpl', function () {
     $.tpl.config()
     $.tpl.config({ open: '{{', close: '}}' })
     assertLog('Laytpl Error：no data', $.tpl([]).render())
-    assertLog(
-      'Laytpl Error：Template not found',
-      $.tpl([]).render({ tag: 'div' })
-    )
-    assertLog(
-      '<div></div>',
-      $.tpl('<{{d.tag}}></{{d.tag}}>').render({ tag: 'div' })
-    )
-    assertLog(
-      '<di&amp;v></di&v>',
-      $.tpl('<{{=d.tag}}></{{d.tag}}>').render({ tag: 'di&v' })
-    ) // =转义html标记
+    assertLog('Laytpl Error：Template not found', $.tpl([]).render({ tag: 'div' }))
+    assertLog('<div></div>', $.tpl('<{{d.tag}}></{{d.tag}}>').render({ tag: 'div' }))
+    assertLog('<di&amp;v></di&v>', $.tpl('<{{=d.tag}}></{{d.tag}}>').render({ tag: 'di&v' })) // =转义html标记
     assertLog('<></>', $.tpl('<{{=d.tag}}></{{d.tag}}>').render({ tag: '' })) // =转义html标记
     assertLog(
       true,
@@ -226,7 +190,6 @@ describe('模板引擎单元测试', function () {
     ) // 模板结构不对
   })
 })
-
 describe('判断类型函数单元测试', function () {
   it('getType', function () {
     assertLog($.tools.getType({}), 'Object')
@@ -638,13 +601,7 @@ describe('equals', function () {
         }
       )
     )
-    assertLog(
-      true,
-      $.tools.equals(
-        [1, 3, 5],
-        [1, 2, 3, 4, 5, 6].filter($.tools.negate(n => n % 2 === 0))
-      )
-    )
+    assertLog(true, $.tools.equals([1, 3, 5], [1, 2, 3, 4, 5, 6].filter($.tools.negate(n => n % 2 === 0))))
     assertLog(true, $.tools.equals(null, null))
     assertLog(true, $.tools.equals([null], [null]))
     assertLog(true, $.tools.equals(NaN, NaN))
@@ -652,5 +609,68 @@ describe('equals', function () {
     assertLog(false, $.tools.equals(null, undefined))
     assertLog(false, $.tools.equals(NaN, undefined))
     assertLog(false, $.tools.equals(NaN, null))
+  })
+})
+describe('fake 身份证check', function () {
+  it('身份证check', function () {
+    assertLog($.fake.checkIdCard.check('050107801003402'), false)
+    assertLog($.fake.checkIdCard.check('032126198909252301'), false)
+    assertLog($.fake.checkIdCard.check('6321261989092'), false)
+    assertLog($.fake.checkIdCard.check('632126098909252301'), false)
+    assertLog($.fake.checkIdCard.check('632126699909252301'), false)
+
+    assertLog($.fake.checkIdCard.check('150105801003402'), true)
+    assertLog($.fake.checkIdCard.check('160107801003402'), false)
+    assertLog($.fake.checkIdCard.check('370831190112064909'), true)
+    assertLog($.fake.checkIdCard.check('370831990112064909'), false)
+    assertLog($.fake.checkIdCard.check('370831180112064909'), false)
+    assertLog($.fake.checkIdCard.check('370831190112064901'), false)
+
+    assertLog($.fake.checkIdCard.check('3708311901120649091'), false) // 非15 和18
+
+    assertLog($.fake.checkIdCard.check('632126198909252302'), false)
+    assertLog($.fake.checkIdCard.getId15('370831190112064909'), '370831011206490')
+    assertLog($.fake.checkIdCard.getId15('632126890925230'), '632126890925230')
+    assertLog($.fake.checkIdCard.getId15('63212689092520'), null)
+    assertLog($.fake.checkIdCard.getId18('370831011206490'), '370831190112064909')
+    assertLog($.fake.checkIdCard.getId18('370831190112064909'), '370831190112064909')
+    assertLog(
+      JSON.stringify($.fake.checkIdCard.getInfo('440902194012308005')),
+      JSON.stringify({
+        gender: '女',
+        birthday: '1940-12-30',
+        place: '广东省,茂名市,茂南区'
+      })
+    )
+    assertLog(
+      JSON.stringify($.fake.checkIdCard.getInfo('440902401230800')),
+      JSON.stringify({
+        gender: '女',
+        birthday: '1940-12-30',
+        place: '广东省,茂名市,茂南区'
+      })
+    )
+
+    assertLog(
+      JSON.stringify($.fake.checkIdCard.getInfo('610632192707287313')),
+      JSON.stringify({
+        gender: '男',
+        birthday: '1927-07-28',
+        place: '陕西省,延安市,黄陵县'
+      })
+    )
+    assertLog(
+      JSON.stringify($.fake.checkIdCard.getInfo('610632270728731')),
+      JSON.stringify({
+        gender: '男',
+        birthday: '1927-07-28',
+        place: '陕西省,延安市,黄陵县'
+      })
+    )
+
+    assertLog($.fake.checkIdCard.getId18('63212619890925230'), null)
+    assertLog($.fake.checkIdCard.check('932126198909252301'), false)
+    assertLog($.fake.checkIdCard.check('632126298909252301'), false)
+    assertLog($.fake.checkIdCard.check('632126198999252301'), false)
   })
 })

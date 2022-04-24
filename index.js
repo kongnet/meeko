@@ -124,6 +124,7 @@ const dir = function dir (...args) {
       .replace(/("|{|}|[|])/g, c.y('$1'))
     console.log(ss)
   }
+  return args
 }
 
 /**

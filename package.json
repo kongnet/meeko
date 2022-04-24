@@ -2,15 +2,7 @@
   "name": "meeko",
   "version": "1.8.231",
   "description": "meeko自用函数",
-  "keywords": [
-    "statistics",
-    "js",
-    "tools",
-    "math",
-    "Machine Learning",
-    "AI",
-    "coverage"
-  ],
+  "keywords": ["statistics", "js", "tools", "math", "Machine Learning", "AI", "coverage"],
   "main": "index.js",
   "browser": {
     "./index.js": "./index.browser.js"
@@ -55,18 +47,8 @@
     "nyc": "*"
   },
   "standard": {
-    "globals": [
-      "$",
-      "describe",
-      "it",
-      "define",
-      "db",
-      "performance"
-    ],
-    "ignore": [
-      "/lib/tpl.js",
-      "/lib/Snowflake.js"
-    ]
+    "globals": ["$", "describe", "it", "define", "db", "performance"],
+    "ignore": ["/lib/tpl.js", "/lib/Snowflake.js"]
   },
   "eslintConfig": {
     "plugins": [],
@@ -99,18 +81,12 @@
           "allowSingleLine": true
         }
       ],
-      "quotes": [
-        1,
-        "single"
-      ],
+      "quotes": [1, "single"],
       "semi": 0,
       "no-extra-semi": 1,
       "space-infix-ops": 1,
       "no-console": 0,
-      "complexity": [
-        1,
-        10
-      ]
+      "complexity": [1, 10]
     },
     "extends": "eslint:recommended"
   },
