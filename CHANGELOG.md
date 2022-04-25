@@ -1,3 +1,12 @@
+## [1.8.232](https://github.com/kongnet/meeko/compare/v1.8.231...v1.8.232) (2022-04-24)
+
+
+### :white_check_mark:
+
+* 增加jest测试支持文件 ([57e4ee0](https://github.com/kongnet/meeko/commit/57e4ee090f989ea5c3f39a66d190b214d9ebd49d))
+
+
+
 ## [1.8.231](https://github.com/kongnet/meeko/compare/v1.8.230...v1.8.231) (2022-04-24)
 
 
