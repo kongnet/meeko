@@ -254,7 +254,8 @@ const buf = new ArrayBuffer(4) // Float32Array.BYTES_PER_ELEMENT
 const f32 = new Float32Array(buf)
 const u32 = new Uint32Array(buf)
 function invSqrt2 (x) {
-  const x2 = 0.5 * (f32[0] = x)
+  f32[0] = x
+  const x2 = 0.5 * f32[0]
   u32[0] = 0x5f3759df - (u32[0] >> 1)
   let y = f32[0]
   y = y * (1.5 - x2 * y ** 2) // 1st iteration
@@ -381,9 +382,9 @@ const keyToFind = '38428'
 const findId1 = () => {
   let result
 
-  for (let i = 0; i < findArr.length; ++i) {
-    if (findArr[i].id === +keyToFind) {
-      result = findArr[i].id
+  for (let item of findArr) {
+    if (item.id === +keyToFind) {
+      result = item.id
       break
     }
   }
@@ -434,9 +435,11 @@ function factorialize1 (num) {
 }
 function fac1 () {
   const ret = factorialize1(100)
+  return ret + 0
 }
 function fac2 () {
   const ret = $.math.fac(100)
+  return ret + 0
 }
 
 $.benchmark(fac1, '递归阶乘', 100000)
@@ -506,8 +509,8 @@ logTitle('累加比较')
 const sum1 = function () {
   const a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   let s = 0
-  for (let i = 0; i < a.length; i++) {
-    s += a[i]
+  for (let item of a) {
+    s += item
   }
   return s
 }
