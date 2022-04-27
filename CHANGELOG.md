@@ -1,3 +1,12 @@
+## [1.8.236](https://github.com/kongnet/meeko/compare/v1.8.235...v1.8.236) (2022-04-27)
+
+
+### :bug:
+
+* aes-256-gcm加密增加tag ([b107433](https://github.com/kongnet/meeko/commit/b1074335d60c23d69670d929bb08b82cf0e927ea))
+
+
+
 ## [1.8.235](https://github.com/kongnet/meeko/compare/v1.8.234...v1.8.235) (2022-04-25)
 
 
