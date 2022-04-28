@@ -1,3 +1,12 @@
+## [1.8.237](https://github.com/kongnet/meeko/compare/v1.8.236...v1.8.237) (2022-04-27)
+
+
+### :white_check_mark:
+
+* cryptoExt增加测试用例 ([a1ada30](https://github.com/kongnet/meeko/commit/a1ada307dde139de45ed4033eaa4ebf5d192c2c8))
+
+
+
 ## [1.8.236](https://github.com/kongnet/meeko/compare/v1.8.235...v1.8.236) (2022-04-27)
 
 

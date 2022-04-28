@@ -23,8 +23,8 @@ describe('crypto扩展', function () {
     let iv = crypto.randomBytes(16)
     const cryptoExt1 = new $.Crypto({ key, iv })
     let r = cryptoExt1.encrypt(JSON.stringify(objStr))
-    let tag = r.tag
-    const cryptoExt2 = new $.Crypto({ key, iv, tag })
+    let tag = r.tag.toString('base64')
+    const cryptoExt2 = new $.Crypto({ key, iv, tag: Buffer.from(tag, 'base64') })
     let r1 = cryptoExt2.decrypt(r.r)
     assertLog(r1.r, JSON.stringify(objStr))
   })
