@@ -28,4 +28,11 @@ describe('crypto扩展', function () {
     let r1 = cryptoExt2.decrypt(r.r)
     assertLog(r1.r, JSON.stringify(objStr))
   })
+  it('aes-256普通加解密', function () {
+    let oriStr = 'aabbccddeeffgg0123zzz你好'
+    let key = 'e43ee68382dc550fbd1d329486febdd4e43ee68382dc550fbd1d329486febdd5'
+    let iv = '6e9bbca876f8ddffc44a93503156abb3'
+    const cryptoObj = new $.Crypto()
+    assertLog(oriStr, cryptoObj.easyAES.decrypt(cryptoObj.easyAES.encrypt(oriStr, key, iv), key, iv))
+  })
 })
