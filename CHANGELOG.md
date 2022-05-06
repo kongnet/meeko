@@ -1,3 +1,12 @@
+## [1.8.239](https://github.com/kongnet/meeko/compare/v1.8.238...v1.8.239) (2022-05-05)
+
+
+### :zap:
+
+* 增加不带tag的AES加解密 ([e22f472](https://github.com/kongnet/meeko/commit/e22f47227c4cb79a6d3904035f578fbdbba52522))
+
+
+
 ## [1.8.238](https://github.com/kongnet/meeko/compare/v1.8.237...v1.8.238) (2022-04-28)
 
 

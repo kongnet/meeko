@@ -12,6 +12,12 @@
     "coverage"
   ],
   "main": "index.js",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  },
   "browser": {
     "./index.js": "./index.browser.js"
   },
@@ -39,7 +45,10 @@
   "author": "Kongnet <9601698@qq.com>",
   "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-json": "^4.1.0",
     "cc-jt": "^0.1.26",
+    "chai": "^4.3.6",
     "codecov": "*",
     "conventional-changelog-cli": "^2.0.23",
     "coveralls": "*",
@@ -49,7 +58,9 @@
     "jsdoc": "*",
     "mocha": "*",
     "mockjs": "^1.0.0",
-    "nyc": "*"
+    "nyc": "*",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0"
   },
   "standard": {
     "globals": [

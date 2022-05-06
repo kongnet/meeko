@@ -150,7 +150,7 @@ describe('各类分布的随机产生', function () {
       random.rayleigh(1, 1).should.be.a('number')
       global.assertCount++
     })
-    it('产生随机数通过 Student\'s T', function () {
+    it("产生随机数通过 Student's T", function () {
       random.studentT(1).should.be.a('number')
       global.assertCount++
     })
