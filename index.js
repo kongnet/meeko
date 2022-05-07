@@ -209,8 +209,8 @@ const json = {
 const to = function (p, diyErrCode = {}, okCode = null) {
   return p
     .then(d => [okCode, d])
-    .catch(err => {
-      return [Object.assign(err, diyErrCode), null]
+    .catch(e => {
+      return [Object.assign(e, diyErrCode), null]
     })
 }
 
