@@ -5102,7 +5102,7 @@ const bench$1 = {
 var bench_1 = bench$1;
 
 var name = "meeko";
-var version$1 = "1.8.239";
+var version$1 = "1.8.241";
 var description = "meeko自用函数";
 var keywords = [
 	"statistics",
@@ -5131,6 +5131,7 @@ var scripts = {
 	testlocal: "standard *.js && istanbul cover ./node_modules/mocha/bin/_mocha -- -r co-mocha --reporter spec --timeout 100000 --recursive tests/",
 	test_new: "nyc mocha --timeout 100000 --recursive tests/",
 	test: "mocha --recursive tests/",
+	cjs2mjs: "rollup -c rollup.config.js",
 	test2: "istanbul cover ./node_modules/mocha/bin/_mocha -- -r co-mocha --reporter mochawesome --timeout 100000 --recursive tests/",
 	codecov: "nyc mocha --recursive tests/ && cat ./coverage/lcov.info | codecov",
 	cov: "nyc --reporter html --reporter text npm test",

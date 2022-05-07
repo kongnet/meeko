@@ -2,15 +2,7 @@
   "name": "meeko",
   "version": "1.8.241",
   "description": "meeko自用函数",
-  "keywords": [
-    "statistics",
-    "js",
-    "tools",
-    "math",
-    "Machine Learning",
-    "AI",
-    "coverage"
-  ],
+  "keywords": ["statistics", "js", "tools", "math", "Machine Learning", "AI", "coverage"],
   "main": "index.js",
   "exports": {
     ".": {
@@ -29,6 +21,7 @@
     "testlocal": "standard *.js && istanbul cover ./node_modules/mocha/bin/_mocha -- -r co-mocha --reporter spec --timeout 100000 --recursive tests/",
     "test_new": "nyc mocha --timeout 100000 --recursive tests/",
     "test": "mocha --recursive tests/",
+    "cjs2mjs": "rollup -c rollup.config.js",
     "test2": "istanbul cover ./node_modules/mocha/bin/_mocha -- -r co-mocha --reporter mochawesome --timeout 100000 --recursive tests/",
     "codecov": "nyc mocha --recursive tests/ && cat ./coverage/lcov.info | codecov",
     "cov": "nyc --reporter html --reporter text npm test",
@@ -63,18 +56,8 @@
     "rollup-plugin-node-globals": "^1.4.0"
   },
   "standard": {
-    "globals": [
-      "$",
-      "describe",
-      "it",
-      "define",
-      "db",
-      "performance"
-    ],
-    "ignore": [
-      "/lib/tpl.js",
-      "/lib/Snowflake.js"
-    ]
+    "globals": ["$", "describe", "it", "define", "db", "performance"],
+    "ignore": ["/lib/tpl.js", "/lib/Snowflake.js"]
   },
   "eslintConfig": {
     "plugins": [],
@@ -107,18 +90,12 @@
           "allowSingleLine": true
         }
       ],
-      "quotes": [
-        1,
-        "single"
-      ],
+      "quotes": [1, "single"],
       "semi": 0,
       "no-extra-semi": 1,
       "space-infix-ops": 1,
       "no-console": 0,
-      "complexity": [
-        1,
-        10
-      ]
+      "complexity": [1, 10]
     },
     "extends": "eslint:recommended"
   },
