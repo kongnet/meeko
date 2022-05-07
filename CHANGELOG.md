@@ -1,3 +1,12 @@
+## [1.8.240](https://github.com/kongnet/meeko/compare/v1.8.239...v1.8.240) (2022-05-06)
+
+
+### :sparkles:
+
+* 增加mjs文件 ([062e371](https://github.com/kongnet/meeko/commit/062e371b6b89586c66e807b90fa58b8655c32d86))
+
+
+
 ## [1.8.239](https://github.com/kongnet/meeko/compare/v1.8.238...v1.8.239) (2022-05-05)
 
 
