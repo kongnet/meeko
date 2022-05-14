@@ -2,15 +2,7 @@
   "name": "meeko",
   "version": "1.8.247",
   "description": "meeko自用函数",
-  "keywords": [
-    "statistics",
-    "js",
-    "tools",
-    "math",
-    "Machine Learning",
-    "AI",
-    "coverage"
-  ],
+  "keywords": ["statistics", "js", "tools", "math", "Machine Learning", "AI", "coverage"],
   "main": "index.js",
   "exports": {
     ".": {
@@ -38,10 +30,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/kongnet/996.git"
+    "url": "git://github.com/kongnet/meeko.git"
   },
   "publishConfig": {
-    "registry": "https://github.com/kongnet/996.git"
+    "registry": "https://github.com/kongnet/meeko.git"
   },
   "engines": {
     "node": ">= 14.0.0"
@@ -67,18 +59,8 @@
     "rollup-plugin-node-globals": "^1.4.0"
   },
   "standard": {
-    "globals": [
-      "$",
-      "describe",
-      "it",
-      "define",
-      "db",
-      "performance"
-    ],
-    "ignore": [
-      "/lib/tpl.js",
-      "/lib/Snowflake.js"
-    ]
+    "globals": ["$", "describe", "it", "define", "db", "performance"],
+    "ignore": ["/lib/tpl.js", "/lib/Snowflake.js"]
   },
   "eslintConfig": {
     "plugins": [],
@@ -111,18 +93,12 @@
           "allowSingleLine": true
         }
       ],
-      "quotes": [
-        1,
-        "single"
-      ],
+      "quotes": [1, "single"],
       "semi": 0,
       "no-extra-semi": 1,
       "space-infix-ops": 1,
       "no-console": 0,
-      "complexity": [
-        1,
-        10
-      ]
+      "complexity": [1, 10]
     },
     "extends": "eslint:recommended"
   },
