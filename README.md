@@ -2,7 +2,8 @@
 
 ## 文档 Document
 
-![Build Stat](https://api.travis-ci.org/kongnet/meeko.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/kongnet/meeko/badge.svg?branch=master)](https://coveralls.io/github/kongnet/meeko?branch=master)
+![Build Stat](https://api.travis-ci.org/kongnet/meeko.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/kongnet/meeko/badge.svg?branch=master)](https://coveralls.io/github/kongnet/meeko?branch=master)[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkongnet%2Fmeeko.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkongnet%2Fmeeko?ref=badge_shield)
+
 
 [![NPM](https://nodei.co/npm/meeko.png?downloads=true&stars=true)](https://nodei.co/npm/meeko/)
 
@@ -462,3 +463,7 @@ console.log('结果:', ((20n * 10n ** n - 4n) * 10n) / 19n + 2n)
 更高要求：代码控制在10行内，算法复杂度O(N)
 */
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkongnet%2Fmeeko.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkongnet%2Fmeeko?ref=badge_large)
