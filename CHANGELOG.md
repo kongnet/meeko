@@ -1,3 +1,12 @@
+## [1.8.262](https://github.com/kongnet/meeko/compare/v1.8.261...v1.8.262) (2022-05-17)
+
+
+### :zap:
+
+* 日期format修改 ([6c6756a](https://github.com/kongnet/meeko/commit/6c6756aa9b56e50ba217b8fd1e16901fa0982940))
+
+
+
 ## [1.8.261](https://github.com/kongnet/meeko/compare/v1.8.260...v1.8.261) (2022-05-14)
 
 

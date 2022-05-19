@@ -262,4 +262,5 @@ const exportObj = {
   to,
   wait
 }
+globalThis['_sky'] = exportObj
 module.exports = exportObj

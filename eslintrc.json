@@ -1,3 +1,41 @@
 {
-  "extends": ["standard"]
+  "plugins": [],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2022": true,
+    "mocha": true
+  },
+  "globals": {
+    "angular": true
+  },
+  "rules": {
+    "no-unused-vars": 1,
+    "camelcase": 0,
+    "curly": 2,
+    "brace-style": [
+      2,
+      "1tbs",
+      {
+        "allowSingleLine": true
+      }
+    ],
+    "quotes": [1, "single"],
+    "semi": 0,
+    "no-extra-semi": 1,
+    "space-infix-ops": 1,
+    "no-console": 0,
+    "complexity": [1, 10]
+  },
+  "extends": "eslint:recommended"
 }

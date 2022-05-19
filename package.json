@@ -49,6 +49,8 @@
   "author": "Kongnet <9601698@qq.com>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.17.12",
+    "@babel/eslint-parser": "^7.17.0",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "cc-jt": "^0.1.26",
@@ -58,6 +60,7 @@
     "coveralls": "*",
     "cz-jt": "^0.1.11",
     "docdash": "^1.2.0",
+    "eslint": "^8.15.0",
     "istanbul": "*",
     "jsdoc": "*",
     "mocha": "*",
@@ -83,7 +86,7 @@
   "eslintConfig": {
     "plugins": [],
     "parserOptions": {
-      "ecmaVersion": 2020,
+      "ecmaVersion": "latest",
       "sourceType": "module",
       "ecmaFeatures": {
         "experimentalObjectRestSpread": true,
