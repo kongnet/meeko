@@ -16,7 +16,7 @@
 
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=meeko)](https://sonarcloud.io/dashboard?id=meeko)
 
-> 贡献者 TouchTheTop 、haua
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkongnet%2Fmeeko.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkongnet%2Fmeeko?ref=badge_large)
 
 ## 安装
 
