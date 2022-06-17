@@ -1,3 +1,12 @@
+## [1.8.267](https://github.com/kongnet/meeko/compare/v1.8.266...v1.8.267) (2022-06-17)
+
+
+### :white_check_mark:
+
+* np测试覆盖 ([4a28699](https://github.com/kongnet/meeko/commit/4a28699f46b1c68f48307a92384ebba68346bb63))
+
+
+
 ## [1.8.266](https://github.com/kongnet/meeko/compare/v1.8.265...v1.8.266) (2022-06-17)
 
 

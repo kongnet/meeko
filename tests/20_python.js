@@ -55,10 +55,76 @@ describe('类python操作:np', () => {
     assertLog($.math.np.linspace(0, 4, 0).join(','), '0')
   })
 })
-/*
+
 describe('类python操作:stats', () => {
-  it('np', () => {
-    assertLog('', '[[[1,0],[0.6666666666666666,1]],[[3,2],[0,1.6666666666666667]],[[0,1],[1,0]]]')
+  it('stats.bernoulli.rsv', () => {
+    assertLog($.math.stats.bernoulli.rsv(0.4, 10).length, 10)
+  })
+  it('stats.bernoulli.pmf', () => {
+    assertLog($.math.stats.bernoulli.pmf([1, 1, 0, 1, 22], 0.4).join(','), '0.4,0.4,0.6,0.4,0')
+  })
+  it('stats.bernoulli.cdf', () => {
+    assertLog($.math.stats.bernoulli.cdf([1, 1, 0, 1, 0.1], 0.4).join(','), '1,1,0.6,1,0.6')
+  })
+  it('stats.bernoulli.cdf2', () => {
+    assertLog($.math.stats.bernoulli.cdf([-1], 0.4).join(','), '0')
+  })
+  it('stats.binom.rsv', () => {
+    assertLog($.math.stats.binom.rsv(10, 0.4, 5).length, 5)
+  })
+  it('stats.binom.pmf', () => {
+    assertLog($.math.stats.binom.pmf([0, 1, 2, 3, 4, 5], 5, 0.5).join(','), '0.03125,0.15625,0.3125,0.3125,0.15625,0.03125')
+  })
+  it('stats.geom.rsv', () => {
+    assertLog($.math.stats.geom.rsv(0.5, 10).length, 10)
+  })
+  it('stats.geom.pmf k=10 p=0.6', () => {
+    assertLog(
+      $.math.stats.geom.pmf($.math.np.arange(1, 11), 0.6).join(','),
+      '0.6,0.24,0.09600000000000002,0.03840000000000001,0.015360000000000002,0.006144000000000001,0.0024576000000000008,0.0009830400000000003,0.0003932160000000002,0.00015728640000000008'
+    )
+  })
+  it('stats.geom.cdf', () => {
+    assertLog($.math.stats.geom.cdf([1, 19], 0.6).join(','), '0.6,0.9999999725122092')
+  })
+  it('stats.poisson.rsv', () => {
+    assertLog($.math.stats.poisson.rsv(2, 5).length, 5)
+  })
+  it('stats.poisson.pmf mu=2 k=4', () => {
+    assertLog($.math.stats.poisson.pmf($.math.np.arange(0, 5), 2).join(','), '0.1353352832366127,0.2706705664732254,0.2706705664732254,0.1804470443154836,0.0902235221577418')
+  })
+  it('stats.poisson.pmf mu=2', () => {
+    assertLog($.math.stats.poisson.pmf([-1], 2).join(','), '0')
+  })
+  it('stats.poisson.cdf mu=2', () => {
+    assertLog($.math.stats.poisson.cdf([1, 19], 2).join(','), '0.4060058497098381,0.9999999999999357')
+  })
+  it('stats.poisson.cdf2 mu=2', () => {
+    assertLog($.math.stats.poisson.cdf([-1], 2).join(','), '0')
+  })
+  it('stats.poisson.cdf2 mu=2', () => {
+    assertLog($.math.stats.poisson.cdf([-1, -1], 2).join(','), '0,0')
+  })
+  let size = 2
+  it('stats.norm.rsv', () => {
+    assertLog($.math.stats.norm.rsv(0, 1, (size = 2)).length, 2)
+  })
+  it('stats.norm.pdf', () => {
+    assertLog(
+      $.math.stats.norm
+        .pdf(
+          $.math.np.arange(-50, -40, 10).map(x => x / 10),
+          0,
+          1
+        )
+        .join(','),
+      '0.0000014867195147342985,0.00013383022576488542,0.004431848411938009,0.053990966513188056,0.24197072451914337,0.3989422804014327,0.24197072451914337,0.053990966513188056,0.004431848411938009,0.00013383022576488542'
+    )
+  })
+  it('stats.norm.cdf', () => {
+    assertLog($.math.stats.norm.cdf([0]).join(','), '0.5')
+  })
+  it('stats.norm.cdf2', () => {
+    assertLog($.math.stats.norm.cdf([0.5]).join(','), '0.691462461274013')
   })
 })
-*/
