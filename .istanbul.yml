@@ -13,4 +13,5 @@ instrumentation:
       '**/lib/ml/**',
       '**/lib/template/**',
       '**/lib/mathMatrixAdv.js',
+      '**/lib/js-python/**',
     ]

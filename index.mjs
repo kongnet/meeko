@@ -2910,7 +2910,7 @@ function autoCorrelation (arr, lag = 1) {
   }
   return sumXy === sumSq ? 1 : sumXy / sumSq
 }
-var math$1 = Object.assign.call(null, mathAlgebra, mathRand, mat, {
+var math$3 = Object.assign.call(null, mathAlgebra, mathRand, mat, {
   fac,
   arrangement,
   combination,
@@ -3216,7 +3216,7 @@ var math$1 = Object.assign.call(null, mathAlgebra, mathRand, mat, {
  * @namespace Array_prototype
  */
 
-const $M$3 = math$1;
+const $M$3 = math$3;
 const flatten = arr => arr.reduce((a, v) => a.concat(Array.isArray(v) ? flatten(v) : v), []);
 
 const publishObj = {
@@ -3809,7 +3809,7 @@ function genHtml (htmlTitle = '', bodyText = '', htmlHeadExtend = '') {
  * @namespace tools
  */
 
-const $M$2 = math$1;
+const $M$2 = math$3;
 
 const genTemp = genGrid;
 // tools库扩展
@@ -5011,7 +5011,7 @@ var tools_1 = tools$4;
 // const { performance } = require('perf_hooks')
 
 const { c: c$1 } = tools_1;
-const { min } = math$1;
+const { min } = math$3;
 const print = function print ({ funcName, spendTime, perSecVal, n, range, msg, fastStr }) {
   console.log(
     c$1.y(funcName.fillStr(' ', 15)),
@@ -5106,7 +5106,7 @@ const bench$1 = {
 var bench_1 = bench$1;
 
 var name = "meeko";
-var version = "1.8.264";
+var version = "1.8.266";
 var description = "meeko自用函数";
 var keywords = [
 	"statistics",
@@ -5266,7 +5266,7 @@ var require$$2$2 = {
 // @ts-check
 const Mat = mathMatrix.mat;
 const tools$3 = tools_1;
-const $M$1 = math$1;
+const $M$1 = math$3;
 
 /**
  * @description 雅克比迭代
@@ -5813,6 +5813,259 @@ class CholeskyDc {
   }
 }
 var mathMatrixAdv = { Matrix, QrDc, CholeskyDc };
+
+const math$2 = math$3;
+const np$2 = {};
+np$2.linspace = function (s, e, num) {
+  let step = (e - s) / (num - 1);
+  let scale = 10 ** Math.abs(Math.log10(step));
+  step *= scale;
+  const a = [];
+  let n = 0;
+  for (let i = s * scale; i <= e * scale; i += step) {
+    a[n] = i / scale;
+    n++;
+  }
+  return a
+};
+np$2.std = function (data, ddof = 0) {
+  return ddof ? math$2.stddevCorrect(data) : math$2.stddev(data)
+};
+np$2.median = math$2.median;
+np$2.mean = math$2.mean;
+np$2.cv = function (data, ddof = 0) {
+  return np$2.std(data, ddof) / math$2.mean(data)
+};
+
+np$2.dot = math$2.mat.dot;
+np$2.arange = function arange (...arg) {
+  let len = arg?.length;
+  if (len === 1) {
+    return math$2.genRange(0, arg[0] - 1)
+  }
+  if (len === 2) {
+    return math$2.genRange(arg[0], arg[1] - 1)
+  }
+  if (len === 3) {
+    return math$2.genRange(arg[0], arg[1] - 1, arg[2])
+  }
+  return [0]
+};
+np$2.reshape = function reshape (ary, a, b) {
+  return ary.chunk(a, b)
+};
+np$2.inv = math$2.mat.inv;
+np$2.wmean = function (data, weight) {
+  return np$2.dot(data, weight) / math$2.sum(weight)
+};
+
+var np_1 = np$2;
+
+const erf$1 = function erf (x) {
+  // https://ww2.mathworks.cn/help/matlab/ref/erf.html
+  // https://baike.baidu.com/item/%E8%AF%AF%E5%B7%AE%E5%87%BD%E6%95%B0/5890875?fr=aladdin
+  let cof = [
+    -1.3026537197817094,
+    6.4196979235649026e-1,
+    1.9476473204185836e-2,
+    -9.561514786808631e-3,
+    -9.46595344482036e-4,
+    3.66839497852761e-4,
+    4.2523324806907e-5,
+    -2.0278578112534e-5,
+    -1.624290004647e-6,
+    1.30365583558e-6,
+    1.5626441722e-8,
+    -8.5238095915e-8,
+    6.529054439e-9,
+    5.059343495e-9,
+    -9.91364156e-10,
+    -2.27365122e-10,
+    9.6467911e-11,
+    2.394038e-12,
+    -6.886027e-12,
+    8.94487e-13,
+    3.13092e-13,
+    -1.12708e-13,
+    3.81e-16,
+    7.106e-15,
+    -1.523e-15,
+    -9.4e-17,
+    1.21e-16,
+    -2.8e-17
+  ];
+  let j = cof.length - 1;
+  let isneg = false;
+  let d = 0;
+  let dd = 0;
+  let t, ty, tmp, res;
+
+  if (x < 0) {
+    x = -x;
+    isneg = true;
+  }
+
+  t = 2 / (2 + x);
+  ty = 4 * t - 2;
+
+  for (; j > 0; j--) {
+    tmp = d;
+    d = ty * d - dd + cof[j];
+    dd = tmp;
+  }
+
+  res = t * Math.exp(-x * x + 0.5 * (cof[0] + ty * d) - dd);
+  return isneg ? res - 1 : 1 - res
+};
+
+var specFunc = { erf: erf$1 };
+
+const math$1 = math$3;
+const np$1 = np_1;
+const { erf } = specFunc;
+const stats$1 = {};
+stats$1.gmean = math$1.gMean;
+
+stats$1.hmean = math$1.hMean;
+stats$1.mode = math$1.mode;
+
+stats$1.skew = math$1.skew;
+stats$1.kurtosis = math$1.kurt1;
+stats$1.combinations = math$1.combinList;
+stats$1.permutations = math$1.arrangeList;
+
+// 硬币朝上的概率
+stats$1.bernoulli = {
+  rsv: function (p = 0.5, size = 1) {
+    let a = [];
+    for (let i = 0; i < size; i++) {
+      a[i] = math$1.bernoulli(p);
+    }
+    return a
+  },
+  pmf: function (a = [], p = 0.5) {
+    return a.map(x => {
+      if (x === 1) {
+        return p
+      }
+      if (x === 0) {
+        return 1 - p
+      }
+      return 0
+    })
+  },
+  cdf: function (a = [], p = 0.5) {
+    return a.map(x => {
+      if (x < 0) {
+        return 0
+      }
+      if (x >= 1) {
+        return 1
+      }
+      return 1 - p
+    })
+  }
+};
+stats$1.binom = {
+  //做某件事情的次数,做某件事情成功的概率
+  rsv: function (n = 1, p = 0.5, size = 1) {
+    let a = [];
+    for (let i = 0; i < size; i++) {
+      a[i] = math$1.binomial(n, p);
+    }
+    return a
+  },
+  pmf: function (a = [], n, p) {
+    return a.map(x => {
+      return p === 0 || p === 1 ? (n * p === x ? 1 : 0) : math$1.combination(n, x) * p ** x * (1 - p) ** (n - x)
+    })
+  },
+  cdf: ''
+};
+// 某件事k次成功的概率 1-k
+stats$1.geom = {
+  rsv: function (p = 0.5, size = 1) {
+    let a = [];
+    for (let i = 0; i < size; i++) {
+      a[i] = math$1.geometric(p);
+    }
+    return a
+  },
+  pmf: function (a = [], p = 0.5) {
+    return a.map(x => {
+      return x <= 0 ? 0 : (1 - p) ** (x - 1) * p
+    })
+  },
+  cdf: function (a = [], p = 0.5) {
+    return a.map(it => {
+      return math$1.sum(
+        np$1.arange(1, it + 1).map(x => {
+          return x <= 0 ? 0 : (1 - p) ** (x - 1) * p
+        })
+      )
+    })
+  }
+};
+// 平均值:每天发生n次事 0-n
+stats$1.poisson = {
+  rsv: function (mu, size = 1) {
+    let a = [];
+    for (let i = 0; i < size; i++) {
+      a[i] = math$1.poisson(mu);
+    }
+    return a
+  },
+  pmf: function (a = [], mu = 1) {
+    return a.map(x => {
+      if (mu < 0 || x % 1 !== 0 || x < 0) {
+        return 0
+      }
+
+      return (mu ** x * Math.exp(-mu)) / math$1.fac(x)
+    })
+  },
+  cdf: function (a = [], mu = 1) {
+    return a.map(it => {
+      return math$1.sum(
+        np$1.arange(0, it + 1).map(x => {
+          if (mu < 0 || x % 1 !== 0 || x < 0) {
+            return 0
+          }
+
+          return (mu ** x * Math.exp(-mu)) / math$1.fac(x)
+        })
+      )
+    })
+  }
+};
+stats$1.norm = {
+  rsv: function (mu = 0, sigma = 1, size = 1) {
+    let a = [];
+    for (let i = 0; i < size; i++) {
+      a[i] = math$1.normal(mu, sigma);
+    }
+    return a
+  },
+  pdf: function (a = [], mu, sigma) {
+    return a.map(x => {
+      return Math.exp(-0.5 * Math.log(2 * Math.PI) - Math.log(sigma) - (x - mu) ** 2 / (2 * sigma * sigma))
+    })
+  },
+  cdf: function (a = [], mu = 0, sigma = 1) {
+    return a.map(x => {
+      return 0.5 * (1 + erf((x - mu) / (Math.sqrt(2) * sigma)))
+    })
+  }
+};
+
+var stats_1 = stats$1;
+
+const np = np_1;
+const stats = stats_1;
+var jsPython$1 = {
+  np,
+  stats
+};
 
 var color$1 = {exports: {}};
 
@@ -15757,7 +16010,7 @@ function requireUtil () {
 
 	const Mat = mathMatrix.mat;
 
-	const $M = math$1;
+	const $M = math$3;
 	function zScoreNorm (a) {
 	  const arr = $M.mat.transpose(a).map(x => {
 	    const mean = $M.mean(x);
@@ -15934,7 +16187,7 @@ function requireDecisionTree () {
 	 * @namespace Math_prototype
 	 */
 
-	const $M = math$1;
+	const $M = math$3;
 	const util = requireUtil();
 	function drawTree (inObj, outObj = {}, key, level = -1) {
 	  level++;
@@ -16078,7 +16331,7 @@ var hasRequiredKnn;
 function requireKnn () {
 	if (hasRequiredKnn) return Knn_1;
 	hasRequiredKnn = 1;
-	const $M = math$1;
+	const $M = math$3;
 	// K-邻近机器学习
 	class Knn {
 	  constructor (xRaw, yRaw, k = 3, algorithm = 'euclidean') {
@@ -16769,7 +17022,7 @@ function requirePca () {
 	 * @namespace Math_prototype
 	 */
 
-	const $M = math$1;
+	const $M = math$3;
 	const util = requireUtil();
 
 	const SVD = requireSvd();
@@ -16817,7 +17070,7 @@ function requirePca () {
 
 /* istanbul ignore file */
 
-const $M = math$1;
+const $M = math$3;
 
 /**
  *
@@ -19229,9 +19482,11 @@ const wait = function (t) {
   })
 };
 
-const math = math$1;
+const math = math$3;
 const matAdv = mathMatrixAdv;
+const jsPython = jsPython$1;
 Object.assign(math, matAdv);
+Object.assign(math, jsPython);
 const fake = fake$2;
 const file = file$1;
 const reg = reg_1;

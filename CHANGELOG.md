@@ -1,3 +1,12 @@
+## [1.8.266](https://github.com/kongnet/meeko/compare/v1.8.265...v1.8.266) (2022-06-17)
+
+
+### :sparkles:
+
+* 实现一些python np 和 stats函数 ([5cda67d](https://github.com/kongnet/meeko/commit/5cda67dd764fb9aeccffefcfe600ef71f50d4fcf))
+
+
+
 ## [1.8.265](https://github.com/kongnet/meeko/compare/v1.8.264...v1.8.265) (2022-05-19)
 
 

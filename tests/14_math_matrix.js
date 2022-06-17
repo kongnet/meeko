@@ -1,5 +1,3 @@
-/* global describe */
-/* global it */
 'use strict'
 const $ = require('../index')
 const assert = require('assert')
@@ -26,10 +24,7 @@ describe('矩阵基础操作', () => {
     [9, 8, 7, 6, 9, 8, 72]
   ]
   it('lup分解', () => {
-    assertLog(
-      JSON.stringify($.math.mat.lupDecomposition(Mb)),
-      '[[[1,0],[0.6666666666666666,1]],[[3,2],[0,1.6666666666666667]],[[0,1],[1,0]]]'
-    )
+    assertLog(JSON.stringify($.math.mat.lupDecomposition(Mb)), '[[[1,0],[0.6666666666666666,1]],[[3,2],[0,1.6666666666666667]],[[0,1],[1,0]]]')
   })
 
   it('复制矩阵', () => {
@@ -40,10 +35,7 @@ describe('矩阵基础操作', () => {
   })
   it('矩阵转置', () => {
     assertLog(JSON.stringify($.math.mat.transpose(Ma)), '[[1,2],[2,1]]')
-    assertLog(
-      JSON.stringify($.math.mat.transpose(Mc)),
-      '[[1,6,98,54,1,5,9],[3,7,7,3,2,6,8],[4,8,6,2,0,7,7],[0,5,9,5,4,8,6],[2,62,8,4,1,5,9],[33,7,7,3,2,6,8],[4,8,6,2,34,78,72]]'
-    )
+    assertLog(JSON.stringify($.math.mat.transpose(Mc)), '[[1,6,98,54,1,5,9],[3,7,7,3,2,6,8],[4,8,6,2,0,7,7],[0,5,9,5,4,8,6],[2,62,8,4,1,5,9],[33,7,7,3,2,6,8],[4,8,6,2,34,78,72]]')
   })
   it('加法', () => {
     assertLog(JSON.stringify($.math.mat.add(Ma, Mb)), '[[3,5],[5,3]]')
@@ -78,16 +70,10 @@ describe('矩阵基础操作', () => {
     )
   })
   it('全0矩阵', () => {
-    assertLog(
-      JSON.stringify($.math.mat.zero(3, 4)),
-      '[[0,0,0,0],[0,0,0,0],[0,0,0,0]]'
-    )
+    assertLog(JSON.stringify($.math.mat.zero(3, 4)), '[[0,0,0,0],[0,0,0,0],[0,0,0,0]]')
   })
   it('单位矩阵', () => {
-    assertLog(
-      JSON.stringify($.math.mat.identity(3)),
-      '[[1,0,0],[0,1,0],[0,0,1]]'
-    )
+    assertLog(JSON.stringify($.math.mat.identity(3)), '[[1,0,0],[0,1,0],[0,0,1]]')
   })
   it('高斯约旦消元法', () => {
     assertLog(
