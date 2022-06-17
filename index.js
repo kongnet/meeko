@@ -161,7 +161,9 @@ const wait = function (t) {
 
 const math = require('./lib/math')
 const matAdv = require('./lib/mathMatrixAdv')
+const jsPython = require('./lib/js-python')
 Object.assign(math, matAdv)
+Object.assign(math, jsPython)
 const fake = require('./lib/fake')
 const file = require('./lib/file')
 const reg = require('./lib/reg')
