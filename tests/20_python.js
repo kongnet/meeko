@@ -57,6 +57,8 @@ describe('类python操作:np', () => {
 })
 
 describe('类python操作:stats', () => {
+  let size = 2
+
   it('stats.bernoulli.rsv', () => {
     assertLog($.math.stats.bernoulli.rsv(0.4, 10).length, 10)
   })
@@ -105,7 +107,6 @@ describe('类python操作:stats', () => {
   it('stats.poisson.cdf2 mu=2', () => {
     assertLog($.math.stats.poisson.cdf([-1, -1], 2).join(','), '0,0')
   })
-  let size = 2
   it('stats.norm.rsv', () => {
     assertLog($.math.stats.norm.rsv(0, 1, (size = 2)).length, 2)
   })

@@ -1,3 +1,12 @@
+## [1.8.268](https://github.com/kongnet/meeko/compare/v1.8.267...v1.8.268) (2022-06-17)
+
+
+### :white_check_mark:
+
+* stats测试用例 ([4143774](https://github.com/kongnet/meeko/commit/4143774cdf87ccb0bf94ba24f7323f64da79f59c))
+
+
+
 ## [1.8.267](https://github.com/kongnet/meeko/compare/v1.8.266...v1.8.267) (2022-06-17)
 
 
