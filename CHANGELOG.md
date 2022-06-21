@@ -1,3 +1,12 @@
+## [1.8.269](https://github.com/kongnet/meeko/compare/v1.8.268...v1.8.269) (2022-06-21)
+
+
+### :zap:
+
+* 增加obj2Csv ([20a9124](https://github.com/kongnet/meeko/commit/20a912491482563a10ba5c4abc94a4ad31319edb))
+
+
+
 ## [1.8.268](https://github.com/kongnet/meeko/compare/v1.8.267...v1.8.268) (2022-06-17)
 
 
