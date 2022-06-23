@@ -418,22 +418,7 @@ for (let i = 0; i < rawData.length; i += 2) {
   polyY.push(rawData[i + 1])
 }
 // https://wenku.baidu.com/view/cc0f9b0f52ea551810a68716.html
-const smoothY = [
-  12.9,
-  14.91,
-  15.96,
-  14.41,
-  14.57,
-  14.6,
-  15.35,
-  15.84,
-  16.9,
-  18.26,
-  17.4,
-  18.71,
-  19.53,
-  20.82
-]
+const smoothY = [12.9, 14.91, 15.96, 14.41, 14.57, 14.6, 15.35, 15.84, 16.9, 18.26, 17.4, 18.71, 19.53, 20.82]
 const diff1 = $.math.exponentialSmoothing(smoothY)
 const diff2 = $.math.exponentialSmoothing(diff1)
 const diff3 = $.math.exponentialSmoothing(diff2)
@@ -442,7 +427,7 @@ const diff3 = $.math.exponentialSmoothing(diff2)
 describe('Math扩展函数的单元测试', () => {
   const a = [2, 1, 8.1, 3, 4, 5.1, 6.7]
   it('genRange', () => {
-    assertLog($.math.genRange(0, 5, 2).join(','), [0, 2, 4, 6, 8, 10].join(','))
+    assertLog($.math.genRange(0, 5, 2).join(','), [0, 2, 4].join(','))
   })
   it('sum', () => {
     assertLog($.math.sum(a).toFixed(1), '29.9')
@@ -454,15 +439,11 @@ describe('Math扩展函数的单元测试', () => {
     assertLog($.math.num2e(0.00000129466), '1.2947e-6')
     assertLog($.math.num2e(0.00000129466, 1), '1.3e-6')
   })
-  it('hMean 调和平均数 2.742815', () =>
-    assertLog($.math.hMean(a).toFixed(6), '2.742815'))
-  it('gMean 几何平均数 3.515999', () =>
-    assertLog($.math.gMean(a).toFixed(6), '3.515999'))
+  it('hMean 调和平均数 2.742815', () => assertLog($.math.hMean(a).toFixed(6), '2.742815'))
+  it('gMean 几何平均数 3.515999', () => assertLog($.math.gMean(a).toFixed(6), '3.515999'))
 
-  it('mean (算术)平均数 4.271429', () =>
-    assertLog($.math.mean(a).toFixed(6), '4.271429'))
-  it('qMean 平方平均数 4.877206', () =>
-    assertLog($.math.qMean(a).toFixed(6), '4.877206'))
+  it('mean (算术)平均数 4.271429', () => assertLog($.math.mean(a).toFixed(6), '4.271429'))
+  it('qMean 平方平均数 4.877206', () => assertLog($.math.qMean(a).toFixed(6), '4.877206'))
   it('min 最小', () => assertLog($.math.min(a), 1))
   it('max 最大', () => assertLog($.math.max(a), 8.1))
   it('range 极值', () => assertLog($.math.range(a), 7.1))
@@ -483,18 +464,9 @@ describe('Math扩展函数的单元测试', () => {
     assertLog($.math.quantile(a, 0, 'exec'), NaN)
     assertLog($.math.quantile(a, 4, 'exec'), NaN)
     assertLog($.math.quantile(a, 5), 4)
-    assertLog(
-      $.math.quantile([6, 7, 15, 36, 39, 40, 41, 42, 43, 47, 49], 1),
-      25.5
-    )
-    assertLog(
-      $.math.quantile([6, 7, 15, 36, 39, 40, 41, 42, 43, 47, 49], 2),
-      40
-    )
-    assertLog(
-      $.math.quantile([6, 7, 15, 36, 39, 40, 41, 42, 43, 47, 49], 3),
-      42.5
-    )
+    assertLog($.math.quantile([6, 7, 15, 36, 39, 40, 41, 42, 43, 47, 49], 1), 25.5)
+    assertLog($.math.quantile([6, 7, 15, 36, 39, 40, 41, 42, 43, 47, 49], 2), 40)
+    assertLog($.math.quantile([6, 7, 15, 36, 39, 40, 41, 42, 43, 47, 49], 3), 42.5)
     assertLog($.math.quantile([1, 2, 3, 4], 1), 1.75)
     assertLog($.math.quantile([1, 2, 3, 4], 2), 2.5)
     assertLog($.math.quantile([1, 2, 3, 4], 3), 3.25)
@@ -509,34 +481,20 @@ describe('Math扩展函数的单元测试', () => {
     assertLog($.math.quantile([1, 2, 3, 4, 5], 1), 3.5) */
   })
   it('quantileAll 四分位数', () => {
-    assertLog(
-      JSON.stringify($.math.quantileAll(a)),
-      '{"min":1,"Q1":2.5,"Q2":4,"Q3":5.9,"max":8.1,"IQR":3.4000000000000004,"upper":9.3,"lower":2.5}'
-    )
+    assertLog(JSON.stringify($.math.quantileAll(a)), '{"min":1,"Q1":2.5,"Q2":4,"Q3":5.9,"max":8.1,"IQR":3.4000000000000004,"upper":9.3,"lower":2.5}')
   })
-  it('variance 方差 5.542041', () =>
-    assertLog($.math.variance(a).toFixed(6), '5.542041'))
+  it('variance 方差 5.542041', () => assertLog($.math.variance(a).toFixed(6), '5.542041'))
   it('stddev 总体标准偏差/标准差/均方差 2.354154 方差开根号', () => {
     assertLog($.math.stddev(a).toFixed(6), '2.354154')
     assertLog($.math.stddev([1, 2, 3, 4, 5]), 1.4142135623730951)
   })
-  it('varianceCorrect 样本标准偏差的方差,更正方差 6.465714 n-1', () =>
-    assertLog($.math.varianceCorrect(a).toFixed(6), '6.465714'))
-  it('stddevCorrect 样本标准偏差 2.542777 更正开根号', () =>
-    assertLog($.math.stddevCorrect(a).toFixed(6), '2.542777'))
-  it('mean Deviation 平均偏差 2.024490', () =>
-    assertLog($.math.meanDev(a).toFixed(6), '2.024490'))
-  it('medianDev 中位数偏差 1.985714', () =>
-    assertLog($.math.medianDev(a).toFixed(6), '1.985714'))
-  it('Standard error 标准误差 0.961079', () =>
-    assertLog($.math.stdErr(a).toFixed(6), '0.961079'))
-  it('Coefficient of Variation 变异系数/离散系数 0.551140', () =>
-    assertLog($.math.coeVariation(a).toFixed(6), '0.551140'))
-  it('confidence intervals 置信区间', () =>
-    assertLog(
-      $.math.confidenceIntervals(a)[0] + $.math.confidenceIntervals(a)[1],
-      0.1659026888164572 + 8.376954454040686
-    ))
+  it('varianceCorrect 样本标准偏差的方差,更正方差 6.465714 n-1', () => assertLog($.math.varianceCorrect(a).toFixed(6), '6.465714'))
+  it('stddevCorrect 样本标准偏差 2.542777 更正开根号', () => assertLog($.math.stddevCorrect(a).toFixed(6), '2.542777'))
+  it('mean Deviation 平均偏差 2.024490', () => assertLog($.math.meanDev(a).toFixed(6), '2.024490'))
+  it('medianDev 中位数偏差 1.985714', () => assertLog($.math.medianDev(a).toFixed(6), '1.985714'))
+  it('Standard error 标准误差 0.961079', () => assertLog($.math.stdErr(a).toFixed(6), '0.961079'))
+  it('Coefficient of Variation 变异系数/离散系数 0.551140', () => assertLog($.math.coeVariation(a).toFixed(6), '0.551140'))
+  it('confidence intervals 置信区间', () => assertLog($.math.confidenceIntervals(a)[0] + $.math.confidenceIntervals(a)[1], 0.1659026888164572 + 8.376954454040686))
   /*
   $.math.linearFitting()
   $.math.exponentFitting()
@@ -544,45 +502,22 @@ describe('Math扩展函数的单元测试', () => {
   $.math.powerFitting()
   $.math.pearson()
   */
-  const rst = $.math.linearFitting(
-    [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    [1, 4, 3, 6, 9, 3, 5, 2, 5]
-  )
+  const rst = $.math.linearFitting([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 4, 3, 6, 9, 3, 5, 2, 5])
   it(`linearFitting ${rst.f}`, () =>
-    assertLog(
-      JSON.stringify(rst),
-      '{"a":0.18333333333333332,"b":3.305555555555556,"r":0.04426829268292683,"f":"y=0.1833*x+3.3056 R^2=0.0443","latex":"y=0.1833\\times x+3.3056  R^{2}=0.0443"}'
-    ))
+    assertLog(JSON.stringify(rst), '{"a":0.18333333333333332,"b":3.305555555555556,"r":0.04426829268292683,"f":"y=0.1833*x+3.3056 R^2=0.0443","latex":"y=0.1833\\times x+3.3056  R^{2}=0.0443"}'))
 
-  const rst1 = $.math.exponentFitting(
-    [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    [1, 4, 3, 6, 9, 3, 5, 2, 5]
-  )
+  const rst1 = $.math.exponentFitting([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 4, 3, 6, 9, 3, 5, 2, 5])
   it(`exponentFitting ${rst1.f}`, () =>
     assertLog(
       JSON.stringify(rst1),
       '{"a":2.4241733882720133,"b":0.07811356958381002,"r":0.10831424034090119,"f":"y=2.4242*e^(0.0781*x) R^2=0.1083","latex":"y=2.4242\\times e^{ (0.0781\\times x)} R^{2}=0.1083"}'
     ))
 
-  const rst2 = $.math.lnFitting(
-    [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    [1, 4, 3, 6, 9, 3, 5, 2, 5]
-  )
-  it(`lnFitting ${rst2.f}`, () =>
-    assertLog(
-      JSON.stringify(rst2),
-      '{"a":1.224733441070464,"b":2.480130419814377,"r":0.1362718140723164,"f":"y=1.2247*ln(x)+2.4801 R^2=0.1363"}'
-    ))
+  const rst2 = $.math.lnFitting([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 4, 3, 6, 9, 3, 5, 2, 5])
+  it(`lnFitting ${rst2.f}`, () => assertLog(JSON.stringify(rst2), '{"a":1.224733441070464,"b":2.480130419814377,"r":0.1362718140723164,"f":"y=1.2247*ln(x)+2.4801 R^2=0.1363"}'))
 
-  const rst3 = $.math.powerFitting(
-    [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    [1, 4, 3, 6, 9, 3, 5, 2, 5]
-  )
-  it(`powerFitting ${rst3.f}`, () =>
-    assertLog(
-      JSON.stringify(rst3),
-      '{"a":1.8454140471460965,"b":0.46635474401809107,"r":0.26630441651302567,"f":"y=1.8454*x^0.4664 R^2=0.2663"}'
-    ))
+  const rst3 = $.math.powerFitting([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 4, 3, 6, 9, 3, 5, 2, 5])
+  it(`powerFitting ${rst3.f}`, () => assertLog(JSON.stringify(rst3), '{"a":1.8454140471460965,"b":0.46635474401809107,"r":0.26630441651302567,"f":"y=1.8454*x^0.4664 R^2=0.2663"}'))
   const rst4 = $.math.polyFitting(polyX, polyY, 6)
   it(`polyFitting ${rst4.f}`, () =>
     assertLog(
@@ -592,56 +527,8 @@ describe('Math扩展函数的单元测试', () => {
 })
 
 describe('Math相关系数函数单元测试', () => {
-  const rst4 = $.math.pearson(
-    [
-      56,
-      97,
-      76,
-      59,
-      86,
-      62,
-      32,
-      69,
-      75,
-      79,
-      36,
-      70,
-      48,
-      57,
-      86,
-      88,
-      92,
-      85,
-      75,
-      48
-    ],
-    [
-      8,
-      45,
-      35,
-      12,
-      37,
-      24,
-      5,
-      21,
-      36,
-      32,
-      10,
-      27,
-      15,
-      19,
-      41,
-      50,
-      39,
-      42,
-      35,
-      17
-    ]
-  )
-  const rst5 = $.math.pearson(
-    [2.5, 3.5, 3.0, 3.5, 2.5, 3.0],
-    [3.0, 3.5, 1.5, 5.0, 3.5, 3.0]
-  )
+  const rst4 = $.math.pearson([56, 97, 76, 59, 86, 62, 32, 69, 75, 79, 36, 70, 48, 57, 86, 88, 92, 85, 75, 48], [8, 45, 35, 12, 37, 24, 5, 21, 36, 32, 10, 27, 15, 19, 41, 50, 39, 42, 35, 17])
+  const rst5 = $.math.pearson([2.5, 3.5, 3.0, 3.5, 2.5, 3.0], [3.0, 3.5, 1.5, 5.0, 3.5, 3.0])
   const rst51 = $.math.pearson([1, 2, 3, 4, 5, 6], [0.3, 0.9, 2.7, 2, 3.5, 5])
   it('pearson相关指数', () => {
     assertLog(rst4.toFixed(3), '0.931')
@@ -652,21 +539,12 @@ describe('Math相关系数函数单元测试', () => {
   it('spearman相关指数 5个人的视觉[170, 150, 210, 180, 160]、听觉反应时[180, 165, 190, 168, 172]（单位：毫秒）两个变量排序后计算', () => {
     assertLog(rst6.toFixed(1), '0.7')
   })
-  const rst6_1 = $.math.spearman(
-    [5.05, 6.75, 3.21, 2.66],
-    [1.65, 26.5, -5.93, 7.96]
-  )
+  const rst6_1 = $.math.spearman([5.05, 6.75, 3.21, 2.66], [1.65, 26.5, -5.93, 7.96])
   it('spearman相关指数 [5.05, 6.75, 3.21, 2.66], [1.65, 26.5, -5.93, 7.96]', () => {
     assertLog(rst6_1.toFixed(1), '0.4')
   })
-  const rst7 = $.math.kendall(
-    [0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55],
-    [1, 0.95, 0.95, 0.9, 0.85, 0.7, 0.65, 0.6, 0.55, 0.42]
-  )
-  const rst8 = $.math.kendall(
-    [1, 2, 3, 4, 5, 6, 7, 8],
-    [3, 4, 1, 2, 5, 7, 8, 6]
-  ) // 身高体重排名
+  const rst7 = $.math.kendall([0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55], [1, 0.95, 0.95, 0.9, 0.85, 0.7, 0.65, 0.6, 0.55, 0.42])
+  const rst8 = $.math.kendall([1, 2, 3, 4, 5, 6, 7, 8], [3, 4, 1, 2, 5, 7, 8, 6]) // 身高体重排名
   it('kendall 类似pearson 两个随机变量 可以分开获取', () => {
     assertLog(rst7.toFixed(7), '-0.9888265')
     assertLog(rst8.toFixed(3), '0.571')
@@ -674,30 +552,18 @@ describe('Math相关系数函数单元测试', () => {
 })
 describe('Math偏度和3个峰度函数单元测试', () => {
   const a = [53, 61, 49, 66, 78, 47]
-  it('skew 偏度 同excel skew 0.7826325504212567', () =>
-    assertLog($.math.skew(a).toFixed(6), '0.782633'))
-  it('kurt1 峰度/峰态系数 pandas模块 Estimators of population kurtosis人口峰度 -0.2631655441038472', () =>
-    assertLog($.math.kurt1(a), -0.2631655441038472))
-  it('kurt2 >3 =3 <3 峰度/峰态系数 1.7105241302560437', () =>
-    assertLog($.math.kurt2(a), 1.7105241302560437))
-  it('kurt wiki上的算法 峰度/峰态系数 -0.9473710436927472', () =>
-    assertLog($.math.kurt3(a), -0.9473710436927472))
+  it('skew 偏度 同excel skew 0.7826325504212567', () => assertLog($.math.skew(a).toFixed(6), '0.782633'))
+  it('kurt1 峰度/峰态系数 pandas模块 Estimators of population kurtosis人口峰度 -0.2631655441038472', () => assertLog($.math.kurt1(a), -0.2631655441038472))
+  it('kurt2 >3 =3 <3 峰度/峰态系数 1.7105241302560437', () => assertLog($.math.kurt2(a), 1.7105241302560437))
+  it('kurt wiki上的算法 峰度/峰态系数 -0.9473710436927472', () => assertLog($.math.kurt3(a), -0.9473710436927472))
 })
 
 describe('组合数学相关函数', () => {
   it('arrangement全排列', () => assertLog($.math.arrangement(40, 4), 2193360))
   it('combination组合', () => assertLog($.math.combination(13, 4), 715))
   it('hCombin带回放的组合', () => assertLog($.math.hCombin(10, 4), 715))
-  it('arrangeList数组枚举型排列输出', () =>
-    assertLog(
-      JSON.stringify($.math.arrangeList(['x', 'y', 'z'], 3).map(x => x.join())),
-      '["x,y,z","x,z,y","y,x,z","y,z,x","z,x,y","z,y,x"]'
-    ))
-  it('combinList数组枚举型排列输出', () =>
-    assertLog(
-      JSON.stringify($.math.combinList(['x', 'y', 'z'], 3).map(x => x.join())),
-      '["x,y,z"]'
-    ))
+  it('arrangeList数组枚举型排列输出', () => assertLog(JSON.stringify($.math.arrangeList(['x', 'y', 'z'], 3).map(x => x.join())), '["x,y,z","x,z,y","y,x,z","y,z,x","z,x,y","z,y,x"]'))
+  it('combinList数组枚举型排列输出', () => assertLog(JSON.stringify($.math.combinList(['x', 'y', 'z'], 3).map(x => x.join())), '["x,y,z"]'))
   it('allList数组下标形式全组合排列输出', () =>
     assertLog(
       JSON.stringify($.math.allList(3, 3).map(x => x.join())),
@@ -722,10 +588,7 @@ describe('hash函数', () => {
   const r = $.math.murmurHash('你好,世界!')
   it('murmurHash', () => {
     assertLog(r, 1008576884)
-    assertLog(
-      r.toString(2).fillStr('0', 32, -1),
-      '00111100000111011010100101110100'
-    )
+    assertLog(r.toString(2).fillStr('0', 32, -1), '00111100000111011010100101110100')
   })
 })
 describe('傅里叶分析', () => {
@@ -741,16 +604,20 @@ describe('自相关函数', () => {
 })
 describe('stat', () => {
   it('stat', () => {
-    assertLog(JSON.stringify($.math.stat([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])), JSON.stringify({
-      len: 10,
-      xmean: 5.5,
-      ymean: 5.5,
-      sumx: 82.5,
-      sumy: 82.5,
-      sumxy: 82.5
-    }))
-    assertLog(JSON.stringify($.math.stat([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 100, 100)), JSON.stringify(
-      { len: 10, xmean: 100, ymean: 100, sumx: 89385, sumy: 89385, sumxy: 89385 }
-    ))
+    assertLog(
+      JSON.stringify($.math.stat([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])),
+      JSON.stringify({
+        len: 10,
+        xmean: 5.5,
+        ymean: 5.5,
+        sumx: 82.5,
+        sumy: 82.5,
+        sumxy: 82.5
+      })
+    )
+    assertLog(
+      JSON.stringify($.math.stat([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 100, 100)),
+      JSON.stringify({ len: 10, xmean: 100, ymean: 100, sumx: 89385, sumy: 89385, sumxy: 89385 })
+    )
   })
 })

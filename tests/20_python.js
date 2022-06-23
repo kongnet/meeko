@@ -40,7 +40,7 @@ describe('类python操作:np', () => {
     assertLog($.math.np.arange(1, 4).join(','), '1,2,3')
   })
   it('np.arange3', () => {
-    assertLog($.math.np.arange(1, 4, 2).join(','), '1,3,5')
+    assertLog($.math.np.arange(1, 4, 2).join(','), '1,3')
   })
   it('np.arange4', () => {
     assertLog($.math.np.arange().join(','), '0')
@@ -114,7 +114,7 @@ describe('类python操作:stats', () => {
     assertLog(
       $.math.stats.norm
         .pdf(
-          $.math.np.arange(-50, -40, 10).map(x => x / 10),
+          $.math.np.arange(-50, 50, 10).map(x => x / 10),
           0,
           1
         )
