@@ -1,3 +1,12 @@
+## [1.8.275](https://github.com/kongnet/meeko/compare/v1.8.274...v1.8.275) (2022-06-23)
+
+
+### :ambulance:
+
+* (修复genRange setp问题) ([708c914](https://github.com/kongnet/meeko/commit/708c91483c74dbb9a5ca867e323253e329401493))
+
+
+
 ## [1.8.274](https://github.com/kongnet/meeko/compare/v1.8.273...v1.8.274) (2022-06-21)
 
 
