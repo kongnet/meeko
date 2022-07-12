@@ -1,3 +1,12 @@
+## [1.8.276](https://github.com/kongnet/meeko/compare/v1.8.275...v1.8.276) (2022-07-05)
+
+
+### :sparkles:
+
+* 增加math.fi类 ([6360ed5](https://github.com/kongnet/meeko/commit/6360ed5b3cf0b759e02cf371f018b45b16462cab))
+
+
+
 ## [1.8.275](https://github.com/kongnet/meeko/compare/v1.8.274...v1.8.275) (2022-06-23)
 
 
