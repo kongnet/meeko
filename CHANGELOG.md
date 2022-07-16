@@ -1,3 +1,22 @@
+## [1.8.279](https://github.com/kongnet/meeko/compare/v1.8.278...v1.8.279) (2022-07-13)
+
+
+
+
+## [1.8.278](https://github.com/kongnet/meeko/compare/v1.8.277...v1.8.278) (2022-07-12)
+
+
+
+
+## [1.8.277](https://github.com/kongnet/meeko/compare/v1.8.276...v1.8.277) (2022-07-12)
+
+
+### :sparkles:
+
+* 增加np.diff np.log函数 ([af835f2](https://github.com/kongnet/meeko/commit/af835f2c0b197ae2295b121fe85d5c888ee071fa))
+
+
+
 ## [1.8.276](https://github.com/kongnet/meeko/compare/v1.8.275...v1.8.276) (2022-07-05)
 
 
