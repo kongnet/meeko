@@ -1,3 +1,17 @@
+## [1.8.281](https://github.com/kongnet/meeko/compare/v1.8.280...v1.8.281) (2022-07-16)
+
+
+
+
+## [1.8.280](https://github.com/kongnet/meeko/compare/v1.8.279...v1.8.280) (2022-07-16)
+
+
+### :bug:
+
+* 四分位数修正 ([987d8f5](https://github.com/kongnet/meeko/commit/987d8f565ce0f50d48224e69f1f5abda07520004))
+
+
+
 ## [1.8.279](https://github.com/kongnet/meeko/compare/v1.8.278...v1.8.279) (2022-07-13)
 
 
