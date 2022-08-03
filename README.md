@@ -24,6 +24,14 @@
 npm i meeko
 ```
 
+## Meeko 文档生成
+
+```js
+npm run jsdoc
+```
+
+> jsdoc 对 BigInt 解析存在问题,我的修复方案 https://github.com/jsdoc/jsdoc/issues/1918#issuecomment-1104054464
+
 ## Nodejs 用法
 
 ```js

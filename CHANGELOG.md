@@ -1,3 +1,12 @@
+## [1.8.282](https://github.com/kongnet/meeko/compare/v1.8.281...v1.8.282) (2022-08-02)
+
+
+### :sparkles:
+
+* 轮盘赌算法加入tools ([9f505b8](https://github.com/kongnet/meeko/commit/9f505b89f47811dbfd0d2ec123e138095e28d977))
+
+
+
 ## [1.8.281](https://github.com/kongnet/meeko/compare/v1.8.280...v1.8.281) (2022-07-16)
 
 
