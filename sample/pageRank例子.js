@@ -49,12 +49,11 @@ function pageRank (transMat, initVector, damping = 0.85, iter = 100) {
       Array.from({ length: len }, x => 1 / len) // 1/N
     ])
   }
+  console.log('initVector', initVector)
   let r = $.math.mat.mul(transMat, initVector)
   // 高斯-塞德尔迭代法
   for (let i = 0; i < iter; i++) {
-    const weightNew = $.math.mat
-      .mul(transMat, r)
-      .map(x => [(1 - damping) / len + damping * x[0]])
+    const weightNew = $.math.mat.mul(transMat, r).map(x => [(1 - damping) / len + damping * x[0]])
     // 迭代，收敛到阀值停止
     if (Math.abs(weightNew[0][0] - r[0][0]) < esp) {
       return { iter: i, r: r, isMarkov: true }
@@ -75,13 +74,10 @@ function createNetwork (edges) {
   }
   const mat = $.math.mat.zero(len, len)
   for (let i = 0; i < edges.length; i++) {
-    const [colNum, rowNum] = [
-      strIndex2num(edges[i][0]) - 1,
-      strIndex2num(edges[i][1]) - 1
-    ]
+    const [colNum, rowNum] = [strIndex2num(edges[i][0]) - 1, strIndex2num(edges[i][1]) - 1]
     mat[rowNum][colNum] = 1 / colCount[edges[i][0]] // 1/列计数 作为初始值
   }
-  // console.log(mat)
+  console.log('Init:', mat)
   return mat
 }
 
@@ -99,7 +95,4 @@ const edges = [
 const pageRankArr = pageRank(createNetwork(edges)).r
 
 console.log('pageRank:', pageRankArr)
-console.log(
-  'maxValueNode:',
-  num2IndexStr(+$.math.findMax(pageRankArr.flatten()).tag + 1)
-)
+console.log('maxValueNode:', num2IndexStr(+$.math.findMax(pageRankArr.flatten()).tag + 1))

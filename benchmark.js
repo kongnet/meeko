@@ -591,3 +591,19 @@ const UUIDGen = () => ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =
 $.benchmark(genSnowFlake, 'sky SnowFlake函数', 100000)
 $.benchmark(genUUID, 'sky gUID函数', 100000)
 $.benchmark(UUIDGen, 'UUIDGen', 10000)
+
+logTitle('生成序列比较')
+const arr1 = function () {
+  return new Array(9).fill(0).map((item, index) => index + 1)
+}
+
+const arr2 = function () {
+  return Array.from(Array(9), (v, k) => k + 1)
+}
+
+const arr3 = function () {
+  return [...Array(9).keys()]
+}
+$.benchmark(arr1, 'arr1', 100000)
+$.benchmark(arr2, 'arr2', 100000)
+$.benchmark(arr3, 'arr3', 100000)
