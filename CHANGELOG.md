@@ -1,3 +1,12 @@
+## [1.8.284](https://github.com/kongnet/meeko/compare/v1.8.283...v1.8.284) (2022-09-02)
+
+
+### :zap:
+
+* genRange方式修改 ([f00ee21](https://github.com/kongnet/meeko/commit/f00ee212cd2db4ff25ca3a6ca861db61451d377f))
+
+
+
 ## [1.8.283](https://github.com/kongnet/meeko/compare/v1.8.282...v1.8.283) (2022-08-03)
 
 
