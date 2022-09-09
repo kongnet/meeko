@@ -570,6 +570,12 @@ describe('obj2Url', function () {
     assertLog('a=1&b=2&c=x', $.tools.obj2Url({ a: 1, b: 2, c: 'x' }))
   })
 })
+describe('hash digest', function () {
+  it('hash md5', function () {
+    assertLog('6a204bd89f3c8348afd5c77c717a097a', $.tools.hash('asdfasdf', 'md5', 'hex'))
+  })
+})
+
 describe('objByString', function () {
   it('objByString', function () {
     const a = [{ x: { y: [1, 2] } }]
