@@ -1,3 +1,12 @@
+## [1.8.287](https://github.com/kongnet/meeko/compare/v1.8.286...v1.8.287) (2022-10-21)
+
+
+### :zap:
+
+* 表格title说明字段，用@#@分割 ([ab1c73b](https://github.com/kongnet/meeko/commit/ab1c73b60fa908723e968eaad23f542a2a62fc48))
+
+
+
 ## [1.8.286](https://github.com/kongnet/meeko/compare/v1.8.285...v1.8.286) (2022-09-09)
 
 
