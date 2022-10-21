@@ -1,3 +1,12 @@
+## [1.8.286](https://github.com/kongnet/meeko/compare/v1.8.285...v1.8.286) (2022-09-09)
+
+
+### :zap:
+
+* hash快捷方法$.tools.hash ([bcd9ed4](https://github.com/kongnet/meeko/commit/bcd9ed4c661b72bb4a5f57cb1aaa9581599ca4d6))
+
+
+
 ## [1.8.285](https://github.com/kongnet/meeko/compare/v1.8.284...v1.8.285) (2022-09-07)
 
 
