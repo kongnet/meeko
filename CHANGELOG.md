@@ -1,3 +1,12 @@
+## [1.8.289](https://github.com/kongnet/meeko/compare/v1.8.288...v1.8.289) (2022-10-28)
+
+
+### :zap:
+
+* groupBy支持对聚合列做函数预处理 ([fcec331](https://github.com/kongnet/meeko/commit/fcec3315b77af1f44c47058a6a01577f786c10a1))
+
+
+
 ## [1.8.288](https://github.com/kongnet/meeko/compare/v1.8.287...v1.8.288) (2022-10-21)
 
 

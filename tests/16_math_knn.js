@@ -1,5 +1,3 @@
-/* global describe */
-/* global it */
 'use strict'
 const $ = require('../index')
 const assert = require('assert')
@@ -39,14 +37,8 @@ describe('KNN', () => {
     })
 
     knn.set(movieDim, movieTag, 4, 'euclideans') // 先学习
-    assertLog(
-      JSON.stringify(knn.predict([23, 3, 17])),
-      '{"result":{"tag":"动作片","maxValue":2},"whole":{"动作片":2,"喜剧片":2},"algorithm":"euclideans"}'
-    ) // 分类 唐人街探案: [23, 3, 17,???] 属于什么类型电影
+    assertLog(JSON.stringify(knn.predict([23, 3, 17])), '{"result":{"tag":"动作片","maxValue":2},"whole":{"动作片":2,"喜剧片":2},"algorithm":"euclideans"}') // 分类 唐人街探案: [23, 3, 17,???] 属于什么类型电影
     knn.set(movieDim, movieTag, 3, 'euclidean') // 先学习
-    assertLog(
-      JSON.stringify(knn.predict([23, 3, 17])),
-      '{"result":{"tag":"喜剧片","maxValue":2},"whole":{"动作片":1,"喜剧片":2},"algorithm":"euclidean"}'
-    ) // 分类 唐人街探案: [23, 3, 17,???] 属于什么类型电影
+    assertLog(JSON.stringify(knn.predict([23, 3, 17])), '{"result":{"tag":"喜剧片","maxValue":2},"whole":{"动作片":1,"喜剧片":2},"algorithm":"euclidean"}') // 分类 唐人街探案: [23, 3, 17,???] 属于什么类型电影
   })
 })

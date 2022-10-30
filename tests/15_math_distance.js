@@ -1,5 +1,3 @@
-/* global describe */
-/* global it */
 'use strict'
 const $ = require('../index')
 const assert = require('assert')
@@ -9,16 +7,10 @@ const assertLog = function () {
 }
 describe('距离/相似度函数', () => {
   it('Euclidean Distance(欧式距离)', () => {
-    assertLog(
-      $.math.dist.euclidean([1, 1, 2, 2], [2, 2, 4, 4]),
-      3.1622776601683795
-    )
+    assertLog($.math.dist.euclidean([1, 1, 2, 2], [2, 2, 4, 4]), 3.1622776601683795)
   })
   it('Standardized Euclidean Distance(标准化欧氏距离)', () => {
-    assertLog(
-      $.math.dist.euclideans([1, 2, 1, 2], [3, 3, 3, 4]),
-      0.756109193752849
-    )
+    assertLog($.math.dist.euclideans([1, 2, 1, 2], [3, 3, 3, 4]), 0.756109193752849)
   })
   it('ManhattanDistance(曼哈顿距离)', () => {
     assertLog($.math.dist.manhattan([1, 1, 2, 2], [2, 2, 4, 4]), 6)
@@ -43,10 +35,7 @@ describe('距离/相似度函数', () => {
     assertLog($.math.dist.lance([1, 1, 2, 2], [2, 2, 4, 4]), 1)
   })
   it('LevenshteinDistance(Levenshtein距离)', () => {
-    assertLog(
-      $.math.dist.levenshtein('我是一只小小鸟', '我是一个小小狗').matchRate,
-      0.7142857142857143
-    )
+    assertLog($.math.dist.levenshtein('我是一只小小鸟', '我是一个小小狗').matchRate, 0.7142857142857143)
   })
   it('editDistance(编辑距离)', () => {
     assertLog($.math.dist.edit('我是一只小小鸟', '').ld, 7)
@@ -59,22 +48,13 @@ describe('距离/相似度函数', () => {
     assertLog($.math.dist.hamming([1, 1, 1, 1], [3, 4, 3, 4]), 4)
   })
   it('杰卡德相似系数', () => {
-    assertLog(
-      $.math.dist.jaccardCoefficient([1, 2, 3, 8, 9, 0], [2, 3, 4, 0, 0, 0]),
-      0.42857142857142855
-    )
+    assertLog($.math.dist.jaccardCoefficient([1, 2, 3, 8, 9, 0], [2, 3, 4, 0, 0, 0]), 0.42857142857142855)
   })
   it('杰卡德距离', () => {
-    assertLog(
-      $.math.dist.jaccardDistance([1, 2, 3, 8, 9, 0], [1, 3, 4, 3, 0, 0]),
-      0.5714285714285714
-    )
+    assertLog($.math.dist.jaccardDistance([1, 2, 3, 8, 9, 0], [1, 3, 4, 3, 0, 0]), 0.5714285714285714)
   })
   it('Dice系数', () => {
-    assertLog(
-      $.math.dist.diceCoefficient([1, 2, 3, 8, 9, 0], [1, 3, 4, 3, 0, 0]),
-      0.5
-    )
+    assertLog($.math.dist.diceCoefficient([1, 2, 3, 8, 9, 0], [1, 3, 4, 3, 0, 0]), 0.5)
   })
 
   it('Cos(Cosine 余弦)相似度', () => {

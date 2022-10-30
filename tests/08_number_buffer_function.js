@@ -1,5 +1,3 @@
-/* global describe */
-/* global it */
 'use strict'
 const $ = require('../index')
 const assert = require('assert')
@@ -9,8 +7,8 @@ const assertLog = function () {
 }
 describe('Number原型扩展的单元测试', function () {
   it('round', function () {
-    assertLog(1.123457, 1.123456789.round(6))
-    assertLog(1, 1.123456789.round(0))
+    assertLog(1.123457, (1.123456789).round(6))
+    assertLog(1, (1.123456789).round(0))
     assertLog(1, (1.123456789).round(0))
     assertLog(1, (1).round(0))
   })

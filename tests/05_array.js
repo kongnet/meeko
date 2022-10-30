@@ -1,5 +1,3 @@
-/* global describe */
-/* global it */
 'use strict'
 const $ = require('../index')
 const assert = require('assert')
@@ -18,10 +16,7 @@ describe('Array原型扩展的单元测试', function () {
   it('indexOfAll', function () {
     assertLog(true, $.tools.equals([0, 6], [1, 2, 3, 4, 5, 6, 1].indexOfAll(1)))
     assertLog(true, $.tools.equals([], [1, 2, 3, 4, 5, 6, 1].indexOfAll(11)))
-    assertLog(
-      true,
-      $.tools.equals([6], [1, 2, 3, 4, 5, 6, '2'].indexOfAll('2'))
-    )
+    assertLog(true, $.tools.equals([6], [1, 2, 3, 4, 5, 6, '2'].indexOfAll('2')))
   })
   it('pick', function () {
     assertLog([1].pick(), 1)
@@ -35,18 +30,12 @@ describe('Array原型扩展的单元测试', function () {
     assertLog(a[0] !== b[0], true)
   })
   it('count', function () {
-    assertLog(
-      JSON.stringify(['A', 'B', 'B', 'C', 'A', 'D'].count()),
-      '{"A":2,"B":2,"C":1,"D":1}'
-    )
+    assertLog(JSON.stringify(['A', 'B', 'B', 'C', 'A', 'D'].count()), '{"A":2,"B":2,"C":1,"D":1}')
     assertLog(
       JSON.stringify(['A', 'B', 'B', 'C', 'A', 'D'].countAdv()),
       '[{"k":"A","v":2,"w":0.3333333333333333},{"k":"B","v":2,"w":0.3333333333333333},{"k":"C","v":1,"w":0.16666666666666666},{"k":"D","v":1,"w":0.16666666666666666}]'
     )
-    assertLog(
-      true,
-      $.tools.equals([5.2, 4.2, 5.3].countBy(Math.floor), { 5: 2, 4: 1 })
-    )
+    assertLog(true, $.tools.equals([5.2, 4.2, 5.3].countBy(Math.floor), { 5: 2, 4: 1 }))
   })
   it('mode', function () {
     assertLog([1, 1, 1, 2, 3].mode().join(''), '1')
@@ -111,99 +100,21 @@ describe('Array原型扩展的单元测试', function () {
     assertLog(r, true)
   })
   it('unique', function () {
-    const r = [
-      undefined,
-      null,
-      1,
-      1,
-      '1',
-      '1',
-      null,
-      undefined,
-      NaN,
-      NaN
-    ].unique()
+    const r = [undefined, null, 1, 1, '1', '1', null, undefined, NaN, NaN].unique()
     assertLog(r.equals([undefined, null, 1, '1', NaN]), true) // 用JSON.stringify 会错误
   })
   it('intersect', function () {
-    let r = [
-      undefined,
-      true,
-      null,
-      1,
-      1,
-      false,
-      '1',
-      '1',
-      null,
-      'undefined',
-      NaN,
-      NaN
-    ].intersect([
-      1,
-      '1',
-      'undefined',
-      undefined,
-      2,
-      '5',
-      true,
-      null,
-      false,
-      NaN
-    ])
-    assertLog(
-      r.equals([undefined, true, null, 1, false, '1', 'undefined', NaN]),
-      true
-    )
-    r = [
-      undefined,
-      true,
-      null,
-      1,
-      1,
-      false,
-      '1',
-      '1',
-      null,
-      'undefined',
-      NaN,
-      NaN
-    ].intersect()
+    let r = [undefined, true, null, 1, 1, false, '1', '1', null, 'undefined', NaN, NaN].intersect([1, '1', 'undefined', undefined, 2, '5', true, null, false, NaN])
+    assertLog(r.equals([undefined, true, null, 1, false, '1', 'undefined', NaN]), true)
+    r = [undefined, true, null, 1, 1, false, '1', '1', null, 'undefined', NaN, NaN].intersect()
     assertLog(r.equals([]), true)
     r = [1, 2, 3].intersect([3, 4, 5])
     assertLog(r.equals([3]), true)
   })
   it('union', function () {
-    let r = [
-      undefined,
-      true,
-      null,
-      1,
-      1,
-      '1',
-      '1',
-      null,
-      'undefined',
-      NaN,
-      NaN
-    ].union([1, '1', 'undefined', undefined, 2, '5', true, null])
-    assertLog(
-      r.equals([undefined, true, null, 1, '1', 'undefined', NaN, 2, '5']),
-      true
-    )
-    r = [
-      undefined,
-      true,
-      null,
-      1,
-      1,
-      '1',
-      '1',
-      null,
-      'undefined',
-      NaN,
-      NaN
-    ].union()
+    let r = [undefined, true, null, 1, 1, '1', '1', null, 'undefined', NaN, NaN].union([1, '1', 'undefined', undefined, 2, '5', true, null])
+    assertLog(r.equals([undefined, true, null, 1, '1', 'undefined', NaN, 2, '5']), true)
+    r = [undefined, true, null, 1, 1, '1', '1', null, 'undefined', NaN, NaN].union()
     assertLog(r.equals([undefined, true, null, 1, '1', 'undefined', NaN]), true)
     r = [1, 2, 3].union([3, 4, 5])
     assertLog(r.equals([1, 2, 3, 4, 5]), true)
@@ -215,73 +126,17 @@ describe('Array原型扩展的单元测试', function () {
     assertLog(r.equals([5]), true)
     r = [2, 3, 5].except()
     assertLog(r.equals([2, 3, 5]), true)
-    r = [
-      undefined,
-      true,
-      null,
-      1,
-      1,
-      '1',
-      '1',
-      null,
-      'undefined',
-      NaN,
-      NaN
-    ].except([1, '1', 'undefined', undefined, 2, '5', true, null])
+    r = [undefined, true, null, 1, 1, '1', '1', null, 'undefined', NaN, NaN].except([1, '1', 'undefined', undefined, 2, '5', true, null])
     assertLog(r.equals([NaN]), true)
   })
   it('subset', function () {
-    let r = ['1', undefined, NaN, NaN].subset([
-      undefined,
-      null,
-      1,
-      1,
-      '1',
-      '1',
-      null,
-      undefined,
-      NaN,
-      NaN
-    ])
+    let r = ['1', undefined, NaN, NaN].subset([undefined, null, 1, 1, '1', '1', null, undefined, NaN, NaN])
     assertLog(r, true)
-    r = ['2', 2].subset([
-      undefined,
-      null,
-      1,
-      1,
-      '1',
-      '1',
-      null,
-      undefined,
-      NaN,
-      NaN
-    ])
+    r = ['2', 2].subset([undefined, null, 1, 1, '1', '1', null, undefined, NaN, NaN])
     assertLog(r, false)
-    r = ['1', null, 3, NaN].subset([
-      undefined,
-      null,
-      1,
-      1,
-      '1',
-      '1',
-      null,
-      undefined,
-      NaN,
-      NaN
-    ])
+    r = ['1', null, 3, NaN].subset([undefined, null, 1, 1, '1', '1', null, undefined, NaN, NaN])
     assertLog(r, false)
-    r = [undefined, null, NaN, undefined, undefined].subset([
-      undefined,
-      null,
-      1,
-      1,
-      '1',
-      '1',
-      null,
-      undefined,
-      NaN,
-      NaN
-    ])
+    r = [undefined, null, NaN, undefined, undefined].subset([undefined, null, 1, 1, '1', '1', null, undefined, NaN, NaN])
     assertLog(r, true)
   })
   it('mean', function () {

@@ -1,5 +1,3 @@
-/* global describe */
-/* global it */
 /* global $ */
 'use strict'
 const $ = require('../index')
@@ -17,6 +15,11 @@ describe('Date原型扩展的单元测试', function () {
     assertLog(true, d2.isLeap())
     assertLog(false, d3.isLeap())
   })
+  it('getQuarter', function () {
+    assertLog(4, d1.getQuarter())
+    assertLog(1, d2.getQuarter())
+  })
+
   it('getWeek', function () {
     assertLog(53, d1.getWeek())
     assertLog(1, d2.getWeek())
@@ -125,10 +128,7 @@ describe('String原型扩展的单元测试', function () {
   })
   it('toDate', function () {
     assertLog(new Date('2019-01-01').date2Str(), '20190101'.toDate().date2Str())
-    assertLog(
-      new Date('2019-02-02 10:32:11').date2Str(),
-      '2019-02-02 10:32:11'.toDate().date2Str()
-    )
+    assertLog(new Date('2019-02-02 10:32:11').date2Str(), '2019-02-02 10:32:11'.toDate().date2Str())
     assertLog(-1, '20190155'.toDate())
     assertLog(-1, 'sadfasf'.toDate())
   })

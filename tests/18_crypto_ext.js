@@ -1,5 +1,3 @@
-/* global describe */
-/* global it */
 'use strict'
 const $ = require('../index')
 const assert = require('assert')

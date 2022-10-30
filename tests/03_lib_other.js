@@ -1,5 +1,3 @@
-/* global describe */
-/* global it */
 /* global BigInt */
 'use strict'
 const $ = require('../index')

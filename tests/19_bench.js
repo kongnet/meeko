@@ -1,5 +1,3 @@
-/* global describe */
-/* global it */
 'use strict'
 const $ = require('../index')
 const assert = require('assert')
@@ -46,20 +44,33 @@ function format_with_mod (number, p = 3) {
   return (sign < 0 ? '-' : '') + r
 }
 
-const testSuite = [{
-  name: '千分位显示',
-  testArr: [
-    [function 原生 () {
-      return (123456789.123456789).toLocaleString()
-    }, '', 10],
-    [function 普通切割 () {
-      return thousand(123456789.123456789)
-    }, '', 10],
-    [function 数值取模法 () {
-      return format_with_mod(123456789.123456789)
-    }, '', 10]
-  ]
-}
+const testSuite = [
+  {
+    name: '千分位显示',
+    testArr: [
+      [
+        function 原生 () {
+          return (123456789.12345678).toLocaleString()
+        },
+        '',
+        10
+      ],
+      [
+        function 普通切割 () {
+          return thousand(123456789.12345678)
+        },
+        '',
+        10
+      ],
+      [
+        function 数值取模法 () {
+          return format_with_mod(123456789.12345678)
+        },
+        '',
+        10
+      ]
+    ]
+  }
 ]
 
 describe('bench测试', function () {

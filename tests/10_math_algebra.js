@@ -1,5 +1,3 @@
-/* global describe */
-/* global it */
 'use strict'
 const $ = require('../index')
 const assert = require('assert')
@@ -30,10 +28,7 @@ describe('代数函数测试', function () {
     it('gcdlcm因式分解', function () {
       assertLog($.math.gcd(10, 12), 2)
       assertLog($.math.lcm(10, 12), 60)
-      assertLog(
-        $.math.primeFactor(12345678912345).join('*'),
-        '3*5*43*2371*8072791'
-      )
+      assertLog($.math.primeFactor(12345678912345).join('*'), '3*5*43*2371*8072791')
       assertLog($.math.primeFactor(1).join('*'), '1')
       assertLog($.math.primeFactor(0).join('*'), '0')
       assertLog($.math.primeFactor(2).join('*'), '2')
