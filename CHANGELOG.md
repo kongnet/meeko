@@ -1,3 +1,12 @@
+## [1.8.290](https://github.com/kongnet/meeko/compare/v1.8.289...v1.8.290) (2022-10-30)
+
+
+### :sparkles:
+
+* 增加获取日期那个季度函数 ([b01f02b](https://github.com/kongnet/meeko/commit/b01f02bfe0fba1bf8c05247a69709ec71ae88563))
+
+
+
 ## [1.8.289](https://github.com/kongnet/meeko/compare/v1.8.288...v1.8.289) (2022-10-28)
 
 
