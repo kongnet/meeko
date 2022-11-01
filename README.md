@@ -32,6 +32,10 @@ npm run jsdoc
 
 > jsdoc 对 BigInt 解析存在问题,我的修复方案 https://github.com/jsdoc/jsdoc/issues/1918#issuecomment-1104054464
 
+## 整体架构
+
+![architecture](https://github.com/kongnet/meeko/raw/master/screenShot/architecture.png)
+
 ## Nodejs 用法
 
 ```js
@@ -40,7 +44,7 @@ const $ = require('meeko')
 $.math.fourierAnalysis([1, 2, 1, 2, 1, 2, 1, 2])
 ```
 
-## Browser 用法
+## Browser 浏览器用法
 
 ```js
 import * as $ from 'meeko'

@@ -1,3 +1,12 @@
+## [1.8.291](https://github.com/kongnet/meeko/compare/v1.8.290...v1.8.291) (2022-10-31)
+
+
+### :zap:
+
+* 增强groupBy 可以取到每行item ([c027215](https://github.com/kongnet/meeko/commit/c027215260239c0d44be541b5ca2d5e01aa0325d))
+
+
+
 ## [1.8.290](https://github.com/kongnet/meeko/compare/v1.8.289...v1.8.290) (2022-10-30)
 
 
