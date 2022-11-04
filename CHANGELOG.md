@@ -1,3 +1,12 @@
+## [1.8.293](https://github.com/kongnet/meeko/compare/v1.8.292...v1.8.293) (2022-11-04)
+
+
+### :zap:
+
+* 增加UTC format函数 ([1c51d2f](https://github.com/kongnet/meeko/commit/1c51d2f72b39100b7dcc9c4d546b308e1686b2ba))
+
+
+
 ## [1.8.292](https://github.com/kongnet/meeko/compare/v1.8.291...v1.8.292) (2022-11-01)
 
 
