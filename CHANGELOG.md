@@ -1,3 +1,12 @@
+## [1.8.300](https://github.com/kongnet/meeko/compare/v1.8.299...v1.8.300) (2023-06-19)
+
+
+### :sparkles:
+
+* prettyBytes间隔可以调 ([e487433](https://github.com/kongnet/meeko/commit/e48743327fc79c8178dc759542de3fd8721c685f))
+
+
+
 ## [1.8.299](https://github.com/kongnet/meeko/compare/v1.8.298...v1.8.299) (2023-04-23)
 
 

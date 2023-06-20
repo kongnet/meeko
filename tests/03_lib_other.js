@@ -73,6 +73,16 @@ describe('其他函数的单元测试', function () {
   it('wait', async function () {
     assertLog(undefined, await $.wait(10))
   })
+  it('race', async function () {
+    const step1 = async (t, a) => {
+      await $.wait(t)
+      return [200, 'ok ' + a]
+    }
+    let r = await $.tools.race(step1(1, 'x'), 5) // 不超时
+    assertLog(r[0], 200)
+    r = await $.tools.race(step1(5, 'x'), 2) //超时
+    assertLog(r[0], 500)
+  })
   it('ext', function () {
     assertLog(null, $.ext('', ''))
   })
@@ -180,12 +190,7 @@ describe('模板引擎单元测试', function () {
     assertLog('<div></div>', $.tpl('<{{d.tag}}></{{d.tag}}>').render({ tag: 'div' }))
     assertLog('<di&amp;v></di&v>', $.tpl('<{{=d.tag}}></{{d.tag}}>').render({ tag: 'di&v' })) // =转义html标记
     assertLog('<></>', $.tpl('<{{=d.tag}}></{{d.tag}}>').render({ tag: '' })) // =转义html标记
-    assertLog(
-      true,
-      $.tpl('<{{# 1+1 }></{{d.tag}}>')
-        .render({ tag: 'div' })
-        .indexOf('Laytpl Error') >= 0
-    ) // 模板结构不对
+    assertLog(true, $.tpl('<{{# 1+1 }></{{d.tag}}>').render({ tag: 'div' }).indexOf('Laytpl Error') >= 0) // 模板结构不对
   })
 })
 describe('判断类型函数单元测试', function () {
