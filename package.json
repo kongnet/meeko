@@ -101,7 +101,8 @@
       "mocha": true
     },
     "globals": {
-      "angular": true
+      "angular": true,
+      "$": true
     },
     "rules": {
       "no-unused-vars": 1,

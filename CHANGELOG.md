@@ -1,3 +1,12 @@
+## [1.8.301](https://github.com/kongnet/meeko/compare/v1.8.300...v1.8.301) (2023-06-20)
+
+
+### :sparkles:
+
+* 增加$.tools.race方法 ([59c155b](https://github.com/kongnet/meeko/commit/59c155b592f8a197fa6cf39aef51679074fa65d3))
+
+
+
 ## [1.8.300](https://github.com/kongnet/meeko/compare/v1.8.299...v1.8.300) (2023-06-19)
 
 
