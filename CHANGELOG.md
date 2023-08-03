@@ -1,3 +1,12 @@
+## [1.8.302](https://github.com/kongnet/meeko/compare/v1.8.301...v1.8.302) (2023-07-13)
+
+
+### :sparkles:
+
+* 增加时序清洗函数 ([60f4100](https://github.com/kongnet/meeko/commit/60f410029ef02fe0818895160fd421a3b5002db2))
+
+
+
 ## [1.8.301](https://github.com/kongnet/meeko/compare/v1.8.300...v1.8.301) (2023-06-20)
 
 
