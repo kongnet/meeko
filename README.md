@@ -147,6 +147,46 @@ let $ = require('meeko')
 - 22 向量化算子
 - 23 时间序列的滞后值
 
+## 任意一元整数次方多项式求根 复数域 Root of a Polynomial
+
+```javascript
+Polynomial: x^3-3*x^2+2*x
+Root:
+x0: 0
+x1: 1.000000
+x2: 2.000000
+
+Polynomial: 0.2*x^3+x^2+0.3*x-0.5
+Root:
+x0: 0.549510
+x1: -1.000000
+x2: -4.549510
+
+Polynomial: x^2+1
+Root:
+x0: 0 +1.000000i
+x1: 0 -1.000000i
+
+Polynomial: x^3-1
+Root:
+x0: -0.500000 +0.866025i
+x1: -0.500000 -0.866025i
+x2: 1.000000
+
+Polynomial: 3.13*x^2-2.21*x+5.99
+Root:
+x0: -0.353035 +1.337574i
+x1: -0.353035 -1.337574i
+
+Polynomial: x^5-5*x^3+5*x-1
+Root:
+x0: -1.827091
+x1: -1.338261
+x2: 1.000000
+x3: 0.209057
+x4: 1.956295
+```
+
 ## 数学函数 Math function
 
 - _intersect (a = [])_ 交集
@@ -369,7 +409,7 @@ new $.Snowflake(workId, dataCenterId, sequence) // 工作进程id ，服务器id
 ## 常用用错概念 await 某实例的 then 函数
 
 ```javascript
-function thenFunc () {
+function thenFunc() {
   let me = this
   me.then = async function (resolve, reject) {
     await $.wait(2000)
@@ -381,7 +421,7 @@ function thenFunc () {
   return me
 }
 
-async function init () {
+async function init() {
   try {
     let r = new thenFunc()
     await r
@@ -422,9 +462,9 @@ console.log(
  * 胜利概率 1/2 成功 失败
  * 目标 大于连续三次胜利
  */
-function 获取大于连续三次胜利概率 (测试次数 = 10000) {
+function 获取大于连续三次胜利概率(测试次数 = 10000) {
   let 测试通过 = 0
-  function 玩一天 () {
+  function 玩一天() {
     胜利次数 = 0
     for (let i = 0; i < 10; i++) {
       if (成功吗()) {
@@ -438,11 +478,11 @@ function 获取大于连续三次胜利概率 (测试次数 = 10000) {
   return 测试通过 / 测试次数
 }
 
-function 成功吗 () {
+function 成功吗() {
   return Math.random() > 0.5
 }
 
-function 单元测试__成功吗 () {
+function 单元测试__成功吗() {
   let 测试通过 = 0
   let 测试次数 = 1000
   for (let i = 0; i < 测试次数; i++) {
