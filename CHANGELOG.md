@@ -1,3 +1,12 @@
+## [1.8.304](https://github.com/kongnet/meeko/compare/v1.8.303...v1.8.304) (2023-08-04)
+
+
+### :sparkles:
+
+* 增加特征值计算 ([e78c31c](https://github.com/kongnet/meeko/commit/e78c31c0000ba6c547e1a5cf548fedbb87f22a39))
+
+
+
 ## [1.8.303](https://github.com/kongnet/meeko/compare/v1.8.302...v1.8.303) (2023-08-03)
 
 
