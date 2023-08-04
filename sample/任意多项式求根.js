@@ -86,6 +86,6 @@ function getRoot (expr) {
     console.log('x' + idx + ':', x ? x.toFixed(6) : '0', m3.imaginaryEigenvalues[idx] ? ('+' + m3.imaginaryEigenvalues[idx].toFixed(6)).replaceAll('+-', '-') + $.c.y('i') : '')
   })
 }
-expr.map(x => {
+expr.forEach(x => {
   getRoot(x)
 })
