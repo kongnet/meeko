@@ -1,3 +1,12 @@
+## [1.8.303](https://github.com/kongnet/meeko/compare/v1.8.302...v1.8.303) (2023-08-03)
+
+
+### :sparkles:
+
+* 增加matrix类的2个函数 ([07c3d5b](https://github.com/kongnet/meeko/commit/07c3d5b8af5ab70e453bedefd3746b96e73fe708))
+
+
+
 ## [1.8.302](https://github.com/kongnet/meeko/compare/v1.8.301...v1.8.302) (2023-07-13)
 
 
