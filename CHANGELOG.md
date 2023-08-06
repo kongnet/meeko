@@ -1,3 +1,12 @@
+## [1.8.310](https://github.com/kongnet/meeko/compare/v1.8.309...v1.8.310) (2023-08-06)
+
+
+### :sparkles:
+
+* 增加Matrix若干扩展 ([f5e4116](https://github.com/kongnet/meeko/commit/f5e41163fd9143067aae938888b1338bf33bbe89))
+
+
+
 ## [1.8.309](https://github.com/kongnet/meeko/compare/v1.8.298...v1.8.309) (2023-08-06)
 
 
