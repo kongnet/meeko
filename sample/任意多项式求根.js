@@ -1,5 +1,18 @@
 const $ = require('../index')
-let expr = ['x^3-3*x^2+2*x', '0.2*x^3+x^2+0.3*x-0.5', 'x^2+1', 'x^3-1', '3.13*x^2-2.21*x+5.99', 'x^5-5*x^3+5*x-1']
+let expr = [
+  'x^3-3*x^2+2*x',
+  '0.2*x^3+x^2+0.3*x-0.5',
+  'x^2+1',
+  'x^3-1',
+  '3.13*x^2-2.21*x+5.99',
+  'x^5-5*x^3+5*x-1',
+  'x^4+1',
+  'x^3-7*x+6',
+  'x^6+x^4+x^2-x-2',
+  '2*x^4+7*x^3-2*x^2-13*x+6',
+  'x^4-x^3-5*x^2-6*x-4',
+  'x^3+3*x^2-6*x-18'
+]
 let exprDv = '0.6*x^2+2*x+0.3'
 
 function approx (a, b) {
@@ -20,7 +33,7 @@ function expr2Cof (expr, symbol = 'x') {
   if (a[0] !== '-') {
     a.unshift('+')
   }
-  //   console.log(a)
+  // console.log(a)
 
   let cofObj = {}
   let maxPow = 0
@@ -34,10 +47,10 @@ function expr2Cof (expr, symbol = 'x') {
       maxPow = +item[1].split('^')[1] > maxPow ? item[1].split('^')[1] : maxPow
     } else {
       if (item.length === 1) {
-        cofObj['0'] = +(a[index * 2] + x)
+        cofObj['0'] = +(a[index * 2] + item[0])
       }
       if (item.length === 2) {
-        cofObj['1'] = +x.split('*')[0]
+        cofObj['1'] = +(a[index * 2] + (item[0].split('*')[0] || 1))
         maxPow = 1 > maxPow ? 1 : maxPow
       }
     }
@@ -55,6 +68,7 @@ function expr2Cof (expr, symbol = 'x') {
       cofArr.unshift(0)
     }
   }
+  // console.log(cofArr)
   return { cofArr, cofObj, cofStr: cofExprArr.join('+').replaceAll('+-', '-') }
 }
 function getRoot (expr) {

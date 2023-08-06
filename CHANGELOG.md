@@ -1,65 +1,13 @@
-## [1.8.307](https://github.com/kongnet/meeko/compare/v1.8.306...v1.8.307) (2023-08-04)
-
-
-
-
-## [1.8.306](https://github.com/kongnet/meeko/compare/v1.8.305...v1.8.306) (2023-08-04)
-
-
-
-
-## [1.8.305](https://github.com/kongnet/meeko/compare/v1.8.304...v1.8.305) (2023-08-04)
-
-
-
-
-## [1.8.304](https://github.com/kongnet/meeko/compare/v1.8.303...v1.8.304) (2023-08-04)
-
-
-### :sparkles:
-
-* 增加特征值计算 ([e78c31c](https://github.com/kongnet/meeko/commit/e78c31c0000ba6c547e1a5cf548fedbb87f22a39))
-
-
-
-## [1.8.303](https://github.com/kongnet/meeko/compare/v1.8.302...v1.8.303) (2023-08-03)
-
-
-### :sparkles:
-
-* 增加matrix类的2个函数 ([07c3d5b](https://github.com/kongnet/meeko/commit/07c3d5b8af5ab70e453bedefd3746b96e73fe708))
-
-
-
-## [1.8.302](https://github.com/kongnet/meeko/compare/v1.8.301...v1.8.302) (2023-07-13)
-
-
-### :sparkles:
-
-* 增加时序清洗函数 ([60f4100](https://github.com/kongnet/meeko/commit/60f410029ef02fe0818895160fd421a3b5002db2))
-
-
-
-## [1.8.301](https://github.com/kongnet/meeko/compare/v1.8.300...v1.8.301) (2023-06-20)
+## [1.8.308](https://github.com/kongnet/meeko/compare/v1.8.298...v1.8.308) (2023-08-06)
 
 
 ### :sparkles:
 
 * 增加$.tools.race方法 ([59c155b](https://github.com/kongnet/meeko/commit/59c155b592f8a197fa6cf39aef51679074fa65d3))
-
-
-
-## [1.8.300](https://github.com/kongnet/meeko/compare/v1.8.299...v1.8.300) (2023-06-19)
-
-
-### :sparkles:
-
+* 增加时序清洗函数 ([60f4100](https://github.com/kongnet/meeko/commit/60f410029ef02fe0818895160fd421a3b5002db2))
+* 增加特征值计算 ([e78c31c](https://github.com/kongnet/meeko/commit/e78c31c0000ba6c547e1a5cf548fedbb87f22a39))
+* 增加matrix类的2个函数 ([07c3d5b](https://github.com/kongnet/meeko/commit/07c3d5b8af5ab70e453bedefd3746b96e73fe708))
 * prettyBytes间隔可以调 ([e487433](https://github.com/kongnet/meeko/commit/e48743327fc79c8178dc759542de3fd8721c685f))
-
-
-
-## [1.8.299](https://github.com/kongnet/meeko/compare/v1.8.298...v1.8.299) (2023-04-23)
-
 
 
 
