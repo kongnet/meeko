@@ -1,4 +1,4 @@
-## [1.8.308](https://github.com/kongnet/meeko/compare/v1.8.298...v1.8.308) (2023-08-06)
+## [1.8.309](https://github.com/kongnet/meeko/compare/v1.8.298...v1.8.309) (2023-08-06)
 
 
 ### :sparkles:
