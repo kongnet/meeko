@@ -42,13 +42,12 @@ console.log(m2.rowStat(a))
 console.log(m2.colStat(a))
 console.log(m2.row)
 
-const m3 = new Matrix([
-  [4, 12, -16],
-  [12, 37, -43],
-  [-16, -43, 98]
-])
-
 describe('矩阵高级应用', function () {
+  const m3 = new Matrix([
+    [4, 12, -16],
+    [12, 37, -43],
+    [-16, -43, 98]
+  ])
   it('矩阵高级应用', function () {
     m3.log(m3.dc().choleskey.lowerTriangularMatrix)
     m3.log(m3.dc().qr.orthogonalMatrix)
