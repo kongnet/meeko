@@ -18,6 +18,8 @@
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkongnet%2Fmeeko.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkongnet%2Fmeeko?ref=badge_large)
 
+![Alt](https://repobeats.axiom.co/api/embed/2d146449fbda2658bc24d468ea37ab208e0743ef.svg 'Repobeats analytics image')
+
 ## 安装
 
 ```js
