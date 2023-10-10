@@ -1,3 +1,12 @@
+## [1.8.317](https://github.com/kongnet/meeko/compare/v1.8.316...v1.8.317) (2023-10-10)
+
+
+### :sparkles:
+
+* 增加tools.testCase类 ([4809633](https://github.com/kongnet/meeko/commit/4809633b3bbba2688a65b4d43351a2ab7cb3444c))
+
+
+
 ## [1.8.316](https://github.com/kongnet/meeko/compare/v1.8.315...v1.8.316) (2023-08-23)
 
 
