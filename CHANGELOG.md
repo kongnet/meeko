@@ -1,3 +1,12 @@
+## [1.8.319](https://github.com/kongnet/meeko/compare/v1.8.318...v1.8.319) (2023-10-24)
+
+
+### :sparkles:
+
+* skew增加修正模式 ([d1171d7](https://github.com/kongnet/meeko/commit/d1171d7d6d4618d36f8a444a30a383651908bbc2))
+
+
+
 ## [1.8.318](https://github.com/kongnet/meeko/compare/v1.8.317...v1.8.318) (2023-10-10)
 
 
