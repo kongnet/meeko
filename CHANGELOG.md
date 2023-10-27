@@ -1,3 +1,12 @@
+## [1.8.320](https://github.com/kongnet/meeko/compare/v1.8.319...v1.8.320) (2023-10-24)
+
+
+### :sparkles:
+
+* 中位数绝对偏差 ([aa228b0](https://github.com/kongnet/meeko/commit/aa228b077afcdfc8342f8b7275ad0a272c28afa4))
+
+
+
 ## [1.8.319](https://github.com/kongnet/meeko/compare/v1.8.318...v1.8.319) (2023-10-24)
 
 

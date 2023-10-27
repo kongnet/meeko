@@ -42,6 +42,25 @@ npm run jsdoc
 
 ```js
 const $ = require('meeko')
+// 1024^1024 各个个位数分布 统计分析
+let a = [315, 302, 300, 337, 289, 304, 299, 327, 304, 306]
+console.log('平均数', $.math.mean(a))
+console.log('方差', $.math.variance(a))
+console.log('更正方差', $.math.varianceCorrect(a))
+console.log('标准偏差', $.math.stddev(a))
+console.log('更正的标准差', $.math.stddevCorrect(a))
+console.log('标准误差', $.math.stdErr(a))
+console.log('变异系数', $.math.coeVariation(a))
+console.log('最小', $.math.min(a))
+console.log('最大', $.math.max(a))
+console.log('范围', $.math.range(a))
+console.log('中位数', $.math.median(a))
+console.log('平均偏差', $.math.meanDev(a))
+console.log('中位数偏差', $.math.medianAbsDev(a))
+console.log('调和平均数', $.math.hMean(a))
+console.log('几何平均数', $.math.gMean(a))
+console.log('偏度', $.math.skew(a, true))
+
 // 傅里叶分析
 $.math.fourierAnalysis([1, 2, 1, 2, 1, 2, 1, 2])
 ```
