@@ -18,6 +18,8 @@
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkongnet%2Fmeeko.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkongnet%2Fmeeko?ref=badge_large)
 
+![Alt](https://repobeats.axiom.co/api/embed/2d146449fbda2658bc24d468ea37ab208e0743ef.svg 'Repobeats analytics image')
+
 ## 安装
 
 ```js
@@ -40,6 +42,25 @@ npm run jsdoc
 
 ```js
 const $ = require('meeko')
+// 1024^1024 各个个位数分布 统计分析
+let a = [315, 302, 300, 337, 289, 304, 299, 327, 304, 306]
+console.log('平均数', $.math.mean(a))
+console.log('方差', $.math.variance(a))
+console.log('更正方差', $.math.varianceCorrect(a))
+console.log('标准偏差', $.math.stddev(a))
+console.log('更正的标准差', $.math.stddevCorrect(a))
+console.log('标准误差', $.math.stdErr(a))
+console.log('变异系数', $.math.coeVariation(a))
+console.log('最小', $.math.min(a))
+console.log('最大', $.math.max(a))
+console.log('范围', $.math.range(a))
+console.log('中位数', $.math.median(a))
+console.log('平均偏差', $.math.meanDev(a))
+console.log('中位数偏差', $.math.medianAbsDev(a))
+console.log('调和平均数', $.math.hMean(a))
+console.log('几何平均数', $.math.gMean(a))
+console.log('偏度', $.math.skew(a, true))
+
 // 傅里叶分析
 $.math.fourierAnalysis([1, 2, 1, 2, 1, 2, 1, 2])
 ```
@@ -527,4 +548,17 @@ console.log('结果:', ((20n * 10n ** n - 4n) * 10n) / 19n + 2n)
 普通要求：代码控制在20行内，15分钟完成
 更高要求：代码控制在10行内，算法复杂度O(N)
 */
+```
+
+> 某百货超市现有一批快到期的日用产品急需处理，超市老板设计了免费抽奖活动来处理掉了这些商品纸箱中装有大小相同的 20 个球，10 个 10 分，10 个 5 分，从中摸出 10 个球，摸出的 10 个球的分数之和即为中奖分数，获奖如下：一等奖 100 分，冰柜一个，价值 2500 元；二等奖 50 分， 电视机一个，价值 1000 元；三等奖 95 分， 洗发液 8 瓶，价值 176 元；四等奖 55 分， 洗发液 4 瓶，价值 88 元；五等奖 60 分， 洗发液 2 瓶，价值 44 元；六等奖 65 分， 牙膏一盒， 价值 8 元；七等奖 70 分， 洗衣粉一袋，价值 5 元；八等奖 85 分， 香皂一块， 价值 3 元；九等奖 90 分， 牙刷一把， 价值 2 元；十等奖 75 分与 80 分为优惠奖，只収成本价 22 元，将获得洗发液一瓶
+
+```js
+const $ = require('meeko')
+let cof = [1000, 88, 44, 8, 5, -22, -22, 3, 2, 178, 2500]
+let baseCount = $.math.combination(20, 10)
+let EX = cof.reduce((a, b, idx) => {
+  let r = ($.math.combination(10, idx) * $.math.combination(10, 10 - idx)) / baseCount
+  return a + r * b
+}, 0)
+console.log(EX) //-10.095141700404858
 ```
