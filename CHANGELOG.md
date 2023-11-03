@@ -1,6 +1,16 @@
 ## [1.8.320](https://github.com/kongnet/meeko/compare/v1.8.314...v1.8.320) (2023-11-03)
 
 
+### :art:
+
+* (doc) ([cdaec1e](https://github.com/kongnet/meeko/commit/cdaec1e44144fbc8482799baa32efdbb946263a6))
+
+### :sparkles:
+
+* 增加tools.testCase类 ([4809633](https://github.com/kongnet/meeko/commit/4809633b3bbba2688a65b4d43351a2ab7cb3444c))
+* 中位数绝对偏差 ([aa228b0](https://github.com/kongnet/meeko/commit/aa228b077afcdfc8342f8b7275ad0a272c28afa4))
+* skew增加修正模式 ([d1171d7](https://github.com/kongnet/meeko/commit/d1171d7d6d4618d36f8a444a30a383651908bbc2))
+
 
 
 ## [1.8.314](https://github.com/kongnet/meeko/compare/v1.8.313...v1.8.314) (2023-11-03)
