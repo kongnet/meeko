@@ -429,7 +429,7 @@ export function benchmark(fn: any, msg: any, num: any): void;
 
 export function compare(k: any, order: any): any;
 
-export function dir(args: any): void;
+export function dir(args: any): any;
 
 export function drawTable(data: any, colWidth: any, opt: any): any;
 
@@ -446,6 +446,8 @@ export function now(): void;
 export function pipe(funcs: any): void;
 
 export function requireAll(options: any): any;
+
+export function to(p: any, diyErrCode: any, okCode: any): any;
 
 export function tpl(a: any): any;
 
@@ -505,6 +507,8 @@ export namespace array {
 
     function except(first: any, arg: any): void;
 
+    function findMaxMin(first: any, arg: any): void;
+
     function fisherYates(first: any, arg: any): void;
 
     function flatten(first: any, arg: any): void;
@@ -515,9 +519,13 @@ export namespace array {
 
     function intersect(first: any, arg: any): void;
 
+    function max(first: any, arg: any): void;
+
     function mean(first: any, arg: any): void;
 
     function median(first: any, arg: any): void;
+
+    function min(first: any, arg: any): void;
 
     function mode(first: any, arg: any): void;
 
@@ -530,6 +538,8 @@ export namespace array {
     function shuffle(first: any, arg: any): void;
 
     function subset(first: any, arg: any): void;
+
+    function sum(first: any, arg: any): void;
 
     function union(first: any, arg: any): void;
 
@@ -813,6 +823,14 @@ export namespace buf {
 export namespace c {
     const cls: string;
 
+    const cyan: string;
+
+    const green: string;
+
+    const none: string;
+
+    const yellow: string;
+
     function b(...args: any[]): void;
 
     function c(...args: any[]): void;
@@ -932,6 +950,8 @@ export namespace fake {
 }
 
 export namespace file {
+    function arr2Csv(a: any, fileName: any): void;
+
     function checkImgComplete(filePath: any, type: any): any;
 
     function csv2Arr(data: any, splitStr: any, omitFirstRow: any, fn: any): void;
@@ -941,6 +961,10 @@ export namespace file {
     function getFileMd5(filename: any): any;
 
     function getFileType(filePath: any): any;
+
+    function obj2Arr(o: any, isOrder: any): any;
+
+    function obj2Csv(o: any, fileName: any, isOrder: any): void;
 
     function readBig(fileName: any, sp: any, cbFunc: any, endFunc: any): void;
 
@@ -1122,6 +1146,8 @@ export namespace math {
 
     function findMax(o: any): any;
 
+    function findMaxMin(a: any): any;
+
     function fourierAnalysis(a: any): any;
 
     function gMean(a: any): any;
@@ -1132,7 +1158,7 @@ export namespace math {
 
     function gcd(a: any, b: any): any;
 
-    function genRange(s: any, e: any, step: any): void;
+    function genRange(start: any, stop: any, step: any): void;
 
     function geometric(p: any): any;
 
@@ -1214,7 +1240,7 @@ export namespace math {
 
     function quantile(a: any, pos: any, type: any): any;
 
-    function quantileAll(a: any, type: any): any;
+    function quantileAll(a: any, outRatio: any, type: any): any;
 
     function randInt(a: any, b: any): any;
 
@@ -1285,6 +1311,15 @@ export namespace math {
 
     }
 
+    namespace fi {
+        function betaRate(a1: any, a2: any): any;
+
+        function logReturn(a: any): any;
+
+        function sharpeRate(a1: any, offeredRate: any, tadeDay: any): any;
+
+    }
+
     namespace mat {
         function GaussJordanEliminate(m: any, epsilon: any): any;
 
@@ -1319,6 +1354,95 @@ export namespace math {
         function transpose(arr: any): any;
 
         function zero(n: any, m: any): any;
+
+    }
+
+    namespace np {
+        function arange(arg: any): any;
+
+        function cv(data: any, ddof: any): any;
+
+        function diff(a: any): any;
+
+        function dot(vectorA: any, vectorB: any): any;
+
+        function inv(m: any): any;
+
+        function linspace(s: any, e: any, num: any): any;
+
+        function log(data: any): any;
+
+        function mean(a: any): any;
+
+        function median(a: any): any;
+
+        function reshape(ary: any, a: any, b: any): any;
+
+        function std(data: any, ddof: any): any;
+
+        function wmean(data: any, weight: any): any;
+
+    }
+
+    namespace stats {
+        function combinations(arr: any, num: any): any;
+
+        function gmean(a: any): any;
+
+        function hmean(a: any): any;
+
+        function kurtosis(a: any): any;
+
+        function mode(a: any): any;
+
+        function permutations(arr: any, num: any): any;
+
+        function skew(a: any): any;
+
+        namespace bernoulli {
+            function cdf(a: any, p: any): any;
+
+            function pmf(a: any, p: any): any;
+
+            function rsv(p: any, size: any): any;
+
+        }
+
+        namespace binom {
+            const cdf: string;
+
+            function pmf(a: any, n: any, p: any): any;
+
+            function rsv(n: any, p: any, size: any): any;
+
+        }
+
+        namespace geom {
+            function cdf(a: any, p: any): any;
+
+            function pmf(a: any, p: any): any;
+
+            function rsv(p: any, size: any): any;
+
+        }
+
+        namespace norm {
+            function cdf(a: any, mu: any, sigma: any): any;
+
+            function pdf(a: any, mu: any, sigma: any): any;
+
+            function rsv(mu: any, sigma: any, size: any): any;
+
+        }
+
+        namespace poisson {
+            function cdf(a: any, mu: any): any;
+
+            function pmf(a: any, mu: any): any;
+
+            function rsv(mu: any, size: any): any;
+
+        }
 
     }
 
@@ -1537,6 +1661,8 @@ export namespace tools {
 
     function rnd(a: any, b: any): any;
 
+    function roulette(optionArr: any): any;
+
     function size(...args: any[]): void;
 
     function timeAgo(t1: any, t2: any, lng: any): any;
@@ -1549,6 +1675,14 @@ export namespace tools {
 
     namespace c {
         const cls: string;
+
+        const cyan: string;
+
+        const green: string;
+
+        const none: string;
+
+        const yellow: string;
 
         function b(...args: any[]): void;
 

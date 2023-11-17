@@ -544,11 +544,13 @@ var number$2 = {
     return Math.round(this * p) / p
   },
 
-  prettyBytes (precision = 3, addSpace = true, unit = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']) {
+  prettyBytes (precision = 3, addSpace = true, unit = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], gap = 1000) {
     /**
      * @memberof Number_prototype#
-     * @param {number} precision - 精度
+     * @param {Number} precision - 精度
      * @param {Boolean} addSpace - 和单位之间是否有空格
+     * @param {Array} unit - 单位后缀的数组
+     * @param {Number} gap - 间隔默认1000
      * @description 美化字节输出
      * @function prettyBytes
      * @return {String}
@@ -561,7 +563,7 @@ var number$2 = {
       return this.round(precision) + (addSpace ? ' ' : '') + unit[0]
     }
     const exponent = Math.min(Math.floor(Math.log10(this < 0 ? -this : this) / 3), unit.length - 1);
-    const n = Number(((this < 0 ? -this : this) / 1000 ** exponent).toPrecision(precision));
+    const n = Number(((this < 0 ? -this : this) / gap ** exponent).toPrecision(precision));
     return (this < 0 ? '-' : '') + n + (addSpace ? ' ' : '') + unit[exponent]
   },
   isPrime () {
@@ -609,8 +611,8 @@ var number$2 = {
  * @namespace Date_prototype
  */
 
-const getYearWeek = function (dateObj) {
-  const [a, b, c] = [dateObj.getFullYear(), dateObj.getMonth() + 1, dateObj.getDate()];
+const getYearWeek = function (dateObj, isUTC = false) {
+  const [a, b, c] = [dateObj[`get${isUTC ? 'UTC' : ''}FullYear`](), dateObj[`get${isUTC ? 'UTC' : ''}Month`]() + 1, dateObj[`get${isUTC ? 'UTC' : ''}Date`]()];
 
   /* 
     d1是当前日期
@@ -625,24 +627,24 @@ const getYearWeek = function (dateObj) {
   return Math.ceil((d + (d2.getDay() + 1 - 1)) / 7)
 };
 
-const format = function (s = 'yyyy-MM-dd hh:mm:ss') {
+const format = function (s = 'yyyy-MM-dd hh:mm:ss', isUTC = false) {
   const o = {
-    'M+': this.getMonth() + 1, // 月份
-    'w+': getYearWeek(this), // 周
-    'W+': getYearWeek(this), // 周
-    'd+': this.getDate(), // 日
-    'D+': this.getDate(), // 日
-    'h+': this.getHours(), // 小时
-    'H+': this.getHours(), // 小时
-    'm+': this.getMinutes(), // 分
-    's+': this.getSeconds(), // 秒
-    'q+': Math.floor((this.getMonth() + 3) / 3), // 季度
-    S: this.getMilliseconds(), // 毫秒
+    'M+': this[`get${isUTC ? 'UTC' : ''}Month`]() + 1, // 月份
+    'w+': getYearWeek(this, isUTC), // 周
+    'W+': getYearWeek(this, isUTC), // 周
+    'd+': this[`get${isUTC ? 'UTC' : ''}Date`](), // 日
+    'D+': this[`get${isUTC ? 'UTC' : ''}Date`](), // 日
+    'h+': this[`get${isUTC ? 'UTC' : ''}Hours`](), // 小时
+    'H+': this[`get${isUTC ? 'UTC' : ''}Hours`](), // 小时
+    'm+': this[`get${isUTC ? 'UTC' : ''}Minutes`](), // 分
+    's+': this[`get${isUTC ? 'UTC' : ''}Seconds`](), // 秒
+    'q+': Math.floor((this[`get${isUTC ? 'UTC' : ''}Month`]() + 3) / 3), // 季度
+    S: this[`get${isUTC ? 'UTC' : ''}Milliseconds`](), // 毫秒
     X: (+this / 1000) | 0 // unix秒
   };
   let m1 = s.match(/([yY]+)/);
   if (m1) {
-    s = s.replace(m1[0], (this.getFullYear() + '').slice(4 - m1[0].length));
+    s = s.replace(m1[0], (this[`get${isUTC ? 'UTC' : ''}FullYear`]() + '').slice(4 - m1[0].length));
   }
   for (const k in o) {
     let m2 = s.match(new RegExp('(' + k + ')'));
@@ -652,7 +654,6 @@ const format = function (s = 'yyyy-MM-dd hh:mm:ss') {
   }
   return s
 };
-
 const dateOffset = function (interval, number) {
   const me = this;
   const k = {
@@ -704,6 +705,9 @@ const myDate = {
   format (s) {
     return format.call(this, s)
   },
+  formatUTC (s) {
+    return format.call(this, s, true)
+  },
 
   /**
    * @function getWeek
@@ -717,6 +721,16 @@ const myDate = {
     return getYearWeek(this)
   },
 
+  /**
+   * @function getQuarter
+   * @description 本年的第几季度
+   * @memberof Date_prototype#
+   * @return {number}
+   * @param {Date} d
+   */
+  getQuarter () {
+    return (Math.log10(2 ** (this.getMonth() + 1)) | 0) + 1
+  },
   /**
    * @function date2Str
    * @description 格式化日期
@@ -831,7 +845,7 @@ var require$$0 = /*@__PURE__*/getAugmentedNamespace(empty$1);
  */
 
 let secRand;
-let crypto$2;
+let crypto$3;
 const uniformRandInt = (a, b) => {
   /**
     * @memberof MathRand#
@@ -858,18 +872,18 @@ const uniformRandInt = (a, b) => {
 };
 const randInt = uniformRandInt;
 try {
-  crypto$2 = require$$0;
+  crypto$3 = require$$0;
 } catch (err) {
   console.log('crypto support is disabled!');
 }
-if (crypto$2 !== undefined) {
+if (crypto$3 !== undefined) {
   /*
  （1）首先找到样本数据Y的最小值Min及最大值Max
  （2）计算系数为：k=(b-a)/(Max-Min)
  （3）得到归一化到[a,b)区间的数据：norY=a+k(Y-Min)
   */
   secRand = (a, b) => {
-    const r = crypto$2.randomBytes(4); // 0-4294967295
+    const r = crypto$3.randomBytes(4); // 0-4294967295
     return Math.floor(((b - a + 1) / 4294967295) * r.readUInt32LE(0)) + a
   };
 } else {
@@ -1601,7 +1615,26 @@ matrix.scalar = function (arr, val) {
 
   return result
 };
+/**
+ *
+ * @param {Array} arr
+ * @param {Number} val
+ * @returns
+ */
+matrix.div = function (arr, val) {
+  return matrix.scalar(arr, 1 / val)
+};
 
+matrix.mod = function (arr, val) {
+  const result = matrix.deepCopy(arr);
+  for (let i = 0; i < result.length; i++) {
+    for (let j = 0; j < result[i].length; j++) {
+      result[i][j] = arr[i][j] % val;
+    }
+  }
+
+  return result
+};
 /**
  * 转置矩阵
  *
@@ -1630,10 +1663,11 @@ matrix.transpose = function (arr) {
  * @return {Array} n x n 单位矩阵.
  */
 
-matrix.identity = function (n) {
-  const result = new Array(n);
+matrix.identity = function (m, n) {
+  n = n || m;
+  const result = new Array(m);
 
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < m; i++) {
     result[i] = new Array(n);
     for (let j = 0; j < n; j++) {
       result[i][j] = i === j ? 1 : 0;
@@ -1643,6 +1677,26 @@ matrix.identity = function (n) {
   return result
 };
 
+matrix.eye = matrix.identity;
+/**
+ *
+ * @param {Int} m
+ * @param {Int} n
+ * @returns
+ */
+matrix.ones = function (m, n) {
+  n = n || m;
+  const result = [];
+
+  for (let i = 0; i < m; i++) {
+    result[i] = new Array(n);
+    for (let j = 0; j < n; j++) {
+      result[i][j] = 1;
+    }
+  }
+
+  return result
+};
 /**
  * 向量点乘 dotproduct
  *
@@ -1734,10 +1788,10 @@ matrix.det = function (m) {
  * @return {Array} RREF matrix.
  */
 
-matrix.GaussJordanEliminate = function (m, epsilon) {
+matrix.GaussJordanEliminate = function (m, epsilon = 1e-10) {
   // Translated from:
   // http://elonen.iki.fi/code/misc-notes/python-gaussj/index.html
-  const eps = typeof epsilon === 'undefined' ? 1e-10 : epsilon;
+  const eps = epsilon;
 
   const h = m.length;
   const w = m[0].length;
@@ -1795,7 +1849,7 @@ matrix.GaussJordanEliminate = function (m, epsilon) {
 
   return m
 };
-
+matrix.solve = matrix.GaussJordanEliminate;
 /**
  * nxn 求逆 inverse
  *
@@ -1818,7 +1872,7 @@ matrix.inv = function (m) {
   }
 
   // inv(I*A)
-  m = matrix.GaussJordanEliminate(m);
+  m = matrix.solve(m);
 
   // inv(A)
   for (i = 0; i < n; i++) {
@@ -1857,15 +1911,16 @@ matrix.getCol = function (M, n) {
  * @return {Array} matrix
  */
 
-matrix.zero = function (n, m) {
+matrix.zero = function (m, n) {
+  n = n || m;
   if (n < 1 || m < 1) {
     throw new Error('矩阵维度必须为正数')
   }
   n = n | 0;
   m = m | 0;
-  return Array(n)
+  return Array(m)
     .fill(0)
-    .map(_ => Array(m).fill(0))
+    .map(_ => Array(n).fill(0))
 
   /*
   for (let i = 0; i < n; i++) {
@@ -1930,6 +1985,27 @@ matrix.rowSwitch = function (m, row1, row2) {
     }
   }
   return result
+};
+
+matrix.isSymmetric = function (a) {
+  const rows = a.length;
+  const cols = a[0].length;
+
+  // 判断行数和列数是否相等
+  if (rows !== cols) {
+    return false
+  }
+
+  // 判断转置后的矩阵是否与原矩阵相等
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      if (a[i][j] !== a[j][i]) {
+        return false
+      }
+    }
+  }
+
+  return true
 };
 
 /**
@@ -2033,8 +2109,39 @@ matrix.lupDecomposition = function (arr) {
   }
 
   return [this.getL(LU), this.getU(LU), P]
-};
-
+}
+;[
+  'abs',
+  'acos',
+  'acosh',
+  'asin',
+  'asinh',
+  'atan',
+  'atanh',
+  'cbrt',
+  'ceil',
+  'clz32',
+  'cos',
+  'cosh',
+  'exp',
+  'expm1',
+  'floor',
+  'fround',
+  'log',
+  'log1p',
+  'log10',
+  'log2',
+  'round',
+  'sign',
+  'sin',
+  'sinh',
+  'sqrt',
+  'tan',
+  'tanh',
+  'trunc'
+].forEach(x => {
+  matrix[x] = arr => matrix.map(arr, Math[x]);
+});
 var mathMatrix = { mat: matrix };
 
 // @ts-check
@@ -2055,7 +2162,10 @@ const MIN64_BIGINT = -1n * MAX64_BIGINT;
  * @param {Number} step
  */
 
-const genRange = (s, e, step = 1) => Array.from({ length: e - s + 1 }, (_, i) => i + s + (step - 1) * i);
+const genRange = (start, stop, step = 1) => Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + i * step);
+
+//const genRange = (start, stop, step = 1) => new Array(Math.floor((stop - start) / step + 1)).fill(0).map((_, index) => index * step + start)
+
 const max = a => {
   /**
    * @memberof Math_prototype#
@@ -2098,7 +2208,7 @@ const range = a => {
 
   return max(a) - min$1(a)
 }; // 极差/范围误差/全距
-const sum = a => a.reduce((x, y) => x + y);
+const sum = a => (a.length ? a.reduce((x, y) => x + y) : 0);
 
 const mean = a => {
   /**
@@ -2188,10 +2298,11 @@ const quantile = (a, pos = 2, type = 'inc') => {
       return median(meSort)
   }
 };
-const quantileAll = (a, type = 'inc') => {
+const quantileAll = (a, outRatio = 1.5, type = 'inc') => {
   /**
    * @memberof Math_prototype#
    * @param {Array} a - 数组
+   * @param {Number} outRatio - 异常点倍数 1.5普通异常 3极度异常
    * @param {integer} type - 求位置算法
    * @description 从数组值求四分位数全部位置
    * @function quantileAll
@@ -2227,8 +2338,8 @@ const quantileAll = (a, type = 'inc') => {
   }
   const Q3 = meSort[sit] + (up - meSort[sit]) * ratio[type === 'inc' ? upSit % 4 : 3];
   const IQR = Q3 - Q1;
-  const upper = Q3 + IQR;
-  const lower = Q3 - IQR;
+  const upper = Q3 + outRatio * IQR;
+  const lower = Q1 - outRatio * IQR;
   return {
     min: meSort[0],
     Q1,
@@ -2510,7 +2621,7 @@ const medianDev = a => {
    * @param {Array} a - 数组
    * @description 中位数偏差
    * @function medianDev
-   * @return {string}
+   * @return {Nmber}
    * @example
    * medianDev([2, 1, 8.1, 3, 4, 5.1, 6.7]).toFixed(6)
    * // '1.985714'
@@ -2524,7 +2635,18 @@ const medianDev = a => {
     }, 0) / len
   )
 };
-
+const medianAbsDev = a => {
+  /**
+   * @memberof Math_prototype#
+   * @param {Array} a - 数组
+   * @description 中位数绝对偏差
+   * @function medianAbsDev
+   * @return {Nmber}
+   */
+  a.sort((a, b) => a - b);
+  const med = a.median();
+  return a.map(x => Math.abs(x - med)).median()
+};
 const stdErr = a => {
   /**
    * @memberof Math_prototype#
@@ -2557,7 +2679,7 @@ const coeVariation = a => {
   return stddev(a) / m
 };
 
-const skew = a => {
+const skew = (a, bias = false) => {
   /**
    * @memberof Math_prototype#
    * @param {Array} a - 数组
@@ -2581,7 +2703,7 @@ const skew = a => {
     }, 0) / len,
     1.5
   );
-  return ((v1 / v2) * Math.sqrt(len * (len - 1))) / (len - 2)
+  return (v1 / v2) * (bias ? 1 : Math.sqrt(len * (len - 1)) / (len - 2))
 };
 
 const kurt1 = a => {
@@ -2872,7 +2994,7 @@ function fourierAnalysis (a) {
   arr = arr.map(x => x - meanData);
   const len = arr.length;
   const fillNum = 2 ** (Math.log2(len) | 0); // 2^N
-  arr = arr.concat(genRange(0, fillNum - len - 1, 0)); // fill => 2^N
+  arr = arr.concat(genRange(0, fillNum - len - 1, 1)); // fill => 2^N
   let fourierArr = [];
   for (let idx = 0; idx < fillNum; idx++) {
     fourierArr[idx] = [0, 0, 0]; // 实部 虚部 共轭相乘
@@ -2910,7 +3032,7 @@ function autoCorrelation (arr, lag = 1) {
   }
   return sumXy === sumSq ? 1 : sumXy / sumSq
 }
-var math$3 = Object.assign.call(null, mathAlgebra, mathRand, mat, {
+var math$4 = Object.assign.call(null, mathAlgebra, mathRand, mat, {
   fac,
   arrangement,
   combination,
@@ -2957,6 +3079,7 @@ var math$3 = Object.assign.call(null, mathAlgebra, mathRand, mat, {
   stddevCorrect,
   meanDev,
   medianDev,
+  medianAbsDev,
   range,
   stat: _stat,
   stdErr,
@@ -3071,11 +3194,7 @@ var math$3 = Object.assign.call(null, mathAlgebra, mathRand, mat, {
     const r = ssr / sst;
     return {
       r,
-      f: `y=${formula
-        .reverse()
-        .join('+')
-        .replace('^1+', '+')
-        .replace(/\+-/g, '-')} R^2=${+r.toFixed(4)}`,
+      f: `y=${formula.reverse().join('+').replace('^1+', '+').replace(/\+-/g, '-')} R^2=${+r.toFixed(4)}`,
       formula
     }
   },
@@ -3216,7 +3335,7 @@ var math$3 = Object.assign.call(null, mathAlgebra, mathRand, mat, {
  * @namespace Array_prototype
  */
 
-const $M$3 = math$3;
+const $M$3 = math$4;
 const flatten = arr => arr.reduce((a, v) => a.concat(Array.isArray(v) ? flatten(v) : v), []);
 
 const publishObj = {
@@ -3322,9 +3441,10 @@ const publishObj = {
    * @param {Array} aggregateCol 聚合列
    * @param {Array} aggregateOpt 聚合列的操作
    * @param {Array} aggregateColAlias 聚合列别名
+   * @param {Array} colFunc 列聚合前操作函数
    * @returns {Array}
    */
-  groupBy (groupCol, aggregateCol = [], aggregateOpt = [], aggregateColAlias = []) {
+  groupBy (groupCol, aggregateCol = [], aggregateOpt = [], aggregateColAlias = [], colFunc = []) {
     const groupObj = {};
     const groupAry = [];
     for (let i = 0; i < this.length; i++) {
@@ -3332,7 +3452,7 @@ const publishObj = {
       const groupKeyAry = [];
       const aItem = this[i];
       for (let col = 0; col < groupCol.length; col++) {
-        groupKeyAry.push(aItem[groupCol[col]] ?? '<Null>');
+        groupKeyAry.push((typeof colFunc[col] === 'function' ? colFunc[col](aItem, aItem[groupCol[col]]) : aItem[groupCol[col]]) ?? '<Null>');
       }
       groupKey = groupKeyAry.join(',');
       let keyObj = groupObj[groupKey];
@@ -3564,6 +3684,11 @@ const publishObj = {
 
     this.splice(idx, len);
     return this
+  },
+  zip (...arrays) {
+    let arr = this instanceof Array ? [this, ...arrays] : arrays;
+    const length = Math.min(...arr.map(ar => ar.length));
+    return Array.from({ length }, (_, i) => arr.map(ar => ar[i]))
   }
 };
 var array$2 = publishObj;
@@ -3687,6 +3812,7 @@ function gridTable (arr, isOpen = '', isIndex = 0) {
   const redColor = '#f5222d';
   const greenColor = '#52c41a';
   const yellowColor = '#faad14';
+  const titleSplit = '@#@';
   let body = '';
   // const script = ''
   const gridId = 'G' + ((Math.random() * 1000000) | 0);
@@ -3698,11 +3824,12 @@ function gridTable (arr, isOpen = '', isIndex = 0) {
     let n = 1;
     try {
       if (isIndex) {
-        dTitleArr.unshift('序号');
+        dTitleArr.unshift('X');
       }
       trTitle = dTitleArr
         .map(k => {
-          return `<th title="${k}">${k}</th>`
+          let it = k.split(titleSplit);
+          return `<th title="${it[1] ?? it[0]}">${it[0]}</th>`
         })
         .join('');
       tBody = dataArr
@@ -3809,8 +3936,8 @@ function genHtml (htmlTitle = '', bodyText = '', htmlHeadExtend = '') {
  * @namespace tools
  */
 
-const $M$2 = math$3;
-
+const crypto$2 = require$$0;
+const $M$2 = math$4;
 const genTemp = genGrid;
 // tools库扩展
 const getType = Object.prototype.toString;
@@ -3890,10 +4017,7 @@ const tools$4 = {
      * // String
      */
 
-    return getType
-      .call(o)
-      .split(' ')[1]
-      .split(']')[0]
+    return getType.call(o).split(' ')[1].split(']')[0]
   },
   isObj (o) {
     /**
@@ -4117,6 +4241,9 @@ const tools$4 = {
     const b = b1 > 0 || b2 > 0;
     // let b = /^[^-/].+[-/].+/g.test(s) //或者使用正则
     return s === '#now()' || (b && !isNaN(Date.parse(o)))
+  },
+  hash (str = '', m = 'sha1', enCode = 'hex') {
+    return crypto$2.createHash(m).update(str).digest(enCode)
   }
 };
 tools$4.genTemp = genTemp;
@@ -4247,7 +4374,20 @@ tools$4.wait = function (t) {
     }, t);
   })
 };
-
+/**
+ *
+ * @param {Function} fn
+ * @param {Number} timeout
+ * @param {Object|Array} errorObj
+ * @returns
+ */
+tools$4.race = async function (fn = async function () {}, timeout = 5000, errorObj = [500, 'timeout']) {
+  async function timeoutFunc () {
+    await tools$4.wait(timeout);
+    return errorObj
+  }
+  return Promise.race([fn, timeoutFunc()])
+};
 tools$4.waitNotEmpty = async function (o, prop, fn) {
   /**
    * @memberof tools#
@@ -4270,7 +4410,37 @@ tools$4.waitNotEmpty = async function (o, prop, fn) {
     await tools$4.waitNotEmpty(o, prop, func);
   }
 };
-
+tools$4.TestCase = class {
+  constructor (testList = {}) {
+    this.testListObj = testList;
+    const me = this;
+    async function testCase () {
+      if (process.argv[2] === '-test') {
+        let testName = process.argv[3] || '';
+        if (me.testListObj[testName]) {
+          console.log('===> Run', testName, 'testCase ===');
+          await me.testListObj[testName]();
+        } else {
+          if (testName.length > 0) {
+            console.log('Error: not found testCase', testName);
+            return
+          }
+          console.log('===> Run All testCase ===');
+          for (let i in me.testListObj) {
+            console.log('  ===> Run', i, 'testCase');
+            await me.testListObj[i]();
+          }
+        }
+      }
+      if (process.argv[2] === '-testList') {
+        for (let i in me.testListObj) {
+          console.log('===', i, 'testCase');
+        }
+      }
+    }
+    testCase();
+  }
+};
 tools$4.rnd = function (a, b) {
   /**
      * @memberof tools#
@@ -4317,11 +4487,11 @@ tools$4.timeAgo = function (t1, t2, lng = 'zh') {
   a.some((item, idx) => {
     n = Math.abs(dt) / a[idx * 2 + 1] / 1000;
     if (n >= 1) {
-      r = ~~n + a[idx * 2] + (lng === 'zh' ? ['前', '后'] : ['ago', 'late'])[dt > 0 ? 0 : 1];
+      r = ~~n + a[idx * 2] + (lng === 'zh' ? ['前', '后'] : [' ago', ' late'])[dt > 0 ? 0 : 1];
       return !0
     }
   });
-  return Math.abs(dt) < 1000 ? (lng === 'zh' ? '刚刚' : 'just now') : r
+  return Math.abs(dt) < 1000 ? (lng === 'zh' ? '刚刚' : ' just now') : r
 };
 
 tools$4.checkParam = function (a, b) {
@@ -4353,7 +4523,10 @@ tools$4.checkParam = function (a, b) {
   // NOTICE : 0的问题
   const c = {};
   let _n;
-  // 类型判断函数
+  /* 类型判断函数
+     避免使用数字型0 
+     在get传入时全为字符串处理,注意空的时候key就undefined
+  */
   const typeCheck = function (i, valA, valB, addToC) {
     addToC = addToC !== false; // 默认为true
     switch ((valB.type || 'string').toLow()) {
@@ -4362,7 +4535,7 @@ tools$4.checkParam = function (a, b) {
         if (!tools$4.isInt(_n)) {
           return {
             code: 401,
-            msg: (valB.name || i) + ' 类型错误,应为整型'
+            msg: (valB.name || i) + ' Type error,must be integer' //' 类型错误,应为整型'
           }
         }
         addToC && (c[i] = +_n);
@@ -4370,7 +4543,7 @@ tools$4.checkParam = function (a, b) {
           if (c[i] < valB.size[0] || c[i] > valB.size[1]) {
             return {
               code: 401,
-              msg: (valB.name || i) + ' 范围有误'
+              msg: (valB.name || i) + ' Range error' // ' 范围有误'
             }
           }
         }
@@ -4380,7 +4553,7 @@ tools$4.checkParam = function (a, b) {
         if (!tools$4.isInt(_n) || _n <= 0) {
           return {
             code: 401,
-            msg: (valB.name || i) + ' 类型错误,应为正数'
+            msg: (valB.name || i) + ' Type error, must be positive' // ' 类型错误,应为正数'
           }
         }
         addToC && (c[i] = +_n);
@@ -4388,7 +4561,7 @@ tools$4.checkParam = function (a, b) {
           if (c[i] < valB.size[0] || c[i] > valB.size[1]) {
             return {
               code: 401,
-              msg: (valB.name || i) + ' 范围有误'
+              msg: (valB.name || i) + ' Range error' // ' 范围有误'
             }
           }
         }
@@ -4398,7 +4571,7 @@ tools$4.checkParam = function (a, b) {
         if (!tools$4.isInt(_n) || _n >= 0) {
           return {
             code: 401,
-            msg: (valB.name || i) + ' 类型错误,应为负数'
+            msg: (valB.name || i) + ' Type error, must be negative' // ' 类型错误,应为负数'
           }
         }
         addToC && (c[i] = +_n);
@@ -4406,7 +4579,7 @@ tools$4.checkParam = function (a, b) {
           if (c[i] < valB.size[0] || c[i] > valB.size[1]) {
             return {
               code: 401,
-              msg: (valB.name || i) + ' 范围有误'
+              msg: (valB.name || i) + ' Range error' //' 范围有误'
             }
           }
         }
@@ -4415,7 +4588,7 @@ tools$4.checkParam = function (a, b) {
         if (typeof valA !== 'string') {
           return {
             code: 401,
-            msg: (valB.name || i) + ' 类型错误,应为字符串，不能为null NaN等'
+            msg: (valB.name || i) + ' Type error, must be String, not a Null or NaN' //' 类型错误,应为字符串，不能为null NaN等'
           }
         }
         _n = valA === '' ? '' : String(valA || '') || valB.def;
@@ -4426,7 +4599,7 @@ tools$4.checkParam = function (a, b) {
           if (len < valB.size[0] || len > valB.size[1]) {
             return {
               code: 401,
-              msg: (valB.name || i) + ` 长度有误[${valB.size[0]}-${valB.size[1]}]`
+              msg: (valB.name || i) + ` length error [${valB.size[0]}-${valB.size[1]}]`
             }
           }
         }
@@ -4434,7 +4607,7 @@ tools$4.checkParam = function (a, b) {
           if (!new RegExp(valB.reg).test(valA)) {
             return {
               code: 401,
-              msg: valB.err || (valB.name || i) + ' 格式有误'
+              msg: valB.err || (valB.name || i) + ' Type error' //' 格式有误'
             }
           }
         }
@@ -4449,7 +4622,7 @@ tools$4.checkParam = function (a, b) {
         if (!tools$4.isDate(_n)) {
           return {
             code: 401,
-            msg: (valB.name || i) + ' 类型错误,应为日期型'
+            msg: (valB.name || i) + ' Type error, must be Datetime' //' 类型错误,应为日期型'
           }
         }
         addToC && (c[i] = _n);
@@ -4458,14 +4631,14 @@ tools$4.checkParam = function (a, b) {
         if (!tools$4.isArray(valA) || !valA[0].size) {
           return {
             code: 401,
-            msg: (valB.name || i) + ' 类型错误,应为文件类型'
+            msg: (valB.name || i) + ' Type error, must be FileType' //' 类型错误,应为文件类型'
           }
         }
         if (tools$4.isArray(valB.size)) {
           if (valA.some(x => x.size < valB.size[0] || 0 || x.size > valB.size[1] || valB.size[0] || 0)) {
             return {
               code: 401,
-              msg: (valB.name || i) + ' 类型错误,文件大小不在允许范围'
+              msg: (valB.name || i) + ' Size error, file size range error' //' 类型错误,文件大小不在允许范围'
             }
           }
         }
@@ -4479,7 +4652,7 @@ tools$4.checkParam = function (a, b) {
           if (valA.some(x => !valB.fileType.includes(x.type))) {
             return {
               code: 401,
-              msg: (valB.name || i) + ' 文件类型不在允许的范围'
+              msg: (valB.name || i) + ' File type is not in the allowed range' //' 文件类型不在允许的范围'
             }
           }
         }
@@ -4489,14 +4662,14 @@ tools$4.checkParam = function (a, b) {
         if (!tools$4.isArray(valB.size)) {
           return {
             code: 401,
-            msg: (valB.name || i) + ' 类型错误,应为枚举型'
+            msg: (valB.name || i) + ' Type error, must be enum' //' 类型错误,应为枚举型'
           }
         }
         addToC && (c[i] = _n);
         if (!valB.size.includes(c[i]) && !valB.size.includes(+c[i])) {
           return {
             code: 401,
-            msg: (valB.name || i) + ' 枚举范围有误'
+            msg: (valB.name || i) + ' Enum is not in the allowed range' //' 枚举范围有误'
           }
         }
         break
@@ -4509,7 +4682,7 @@ tools$4.checkParam = function (a, b) {
         if (!tools$4.isBool(_n)) {
           return {
             code: 401,
-            msg: (valB.name || i) + ' 类型错误，,应为布尔型 ' + _n
+            msg: (valB.name || i) + ' Type error, must be Boolean ' + _n
           }
         }
         addToC && (c[i] = _n);
@@ -4519,7 +4692,7 @@ tools$4.checkParam = function (a, b) {
         if (!tools$4.isDecimal(_n)) {
           return {
             code: 401,
-            msg: (valB.name || i) + ' 类型错误,应为数值型'
+            msg: (valB.name || i) + ' Type error, must be number' //' 类型错误,应为数值型'
           }
         }
         addToC && (c[i] = +_n);
@@ -4527,7 +4700,7 @@ tools$4.checkParam = function (a, b) {
           if (c[i] < valB.size[0] || c[i] > valB.size[1]) {
             return {
               code: 401,
-              msg: (valB.name || i) + ' 范围有误'
+              msg: (valB.name || i) + ' Range error' //' 范围有误'
             }
           }
         }
@@ -4536,7 +4709,7 @@ tools$4.checkParam = function (a, b) {
         if (!(valA instanceof Array)) {
           return {
             code: 401,
-            msg: (valB.name || i) + ' 类型错误,应为数组型'
+            msg: (valB.name || i) + ' Type error, must be array' //' 类型错误,应为数组型'
           }
         }
         // 如果是数组，可以为它配置items的类型： arrayParam1:{type:'array',items:{type:'string'}}
@@ -4551,7 +4724,7 @@ tools$4.checkParam = function (a, b) {
       default:
         return {
           code: 500,
-          msg: '参数类型定义错误'
+          msg: 'Definition of param error' //'参数类型定义错误'
         }
     }
   };
@@ -4560,7 +4733,7 @@ tools$4.checkParam = function (a, b) {
       if (!a[i]) {
         return {
           code: 401,
-          msg: b[i].reqErr || (b[i].name || i) + ' 必填'
+          msg: b[i].reqErr || (b[i].name || i) + ' required' //' 必填'
         }
       } else {
         const r = typeCheck(i, a[i], b[i]);
@@ -4761,7 +4934,10 @@ const lzw = {
 };
 tools$4.lzw = lzw;
 // 取函数反值
-const negate = func => (...args) => !func(...args);
+const negate =
+  func =>
+  (...args) =>
+    !func(...args);
 tools$4.negate = negate;
 const obj2Url = function obj2Url (o) {
   const a = [];
@@ -5003,15 +5179,35 @@ function drawTable (data, colWidth = [], opt = { color: 0 }) {
   allStr += drawLine(colWidth);
   return allStr
 }
+/**
+ * @description 轮盘赌概率输出
+ * @param {Array} optionArr countAdv输出形式的数组
+ * @example let a1 = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5]
+ * let a1Count = a1.countAdv() //对上面数据计数，{1:xx,2:xx,3:xx}
+ */
+function roulette (optionArr) {
+  let rand = Math.random();
+  let sum = optionArr[0].w; //w是每个值在总数据中的权重
+  let i = 0;
+  for (i = 1; i < optionArr.length; i++) {
+    if (sum > rand) {
+      return optionArr[i - 1].k
+    }
+    sum += optionArr[i].w;
+  }
+
+  return optionArr[i - 1].k
+}
 tools$4.c = c$2;
 tools$4.drawTable = drawTable;
 tools$4.objByString = objByString;
+tools$4.roulette = roulette;
 var tools_1 = tools$4;
 
 // const { performance } = require('perf_hooks')
 
 const { c: c$1 } = tools_1;
-const { min } = math$3;
+const { min } = math$4;
 const print = function print ({ funcName, spendTime, perSecVal, n, range, msg, fastStr }) {
   console.log(
     c$1.y(funcName.fillStr(' ', 15)),
@@ -5106,7 +5302,7 @@ const bench$1 = {
 var bench_1 = bench$1;
 
 var name = "meeko";
-var version = "1.8.266";
+var version = "1.8.322";
 var description = "meeko自用函数";
 var keywords = [
 	"statistics",
@@ -5208,7 +5404,8 @@ var eslintConfig = {
 		mocha: true
 	},
 	globals: {
-		angular: true
+		angular: true,
+		$: true
 	},
 	rules: {
 		"no-unused-vars": 1,
@@ -5266,7 +5463,7 @@ var require$$2$2 = {
 // @ts-check
 const Mat = mathMatrix.mat;
 const tools$3 = tools_1;
-const $M$1 = math$3;
+const $M$1 = math$4;
 
 /**
  * @description 雅克比迭代
@@ -5277,7 +5474,7 @@ const $M$1 = math$3;
 
 function jacobi (input, epsilon = 1e-10, iterations = 100) {
   const n = input[0].length;
-  let D = input.copy();
+  let D = [...input];
   let S = Mat.identity(n);
 
   for (let i = 0; i < iterations; i++) {
@@ -5296,8 +5493,8 @@ function jacobi (input, epsilon = 1e-10, iterations = 100) {
 }
 
 function iterate (S, D, n) {
-  let di;
-  let dj;
+  let di = 0;
+  let dj = 0;
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < n; j++) {
       if (i === j) {
@@ -5337,7 +5534,7 @@ function iterate (S, D, n) {
 
 function clean (input, epsilon) {
   const n = input[0].length;
-  const result = input.copy();
+  const result = [...input];
 
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < n; j++) {
@@ -5378,23 +5575,10 @@ function subMatrix (a, startRow, endRow, startColumn, endColumn) {
   return newMatrix
 }
 
-function isSymmetric (a) {
-  if (Mat.isSquare(a)) {
-    for (let i = 0; i < a.length; i++) {
-      for (let j = 0; j <= i; j++) {
-        if (a[i][j] !== a[j][i]) {
-          return false
-        }
-      }
-    }
-    return true
-  }
-  return false
-}
 class Matrix {
-  constructor (mat, colName = [], rowName = []) {
-    this.optMatrix = mat.copy();
-    this.oriMatrix = mat.copy();
+  constructor (mat = [[]], colName = [], rowName = []) {
+    this.optMatrix = [...mat];
+    this.oriMatrix = [...mat];
     this.colName = colName;
     this.rowName = rowName;
   }
@@ -5409,6 +5593,16 @@ class Matrix {
     }
     return this
   }
+  set (row, col, v) {
+    this.optMatrix[row][col] = v;
+    return this
+  }
+  get (row, col) {
+    if (row === undefined && col === undefined) {
+      return this.V()
+    }
+    return this.optMatrix[row][col]
+  }
 
   get row () {
     return this.optMatrix.length
@@ -5422,8 +5616,8 @@ class Matrix {
   dc (a) {
     a = a || this.optMatrix;
     return {
-      qr: new QrDc(a),
-      choleskey: new CholeskyDc(a)
+      qr: new QrDc(Mat.deepCopy(a)),
+      choleskey: new CholeskyDc(Mat.deepCopy(a))
     }
   }
 
@@ -5436,13 +5630,6 @@ class Matrix {
   // 行列式
   det () {
     return Mat.det(this.optMatrix)
-  }
-
-  get (row, col) {
-    if (row === undefined && col === undefined) {
-      return this.V()
-    }
-    return this.optMatrix[row][col]
   }
 
   V (isOri) {
@@ -5498,7 +5685,14 @@ class Matrix {
       return m
     }
   }
-
+  map (
+    arr,
+    fn = function (x) {
+      return x
+    }
+  ) {
+    this.optMatrix = Mat.map(this.optMatrix, fn);
+  }
   // 特征值
   eigen (a) {
     a = a || this.optMatrix;
@@ -5549,10 +5743,16 @@ class Matrix {
     }
     return trace
   }
+  //  求解
+  solve (a, epsilon = 1e-10) {
+    a = a || this.optMatrix;
+    this.optMatrix = Mat.solve(a, epsilon);
+    return this
+  }
 
   print (a) {
     a = a || this.optMatrix;
-    const colMaxWidth = $M$1.genRange(0, a[0].length, 0);
+    const colMaxWidth = $M$1.genRange(0, a[0].length);
     const data = a.map((x, idx) => {
       const rowObj = {};
       for (let i = 0; i < x.length; i++) {
@@ -5593,7 +5793,7 @@ class Matrix {
 
 class QrDc {
   constructor (value) {
-    const qr = value.copy();
+    const qr = [...value];
     const m = value.length;
     const n = value[0].length;
     const rdiag = new Float64Array(n);
@@ -5642,7 +5842,7 @@ class QrDc {
     }
 
     const count = value[0].length;
-    const X = value.copy();
+    const X = [...value];
     const n = qr[0].length;
     let i, j, k, s;
 
@@ -5734,7 +5934,7 @@ class QrDc {
 // 平方根法
 class CholeskyDc {
   constructor (value) {
-    if (!isSymmetric(value)) {
+    if (!Mat.isSymmetric(value)) {
       throw new Error('矩阵不对称')
     }
     const a = value;
@@ -5784,7 +5984,7 @@ class CholeskyDc {
     }
 
     const count = value[0].length;
-    const B = value.copy();
+    const B = [...value];
     let i, j, k;
 
     for (k = 0; k < dim; k++) {
@@ -5814,10 +6014,26 @@ class CholeskyDc {
 }
 var mathMatrixAdv = { Matrix, QrDc, CholeskyDc };
 
-const math$2 = math$3;
+const math$3 = math$4;
 const np$2 = {};
-np$2.linspace = function (s, e, num) {
-  let step = (e - s) / (num - 1);
+np$2.log = function (data) {
+  return data.map(x => Math.log(x))
+};
+np$2.diff = function (a) {
+  let r = [];
+  a.reduce((prev, cur, idx) => {
+    r[idx - 1] = cur - prev;
+    return cur
+  });
+
+  return r
+};
+np$2.linspace = function (s, e, num = 50, endpoint = true) {
+  num = num | 0;
+  if (num <= 1) {
+    return [s]
+  }
+  let step = (e - s) / (num - (endpoint ? 1 : 0));
   let scale = 10 ** Math.abs(Math.log10(step));
   step *= scale;
   const a = [];
@@ -5829,34 +6045,34 @@ np$2.linspace = function (s, e, num) {
   return a
 };
 np$2.std = function (data, ddof = 0) {
-  return ddof ? math$2.stddevCorrect(data) : math$2.stddev(data)
+  return ddof ? math$3.stddevCorrect(data) : math$3.stddev(data)
 };
-np$2.median = math$2.median;
-np$2.mean = math$2.mean;
+np$2.median = math$3.median;
+np$2.mean = math$3.mean;
 np$2.cv = function (data, ddof = 0) {
-  return np$2.std(data, ddof) / math$2.mean(data)
+  return np$2.std(data, ddof) / math$3.mean(data)
 };
 
-np$2.dot = math$2.mat.dot;
+np$2.dot = math$3.mat.dot;
 np$2.arange = function arange (...arg) {
   let len = arg?.length;
   if (len === 1) {
-    return math$2.genRange(0, arg[0] - 1)
+    return math$3.genRange(0, arg[0] - 1)
   }
   if (len === 2) {
-    return math$2.genRange(arg[0], arg[1] - 1)
+    return math$3.genRange(arg[0], arg[1] - 1)
   }
   if (len === 3) {
-    return math$2.genRange(arg[0], arg[1] - 1, arg[2])
+    return math$3.genRange(arg[0], arg[1] - 1, arg[2])
   }
   return [0]
 };
 np$2.reshape = function reshape (ary, a, b) {
   return ary.chunk(a, b)
 };
-np$2.inv = math$2.mat.inv;
+np$2.inv = math$3.mat.inv;
 np$2.wmean = function (data, weight) {
-  return np$2.dot(data, weight) / math$2.sum(weight)
+  return np$2.dot(data, weight) / math$3.sum(weight)
 };
 
 var np_1 = np$2;
@@ -5866,7 +6082,7 @@ const erf$1 = function erf (x) {
   // https://baike.baidu.com/item/%E8%AF%AF%E5%B7%AE%E5%87%BD%E6%95%B0/5890875?fr=aladdin
   let cof = [
     -1.3026537197817094,
-    6.4196979235649026e-1,
+    6.419697923564903e-1,
     1.9476473204185836e-2,
     -9.561514786808631e-3,
     -9.46595344482036e-4,
@@ -5920,26 +6136,26 @@ const erf$1 = function erf (x) {
 
 var specFunc = { erf: erf$1 };
 
-const math$1 = math$3;
+const math$2 = math$4;
 const np$1 = np_1;
 const { erf } = specFunc;
 const stats$1 = {};
-stats$1.gmean = math$1.gMean;
+stats$1.gmean = math$2.gMean;
 
-stats$1.hmean = math$1.hMean;
-stats$1.mode = math$1.mode;
+stats$1.hmean = math$2.hMean;
+stats$1.mode = math$2.mode;
 
-stats$1.skew = math$1.skew;
-stats$1.kurtosis = math$1.kurt1;
-stats$1.combinations = math$1.combinList;
-stats$1.permutations = math$1.arrangeList;
+stats$1.skew = math$2.skew;
+stats$1.kurtosis = math$2.kurt1;
+stats$1.combinations = math$2.combinList;
+stats$1.permutations = math$2.arrangeList;
 
 // 硬币朝上的概率
 stats$1.bernoulli = {
   rsv: function (p = 0.5, size = 1) {
     let a = [];
     for (let i = 0; i < size; i++) {
-      a[i] = math$1.bernoulli(p);
+      a[i] = math$2.bernoulli(p);
     }
     return a
   },
@@ -5971,13 +6187,13 @@ stats$1.binom = {
   rsv: function (n = 1, p = 0.5, size = 1) {
     let a = [];
     for (let i = 0; i < size; i++) {
-      a[i] = math$1.binomial(n, p);
+      a[i] = math$2.binomial(n, p);
     }
     return a
   },
   pmf: function (a = [], n, p) {
     return a.map(x => {
-      return p === 0 || p === 1 ? (n * p === x ? 1 : 0) : math$1.combination(n, x) * p ** x * (1 - p) ** (n - x)
+      return p === 0 || p === 1 ? (n * p === x ? 1 : 0) : math$2.combination(n, x) * p ** x * (1 - p) ** (n - x)
     })
   },
   cdf: ''
@@ -5987,7 +6203,7 @@ stats$1.geom = {
   rsv: function (p = 0.5, size = 1) {
     let a = [];
     for (let i = 0; i < size; i++) {
-      a[i] = math$1.geometric(p);
+      a[i] = math$2.geometric(p);
     }
     return a
   },
@@ -5998,7 +6214,7 @@ stats$1.geom = {
   },
   cdf: function (a = [], p = 0.5) {
     return a.map(it => {
-      return math$1.sum(
+      return math$2.sum(
         np$1.arange(1, it + 1).map(x => {
           return x <= 0 ? 0 : (1 - p) ** (x - 1) * p
         })
@@ -6011,7 +6227,7 @@ stats$1.poisson = {
   rsv: function (mu, size = 1) {
     let a = [];
     for (let i = 0; i < size; i++) {
-      a[i] = math$1.poisson(mu);
+      a[i] = math$2.poisson(mu);
     }
     return a
   },
@@ -6021,18 +6237,18 @@ stats$1.poisson = {
         return 0
       }
 
-      return (mu ** x * Math.exp(-mu)) / math$1.fac(x)
+      return (mu ** x * Math.exp(-mu)) / math$2.fac(x)
     })
   },
   cdf: function (a = [], mu = 1) {
     return a.map(it => {
-      return math$1.sum(
+      return math$2.sum(
         np$1.arange(0, it + 1).map(x => {
           if (mu < 0 || x % 1 !== 0 || x < 0) {
             return 0
           }
 
-          return (mu ** x * Math.exp(-mu)) / math$1.fac(x)
+          return (mu ** x * Math.exp(-mu)) / math$2.fac(x)
         })
       )
     })
@@ -6042,7 +6258,7 @@ stats$1.norm = {
   rsv: function (mu = 0, sigma = 1, size = 1) {
     let a = [];
     for (let i = 0; i < size; i++) {
-      a[i] = math$1.normal(mu, sigma);
+      a[i] = math$2.normal(mu, sigma);
     }
     return a
   },
@@ -6066,6 +6282,72 @@ var jsPython$1 = {
   np,
   stats
 };
+
+const math$1 = math$4;
+
+/**
+ * Beta系数
+ * @param {Array} a1
+ * @param {Array} a2
+ * @returns
+ */
+function betaRate (a1, a2) {
+  return math$1.covariance(a1, a2) / math$1.variance(a2)
+}
+/**
+ * 夏普比率
+ * @param {Array} a1
+ * @param {Number} offeredRate 拆借利率
+ * @param {Number} tadeDay 有效交易日
+ * @returns
+ */
+function sharpeRate (a1, offeredRate = 0.04, tadeDay = 252) {
+  const a1Adjust = math$1.mean(a1.map(x => x - offeredRate / tadeDay));
+  return (a1Adjust * Math.sqrt(tadeDay)) / math$1.stddev(a1)
+}
+
+/**
+ * 对数收益率
+ * @param {Array} a
+ * @returns
+ */
+function logReturn (a) {
+  let r = [];
+  a.forEach((x, idx) => {
+    if (a[idx + 1]) {
+      // b.push((a[idx + 1] - a[idx]) / a[idx])
+      r.push(Math.log(a[idx + 1] / a[idx]));
+    }
+  });
+  return r
+}
+/*
+    一组时序数据,清理需求如下
+    1.前后都有,取平均值
+    2.前有后无,取前
+    3.后有前无,取后
+    4.使用reduce
+  */
+/**
+ *
+ * @param {Array} a
+ * @returns
+ */
+function tsClean (a) {
+  return a.reduce((x, y, idx, ori) => {
+    x.push(y ? y : ((x.at(-1) || ori[idx + 1] || 0) + (ori[idx + 1] || x.at(-1) || 0)) / 2);
+    return x
+  }, [])
+}
+
+const fi = {
+  logReturn,
+  betaRate,
+  sharpeRate,
+  tsClean
+};
+
+var finance$1 = { fi };
 
 var color$1 = {exports: {}};
 
@@ -14195,6 +14477,33 @@ const fs$1 = require$$0;
 const crypto$1 = require$$0;
 const BUFFER_SIZE = 8192;
 
+function obj2Arr (o, isOrder = 0) {
+  let keyList = Object.keys(o[0]);
+  keyList = isOrder ? keyList.sort() : keyList;
+  let a = [keyList];
+  o.forEach((x, idx) => {
+    a[idx + 1] = [];
+    keyList.forEach((it, idxIt) => {
+      a[idx + 1][idxIt] = x[it];
+    });
+  });
+  return a
+}
+function array2Csv (a) {
+  let s = '';
+  let len = a[0].length;
+  a.map(x => {
+    x[len - 1] += '\n';
+    s += x.join(',');
+  });
+  return s
+}
+const obj2Csv = (o, fileName, isOrder = 0) => {
+  fs$1.writeFileSync(fileName, array2Csv(obj2Arr(o, isOrder)));
+};
+const arr2Csv = (a, fileName) => {
+  fs$1.writeFileSync(fileName, array2Csv(a));
+};
 function getFileType (filePath) {
   const buffer = Buffer.alloc(8);
   const fd = fs$1.openSync(filePath, 'r');
@@ -14363,6 +14672,9 @@ var file$1 = {
   checkImgComplete,
   getFileMd5,
   csv2Arr,
+  obj2Csv,
+  arr2Csv,
+  obj2Arr,
   deleteAll,
   readBig
 };
@@ -15898,9 +16210,7 @@ var requireDir = function requireAll (options) {
   return modules
 };
 
-/*
-global BigInt
-*/
+/* istanbul ignore file */
 
 /**
  * @class
@@ -16010,7 +16320,12 @@ function requireUtil () {
 
 	const Mat = mathMatrix.mat;
 
-	const $M = math$3;
+	const $M = math$4;
+	/**
+	 * Standardization 标准化
+	 * @param {Array} a
+	 * @returns
+	 */
 	function zScoreNorm (a) {
 	  const arr = $M.mat.transpose(a).map(x => {
 	    const mean = $M.mean(x);
@@ -16020,6 +16335,11 @@ function requireUtil () {
 	  });
 	  return $M.mat.transpose(arr)
 	}
+	/**
+	 * 归一化(MMS)
+	 * @param {Array} a
+	 * @returns
+	 */
 	function minMaxNorm (a) {
 	  const arr = $M.mat.transpose(a).map(x => {
 	    const max = $M.max(x);
@@ -16187,7 +16507,7 @@ function requireDecisionTree () {
 	 * @namespace Math_prototype
 	 */
 
-	const $M = math$3;
+	const $M = math$4;
 	const util = requireUtil();
 	function drawTree (inObj, outObj = {}, key, level = -1) {
 	  level++;
@@ -16331,7 +16651,7 @@ var hasRequiredKnn;
 function requireKnn () {
 	if (hasRequiredKnn) return Knn_1;
 	hasRequiredKnn = 1;
-	const $M = math$3;
+	const $M = math$4;
 	// K-邻近机器学习
 	class Knn {
 	  constructor (xRaw, yRaw, k = 3, algorithm = 'euclidean') {
@@ -17022,7 +17342,7 @@ function requirePca () {
 	 * @namespace Math_prototype
 	 */
 
-	const $M = math$3;
+	const $M = math$4;
 	const util = requireUtil();
 
 	const SVD = requireSvd();
@@ -17070,7 +17390,787 @@ function requirePca () {
 
 /* istanbul ignore file */
 
-const $M = math$3;
+var Evd;
+var hasRequiredEvd;
+
+function requireEvd () {
+	if (hasRequiredEvd) return Evd;
+	hasRequiredEvd = 1;
+	// @ts-check
+	/**
+	 * @namespace Math_prototype
+	 */
+
+	const { mat } = math$4;
+	const { Matrix } = mathMatrixAdv;
+	function hypotenuse (a, b) {
+	  let r = 0;
+	  if (Math.abs(a) > Math.abs(b)) {
+	    r = b / a;
+	    return Math.abs(a) * Math.sqrt(1 + r * r)
+	  }
+	  if (b !== 0) {
+	    r = a / b;
+	    return Math.abs(b) * Math.sqrt(1 + r * r)
+	  }
+	  return 0
+	}
+	function tred2 (n, e, d, V) {
+	  let f, g, h, i, j, k, hh, scale;
+
+	  for (j = 0; j < n; j++) {
+	    d[j] = V.get(n - 1, j);
+	  }
+
+	  for (i = n - 1; i > 0; i--) {
+	    scale = 0;
+	    h = 0;
+	    for (k = 0; k < i; k++) {
+	      scale = scale + Math.abs(d[k]);
+	    }
+
+	    if (scale === 0) {
+	      e[i] = d[i - 1];
+	      for (j = 0; j < i; j++) {
+	        d[j] = V.get(i - 1, j);
+	        V.set(i, j, 0);
+	        V.set(j, i, 0);
+	      }
+	    } else {
+	      for (k = 0; k < i; k++) {
+	        d[k] /= scale;
+	        h += d[k] * d[k];
+	      }
+
+	      f = d[i - 1];
+	      g = Math.sqrt(h);
+	      if (f > 0) {
+	        g = -g;
+	      }
+
+	      e[i] = scale * g;
+	      h = h - f * g;
+	      d[i - 1] = f - g;
+	      for (j = 0; j < i; j++) {
+	        e[j] = 0;
+	      }
+
+	      for (j = 0; j < i; j++) {
+	        f = d[j];
+	        V.set(j, i, f);
+	        g = e[j] + V.get(j, j) * f;
+	        for (k = j + 1; k <= i - 1; k++) {
+	          g += V.get(k, j) * d[k];
+	          e[k] += V.get(k, j) * f;
+	        }
+	        e[j] = g;
+	      }
+
+	      f = 0;
+	      for (j = 0; j < i; j++) {
+	        e[j] /= h;
+	        f += e[j] * d[j];
+	      }
+
+	      hh = f / (h + h);
+	      for (j = 0; j < i; j++) {
+	        e[j] -= hh * d[j];
+	      }
+
+	      for (j = 0; j < i; j++) {
+	        f = d[j];
+	        g = e[j];
+	        for (k = j; k <= i - 1; k++) {
+	          V.set(k, j, V.get(k, j) - (f * e[k] + g * d[k]));
+	        }
+	        d[j] = V.get(i - 1, j);
+	        V.set(i, j, 0);
+	      }
+	    }
+	    d[i] = h;
+	  }
+
+	  for (i = 0; i < n - 1; i++) {
+	    V.set(n - 1, i, V.get(i, i));
+	    V.set(i, i, 1);
+	    h = d[i + 1];
+	    if (h !== 0) {
+	      for (k = 0; k <= i; k++) {
+	        d[k] = V.get(k, i + 1) / h;
+	      }
+
+	      for (j = 0; j <= i; j++) {
+	        g = 0;
+	        for (k = 0; k <= i; k++) {
+	          g += V.get(k, i + 1) * V.get(k, j);
+	        }
+	        for (k = 0; k <= i; k++) {
+	          V.set(k, j, V.get(k, j) - g * d[k]);
+	        }
+	      }
+	    }
+
+	    for (k = 0; k <= i; k++) {
+	      V.set(k, i + 1, 0);
+	    }
+	  }
+
+	  for (j = 0; j < n; j++) {
+	    d[j] = V.get(n - 1, j);
+	    V.set(n - 1, j, 0);
+	  }
+
+	  V.set(n - 1, n - 1, 1);
+	  e[0] = 0;
+	}
+
+	function tql2 (n, e, d, V) {
+	  let g, h, i, j, k, l, m, p, r, dl1, c, c2, c3, el1, s, s2;
+
+	  for (i = 1; i < n; i++) {
+	    e[i - 1] = e[i];
+	  }
+
+	  e[n - 1] = 0;
+
+	  let f = 0;
+	  let tst1 = 0;
+	  let eps = Number.EPSILON;
+
+	  for (l = 0; l < n; l++) {
+	    tst1 = Math.max(tst1, Math.abs(d[l]) + Math.abs(e[l]));
+	    m = l;
+	    while (m < n) {
+	      if (Math.abs(e[m]) <= eps * tst1) {
+	        break
+	      }
+	      m++;
+	    }
+
+	    if (m > l) {
+	      do {
+
+	        g = d[l];
+	        p = (d[l + 1] - g) / (2 * e[l]);
+	        r = hypotenuse(p, 1);
+	        if (p < 0) {
+	          r = -r;
+	        }
+
+	        d[l] = e[l] / (p + r);
+	        d[l + 1] = e[l] * (p + r);
+	        dl1 = d[l + 1];
+	        h = g - d[l];
+	        for (i = l + 2; i < n; i++) {
+	          d[i] -= h;
+	        }
+
+	        f = f + h;
+
+	        p = d[m];
+	        c = 1;
+	        c2 = c;
+	        c3 = c;
+	        el1 = e[l + 1];
+	        s = 0;
+	        s2 = 0;
+	        for (i = m - 1; i >= l; i--) {
+	          c3 = c2;
+	          c2 = c;
+	          s2 = s;
+	          g = c * e[i];
+	          h = c * p;
+	          r = hypotenuse(p, e[i]);
+	          e[i + 1] = s * r;
+	          s = e[i] / r;
+	          c = p / r;
+	          p = c * d[i] - s * g;
+	          d[i + 1] = h + s * (c * g + s * d[i]);
+
+	          for (k = 0; k < n; k++) {
+	            h = V.get(k, i + 1);
+	            V.set(k, i + 1, s * V.get(k, i) + c * h);
+	            V.set(k, i, c * V.get(k, i) - s * h);
+	          }
+	        }
+
+	        p = (-s * s2 * c3 * el1 * e[l]) / dl1;
+	        e[l] = s * p;
+	        d[l] = c * p;
+	      } while (Math.abs(e[l]) > eps * tst1)
+	    }
+	    d[l] = d[l] + f;
+	    e[l] = 0;
+	  }
+
+	  for (i = 0; i < n - 1; i++) {
+	    k = i;
+	    p = d[i];
+	    for (j = i + 1; j < n; j++) {
+	      if (d[j] < p) {
+	        k = j;
+	        p = d[j];
+	      }
+	    }
+
+	    if (k !== i) {
+	      d[k] = d[i];
+	      d[i] = p;
+	      for (j = 0; j < n; j++) {
+	        p = V.get(j, i);
+	        V.set(j, i, V.get(j, k));
+	        V.set(j, k, p);
+	      }
+	    }
+	  }
+	}
+
+	function orthes (n, H, ort, V) {
+	  let low = 0;
+	  let high = n - 1;
+	  let f, g, h, i, j, m;
+	  let scale;
+
+	  for (m = low + 1; m <= high - 1; m++) {
+	    scale = 0;
+	    for (i = m; i <= high; i++) {
+	      scale = scale + Math.abs(H.get(i, m - 1));
+	    }
+
+	    if (scale !== 0) {
+	      h = 0;
+	      for (i = high; i >= m; i--) {
+	        ort[i] = H.get(i, m - 1) / scale;
+	        h += ort[i] * ort[i];
+	      }
+
+	      g = Math.sqrt(h);
+	      if (ort[m] > 0) {
+	        g = -g;
+	      }
+
+	      h = h - ort[m] * g;
+	      ort[m] = ort[m] - g;
+
+	      for (j = m; j < n; j++) {
+	        f = 0;
+	        for (i = high; i >= m; i--) {
+	          f += ort[i] * H.get(i, j);
+	        }
+
+	        f = f / h;
+	        for (i = m; i <= high; i++) {
+	          H.set(i, j, H.get(i, j) - f * ort[i]);
+	        }
+	      }
+
+	      for (i = 0; i <= high; i++) {
+	        f = 0;
+	        for (j = high; j >= m; j--) {
+	          f += ort[j] * H.get(i, j);
+	        }
+
+	        f = f / h;
+	        for (j = m; j <= high; j++) {
+	          H.set(i, j, H.get(i, j) - f * ort[j]);
+	        }
+	      }
+
+	      ort[m] = scale * ort[m];
+	      H.set(m, m - 1, scale * g);
+	    }
+	  }
+
+	  for (i = 0; i < n; i++) {
+	    for (j = 0; j < n; j++) {
+	      V.set(i, j, i === j ? 1 : 0);
+	    }
+	  }
+
+	  for (m = high - 1; m >= low + 1; m--) {
+	    if (H.get(m, m - 1) !== 0) {
+	      for (i = m + 1; i <= high; i++) {
+	        ort[i] = H.get(i, m - 1);
+	      }
+
+	      for (j = m; j <= high; j++) {
+	        g = 0;
+	        for (i = m; i <= high; i++) {
+	          g += ort[i] * V.get(i, j);
+	        }
+
+	        g = g / ort[m] / H.get(m, m - 1);
+	        for (i = m; i <= high; i++) {
+	          V.set(i, j, V.get(i, j) + g * ort[i]);
+	        }
+	      }
+	    }
+	  }
+	}
+
+	function hqr2 (nn, e, d, V, H) {
+	  let n = nn - 1;
+	  let low = 0;
+	  let high = nn - 1;
+	  let eps = Number.EPSILON;
+	  let exshift = 0;
+	  let norm = 0;
+	  let p = 0;
+	  let q = 0;
+	  let r = 0;
+	  let s = 0;
+	  let z = 0;
+	  let iter = 0;
+	  let i, j, k, l, m, t, w, x, y;
+	  let ra, sa, vr, vi;
+	  let notlast, cdivres;
+
+	  for (i = 0; i < nn; i++) {
+	    if (i < low || i > high) {
+	      d[i] = H.get(i, i);
+	      e[i] = 0;
+	    }
+
+	    for (j = Math.max(i - 1, 0); j < nn; j++) {
+	      norm = norm + Math.abs(H.get(i, j));
+	    }
+	  }
+
+	  while (n >= low) {
+	    l = n;
+	    while (l > low) {
+	      s = Math.abs(H.get(l - 1, l - 1)) + Math.abs(H.get(l, l));
+	      if (s === 0) {
+	        s = norm;
+	      }
+	      if (Math.abs(H.get(l, l - 1)) < eps * s) {
+	        break
+	      }
+	      l--;
+	    }
+
+	    if (l === n) {
+	      H.set(n, n, H.get(n, n) + exshift);
+	      d[n] = H.get(n, n);
+	      e[n] = 0;
+	      n--;
+	      iter = 0;
+	    } else if (l === n - 1) {
+	      w = H.get(n, n - 1) * H.get(n - 1, n);
+	      p = (H.get(n - 1, n - 1) - H.get(n, n)) / 2;
+	      q = p * p + w;
+	      z = Math.sqrt(Math.abs(q));
+	      H.set(n, n, H.get(n, n) + exshift);
+	      H.set(n - 1, n - 1, H.get(n - 1, n - 1) + exshift);
+	      x = H.get(n, n);
+
+	      if (q >= 0) {
+	        z = p >= 0 ? p + z : p - z;
+	        d[n - 1] = x + z;
+	        d[n] = d[n - 1];
+	        if (z !== 0) {
+	          d[n] = x - w / z;
+	        }
+	        e[n - 1] = 0;
+	        e[n] = 0;
+	        x = H.get(n, n - 1);
+	        s = Math.abs(x) + Math.abs(z);
+	        p = x / s;
+	        q = z / s;
+	        r = Math.sqrt(p * p + q * q);
+	        p = p / r;
+	        q = q / r;
+
+	        for (j = n - 1; j < nn; j++) {
+	          z = H.get(n - 1, j);
+	          H.set(n - 1, j, q * z + p * H.get(n, j));
+	          H.set(n, j, q * H.get(n, j) - p * z);
+	        }
+
+	        for (i = 0; i <= n; i++) {
+	          z = H.get(i, n - 1);
+	          H.set(i, n - 1, q * z + p * H.get(i, n));
+	          H.set(i, n, q * H.get(i, n) - p * z);
+	        }
+
+	        for (i = low; i <= high; i++) {
+	          z = V.get(i, n - 1);
+	          V.set(i, n - 1, q * z + p * V.get(i, n));
+	          V.set(i, n, q * V.get(i, n) - p * z);
+	        }
+	      } else {
+	        d[n - 1] = x + p;
+	        d[n] = x + p;
+	        e[n - 1] = z;
+	        e[n] = -z;
+	      }
+
+	      n = n - 2;
+	      iter = 0;
+	    } else {
+	      x = H.get(n, n);
+	      y = 0;
+	      w = 0;
+	      if (l < n) {
+	        y = H.get(n - 1, n - 1);
+	        w = H.get(n, n - 1) * H.get(n - 1, n);
+	      }
+
+	      if (iter === 10) {
+	        exshift += x;
+	        for (i = low; i <= n; i++) {
+	          H.set(i, i, H.get(i, i) - x);
+	        }
+	        s = Math.abs(H.get(n, n - 1)) + Math.abs(H.get(n - 1, n - 2));
+	        x = y = 0.75 * s;
+	        w = -0.4375 * s * s;
+	      }
+
+	      if (iter === 30) {
+	        s = (y - x) / 2;
+	        s = s * s + w;
+	        if (s > 0) {
+	          s = Math.sqrt(s);
+	          if (y < x) {
+	            s = -s;
+	          }
+	          s = x - w / ((y - x) / 2 + s);
+	          for (i = low; i <= n; i++) {
+	            H.set(i, i, H.get(i, i) - s);
+	          }
+	          exshift += s;
+	          x = y = w = 0.964;
+	        }
+	      }
+
+	      iter = iter + 1;
+
+	      m = n - 2;
+	      while (m >= l) {
+	        z = H.get(m, m);
+	        r = x - z;
+	        s = y - z;
+	        p = (r * s - w) / H.get(m + 1, m) + H.get(m, m + 1);
+	        q = H.get(m + 1, m + 1) - z - r - s;
+	        r = H.get(m + 2, m + 1);
+	        s = Math.abs(p) + Math.abs(q) + Math.abs(r);
+	        p = p / s;
+	        q = q / s;
+	        r = r / s;
+	        if (m === l) {
+	          break
+	        }
+	        if (Math.abs(H.get(m, m - 1)) * (Math.abs(q) + Math.abs(r)) < eps * (Math.abs(p) * (Math.abs(H.get(m - 1, m - 1)) + Math.abs(z) + Math.abs(H.get(m + 1, m + 1))))) {
+	          break
+	        }
+	        m--;
+	      }
+
+	      for (i = m + 2; i <= n; i++) {
+	        H.set(i, i - 2, 0);
+	        if (i > m + 2) {
+	          H.set(i, i - 3, 0);
+	        }
+	      }
+
+	      for (k = m; k <= n - 1; k++) {
+	        notlast = k !== n - 1;
+	        if (k !== m) {
+	          p = H.get(k, k - 1);
+	          q = H.get(k + 1, k - 1);
+	          r = notlast ? H.get(k + 2, k - 1) : 0;
+	          x = Math.abs(p) + Math.abs(q) + Math.abs(r);
+	          if (x !== 0) {
+	            p = p / x;
+	            q = q / x;
+	            r = r / x;
+	          }
+	        }
+
+	        if (x === 0) {
+	          break
+	        }
+
+	        s = Math.sqrt(p * p + q * q + r * r);
+	        if (p < 0) {
+	          s = -s;
+	        }
+
+	        if (s !== 0) {
+	          if (k !== m) {
+	            H.set(k, k - 1, -s * x);
+	          } else if (l !== m) {
+	            H.set(k, k - 1, -H.get(k, k - 1));
+	          }
+
+	          p = p + s;
+	          x = p / s;
+	          y = q / s;
+	          z = r / s;
+	          q = q / p;
+	          r = r / p;
+
+	          for (j = k; j < nn; j++) {
+	            p = H.get(k, j) + q * H.get(k + 1, j);
+	            if (notlast) {
+	              p = p + r * H.get(k + 2, j);
+	              H.set(k + 2, j, H.get(k + 2, j) - p * z);
+	            }
+
+	            H.set(k, j, H.get(k, j) - p * x);
+	            H.set(k + 1, j, H.get(k + 1, j) - p * y);
+	          }
+
+	          for (i = 0; i <= Math.min(n, k + 3); i++) {
+	            p = x * H.get(i, k) + y * H.get(i, k + 1);
+	            if (notlast) {
+	              p = p + z * H.get(i, k + 2);
+	              H.set(i, k + 2, H.get(i, k + 2) - p * r);
+	            }
+
+	            H.set(i, k, H.get(i, k) - p);
+	            H.set(i, k + 1, H.get(i, k + 1) - p * q);
+	          }
+
+	          for (i = low; i <= high; i++) {
+	            p = x * V.get(i, k) + y * V.get(i, k + 1);
+	            if (notlast) {
+	              p = p + z * V.get(i, k + 2);
+	              V.set(i, k + 2, V.get(i, k + 2) - p * r);
+	            }
+
+	            V.set(i, k, V.get(i, k) - p);
+	            V.set(i, k + 1, V.get(i, k + 1) - p * q);
+	          }
+	        }
+	      }
+	    }
+	  }
+
+	  if (norm === 0) {
+	    return
+	  }
+
+	  for (n = nn - 1; n >= 0; n--) {
+	    p = d[n];
+	    q = e[n];
+
+	    if (q === 0) {
+	      l = n;
+	      H.set(n, n, 1);
+	      for (i = n - 1; i >= 0; i--) {
+	        w = H.get(i, i) - p;
+	        r = 0;
+	        for (j = l; j <= n; j++) {
+	          r = r + H.get(i, j) * H.get(j, n);
+	        }
+
+	        if (e[i] < 0) {
+	          z = w;
+	          s = r;
+	        } else {
+	          l = i;
+	          if (e[i] === 0) {
+	            H.set(i, n, w !== 0 ? -r / w : -r / (eps * norm));
+	          } else {
+	            x = H.get(i, i + 1);
+	            y = H.get(i + 1, i);
+	            q = (d[i] - p) * (d[i] - p) + e[i] * e[i];
+	            t = (x * s - z * r) / q;
+	            H.set(i, n, t);
+	            H.set(i + 1, n, Math.abs(x) > Math.abs(z) ? (-r - w * t) / x : (-s - y * t) / z);
+	          }
+
+	          t = Math.abs(H.get(i, n));
+	          if (eps * t * t > 1) {
+	            for (j = i; j <= n; j++) {
+	              H.set(j, n, H.get(j, n) / t);
+	            }
+	          }
+	        }
+	      }
+	    } else if (q < 0) {
+	      l = n - 1;
+
+	      if (Math.abs(H.get(n, n - 1)) > Math.abs(H.get(n - 1, n))) {
+	        H.set(n - 1, n - 1, q / H.get(n, n - 1));
+	        H.set(n - 1, n, -(H.get(n, n) - p) / H.get(n, n - 1));
+	      } else {
+	        cdivres = cdiv(0, -H.get(n - 1, n), H.get(n - 1, n - 1) - p, q);
+	        H.set(n - 1, n - 1, cdivres[0]);
+	        H.set(n - 1, n, cdivres[1]);
+	      }
+
+	      H.set(n, n - 1, 0);
+	      H.set(n, n, 1);
+	      for (i = n - 2; i >= 0; i--) {
+	        ra = 0;
+	        sa = 0;
+	        for (j = l; j <= n; j++) {
+	          ra = ra + H.get(i, j) * H.get(j, n - 1);
+	          sa = sa + H.get(i, j) * H.get(j, n);
+	        }
+
+	        w = H.get(i, i) - p;
+
+	        if (e[i] < 0) {
+	          z = w;
+	          r = ra;
+	          s = sa;
+	        } else {
+	          l = i;
+	          if (e[i] === 0) {
+	            cdivres = cdiv(-ra, -sa, w, q);
+	            H.set(i, n - 1, cdivres[0]);
+	            H.set(i, n, cdivres[1]);
+	          } else {
+	            x = H.get(i, i + 1);
+	            y = H.get(i + 1, i);
+	            vr = (d[i] - p) * (d[i] - p) + e[i] * e[i] - q * q;
+	            vi = (d[i] - p) * 2 * q;
+	            if (vr === 0 && vi === 0) {
+	              vr = eps * norm * (Math.abs(w) + Math.abs(q) + Math.abs(x) + Math.abs(y) + Math.abs(z));
+	            }
+	            cdivres = cdiv(x * r - z * ra + q * sa, x * s - z * sa - q * ra, vr, vi);
+	            H.set(i, n - 1, cdivres[0]);
+	            H.set(i, n, cdivres[1]);
+	            if (Math.abs(x) > Math.abs(z) + Math.abs(q)) {
+	              H.set(i + 1, n - 1, (-ra - w * H.get(i, n - 1) + q * H.get(i, n)) / x);
+	              H.set(i + 1, n, (-sa - w * H.get(i, n) - q * H.get(i, n - 1)) / x);
+	            } else {
+	              cdivres = cdiv(-r - y * H.get(i, n - 1), -s - y * H.get(i, n), z, q);
+	              H.set(i + 1, n - 1, cdivres[0]);
+	              H.set(i + 1, n, cdivres[1]);
+	            }
+	          }
+
+	          t = Math.max(Math.abs(H.get(i, n - 1)), Math.abs(H.get(i, n)));
+	          if (eps * t * t > 1) {
+	            for (j = i; j <= n; j++) {
+	              H.set(j, n - 1, H.get(j, n - 1) / t);
+	              H.set(j, n, H.get(j, n) / t);
+	            }
+	          }
+	        }
+	      }
+	    }
+	  }
+
+	  for (i = 0; i < nn; i++) {
+	    if (i < low || i > high) {
+	      for (j = i; j < nn; j++) {
+	        V.set(i, j, H.get(i, j));
+	      }
+	    }
+	  }
+
+	  for (j = nn - 1; j >= low; j--) {
+	    for (i = low; i <= high; i++) {
+	      z = 0;
+	      for (k = low; k <= Math.min(j, high); k++) {
+	        z = z + V.get(i, k) * H.get(k, j);
+	      }
+	      V.set(i, j, z);
+	    }
+	  }
+	}
+
+	function cdiv (xr, xi, yr, yi) {
+	  let r, d;
+	  if (Math.abs(yr) > Math.abs(yi)) {
+	    r = yi / yr;
+	    d = yr + r * yi;
+	    return [(xr + r * xi) / d, (xi - r * xr) / d]
+	  } else {
+	    r = yr / yi;
+	    d = yi + r * yr;
+	    return [(r * xr + xi) / d, (r * xi - xr) / d]
+	  }
+	}
+
+	class EigenvalueDecomposition {
+	  /**
+	   *
+	   * @param {Array} matrix
+	   * @param {Object} options
+	   */
+	  constructor (matrix, options = {}) {
+	    const { assumeSymmetric = false } = options;
+	    if (!mat.isSquare(matrix)) {
+	      throw new Error('Matrix must be a square matrix')
+	    }
+	    if (matrix.flat(Infinity).length === 0) {
+	      throw new Error('Matrix must be non-empty')
+	    }
+
+	    let n = matrix.length;
+	    let V = new Matrix(mat.zero(n, n));
+	    let d = new Array(n);
+	    let e = new Array(n);
+
+	    let isSymmetric = false;
+	    if (assumeSymmetric) {
+	      isSymmetric = true;
+	    } else {
+	      isSymmetric = mat.isSymmetric(matrix);
+	    }
+
+	    if (isSymmetric) {
+	      V = new Matrix(matrix);
+	      tred2(n, e, d, V);
+	      tql2(n, e, d, V);
+	    } else {
+	      let H = new Matrix(matrix);
+	      let ort = new Array(n);
+	      orthes(n, H, ort, V);
+	      hqr2(n, e, d, V, H);
+	    }
+	    this.n = n;
+	    this.e = e;
+	    this.d = d;
+	    this.V = V;
+	  }
+
+	  get realEigenvalues () {
+	    return Array.from(this.d)
+	  }
+
+	  get imaginaryEigenvalues () {
+	    return Array.from(this.e)
+	  }
+
+	  get eigenvectorMatrix () {
+	    return this.V
+	  }
+
+	  get diagonalMatrix () {
+	    let n = this.n;
+	    let e = this.e;
+	    let d = this.d;
+	    let X = new Matrix(mat.zero(n, n));
+	    let i;
+	    for (i = 0; i < n; i++) {
+	      // for (j = 0; j < n; j++) {
+	      //    X.set(i, j, 0)
+	      // }
+	      X.set(i, i, d[i]);
+	      if (e[i] > 0) {
+	        X.set(i, i + 1, e[i]);
+	      } else if (e[i] < 0) {
+	        X.set(i, i - 1, e[i]);
+	      }
+	    }
+	    return X
+	  }
+	}
+
+	Evd = EigenvalueDecomposition;
+	return Evd;
+}
+
+/* istanbul ignore file */
+
+const $M = math$4;
 
 /**
  *
@@ -17122,6 +18222,7 @@ var ml$1 = {
   NaiveBayes: requireNaiveBayes(),
   Pca: requirePca(),
   Svd: requireSvd(),
+  Evd: requireEvd(),
   util: requireUtil(),
   peridForecast
 };
@@ -19482,11 +20583,13 @@ const wait = function (t) {
   })
 };
 
-const math = math$3;
+const math = math$4;
 const matAdv = mathMatrixAdv;
 const jsPython = jsPython$1;
+const finance = finance$1;
 Object.assign(math, matAdv);
 Object.assign(math, jsPython);
+Object.assign(math, finance);
 const fake = fake$2;
 const file = file$1;
 const reg = reg_1;

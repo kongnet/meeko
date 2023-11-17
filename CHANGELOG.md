@@ -1,5 +1,9 @@
-## [1.8.321](https://github.com/kongnet/meeko/compare/v1.8.320...v1.8.321) (2023-11-17)
+## [1.8.322](https://github.com/kongnet/meeko/compare/v1.8.320...v1.8.322) (2023-11-17)
 
+
+### :sparkles:
+
+* 增加array zip功能 ([825a141](https://github.com/kongnet/meeko/commit/825a1418accfc0303452d8f3cf338ec8129da057))
 
 
 
