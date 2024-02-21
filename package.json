@@ -62,7 +62,7 @@
     "docdash": "^1.2.0",
     "eslint": "^8.15.0",
     "istanbul": "*",
-    "jsdoc": "*",
+    "jsdoc": "^4.0.2",
     "mocha": "*",
     "mockjs": "^1.0.0",
     "nyc": "*",
@@ -134,5 +134,8 @@
     "commitizen": {
       "path": "./node_modules/cz-jt"
     }
+  },
+  "dependencies": {
+    "taffydb": "^2.7.3"
   }
 }

@@ -10,4 +10,6 @@ try {
     }
     console.log(x[0])
   })
-} catch (e) {}
+} catch (e) {
+  /*do something */
+}

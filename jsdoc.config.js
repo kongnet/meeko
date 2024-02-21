@@ -1,3 +1,10 @@
+/*global BigInt*/
+if (BigInt) {
+  BigInt.prototype.toJSON = function () {
+    return this.toString() + 'n'
+  }
+}
+
 module.exports = {
   plugins: ['plugins/markdown'],
   recurseDepth: 10,
