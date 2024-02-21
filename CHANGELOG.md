@@ -1,3 +1,17 @@
+## [1.8.325](https://github.com/kongnet/meeko/compare/v1.8.324...v1.8.325) (2024-02-21)
+
+
+
+
+## [1.8.324](https://github.com/kongnet/meeko/compare/v1.8.323...v1.8.324) (2024-02-21)
+
+
+### :art:
+
+* style BigInt check ([4b469d2](https://github.com/kongnet/meeko/commit/4b469d2789cc28746f01eff7580e15dd2a7d9b02))
+
+
+
 ## [1.8.323](https://github.com/kongnet/meeko/compare/v1.8.322...v1.8.323) (2023-11-17)
 
 
