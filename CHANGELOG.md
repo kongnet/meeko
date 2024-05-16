@@ -1,3 +1,12 @@
+## [1.8.327](https://github.com/kongnet/meeko/compare/v1.8.326...v1.8.327) (2024-02-29)
+
+
+### :art:
+
+* checkparam add regex as reg ([e7c2f6d](https://github.com/kongnet/meeko/commit/e7c2f6d8710bf0d86ee672b4652cc958031d9dda))
+
+
+
 ## [1.8.326](https://github.com/kongnet/meeko/compare/v1.8.325...v1.8.326) (2024-02-21)
 
 
