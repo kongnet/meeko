@@ -1,3 +1,12 @@
+## [1.8.328](https://github.com/kongnet/meeko/compare/v1.8.327...v1.8.328) (2024-05-16)
+
+
+### :art:
+
+* checkparam支持object ([fbc355e](https://github.com/kongnet/meeko/commit/fbc355ed118be2c62bd6ad60a0c2a5a40bb3a957))
+
+
+
 ## [1.8.327](https://github.com/kongnet/meeko/compare/v1.8.326...v1.8.327) (2024-02-29)
 
 
