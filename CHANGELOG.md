@@ -1,3 +1,12 @@
+## [1.8.330](https://github.com/kongnet/meeko/compare/v1.8.329...v1.8.330) (2024-06-28)
+
+
+### :art:
+
+* 被加载文件中的同名测试用例不重复运行 ([82596c1](https://github.com/kongnet/meeko/commit/82596c1b40c66eecef9c26d9fc6b91a7af1df3a4))
+
+
+
 ## [1.8.329](https://github.com/kongnet/meeko/compare/v1.8.328...v1.8.329) (2024-06-21)
 
 
