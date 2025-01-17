@@ -22,87 +22,9 @@ const strExist4 = () => strOri.includes(needle)
 const strExist5 = () => strOri.search(needleRegex)
 
 const cloneArray = [
-  29,
-  27,
-  28,
-  838,
-  22,
-  2882,
-  2,
-  93,
-  84,
-  74,
-  7,
-  933,
-  3754,
-  3874,
-  22838,
-  38464,
-  3837,
-  82424,
-  2927,
-  2625,
-  63,
-  27,
-  28,
-  838,
-  22,
-  2882,
-  2,
-  93,
-  84,
-  74,
-  7,
-  933,
-  3754,
-  3874,
-  22838,
-  38464,
-  3837,
-  82424,
-  2927,
-  2625,
-  63,
-  27,
-  28,
-  838,
-  22,
-  2882,
-  2,
-  93,
-  84,
-  74,
-  7,
-  933,
-  3754,
-  3874,
-  22838,
-  38464,
-  3837,
-  82424,
-  2927,
-  2625,
-  63,
-  27,
-  28,
-  838,
-  22,
-  2882,
-  2,
-  93,
-  84,
-  74,
-  7,
-  933,
-  3754,
-  3874,
-  22838,
-  38464,
-  3837,
-  82424,
-  2927,
-  2625,
-  63
+  29, 27, 28, 838, 22, 2882, 2, 93, 84, 74, 7, 933, 3754, 3874, 22838, 38464, 3837, 82424, 2927, 2625, 63, 27, 28, 838, 22, 2882, 2, 93, 84, 74, 7, 933, 3754, 3874, 22838, 38464, 3837, 82424, 2927,
+  2625, 63, 27, 28, 838, 22, 2882, 2, 93, 84, 74, 7, 933, 3754, 3874, 22838, 38464, 3837, 82424, 2927, 2625, 63, 27, 28, 838, 22, 2882, 2, 93, 84, 74, 7, 933, 3754, 3874, 22838, 38464, 3837, 82424,
+  2927, 2625, 63
 ]
 const cloneArr1 = () => cloneArray.slice()
 const cloneArr2 = () => [].concat(cloneArray)
@@ -607,3 +529,51 @@ const arr3 = function () {
 $.benchmark(arr1, 'arr1', 100000)
 $.benchmark(arr2, 'arr2', 100000)
 $.benchmark(arr3, 'arr3', 100000)
+
+logTitle('gpt 鉴权数据聚合 原因测试')
+
+let rst = [
+  { flagger: true, catlogs: { a: true, b: true } },
+  { flagger: false, catlogs: { a1: true, b1: true, c1: false } },
+  { flagger: true, catlogs: { a: false, b: false, c1: true } }
+]
+// let r = rst.filter(_ => _.flagger).map(_ =>Object.entries(_.catlogs).filter(_ => _[1]).map(_ => _[0])).flat()
+function gptRst1 () {
+  let r = Object.keys(
+    rst.reduce(
+      (p, v) =>
+        v.flagger
+          ? Object.assign(
+              p,
+              Object.entries(v.catlogs)
+                .filter(d => d[1])
+                .map(d => d[0])
+                .reduce((p1, v) => Object.assign(p, { [v]: 1 }), {})
+            )
+          : p,
+      {}
+    )
+  )
+}
+function gptRst2 () {
+  let r = rst
+    .filter(_ => _.flagger)
+    .map(_ =>
+      Object.entries(_.catlogs)
+        .filter(_ => _[1])
+        .map(_ => _[0])
+    )
+    .flat()
+}
+
+const gptRstTest = [
+  {
+    name: 'gpt filter',
+    testArr: [
+      [gptRst1, 'reduce', 1e6],
+      [gptRst2, 'normal chain', 1e6]
+    ]
+  }
+]
+
+$.bench.suite(gptRstTest)
