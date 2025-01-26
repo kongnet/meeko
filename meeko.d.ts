@@ -726,6 +726,10 @@ export namespace buf {
 
         function toLocaleString(encoding: any, start: any, end: any, ...args: any[]): any;
 
+        function toReversed(): any;
+
+        function toSorted(p0: any): any;
+
         function toString(encoding: any, start: any, end: any, ...args: any[]): any;
 
         function ucs2Slice(): any;
@@ -805,14 +809,38 @@ export namespace buf {
         namespace buffer {
             const byteLength: number;
 
+            const detached: boolean;
+
+            const maxByteLength: number;
+
+            const resizable: boolean;
+
+            function resize(p0: any): any;
+
             function slice(p0: any, p1: any): any;
+
+            function transfer(): any;
+
+            function transferToFixedLength(): any;
 
         }
 
         namespace parent {
             const byteLength: number;
 
+            const detached: boolean;
+
+            const maxByteLength: number;
+
+            const resizable: boolean;
+
+            function resize(p0: any): any;
+
             function slice(p0: any, p1: any): any;
+
+            function transfer(): any;
+
+            function transferToFixedLength(): any;
 
         }
 

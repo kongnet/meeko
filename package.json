@@ -12,6 +12,7 @@
     "coverage"
   ],
   "main": "index.js",
+  "types": "meeko.d.ts",
   "exports": {
     ".": {
       "import": "./index.mjs",
@@ -134,8 +135,5 @@
     "commitizen": {
       "path": "./node_modules/cz-jt"
     }
-  },
-  "dependencies": {
-    "taffydb": "^2.7.3"
   }
 }
