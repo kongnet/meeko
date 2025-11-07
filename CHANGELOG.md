@@ -1,3 +1,12 @@
+## [1.8.335](https://github.com/kongnet/meeko/compare/v1.8.334...v1.8.335) (2025-11-07)
+
+
+### :sparkles:
+
+* copilot enhance ([b3a50c9](https://github.com/kongnet/meeko/commit/b3a50c9c06457196deffb06de24c2b0e10adce0e))
+
+
+
 ## [1.8.334](https://github.com/kongnet/meeko/compare/v1.8.333...v1.8.334) (2025-01-26)
 
 
