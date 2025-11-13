@@ -122,6 +122,9 @@ const rand1 = function () {
 const rand2 = function () {
   return secRand(0, 10000)
 }
+const rand3 = function () {
+  return crypto.randomInt(0, 10001)
+}
 
 const thousand = function (number, p = 3) {
   const sign = Math.sign(number)
@@ -250,7 +253,8 @@ const testSuite = [
     name: '随机整数生成比较',
     testArr: [
       [rand1, '普通包含两端随机函数', 1e5],
-      [rand2, '安全包含两端随机函数randomBytes实现', 1e5]
+      [rand2, '安全包含两端随机函数randomBytes实现', 1e5],
+      [rand3, '安全包含两端随机函数randomInt实现', 1e5]
     ]
   },
   {
