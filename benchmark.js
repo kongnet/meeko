@@ -510,9 +510,23 @@ const genUUID = function () {
 }
 
 const UUIDGen = () => ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (c ^ (crypto.randomBytes(1)[0] & (15 >> (c / 4)))).toString(16))
-$.benchmark(genSnowFlake, 'sky SnowFlake函数', 100000)
-$.benchmark(genUUID, 'sky gUID函数', 100000)
-$.benchmark(UUIDGen, 'UUIDGen', 10000)
+const cryptoUUID = () => {
+  return crypto.randomUUID()
+}
+
+const uuidTest = [
+  {
+    name: 'UUID Test',
+    testArr: [
+      [genSnowFlake, 'sky SnowFlake函数', 100000],
+      [genUUID, 'sky gUID函数', 100000],
+      [UUIDGen, 'UUIDGen', 10000],
+      [cryptoUUID, 'crypto randomUUID', 100000]
+    ]
+  }
+]
+
+$.bench.suite(uuidTest)
 
 logTitle('生成序列比较')
 const arr1 = function () {
