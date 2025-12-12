@@ -101,7 +101,7 @@ function getRoot (expr) {
   console.log('\nPolynomial:', expr)
   console.log('Root:')
 
-  m3.realEigenvalues.map((x, idx) => {
+  m3.realEigenvalues.forEach((x, idx) => {
     console.log('x' + idx + ':', x ? x.toFixed(15) : '0', m3.imaginaryEigenvalues[idx] ? ('+' + m3.imaginaryEigenvalues[idx].toFixed(20)).replaceAll('+-', '-') + $.c.y('i') : '')
   })
 }
