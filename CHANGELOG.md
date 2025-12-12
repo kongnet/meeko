@@ -1,5 +1,10 @@
-## [1.8.341](https://github.com/kongnet/meeko/compare/v1.8.337...v1.8.341) (2025-11-29)
+## [1.8.342](https://github.com/kongnet/meeko/compare/v1.8.337...v1.8.342) (2025-11-29)
 
+
+### :sparkles:
+
+* 安全随机 ([cb0717c](https://github.com/kongnet/meeko/commit/cb0717c3bb00104a26938bda06f9b1c8b65430ef))
+* copilot enhance ([b3a50c9](https://github.com/kongnet/meeko/commit/b3a50c9c06457196deffb06de24c2b0e10adce0e))
 
 
 
