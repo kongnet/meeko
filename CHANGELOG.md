@@ -1,3 +1,12 @@
+## [1.8.341](https://github.com/kongnet/meeko/compare/v1.8.340...v1.8.341) (2025-11-13)
+
+
+### :sparkles:
+
+* 安全随机 ([cb0717c](https://github.com/kongnet/meeko/commit/cb0717c3bb00104a26938bda06f9b1c8b65430ef))
+
+
+
 ## [1.8.340](https://github.com/kongnet/meeko/compare/v1.8.339...v1.8.340) (2025-11-10)
 
 
