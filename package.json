@@ -1,6 +1,6 @@
 {
   "name": "meeko",
-  "version": "1.8.343",
+  "version": "1.8.346",
   "description": "meeko自用函数",
   "keywords": [
     "statistics",
@@ -45,7 +45,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "engines": {
-    "node": ">= 14.0.0"
+    "node": ">= 16.0.0"
   },
   "author": "Kongnet <9601698@qq.com>",
   "license": "MIT",

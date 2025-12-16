@@ -1,3 +1,22 @@
+## [1.8.346](https://github.com/kongnet/meeko/compare/v1.8.343...v1.8.346) (2025-12-16)
+
+
+
+
+## [1.8.343](https://github.com/kongnet/meeko/compare/v1.8.342...v1.8.343) (2025-12-16)
+
+
+
+
+## [1.8.342](https://github.com/kongnet/meeko/compare/v1.8.341...v1.8.342) (2025-12-16)
+
+
+### :zap:
+
+* rfc4122 use crypto.randomUUID ([6665939](https://github.com/kongnet/meeko/commit/66659396b1e5c198cf9334e2ef7d6bd3ab63e5bc))
+
+
+
 ## [1.8.341](https://github.com/kongnet/meeko/compare/v1.8.340...v1.8.341) (2025-11-13)
 
 
