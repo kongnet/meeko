@@ -1,4 +1,27 @@
-## [1.8.347](https://github.com/kongnet/meeko/compare/v1.8.346...v1.8.347) (2026-02-11)
+## [1.8.349](https://github.com/kongnet/meeko/compare/v1.8.347...v1.8.349) (2026-02-12)
+
+
+### :zap:
+
+* 增加Agent辅助 ([7621205](https://github.com/kongnet/meeko/commit/76212058e3a55541376edf83b9b05c2a8a9d9bc3))
+
+
+
+## [1.8.347](https://github.com/kongnet/meeko/compare/v1.8.343...v1.8.347) (2025-12-16)
+
+
+### :zap:
+
+* test node 24 ([4164bc8](https://github.com/kongnet/meeko/commit/4164bc8d4a1330a399ee6a909b288bef03469c79))
+
+
+
+## [1.8.343](https://github.com/kongnet/meeko/compare/v1.8.342...v1.8.343) (2025-12-16)
+
+
+
+
+## [1.8.342](https://github.com/kongnet/meeko/compare/v1.8.341...v1.8.342) (2025-12-16)
 
 
 ### :zap:
@@ -7,52 +30,46 @@
 
 
 
-## [1.8.346](https://github.com/kongnet/meeko/compare/v1.8.345...v1.8.346) (2025-12-12)
+## [1.8.341](https://github.com/kongnet/meeko/compare/v1.8.340...v1.8.341) (2025-11-13)
+
+
+### :sparkles:
+
+* 安全随机 ([cb0717c](https://github.com/kongnet/meeko/commit/cb0717c3bb00104a26938bda06f9b1c8b65430ef))
+
+
+
+## [1.8.340](https://github.com/kongnet/meeko/compare/v1.8.339...v1.8.340) (2025-11-10)
 
 
 
 
-## [1.8.345](https://github.com/kongnet/meeko/compare/v1.8.344...v1.8.345) (2025-12-12)
+## [1.8.339](https://github.com/kongnet/meeko/compare/v1.8.338...v1.8.339) (2025-11-10)
 
 
 
 
-## [1.8.344](https://github.com/kongnet/meeko/compare/v1.8.343...v1.8.344) (2025-12-12)
+## [1.8.338](https://github.com/kongnet/meeko/compare/v1.8.337...v1.8.338) (2025-11-07)
 
 
 
 
-## [1.8.343](https://github.com/kongnet/meeko/compare/v1.8.342...v1.8.343) (2025-12-12)
+## [1.8.337](https://github.com/kongnet/meeko/compare/v1.8.336...v1.8.337) (2025-11-07)
 
 
 
 
-## [1.8.342](https://github.com/kongnet/meeko/compare/v1.8.337...v1.8.342) (2025-11-29)
+## [1.8.336](https://github.com/kongnet/meeko/compare/v1.8.335...v1.8.336) (2025-11-07)
+
+
+
+
+## [1.8.335](https://github.com/kongnet/meeko/compare/v1.8.334...v1.8.335) (2025-11-07)
 
 
 ### :sparkles:
 
 * copilot enhance ([b3a50c9](https://github.com/kongnet/meeko/commit/b3a50c9c06457196deffb06de24c2b0e10adce0e))
-* 安全随机 ([cb0717c](https://github.com/kongnet/meeko/commit/cb0717c3bb00104a26938bda06f9b1c8b65430ef))
-
-
-
-## [1.8.337](https://github.com/kongnet/meeko/compare/v1.8.336...v1.8.337) (2025-11-29)
-
-
-
-
-## [1.8.336](https://github.com/kongnet/meeko/compare/v1.8.335...v1.8.336) (2025-11-29)
-
-
-
-
-## [1.8.335](https://github.com/kongnet/meeko/compare/v1.8.334...v1.8.335) (2025-11-29)
-
-
-### :zap:
-
-* test node 24 ([4164bc8](https://github.com/kongnet/meeko/commit/4164bc8d4a1330a399ee6a909b288bef03469c79))
 
 
 

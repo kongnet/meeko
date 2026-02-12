@@ -5,6 +5,7 @@ const bench = require('./lib/bench.js')
 const Pack = require('./package.json')
 const tools = require('./lib/tools')
 const c = tools.c
+const logLib = require('./lib/log')
 
 const getGlobal = function () {
   // 普通解决方案但并不完美
@@ -240,20 +241,20 @@ const exportObj = {
   color,
   compare,
   Crypto: cryptoExt,
-  dir,
+  dir: logLib.dir,
   drawTable: tools.drawTable,
-  err,
+  err: logLib.err,
   ext,
   fake,
   file,
-  getStackTrace,
+  getStackTrace: logLib.getStackTrace,
   geo,
   json,
-  log,
+  log: logLib.log,
   math,
   Mock,
   now,
-  option,
+  option: logLib.option,
   pipe,
   qrcode,
   reg,

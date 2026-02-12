@@ -5,6 +5,7 @@ const bench = require('./lib/bench.js')
 const Pack = require('./package.json')
 const tools = require('./lib/tools')
 const c = tools.c
+const logLib = require('./lib/logBrowser')
 
 const getGlobal = function () {
   if (typeof self !== 'undefined') {
@@ -18,127 +19,6 @@ const getGlobal = function () {
   }
 }
 const globalThis = getGlobal()
-
-/**
- * @description 合并两个对象，与 Object.assign 类似，但只能合并两个
- * @param {object} a a对象，将b对象的可枚举属性复制到此对象，如果a对象已有相同属性，将被覆盖
- * @param {object} b b对象，不会修改此对象
- * @return {object} a对象，此方法并不会生成新对象
- * */
-
-const option = {
-  logTime: true
-}
-
-/**
- * 获取错误堆栈跟踪数据
- * @return string
- * */
-
-const getStackTrace = function () {
-  const obj = {}
-  Error.captureStackTrace(obj, getStackTrace)
-  return obj.stack
-}
-const os = 'win32' // process.platform
-const re = os.includes('win32')
-  ? /\\(.+)\.js:(\d+:\d+)/g
-  : /\/(.+)\.js:(\d+:\d+)/g
-const trace = console
-
-/**
- * @param {...any[]} args 要打印的参数
- * */
-
-const log = function log (...args) {
-  getStackTrace()
-    .split('\n')[2]
-    .match(re)
-  const s =
-    ' [' +
-    c.dimg(
-      RegExp.$1 +
-        ':' +
-        RegExp.$2 +
-        ' ' +
-        new Date().date2Str().replaceAll('-', '')
-    ) +
-    ']'
-  let str = ''
-  for (let i = 0; i < args.length; i++) {
-    if (typeof args[i] === 'object') {
-      str = str + JSON.stringify(args[i]) + ' '
-    } else {
-      str = str + args[i] + ' '
-    }
-  }
-  trace.log(str + (option.logTime ? s : ''))
-  return 1
-}
-
-/**
- * @param {...any[]} args 要打印的参数
- * */
-
-const err = function err (...args) {
-  getStackTrace()
-    .split('\n')[2]
-    .match(re)
-  const s =
-    ' [' +
-    c.dimr(
-      RegExp.$1 +
-        ':' +
-        RegExp.$2 +
-        ' ' +
-        new Date().date2Str().replaceAll('-', '')
-    ) +
-    ']'
-  let str = ''
-  for (let i = 0; i < args.length; i++) {
-    if (typeof args[i] === 'object') {
-      str = str + JSON.stringify(args[i]) + ' '
-    } else {
-      str = str + args[i] + ' '
-    }
-  }
-  trace.error(str + (option.logTime ? s : ''))
-  return 1
-}
-
-function strColor (k, v) {
-  if (typeof v === 'function') {
-    return `[function ${k}]`
-  }
-  if (Object.prototype.toString.call(v) === '[object RegExp]') {
-    return '#cyan#' + v + '#none#'
-  }
-  return v
-}
-
-/**
- * dir json着色函数.
- * @param {...array<any>} args 任何参数
- */
-
-const dir = function dir (...args) {
-  for (let i = 0; i < args.length; i++) {
-    let ss = JSON.stringify(args[i], strColor, 4)
-    ss = ss
-      .replaceAll('"#cyan#', c.cyan)
-      .replaceAll('#none#"', c.none)
-      .replace(/"(.+)": /g, c.g('$1') + ': ')
-      .replace(/(true)(,|'')\n/g, c.r('$1$2\n'))
-      .replace(/(false)(,|'')\n/g, c.r('$1$2\n'))
-      .replace(/"(.+)",\n/g, '"' + c.m('$1') + '",\n')
-      .replace(/"(.+)"\n/g, '"' + c.m('$1') + '"\n')
-      .replace(/([0-9.]+),\n/g, c.y('$1') + ',\n')
-      .replace(/([0-9.]+)\n/g, c.y('$1') + '\n')
-      .replace(/,\n/g, c.y(',\n'))
-      .replace(/("|{|}|[|])/g, c.y('$1'))
-    trace.log(ss)
-  }
-}
 
 /**
  * 返回一个sort函数，用于给对象数组根据某字段排序，类似sql中的order by
@@ -239,19 +119,19 @@ const exportObj = {
   c,
   color,
   compare,
-  dir,
+  dir: logLib.dir,
   drawTable: tools.drawTable,
-  err,
+  err: logLib.err,
   ext,
   fake,
-  getStackTrace,
+  getStackTrace: logLib.getStackTrace,
   geo,
   json,
-  log,
+  log: logLib.log,
   math,
   Mock,
   now,
-  option,
+  option: logLib.option,
   pipe,
   qrcode,
   reg,
