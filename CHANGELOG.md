@@ -1,5 +1,14 @@
-## [1.8.349](https://github.com/kongnet/meeko/compare/v1.8.347...v1.8.349) (2026-02-12)
+## [1.8.351](https://github.com/kongnet/meeko/compare/v1.8.350...v1.8.351) (2026-02-12)
 
+
+
+
+## [1.8.350](https://github.com/kongnet/meeko/compare/v1.8.347...v1.8.350) (2026-02-12)
+
+
+### :art:
+
+* ai $.log ([8be99f5](https://github.com/kongnet/meeko/commit/8be99f58c70d3b624fe7ac9f8767fda50a5e90fa))
 
 ### :zap:
 
